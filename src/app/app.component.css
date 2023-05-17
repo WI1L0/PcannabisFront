@@ -1,0 +1,62 @@
+#carouselExampleCaptions {
+  /*   height: 80vh; */
+}
+
+/* Set background image for each slide */
+#carouselExampleCaptions .carousel-item:nth-child(1) {
+  background-image: url("https://picsum.photos/id/1018/1920/1080");
+  background-size: cover;
+  background-position: center;
+}
+
+#carouselExampleCaptions .carousel-item:nth-child(2) {
+  background-image: url("https://picsum.photos/id/1016/1920/1080");
+  background-size: cover;
+  background-position: center;
+}
+
+#carouselExampleCaptions .carousel-item:nth-child(3) {
+  background-image: url("https://picsum.photos/id/1015/1920/1080");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Add fade-in animation to captions */
+.fade-in {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0)
+  );
+  border-radius: 20px 0 0 20px;
+  padding: 10px;
+  animation: fadeIn 3s ease-in-out;
+  /*       opacity: 0; */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tinggi carousel pada layar lebar */
+@media (min-width: 768px) {
+  #carouselExampleCaptions .carousel-item {
+    height: 80vh;
+  }
+}
+
+/* Tinggi carousel pada layar kecil */
+@media (max-width: 576px) {
+  #carouselExampleCaptions .carousel-item {
+    height: 100vh;
+  }
+}
