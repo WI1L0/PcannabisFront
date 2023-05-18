@@ -1,62 +1,205 @@
-#carouselExampleCaptions {
-  /*   height: 80vh; */
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
 }
 
-/* Set background image for each slide */
-#carouselExampleCaptions .carousel-item:nth-child(1) {
-  background-image: url("https://picsum.photos/id/1018/1920/1080");
-  background-size: cover;
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
   background-position: center;
-}
-
-#carouselExampleCaptions .carousel-item:nth-child(2) {
-  background-image: url("https://picsum.photos/id/1016/1920/1080");
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+
+}
+.bgimg-1 {
+  background-image: url("https://40.media.tumblr.com/1b916597d3e174399cb7adadddb66ede/tumblr_nt5uk4psl31ud7rr3o1_1280.jpg");
+  min-height: 100%;
 }
 
-#carouselExampleCaptions .carousel-item:nth-child(3) {
-  background-image: url("https://picsum.photos/id/1015/1920/1080");
+.bgimg-2 {
+  background-image: url("https://68.media.tumblr.com/d3fd545cd977a174beef12c1106880bf/tumblr_nt505iKkul1ud7rr3o1_1280.jpg");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("https://68.media.tumblr.com/ac46aa24b44b5036e9200abb71f810d9/tumblr_nt5vzxV6Us1ud7rr3o1_1280.jpg");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+
+
+
+
+/* Carousel Section Styles ============================ */
+body {
+  background-color: #000;
+}
+
+.slide-one-image {
+  background-image: url("../assets/img/ftemp1.jpeg");
+  background-position: top center;
+}
+
+.slide-two-image {
+  background-image: url("../assets/img/ftemp2.jpeg");
+  background-position: top center;
+}
+
+.slide-three-image {
+  background-image: url("../assets/img/ftemp3.jpeg");
+  background-position: top center;
+}
+
+.home-hero-header {
+  background-color: #031531;
+  color: #fff;
+  padding: 10px 50px;
+  margin-top: 80vh;
+  margin-left: 78%;
+  width: max-content;
+}
+
+.home-hero-header .btn {
+  position: relative;
+  bottom: 50%;
+}
+
+.carousel-item {
   background-size: cover;
-  background-position: center;
+  height: 100vh;
+  z-index: -1;
+  position: relative;
+  width: 100%;
 }
 
-/* Add fade-in animation to captions */
-.fade-in {
+.carousel .container {
+  z-index: 9999;
+  position: relative;
+}
+
+.carousel-item-bg {
+  position: absolute;
+  z-index: 2;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.8),
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0)
-  );
-  border-radius: 20px 0 0 20px;
-  padding: 10px;
-  animation: fadeIn 3s ease-in-out;
-  /*       opacity: 0; */
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+.home-hero-header p {
+  font-weight: 500;
+  font-size: 1.4rem;
 }
 
-/* Tinggi carousel pada layar lebar */
-@media (min-width: 768px) {
-  #carouselExampleCaptions .carousel-item {
-    height: 80vh;
-  }
+.carousel-item-bg img {
+  width: 100% !important;
+  height: auto !important;
+  opacity: 0.5;
 }
 
-/* Tinggi carousel pada layar kecil */
-@media (max-width: 576px) {
-  #carouselExampleCaptions .carousel-item {
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  top: 0;
+}
+
+nav + .carousel {
+  top: -60px;
+  margin-bottom: -60px;
+}
+
+.carousel-item .container img {
+  margin: auto 10px;
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  width: 100% !important;
+  height: auto !important;
+  max-width: 60%;
+}
+
+/* Mobile Slider */
+@media (max-width: 768px) {
+  .carousel-item {
     height: 100vh;
+  }
+
+  .carousel-inner {
+    height: 100vh;
+  }
+
+  .home-hero-header {
+    background-color: #031531;
+    color: #fff;
+    padding: 3vh 3vw;
+    margin-top: 60vh !important;
+    margin-left: 0vw;
+    width: 100%;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    bottom: 350px;
+  }
+
+  .home-hero-header p {
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    top: 40vh;
+  }
+}
+
+/* Large Screen Slider */
+@media (min-width: 1700px) {
+  .carousel-item {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .carousel-inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: 5%;
   }
 }
