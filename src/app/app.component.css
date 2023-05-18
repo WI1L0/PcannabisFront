@@ -63,17 +63,17 @@ body {
 }
 
 .slide-one-image {
-  background-image: url("../assets/img/ftemp1.jpeg");
+  background-image: url("../assets/img/pc1.jpg");
   background-position: top center;
 }
 
 .slide-two-image {
-  background-image: url("../assets/img/ftemp2.jpeg");
+  background-image: url("../assets/img/pc2.jpg");
   background-position: top center;
 }
 
 .slide-three-image {
-  background-image: url("../assets/img/ftemp3.jpeg");
+  background-image: url("../assets/img/pc3.jpg");
   background-position: top center;
 }
 
