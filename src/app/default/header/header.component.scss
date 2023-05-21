@@ -1,0 +1,95 @@
+*{
+  text-decoration: none;
+}
+
+.header {
+  background-color: transparent;
+	padding: 2rem;
+	position: fixed;
+	inset: 0 0 auto 0;
+
+	transition: color 0.3s;
+	z-index: 10;
+	color: #038C25;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+
+		background-color: rgb(39, 49, 61);
+		backdrop-filter: blur(5px);
+
+		transform: scaleY(0);
+		transition: transform 0.3s linear;
+		transform-origin: top center;
+		will-change: transform;
+	}
+
+	&.is-sticky {
+		color: #038C25;
+
+		&::before {
+			transform: scaleY(1);
+		}
+	}
+
+	&__inner {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.divbutton {
+  margin-right: 50px;
+}
+
+img{
+  height: 20%;
+  width: 20%;
+}
+
+
+
+//Button
+.button {
+  font-size: 18px;
+  color: #038C25;
+  font-family: inherit;
+  font-weight: 10;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.button:focus,
+.button:hover {
+  color: #038C25;
+}
+
+.button:focus:after,
+.button:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.button:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #038C25;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
