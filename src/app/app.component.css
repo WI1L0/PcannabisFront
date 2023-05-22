@@ -55,14 +55,23 @@ h3 {
 
 
 
+.carouselSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nunakaySection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* CAROUSEL */
-
-
 .carousel {
   width: 100%;
-  height: 80vh;
-  min-height: 700px;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,9 +112,134 @@ h3 {
   transform: translateX(-50%);
   bottom: 20px;
 }
+/* CAROUSEL */
 
 
 
+
+
+/* NUNAKAY */
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --primary-color : #1dd1a1;
+    --active-color : #2ecc71;
+
+}
+
+body{
+    background-color: #f5f5f5;
+    font-family: "Muli",poppins;
+    height: 100vh;
+}
+
+.slider-container{
+    height: 50vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative; 
+    color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-slides{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 35%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.right-slides{
+    position: absolute;
+    left: 35%;
+    top: 0;
+    width: 65%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.left-slides > div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-slides h3{
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.left-slides p{
+    font-size: 1.5rem;
+}
+
+.right-slides > div{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+button{
+
+}
+
+.slider-container button{
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    font-size: 1.5rem;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #444;
+}
+
+button:hover{
+    opacity: 0.9;
+}
+
+button:focus{
+    outline: none;
+}
+
+.slider-container .left-btn{
+    transform: translateX(-100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.slider-container .right-btn{
+    transform: translateY(-100%);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* NUNAKAY */
+
+/* @media screen and (max-width: 1050px){
+  .carousel {
+    width: 100%;
+    height: 50vh;
+    min-height: 400px;
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  } */
 
 
 

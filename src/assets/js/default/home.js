@@ -1,55 +1,57 @@
-//CAROUSEL
-// if(document.querySelector('#container-slider')){
-//   setInterval('funcionEjecutar("siguiente")',5000);
-// }
-// //------------------------------ LIST SLIDER -------------------------
-// if(document.querySelector('.listslider')){
-//   let link = document.querySelectorAll(".listslider li a");
-//   link.forEach(function(link) {
-//      link.addEventListener('click', function(e){
-//         e.anteriorentDefault();
-//         let item = this.getAttribute('itlist');
-//         let arrItem = item.split("_");
-//         funcionEjecutar(arrItem[1]);
-//         return false;
-//      });
-//    });
-// }
+// NUNAKAY
+// Script Goes Here...
+const leftSlide = document.querySelector(".left-slides");
+const rightSlide = document.querySelector(".right-slides");
+const leftBtn = document.querySelector(".left-btn");
+const rightBtn = document.querySelector(".right-btn");
+const slidesLength = leftSlide.querySelectorAll("div").length;
 
-// function funcionEjecutar(side){
-//    let parentTarget = document.getElementById('slider');
-//    let elements = parentTarget.getElementsByTagName('li');
-//    let curElement, siguienteElement;
+let currentSlide = 0;
 
-//    for(var i=0; i<elements.length;i++){
+rightSlide.style.transform = `translateY(-${(slidesLength - 1) * 100}%)`;
 
-//        if(elements[i].style.opacity==1){
-//            curElement = i;
-//            break;
-//        }
-//    }
-//    if(side == 'anterior' || side == 'siguiente'){
+leftBtn.addEventListener("click", () => changeSlide("left"));
+rightBtn.addEventListener("click", () => changeSlide("right"));
 
-//        if(side=="anterior"){
-//            siguienteElement = (curElement == 0)?elements.length -1:curElement -1;
-//        }else{
-//            siguienteElement = (curElement == elements.length -1)?0:curElement +1;
-//        }
-//    }else{
-//        siguienteElement = side;
-//        side = (curElement > siguienteElement)?'anterior':'siguiente';
+function changeSlide(btn) {
+  if (btn == "right") {
+    currentSlide++;
 
-//    }
-   
-//    //PUNTOS INFERIORES
-//    let elementSel = document.getElementsByClassName("listslider")[0].getElementsByTagName("a");
-//    elementSel[curElement].classList.remove("item-select-slid");
-//    elementSel[siguienteElement].classList.add("item-select-slid");
-//    elements[curElement].style.opacity=0;
-//    elements[curElement].style.zIndex =0;
-//    elements[siguienteElement].style.opacity=1;
-//    elements[siguienteElement].style.zIndex =1;
-// }
+    if (currentSlide > slidesLength - 1) {
+      currentSlide = 0;
+    }
+  } else if (btn == "left") {
+    currentSlide--;
+
+    if (currentSlide < 0) {
+      currentSlide = slidesLength - 1;
+    }
+  }
+
+  rightSlide.style.transform = `translateY(-${
+    (slidesLength - 1 - currentSlide) * 100
+  }%)`;
+  leftSlide.style.transform = `translateY(-${currentSlide * 100}%)`;
+}
+
+setInterval(autoChangeSlide, 3000);
+
+function autoChangeSlide() {
+
+  currentSlide++;
+
+  if (currentSlide > slidesLength - 1) {
+    currentSlide = 0;
+  }
+
+  rightSlide.style.transform = `translateY(-${
+    (slidesLength - 1 - currentSlide) * 100
+  }%)`;
+  leftSlide.style.transform = `translateY(-${currentSlide * 100}%)`;
+}
+
+// NUNAKAY
+
 
 // //IIFE
 // (function () {
