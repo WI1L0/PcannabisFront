@@ -9,6 +9,9 @@ import { AllScriptsService } from './scripts/all-scripts.service';
 import { FooterComponent } from './default/footer/footer.component';
 import { HeaderComponent } from './default/header/header.component';
 
+//router
+import { RouterModule, Route } from '@angular/router';
+
 
 @NgModule({
   declarations: [
