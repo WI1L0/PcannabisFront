@@ -1,0 +1,613 @@
+// ALL
+// .divPrimero {
+//   position:relative;
+// }
+
+// .divSegundo {
+//   color: #777;
+//   background-color:white;
+//   text-align:center;
+//   padding:0px 0px;
+//   text-align: justify;
+// }
+
+// .divTercero {
+//   color:#ddd;
+//   background-color:#282E34;
+//   text-align:center;
+//   padding:50px 80px;
+//   text-align: justify;
+// }
+// ALL
+
+
+
+
+
+// CAROUSEL
+
+/* Carousel Section Styles ============================ */
+body {
+  background-color: #000;
+}
+
+.slide-one-image {
+  background-image: url("../assets/img/pc1.jpg");
+  background-position: top center;
+}
+
+.slide-two-image {
+  background-image: url("../assets/img/pc2.jpg");
+  background-position: top center;
+}
+
+.slide-three-image {
+  background-image: url("../assets/img/pc3.jpg");
+  background-position: top center;
+}
+
+.home-hero-header {
+  background-color: #031531;
+  color: #fff;
+  padding: 10px 50px;
+  margin-top: 80vh;
+  margin-left: 78%;
+  width: max-content;
+}
+
+.home-hero-header .btn {
+  position: relative;
+  bottom: 50%;
+}
+
+.carousel-item {
+  background-size: cover;
+  height: 100vh;
+  z-index: -1;
+  position: relative;
+  width: 100%;
+}
+
+.carousel .container {
+  z-index: 9999;
+  position: relative;
+}
+
+.carousel-item-bg {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.home-hero-header p {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.carousel-item-bg img {
+  width: 100% !important;
+  height: auto !important;
+  opacity: 0.5;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  top: 0;
+}
+
+nav + .carousel {
+  top: -60px;
+  margin-bottom: -60px;
+}
+
+.carousel-item .container img {
+  margin: auto 10px;
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  width: 100% !important;
+  height: auto !important;
+  max-width: 60%;
+}
+
+/* Mobile Slider */
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 100vh;
+  }
+
+  .carousel-inner {
+    height: 100vh;
+  }
+
+  .home-hero-header {
+    background-color: #031531;
+    color: #fff;
+    padding: 3vh 3vw;
+    margin-top: 60vh !important;
+    margin-left: 0vw;
+    width: 100%;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    bottom: 350px;
+  }
+
+  .home-hero-header p {
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    top: 40vh;
+  }
+}
+
+/* Large Screen Slider */
+@media (min-width: 1700px) {
+  .carousel-item {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .carousel-inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: 5%;
+  }
+}
+// CAROUSEL
+
+
+
+
+
+// CARACTERISTICAS
+.caracteristicasSection{
+  box-sizing: border-box;
+}
+
+.carabody{
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+.mt-5{
+  margin-top: 5rem;
+}
+
+.our-blog{
+  background-color: #f8f9fa;
+  padding: 100px 0;
+}
+
+.container{
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.text-center{
+  text-align: center;
+  font-size: 18px;
+}
+
+.text-center h2{
+  font-weight: 500;
+  font-size: 1.6em;
+}
+
+.text-center h2 span{
+  font-weight: 800;
+}
+
+.text-center p{
+  max-width: 500px;
+  margin: 0 auto;
+  color: #6c757d;
+  line-height: 1.5;
+  font-size: 1em;
+}
+
+.col{
+  width: 33.3333333%;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.col .card{
+  width: 100%;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.col img{
+  width: 100%;
+  height: auto;
+  border: 0;
+}
+
+.col .card-body{
+  padding: 0 15px 15px 15px;
+  background-color: #fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.card-body h5{
+  font-size: 24px;
+  margin: 7px 0;
+}
+
+.card:hover{
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+}
+
+.card p{
+  color: #6c757d;
+}
+
+.card-body .date-author span{
+  color: #e74c3c;
+}
+
+.card-body h5 a{
+  color: #222;
+}
+
+@media(min-width: 577px) and (max-width: 768px){
+  .col{
+      width: 50%;
+  }
+}
+
+@media(max-width: 576px){
+  .col{
+      width: 100%;
+  }
+}
+
+// CARACTERISTICAS
+
+
+
+
+
+// NUNAKAY
+.nunakaySection,
+.bodynu {
+    box-sizing: border-box;
+    font-family: 'neuzeit-grotesk', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #303336;
+    scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.divmain {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    background-color: #d1e8ee;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #7B8591;
+}
+
+::selection {
+    color: #fff;
+    background-color: #005AEE;
+}
+
+/* ======================== */
+/* Just Copy The Code Below */
+
+/* ------------- */
+/* Content Style */
+/* ------------- */
+
+.main-card {
+    position: relative;
+    width: 770px;
+    height: 470px;
+    margin: 20px;
+    border-radius: 10px;
+    font-family: 'neuzeit-grotesk', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #303336;
+    background-color: #fff;
+    box-shadow: 0 40px 40px -20px #8fc7d544;
+}
+
+.main-card .card-content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+}
+
+.main-card .content-left {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f6f6f6;
+}
+
+.main-card .content-left img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: center;
+}
+
+.main-card .content-right {
+    position: relative;
+    width: calc(100% - 300px);
+    height: 100%;
+    padding-left: 35px;
+}
+
+.main-card .tag {
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+    width: fit-content;
+    padding: 8px 25px;
+    border-radius: 10px;
+    background-color: #005AEE;
+}
+
+.main-card .tag h6 {
+    color: #fff;
+    font-size: .75em;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.main-card .mini-imgs {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    height: 105px;
+}
+
+.main-card .mini-imgs img {
+    width: 105px;
+    height: 105px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.main-card .mini-imgs img:hover {
+    opacity: .75;
+}
+
+.main-card .mini-imgs img:nth-child(2) {
+    margin: 0 10px;
+}
+
+/* Display this style when screen-width is lower than 992px */
+@media only screen and (max-width: 992px) {
+
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .main-card {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin: 80px 20px;
+    }
+
+    .main-card .card-content {
+        flex-direction: column;
+    }
+
+    .main-card .content-left {
+        width: 100%;
+        height: 300px;
+    }
+
+    .main-card .content-right {
+        width: 100%;
+        height: auto;
+        padding: 175px 0 0;
+    }
+
+    .main-card .tag {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    .main-card .mini-imgs {
+        position: absolute;
+        display: flex;
+        top: 0;
+        margin-top: 35px;
+        height: 105px;
+    }
+
+}
+
+/* Display this style when screen-width is lower than 500px */
+@media only screen and (max-width: 500px) {
+
+    .main-card {
+        margin: 120px 20px;
+    }
+
+    .main-card .card-content {
+        padding: 25px;
+    }
+
+    .main-card .content-right {
+        width: 100%;
+        height: auto;
+        padding: 115px 0 0;
+    }
+
+    .main-card .mini-imgs {
+        margin-top: 20px;
+    }
+
+    .main-card .mini-imgs img {
+        width: 60px;
+        height: 60px;
+    }
+
+}
+
+/* Just Copy The Code Above */
+/* ======================== */
+
+/* ----------- */
+/* UI Designer */
+/* ----------- */
+
+.designer {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 400;
+    color: #46a2b9;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.designer a {
+    text-decoration: none;
+    color: #23515d;
+}
+// NUNAKAY
+
+
+
+
+
+// EMPRESAS
+.empresasSection {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a { text-decoration: none; }
+
+.controller {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+.controller g { fill: white; }
+
+.ic-shop { fill:#4D4D4D; }
+
+#scroller {
+    display: flex;
+	flex-wrap: nowrap;
+	overflow: hidden;
+}
+
+.prod .title, .prod .button { opacity: 0; }
+    
+.prod.active .title, .prod.active .button { opacity: 1; }
+
+.prod .btn {
+    border: 1px solid #4D4D4D;
+    background-color: transparent;
+    color: #4D4D4D;
+    margin: 5px 0 8px 0;
+    padding: 4px 20px 4px 20px;
+    cursor:pointer;
+    border-radius: 20px;
+}
+
+.prod .btn:hover {
+    border: 1px solid transparent;
+    background-color: #4D4D4D;
+    color:white;
+}
+
+.prod .btn:hover .ic-shop { fill:white; }
+
+.prod {
+    text-align:center;
+    min-width: 25%;
+    margin:auto;
+}
+
+.prod.active { min-width: 50%; }
+
+@media (min-width: 0px) {
+    .prod.active img { width: 80%; }
+    .prod img { width: 80%;}
+}
+
+@media (min-width: 768px) {
+    .prod.active img { width: 45%; }
+    .prod img { width: 50%; }
+}
+// EMPRESAS
