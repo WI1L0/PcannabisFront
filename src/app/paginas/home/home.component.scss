@@ -1,23 +1,40 @@
 // ALL
-// .divPrimero {
-//   position:relative;
-// }
+.divPrimero {
+  position:relative;
+  background-color:#27313d;
+}
 
-// .divSegundo {
-//   color: #777;
-//   background-color:white;
-//   text-align:center;
-//   padding:0px 0px;
-//   text-align: justify;
-// }
+.divSegundo {
+  color:#ddd;
+  background-color:#27313d;
+  text-align:center;
+  text-align: justify;
+}
 
-// .divTercero {
-//   color:#ddd;
-//   background-color:#282E34;
-//   text-align:center;
-//   padding:50px 80px;
-//   text-align: justify;
-// }
+.divSegundo_pading {
+  color:#ddd;
+  background-color:#27313d;
+  text-align:center;
+  padding:50px 80px;
+  text-align: justify;
+}
+
+.divTercero {
+   background-color:#292f35;
+  font-size:25px;
+  color: #f7f7f7;
+  padding:10px 10px;
+}
+
+.contenedorCaracteristicas { 
+  background-color: #292f35;
+}
+
+.h1All {
+  text-align: center;
+  font-family: 'Lato';
+  color: #ffff;
+  }
 // ALL
 
 
@@ -30,17 +47,17 @@
 }
 
 .slide-one-image {
-  background-image: url("../../../assets/img/pc1.jpg");
+  background-image: url("../../../assets/img/fondo_1.jpeg");
   background-position: top center;
 }
 
 .slide-two-image {
-  background-image: url("../../../assets/img/pc2.jpg");
+  background-image: url("../../../assets/img/fondo_2.jpg");
   background-position: top center;
 }
 
 .slide-three-image {
-  background-image: url("../../../assets/img/pc3.jpg");
+  background-image: url("../../../assets/img/fondo_3.jpg");
   background-position: top center;
 }
 
@@ -119,7 +136,6 @@ nav+.carousel {
   max-width: 60%;
 }
 
-/* Mobile Slider */
 @media (max-width: 768px) {
   .carousel-item {
     height: 60vh;
@@ -192,7 +208,7 @@ nav+.carousel {
 }
 
 .our-blog {
-  background-color: #f8f9fa;
+  background-color: #292f35;
   padding: 1px 0;
 }
 
@@ -215,7 +231,7 @@ nav+.carousel {
 
 .col .card {
   width: 100%;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease;
 }
 
@@ -243,7 +259,7 @@ nav+.carousel {
 }
 
 .card .pCaracteristicas {
-  color: #6c757d;
+  color: #6c7d70;
 }
 
 .card-body .h5Caracteristicas .aCaracteristicas {
@@ -292,7 +308,7 @@ nav+.carousel {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   background-color: #d1e8ee;
 }
 
@@ -347,10 +363,21 @@ nav+.carousel {
 }
 
 .main-card .content-left .imgNunakay {
-  width: inherit;
-  height: inherit;
-  object-fit: cover;
-  object-position: center;
+  width: calc(100% - 10px); /* Establece el ancho de la imagen al 100% del contenedor */
+  height: calc(100% - 10px); /* Hace que la altura de la imagen se ajuste automáticamente para mantener la proporción de aspecto */
+  display: block; /* Establece el elemento como un bloque para poder aplicar la propiedad margin: auto */
+  margin: auto; /* Centra la imagen horizontalmente dentro del contenedor */
+  object-fit: contain; /* Hace que la imagen se ajuste al contenedor manteniendo su proporción de aspecto y sin recortarla */
+  object-position: center; /* Establece la posición de la imagen en el centro del contenedor */
+}
+
+.main-card .divimg .imgNunakay {
+  width: calc(100% - 800px); /* Establece el ancho de la imagen al 100% del contenedor */
+  height: calc(100% - 800px); /* Hace que la altura de la imagen se ajuste automáticamente para mantener la proporción de aspecto */
+  display: block; /* Establece el elemento como un bloque para poder aplicar la propiedad margin: auto */
+  margin: auto; /* Centra la imagen horizontalmente dentro del contenedor */
+  object-fit: contain; /* Hace que la imagen se ajuste al contenedor manteniendo su proporción de aspecto y sin recortarla */
+  object-position: center; /* Establece la posición de la imagen en el centro del contenedor */
 }
 
 .main-card .content-right {
@@ -381,12 +408,12 @@ nav+.carousel {
   position: absolute;
   display: flex;
   bottom: 0;
-  height: 205px;
+  height: 300px;
 }
 
 .main-card .mini-imgs .imgNunakay {
   width: 200px;
-  height: 200px;
+  height: 250px;
   border-radius: 10px;
   object-fit: cover;
   object-position: center;
@@ -503,42 +530,91 @@ nav+.carousel {
 
 
 // EMPRESAS
-.empresasSection {
-  margin: 0;
-  padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+// .empresasSection {
+//   margin: 0;
+//   padding: 0;
+//   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+// }
 
-#scroller {
+// #scroller {
+//   display: flex;
+//   flex-wrap: nowrap;
+//   overflow: hidden;
+// }
+
+// .prod.active {
+//   opacity: 1;
+// }
+
+// .prod {
+//   opacity: 0.5;
+//   text-align: center;
+//   min-width: 10px;
+//   margin: auto;
+// }
+
+// .prod.active {
+//   min-width: 20px;
+// }
+
+// .prod .imgEmpresas {
+//   width: 100px;  
+//   height: 100px; 
+// }
+
+// @media (min-width: 768px) {
+//   .prod .imgEmpresas {
+//     width: 200px;  
+//     height: 200px; 
+//   }
+// }
+
+.logos-slider {
   display: flex;
   flex-wrap: nowrap;
   overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg,rgba(0,0,0,0) 0,#000 15%,#000 85%,rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(90deg,rgba(0,0,0,0) 0,#000 15%,#000 85%,rgba(0,0,0,0) 100%);
 }
 
-.prod.active {
-  opacity: 1;
+.logos-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  animation: slide 30s linear infinite;
 }
 
-.prod {
-  opacity: 0.5;
-  text-align: center;
-  min-width: 10px;
-  margin: auto;
+.logos-slider-container img {
+width:150px;
+max-width: 150px;
 }
 
-.prod.active {
-  min-width: 20px;
+@keyframes slide {
+0% {
+  transform: translate3d(0,0,0)
+}
+100% {
+  transform: translate3d(-100%,0,0)
+}
 }
 
-.prod .imgEmpresas {
-  width: 100px;  
-  height: 100px; 
+.card {
+background: white;
+padding: 2rem;
+  margin: 20px;
+border-radius: 1rem;
+max-width: 900px;
+box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
 }
 
-@media (min-width: 768px) {
-  .prod .imgEmpresas {
-    width: 200px;  
-    height: 200px; 
-  }
+.empresasSection {
+background: #292f35;
+display:flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
 }
+
 // EMPRESAS
