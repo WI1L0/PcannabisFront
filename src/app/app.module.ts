@@ -11,6 +11,7 @@ import { HeaderComponent } from './default/header/header.component';
 
 //router
 import { RouterModule, Route } from '@angular/router';
+import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 
 
 @NgModule({
