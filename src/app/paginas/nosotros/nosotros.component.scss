@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+
+body{
+    background-color: #f1faff;
+}
+
+.cards{
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 100px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+
+.card{
+    max-width: 300px;
+    height: 100%;
+    margin: 10px;
+    transition: all linear .3s;
+    &:hover{
+        max-width: 350px;
+        .card__cover img{ top: 0; }
+        .card__cover--back{ bottom: -40px; }
+        .card__body{
+            padding: 20px 50px;
+        }
+    }
+    &__cover{
+        position: relative;
+        height: 250px;
+        width: 100%;
+        overflow: hidden ;
+        img{
+            position: relative;
+            width: 250px;
+            top: 40px;
+            display: block;
+            margin: auto;
+            z-index: 1;
+            filter: drop-shadow(5px 5px 5px rgba(black, .5));
+            transition: all linear .3s;
+        }
+        &--back{
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            bottom: -80px;
+            background-size: cover;
+            border-radius: 20px;
+            transition: all linear .3s;
+        }
+    }
+
+    &__body{
+        background-color: white;
+        padding: 20px;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 4px 4px 4px rgba(black, .1);
+        transition: all linear .3s;
+        h2{
+            margin-bottom: 10px;
+        }
+        p{
+            margin-bottom: 20px;
+        }
+        input{
+            padding: 10px 40px;
+            margin-bottom: 20px;
+            border: none;
+            background-color: #a6359d;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all linear .3s;
+            border-radius: .5rem;
+            &:hover{
+                background-color: #83277b;
+            }
+        }
+
+    }
+    
+}
+// ALL
+.divPrimero {
+    position:relative;
+    background-color:#27313d;
+  }
+  
+  .divSegundo {
+    color:#ddd;
+    background-color:#27313d;
+    text-align:center;
+    text-align: justify;
+  }
+  
+  .divSegundo_pading {
+    color:#ddd;
+    background-color:#27313d;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+  }
+  
+  .divTercero {
+     background-color:#292f35;
+    font-size:25px;
+    color: #f7f7f7;
+    padding:10px 10px;
+  }
+  
+  .contenedorCaracteristicas { 
+    background-color: #292f35;
+  }
+  
+  .h1All {
+    text-align: center;
+    font-family: 'Lato';
+    color: #ffff;
+    }
+  // ALL
