@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
   templateUrl: './nosotros.component.html',
   styleUrls: ['./nosotros.component.scss']
 })
-export class NosotrosComponent {
+export class NosotrosComponent implements OnInit{
   //implementar js en los componentes
   constructor(private AllScripts:AllScriptsService){
     AllScripts.Cargar(["default/nosotros"]);
