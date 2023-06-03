@@ -1,3 +1,44 @@
+// ALL
+.divPrimero {
+    position:relative;
+    background-color:#27313d;
+  }
+  
+  .divSegundo {
+    color:#ddd;
+    background-color:#27313d;
+    text-align:center;
+    text-align: justify;
+  }
+  
+  .divSegundo_pading {
+    color:#ddd;
+    background-color:#27313d;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+  }
+  
+  .divTercero {
+     background-color:#292f35;
+    font-size:25px;
+    color: #f7f7f7;
+    padding:10px 10px;
+  }
+  
+  .contenedorCaracteristicas { 
+    background-color: #292f35;
+  }
+  
+  .h1All {
+    text-align: center;
+    font-family: 'Lato';
+    color: #ffff;
+    }
+  // ALL
+
+
+//   TARJETAS
 *{
     margin: 0;
     padding: 0;
@@ -42,7 +83,7 @@ body{
         overflow: hidden ;
         img{
             position: relative;
-            width: 250px;
+            width: 70%;
             top: 40px;
             display: block;
             margin: auto;
@@ -65,6 +106,7 @@ body{
     &__body{
         background-color: white;
         padding: 20px;
+        height: 300px;
         border-radius: 0 0 20px 20px;
         box-shadow: 4px 4px 4px rgba(black, .1);
         transition: all linear .3s;
@@ -74,59 +116,42 @@ body{
         p{
             margin-bottom: 20px;
         }
-        input{
-            padding: 10px 40px;
-            margin-bottom: 20px;
-            border: none;
-            background-color: #a6359d;
-            color: white;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all linear .3s;
-            border-radius: .5rem;
-            &:hover{
-                background-color: #83277b;
-            }
-        }
-
     }
     
 }
-// ALL
-.divPrimero {
-    position:relative;
-    background-color:#27313d;
-  }
+//   TARJETAS
+// imagenes
+.imgPharma {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+// .containerCaracteristicas {
+//     max-width: 1500px;
+//     margin: 0 auto;
+//   }
   
-  .divSegundo {
-    color:#ddd;
-    background-color:#27313d;
-    text-align:center;
-    text-align: justify;
+  .row {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
   }
-  
-  .divSegundo_pading {
-    color:#ddd;
-    background-color:#27313d;
-    text-align:center;
-    padding:50px 80px;
-    text-align: justify;
+  .row2{
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
   }
-  
-  .divTercero {
-     background-color:#292f35;
-    font-size:25px;
-    color: #f7f7f7;
-    padding:10px 10px;
+  .col {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
   }
-  
-  .contenedorCaracteristicas { 
-    background-color: #292f35;
-  }
-  
-  .h1All {
-    text-align: center;
-    font-family: 'Lato';
-    color: #ffff;
-    }
-  // ALL

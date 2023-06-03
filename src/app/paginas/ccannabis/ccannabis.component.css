@@ -1,0 +1,410 @@
+/* // ALL */
+.divPrimero {
+    position: relative;
+    background-color: #27313d;
+}
+
+.divSegundo {
+    color: #ddd;
+    background-color: #27313d;
+    text-align: center;
+    text-align: justify;
+}
+
+.divSegundo_pading {
+    color: #ddd;
+    background-color: #27313d;
+    text-align: center;
+    padding: 50px 80px;
+    text-align: justify;
+}
+
+.divTercero {
+    background-color: #292f35;
+    font-size: 25px;
+    color: #f7f7f7;
+    padding: 10px 10px;
+}
+
+.contenedorCaracteristicas {
+    background-color: #292f35;
+}
+
+.h1All {
+    text-align: center;
+    font-family: 'Lato';
+    color: #ffff;
+}
+
+/* // ALL */
+
+
+
+
+
+/* // CAROUSEL */
+.bodyCarusel {
+    background-color: #000;
+}
+
+.slide-one-image {
+    background-image: url("../../../assets/img/fondo_1.jpeg");
+    background-position: top center;
+}
+
+.slide-two-image {
+    background-image: url("../../../assets/img/fondo_2.jpg");
+    background-position: top center;
+}
+
+.slide-three-image {
+    background-image: url("../../../assets/img/fondo_3.jpg");
+    background-position: top center;
+}
+
+/* // button accion */
+.home-hero-header {
+    background-color: #031531;
+    color: #fff;
+    padding: 10px 50px;
+    margin-top: 50vh;
+    margin-left: 78%;
+    width: max-content;
+}
+
+.home-hero-header .btn {
+    position: relative;
+    bottom: 50%;
+}
+
+.carousel-item {
+    background-size: cover;
+    height: 60vh;
+    z-index: -1;
+    position: relative;
+    width: 100%;
+}
+
+.carousel .container {
+    z-index: 9999;
+    position: relative;
+}
+
+.carousel-item-bg {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.home-hero-header p {
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.carousel-item-bg img {
+    width: 100% !important;
+    height: auto !important;
+    opacity: 0.5;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 60vh;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    top: 0;
+}
+
+nav+.carousel {
+    top: -60px;
+    margin-bottom: -60px;
+}
+
+.carousel-item .container img {
+    margin: auto 10px;
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    width: 100% !important;
+    height: auto !important;
+    max-width: 60%;
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 60vh;
+    }
+
+    .carousel-inner {
+        height: 60vh;
+    }
+
+    .home-hero-header {
+        background-color: #031531;
+        color: #fff;
+        padding: 3vh 3vw;
+        margin-top: 60vh !important;
+        margin-left: 0vw;
+        width: 100%;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        bottom: 350px;
+    }
+
+    .home-hero-header p {
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        top: 40vh;
+    }
+}
+
+/* Large Screen Slider */
+@media (min-width: 1700px) {
+    .carousel-item {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .carousel-inner {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        width: 5%;
+    }
+}
+
+/* // CAROUSEL */
+
+/* cannabis */
+img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* top: 40px; */
+    display: block;
+    margin: auto;
+    z-index: 1;
+    filter: drop-shadow(5px 5px 5px rgba(black, .5));
+    transition: all linear .3s;
+}
+
+.h1All {
+    text-align: center;
+    font-family: 'Lato';
+    color: #36e68e;
+}
+.hola{
+    background-color: #ffffff;
+    margin-top: 50px;
+}
+
+.divTercero {
+    background-color: #ffffff;
+    font-size: 25px;
+    color: #020101;
+    padding: 10px 10px;
+}
+
+.cannabis {
+    background-color: #27313d;
+    font-size: 25px;
+    color: #020101;
+    padding: 10px 10px;
+}
+
+.titulo1 {
+    text-align: left;
+    font-family: 'Lato';
+    color: #f3f3f3;
+    font-size: 25px;
+
+}
+.descripcion{
+    text-align: justify;
+    font-family: 'Lato';
+    color: #f3f3f3;
+    font-size: 20px;
+}
+.divenfermedades{
+    background-color: #1f4c53;
+    font-size: 25px;
+    color: #020101;
+    padding: 10px 10px;
+}
+/* tarjetas giratorias */
+body {
+    color: #333;
+    font-family: Arial, Helvetica, serif;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    background: url(https://josetxu.com/img/fondo_blanco.png) repeat 0 0 #fff;
+  }
+  
+  h1 {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    margin: 0 0 5% 0;
+    padding: 0.5em;
+    margin: 0 0 5% 0;
+  }
+  
+  .cardBox {
+    float: left;
+    font-size: 1.2em;
+    margin: 1% 0 0 1%;
+    perspective: 800px;
+    transition: all 0.3s ease 0s;
+    width: 23.7%;
+  }
+  
+  .cardBox:hover .card {
+    transform: rotateY( 180deg);
+  }
+  
+  .card {
+    background: #222;
+    cursor: default;
+    height: 300px;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease 0s;
+    width: 100%;
+    -webkit-animation: giro 1s 1;
+    animation: giro 1s 1;
+  }
+  
+  .card p {
+    margin-bottom: 1.8em;
+  }
+  
+  .card .front,
+  .card .back {
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    font-size: 1.2em;
+    height: 100%;
+    padding: 0.8em;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .card .front strong {
+    background: #fff;
+    border-radius: 100%;
+    color: #222;
+    font-size: 1.5em;
+    line-height: 30px;
+    padding: 0 7px 4px 6px;
+  }
+  
+  .card .back {
+    transform: rotateY( 180deg);
+  }
+  
+  .card .back a {
+    padding: 0.3em 0.5em;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 1px;
+    font-size: 0.9em;
+    transition: all 0.2s ease 0s;
+  }
+  
+  .card .back a:hover {
+    background: #fff;
+    color: #333;
+    text-shadow: 0 0 1px #333;
+  }
+  
+  .cardBox:nth-child(1) .card .back {
+    background: cornflowerblue;
+  }
+  
+  .cardBox:nth-child(2) .card .back {
+    background: orange;
+  }
+  
+  .cardBox:nth-child(3) .card .back {
+    background: yellowgreen;
+  }
+  
+  .cardBox:nth-child(4) .card .back {
+    background: tomato;
+  }
+  
+  .cardBox:nth-child(2) .card {
+    -webkit-animation: giro 1.5s 1;
+    animation: giro 1.5s 1;
+  }
+  
+  .cardBox:nth-child(3) .card {
+    -webkit-animation: giro 2s 1;
+    animation: giro 2s 1;
+  }
+  
+  .cardBox:nth-child(4) .card {
+    -webkit-animation: giro 2.5s 1;
+    animation: giro 2.5s 1;
+  }
+  
+  @-webkit-keyframes giro {
+    from {
+      transform: rotateY( 180deg);
+    }
+    to {
+      transform: rotateY( 0deg);
+    }
+  }
+  
+  @keyframes giro {
+    from {
+      transform: rotateY( 180deg);
+    }
+    to {
+      transform: rotateY( 0deg);
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .cardBox {
+      margin-left: 2.8%;
+      margin-top: 3%;
+      width: 46%;
+    }
+    .card {
+      height: 285px;
+    }
+    .cardBox:last-child {
+      margin-bottom: 3%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .cardBox {
+      width: 94.5%;
+    }
+    .card {
+      height: 260px;
+    }
+  }
