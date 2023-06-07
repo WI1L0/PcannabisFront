@@ -10,6 +10,11 @@
 h6, p {
   color: #F2F2F2;
 }
+.pad {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 i {
   
   color: #F2F2F2;

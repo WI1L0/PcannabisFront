@@ -1,157 +1,350 @@
 // ALL
+$color-all-uno: #bbb9bc;
+$color-all-dos: #bbb9bc;
+$color-all-empresas: #bbb9bc;
+
 .divPrimero {
-    position:relative;
-    background-color:#27313d;
+  position: relative;
+  background-color: $color-all-uno;
+}
+
+.divSegundo {
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
+  text-align: justify;
+}
+
+.divSegundo_pading {
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+
+
+.divPrimeroBlack {
+  position: relative;
+  background-color: $color-all-dos;
+}
+
+.divSegundoBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  text-align: justify;
+}
+
+.divSegundo_padingBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+
+
+.divTercero {
+  background-color: $color-all-dos;
+  font-size: 25px;
+  color: #f7f7f7;
+  padding: 10px 10px;
+}
+
+.h1All {
+  text-align: center;
+  font-family: 'Lato';
+  color: #44a03b;
+}
+
+// ALL
+
+
+// VIDEO
+@media only screen and (max-width:550px) {
+  .videoBody {
+    background-color: #FFFFFF;
+    font-family: verdana, helvetica;
+    font-size: 10px;
   }
-  
-  .divSegundo {
-    color:#ddd;
-    background-color:#27313d;
-    text-align:center;
-    text-align: justify;
+}
+
+@media only screen and (min-width:551px) {
+  .videoBody {
+    background-color: #FFFFFF;
+    font-family: verdana, arial;
+    font-size: 15px;
   }
-  
-  .divSegundo_pading {
-    color:#ddd;
-    background-color:#27313d;
-    text-align:center;
-    padding:50px 80px;
-    text-align: justify;
+}
+
+.video-responsive {
+  position: relative;
+  padding-bottom: 40%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// VIDEO
+
+
+
+// VISION_MISION
+.MisionVisionSection {
+  @import url(https://fonts.googleapis.com/css?family=Lato);
+
+  .container {
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
   }
-  
-  .divTercero {
-     background-color:#292f35;
-    font-size:25px;
-    color: #f7f7f7;
-    padding:10px 10px;
+
+  hr {
+    margin: 10px 0;
   }
-  
-  .contenedorCaracteristicas { 
-    background-color: #292f35;
-  }
-  
-  .h1All {
+
+  h3,
+  h4 {
     text-align: center;
-    font-family: 'Lato';
-    color: #ffff;
+    font-weight: bold;
+  }
+
+  h2 {
+    text-align: left;
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  h2:after {
+    display: inline-block;
+    content: '';
+    width: 45px;
+    height: 10px;
+    border-top: 5px solid #B5C3D5;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+  }
+
+  a,
+  a:hover {
+    color: black;
+  }
+
+  a:hover {
+    transition: background-color, color .3s ease-in-out;
+  }
+
+  @media only screen and (max-width: 1050px) and (min-width:600px) {
+
+    .banner>h2,
+    .banner .info {
+      width: 70%
     }
-  // ALL
+
+    .banner>h2 {
+      font-size: 1.8em;
+    }
+  }
+
+  @media only screen and (max-width: 599px) and (min-width:350px) {
+    .banner a {
+      font-size: 1em;
+    }
+
+    .banner>h2,
+    .banner .info {
+      width: 80%
+    }
+
+    .banner>h2 {
+      font-size: 1.2em;
+    }
+  }
+
+  @media only screen and (max-width: 349px) {
+    .banner .info {
+      height: auto;
+    }
+
+    .banner a {
+      font-size: 1em;
+      width: 50%;
+      display: block;
+    }
+
+    .banner a:first-child {
+      margin: 0 auto;
+    }
+
+    .banner a:last-child {
+      margin: 10px auto 0;
+    }
+
+    .banner>h2,
+    .banner .info {
+      width: 80%
+    }
+
+    .banner>h2 {
+      font-size: 1em;
+    }
+  }
+
+  @media only screen and (max-width: 768px) and (min-width:550px) {
+
+    .process .row:first-child .col-xs-12,
+    .clients .row:first-child .col-xs-12 {
+      width: 100%;
+    }
+
+    .process .col-xs-12,
+    .clients .col-xs-12 {
+      width: 50%;
+    }
+
+    .clients .col-xs-12:nth-child(3),
+    .clients .col-xs-12:nth-child(4) {
+      margin-top: 15px;
+    }
+  }
+}
+
+// VISION_MISION
 
 
-//   TARJETAS
-*{
+// EQUIPO
+.equipoBody {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 100%;
+
+
+  .container {
+    display: flex;
+    flex-basis: 95%;
+    height: 30rem;
+  }
+
+  span.image {
+    position: relative;
+    overflow: hidden;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+    flex-grow: 1;
+    transition: flex-grow 0.4s ease-in;
+  }
+
+
+  span.image:before {
+    display: block;
+    content: '';
+    padding-left: 8rem;
+    background: #000;
+  }
+
+  img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+
+  .container .image:hover {
+    flex-grow: 2;
+  }
+}
+
+// EQUIPO
+
+
+// IMAGENES
+
+// IMAGENES
+
+
+// VALORES
+.valoresSection {
+  @import url('https://fonts.googleapis.com/css?family=Muli|Playfair+Display&display=swap');
+
+  .bodyValores {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    outline: none;
-}
+    font-family: muli;
+  }
 
-
-body{
-    background-color: #f1faff;
-}
-
-.cards{
-    max-width: 1200px;
-    margin: auto;
-    margin-top: 100px;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-
-}
-
-.card{
-    max-width: 300px;
-    height: 100%;
+  .blog_card {
     margin: 10px;
-    transition: all linear .3s;
-    &:hover{
-        max-width: 350px;
-        .card__cover img{ top: 0; }
-        .card__cover--back{ bottom: -40px; }
-        .card__body{
-            padding: 20px 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: none;
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.1), 0 17px 50px rgba(0, 0, 0, 0.1);
+    border-radius: .375rem;
+
+    &_content {
+      padding: 16px;
+
+      & h3 {
+        font-size: 24px;
+        line-height: 36px;
+        color: #303133;
+        font-weight: 500;
+        margin-bottom: 20px;
+        letter-spacing: -0.5;
+      }
+
+      & p {
+        font-size: 16px;
+        color: #777;
+        line-height: 36px;
+      }
+
+      & a {
+        text-decoration: none;
+
+        & h6 {
+          font-size: 12px;
+          letter-spacing: 1.5px;
+          font-weight: 500;
+          text-transform: uppercase;
+          color: #c8a482;
+          margin-bottom: 33px;
         }
-    }
-    &__cover{
-        position: relative;
-        height: 250px;
-        width: 100%;
-        overflow: hidden ;
-        img{
-            position: relative;
-            width: 70%;
-            top: 40px;
-            display: block;
-            margin: auto;
-            z-index: 1;
-            filter: drop-shadow(5px 5px 5px rgba(black, .5));
-            transition: all linear .3s;
-        }
-        &--back{
-            width: 100%;
-            height: 200px;
-            position: absolute;
-            left: 0;
-            bottom: -80px;
-            background-size: cover;
-            border-radius: 20px;
-            transition: all linear .3s;
-        }
+      }
     }
 
-    &__body{
-        background-color: white;
-        padding: 20px;
-        height: 300px;
-        border-radius: 0 0 20px 20px;
-        box-shadow: 4px 4px 4px rgba(black, .1);
-        transition: all linear .3s;
-        h2{
-            margin-bottom: 10px;
+    &:hover {
+      .blog_card_image {
+        & img {
+          transform: translatey(-3%);
         }
-        p{
-            margin-bottom: 20px;
-        }
+      }
     }
-    
+  }
 }
-//   TARJETAS
-// imagenes
-.imgPharma {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-}
-// .containerCaracteristicas {
-//     max-width: 1500px;
-//     margin: 0 auto;
-//   }
-  
-  .row {
-    display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
-  }
-  .row2{
-    display: flex;
-    justify-content: right;
-    flex-wrap: wrap;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-  }
-  .col {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-  }
+
+// VALORES

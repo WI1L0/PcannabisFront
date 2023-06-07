@@ -1,0 +1,254 @@
+// ALL
+$color-all-uno: #bbb9bc;
+$color-all-dos: #bbb9bc;
+$color-all-empresas: #bbb9bc;
+
+.divPrimero {
+  position: relative;
+  background-color: $color-all-uno;
+}
+
+.divSegundo {
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
+  text-align: justify;
+}
+
+.divSegundo_pading {
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+
+
+.divPrimeroBlack {
+  position: relative;
+  background-color: $color-all-dos;
+}
+
+.divSegundoBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  text-align: justify;
+}
+
+.divSegundo_padingBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+
+
+.divTercero {
+  background-color: $color-all-dos;
+  font-size: 25px;
+  color: #f7f7f7;
+  padding: 10px 10px;
+}
+
+.h1All {
+  text-align: center;
+  font-family: 'Lato';
+  color: #44a03b;
+}
+
+// ALL
+
+
+
+
+// INFO CANNABIS
+.container {
+  .titulo1 {
+    text-align: left;
+    font-family: 'Lato';
+    color: #f3f3f3;
+    font-size: 25px;
+  }
+
+  .descripcion {
+    text-align: justify;
+    font-family: 'Lato';
+    color: #f3f3f3;
+    font-size: 20px;
+  }
+
+  img {
+    position: static;
+    width: 80%;
+    height: 80%;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    filter: drop-shadow(5px 5px 5px rgba(black, .5));
+    transition: all linear .3s;
+  }
+}
+// INFO CANNABIS
+
+
+
+.tarjetaSection {
+  display: flex;
+
+  h1 {
+    color: #fff;
+    text-align: center;
+    margin: 0 0 5% 0;
+    padding: 0.5em;
+    margin: 0 0 5% 0;
+  }
+
+  .cardBox {
+    float: left;
+    font-size: 1.2em;
+    margin: 1% 0 0 1%;
+    perspective: 800px;
+    transition: all 0.3s ease 0s;
+    width: 23.7%;
+  }
+
+  .cardBox:hover .card {
+    transform: rotateY(180deg);
+  }
+
+  .card {
+    background: #fff;
+    cursor: default;
+    height: 300px;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease 0s;
+    width: 100%;
+    -webkit-animation: giro 1s 1;
+    animation: giro 1s 1;
+
+    .front img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .card p {
+    margin-bottom: 1.8em;
+    font-size: 20px;
+  }
+
+  .card .front,
+  .card .back {
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    font-size: 1.2em;
+    height: 100%;
+    padding: 0.8em;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+  }
+
+  .card .back {
+    transform: rotateY(180deg);
+  }
+
+  .card .back a {
+    padding: 0.3em 0.5em;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 1px;
+    font-size: 0.9em;
+    transition: all 0.2s ease 0s;
+  }
+
+  .card .back a:hover {
+    background: #fff;
+    color: #333;
+    text-shadow: 0 0 1px #333;
+  }
+
+  .cardBox:nth-child(1) .card .back {
+    background: #8BC34A;
+  }
+
+  .cardBox:nth-child(2) .card .back {
+    background: #4CAF50;
+  }
+
+  .cardBox:nth-child(3) .card .back {
+    background: #E91E63;
+  }
+
+  .cardBox:nth-child(4) .card .back {
+    background: #FFC107;
+  }
+
+  .cardBox:nth-child(2) .card {
+    -webkit-animation: giro 1.5s 1;
+    animation: giro 1.5s 1;
+  }
+
+  .cardBox:nth-child(3) .card {
+    -webkit-animation: giro 2s 1;
+    animation: giro 2s 1;
+  }
+
+  .cardBox:nth-child(4) .card {
+    -webkit-animation: giro 2.5s 1;
+    animation: giro 2.5s 1;
+  }
+
+  @-webkit-keyframes giro {
+    from {
+      transform: rotateY(180deg);
+    }
+
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+
+  @keyframes giro {
+    from {
+      transform: rotateY(180deg);
+    }
+
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .cardBox {
+      margin-left: 2.8%;
+      margin-top: 3%;
+      width: 46%;
+    }
+
+    .card {
+      height: 285px;
+    }
+
+    .cardBox:last-child {
+      margin-bottom: 3%;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .cardBox {
+      width: 94.5%;
+    }
+
+    .card {
+      height: 260px;
+    }
+  }
+}

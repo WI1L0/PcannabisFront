@@ -1,40 +1,65 @@
 // ALL
+$color-all-uno: #bbb9bc;
+$color-all-dos: #bbb9bc;
+$color-all-empresas: #bbb9bc;
+
 .divPrimero {
-  position:relative;
-  background-color:#27313d;
+  position: relative;
+  background-color: $color-all-uno;
 }
 
 .divSegundo {
-  color:#ddd;
-  background-color:#27313d;
-  text-align:center;
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
   text-align: justify;
 }
 
 .divSegundo_pading {
-  color:#ddd;
-  background-color:#27313d;
-  text-align:center;
-  padding:50px 80px;
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
+  padding: 50px 80px;
   text-align: justify;
 }
 
-.divTercero {
-   background-color:#292f35;
-  font-size:25px;
-  color: #f7f7f7;
-  padding:10px 10px;
+
+
+.divPrimeroBlack {
+  position: relative;
+  background-color: $color-all-dos;
 }
 
-.contenedorCaracteristicas { 
-  background-color: #292f35;
+.divSegundoBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  text-align: justify;
+}
+
+.divSegundo_padingBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+
+
+.divTercero {
+  background-color: $color-all-dos;
+  font-size: 25px;
+  color: #f7f7f7;
+  padding: 10px 10px;
 }
 
 .h1All {
   text-align: center;
   font-family: 'Lato';
   color: #ffff;
-  }
+}
+
 // ALL
 
 
@@ -61,7 +86,6 @@
   background-position: top center;
 }
 
-// button accion
 .home-hero-header {
   background-color: #031531;
   color: #fff;
@@ -170,7 +194,6 @@ nav+.carousel {
   }
 }
 
-/* Large Screen Slider */
 @media (min-width: 1700px) {
   .carousel-item {
     width: 100%;
@@ -187,6 +210,7 @@ nav+.carousel {
     width: 5%;
   }
 }
+
 // CAROUSEL
 
 
@@ -194,89 +218,92 @@ nav+.carousel {
 
 
 // CARACTERISTICAS
-.caracteristicasSection {
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
-.bodycaracteristicas {
-  padding: 0;
-  margin: 0;
-}
+.bodyCaracteristicas {
+  margin: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
 
-.mt-5 {
-  margin-top: 1rem;
-}
-
-.our-blog {
-  background-color: #292f35;
-  padding: 1px 0;
-}
-
-.containerCaracteristicas {
-  max-width: 1500px;
-  margin: 0 auto;
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.col {
-  width: 33.3333333%;
-  overflow: hidden;
-  padding: 15px;
-}
-
-.col .card {
-  width: 100%;
-  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.col .imgCaracteristicas {
-  width: 100%;
-  height: auto;
-  border: 0;
-}
-
-.col .card-body {
-  padding: 0 15px 15px 15px;
-  background-color: #fff;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-
-.card-body .h5Caracteristicas {
-  font-size: 24px;
-  margin: 7px 0;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  transition: transform 0.3s ease;
-}
-
-.card .pCaracteristicas {
-  color: #6c7d70;
-}
-
-.card-body .h5Caracteristicas .aCaracteristicas {
-  color: #222;
-}
-
-@media(min-width: 577px) and (max-width: 768px) {
-  .col {
-    width: 50%;
+  .icon-box {
+    position: relative;
+    display: block;
+    padding: 40px 20px 30px;
+    -webkit-transition: all .25s cubic-bezier(.645, .045, .355, 1);
+    -o-transition: all .25s cubic-bezier(.645, .045, .355, 1);
+    transition: all .25s cubic-bezier(.645, .045, .355, 1);
+    border-radius: 5px;
+    z-index: 99;
+    text-decoration: none;
   }
+
+  .col-md-3 {
+    margin-top: 10px;
+    box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
+  }
+
+  .icon-box .icon {
+    margin-bottom: 24px;
+  }
+
+  .icon-box:hover {
+    z-index: 1;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    transform: translateY(-15px);
+  }
+
+  .icon-box .content .title.fz-20 {
+    font-size: 20px;
+  }
+
+  .icon-box .content .title {
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 0;
+    color: #3f3a64;
+  }
+
+  .icon-box .content .desc {
+    margin-top: 10px;
+  }
+
+  .icon-box .content .desc p {
+    line-height: 1.6;
+    color: #696969;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  // .icon-box:hover .content .link {
+  //   color: #20ad96;
+  // }
+
+  // .icon-box .content .link {
+  //   font-size: 14px;
+  //   font-weight: 700;
+  //   line-height: 1;
+  //   display: -webkit-inline-box;
+  //   display: -ms-inline-flexbox;
+  //   display: inline-flex;
+  //   -webkit-box-align: center;
+  //   -ms-flex-align: center;
+  //   align-items: center;
+  //   margin-top: 34px;
+  //   padding: 5px 0;
+  //   color: #8c89a2;
+  // }
+
+  // .icon-box .content .link i {
+  //   font-size: 16px;
+  //   line-height: 14px;
+  //   margin-left: 14px;
+  // }
 }
 
-@media(max-width: 576px) {
-  .col {
-    width: 100%;
-  }
-}
 // CARACTERISTICAS
 
 
@@ -325,11 +352,6 @@ nav+.carousel {
   color: #7B8591;
 }
 
-::selection {
-  color: #fff;
-  background-color: #005AEE;
-}
-
 .main-card {
   position: relative;
   width: 100%;
@@ -342,7 +364,7 @@ nav+.carousel {
   line-height: 1.5;
   color: #303336;
   background-color: #fff;
-  box-shadow: 0 40px 40px -20px #8fc7d544;
+  box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
 }
 
 .main-card .card-content {
@@ -363,21 +385,21 @@ nav+.carousel {
 }
 
 .main-card .content-left .imgNunakay {
-  width: calc(100% - 10px); /* Establece el ancho de la imagen al 100% del contenedor */
-  height: calc(100% - 10px); /* Hace que la altura de la imagen se ajuste automáticamente para mantener la proporción de aspecto */
-  display: block; /* Establece el elemento como un bloque para poder aplicar la propiedad margin: auto */
-  margin: auto; /* Centra la imagen horizontalmente dentro del contenedor */
-  object-fit: contain; /* Hace que la imagen se ajuste al contenedor manteniendo su proporción de aspecto y sin recortarla */
-  object-position: center; /* Establece la posición de la imagen en el centro del contenedor */
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  display: block;
+  margin: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .main-card .divimg .imgNunakay {
-  width: calc(100% - 800px); /* Establece el ancho de la imagen al 100% del contenedor */
-  height: calc(100% - 800px); /* Hace que la altura de la imagen se ajuste automáticamente para mantener la proporción de aspecto */
-  display: block; /* Establece el elemento como un bloque para poder aplicar la propiedad margin: auto */
-  margin: auto; /* Centra la imagen horizontalmente dentro del contenedor */
-  object-fit: contain; /* Hace que la imagen se ajuste al contenedor manteniendo su proporción de aspecto y sin recortarla */
-  object-position: center; /* Establece la posición de la imagen en el centro del contenedor */
+  width: calc(100% - 800px);
+  height: calc(100% - 800px);
+  display: block;
+  margin: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .main-card .content-right {
@@ -394,7 +416,6 @@ nav+.carousel {
   width: fit-content;
   padding: 8px 25px;
   border-radius: 10px;
-  background-color: #005AEE;
 }
 
 .main-card .tag .h6Nunakay {
@@ -472,6 +493,7 @@ nav+.carousel {
     margin-top: 35px;
     height: 105px;
   }
+
   .main-card .mini-imgs .imgNunakay {
     width: 100px;
     height: 100px;
@@ -523,49 +545,76 @@ nav+.carousel {
   text-decoration: none;
   color: #23515d;
 }
+
 // NUNAKAY
 
+// EMPRESA
 
-
-
-
-// EMPRESAS
 // .empresasSection {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-// }
-
-// #scroller {
+//   align-items: center;
+//   background: transparent;
 //   display: flex;
-//   flex-wrap: nowrap;
-//   overflow: hidden;
-// }
+//   justify-content: center;
 
-// .prod.active {
-//   opacity: 1;
-// }
+//   @mixin white-gradient {
+//     background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+//   }
 
-// .prod {
-//   opacity: 0.5;
-//   text-align: center;
-//   min-width: 10px;
-//   margin: auto;
-// }
+//   $animationSpeed: 40s;
 
-// .prod.active {
-//   min-width: 20px;
-// }
+//   // Animation
+//   @keyframes scroll {
+//     0% {
+//       transform: translateX(0);
+//     }
 
-// .prod .imgEmpresas {
-//   width: 100px;  
-//   height: 100px; 
-// }
+//     100% {
+//       transform: translateX(calc(-250px * 7))
+//     }
+//   }
 
-// @media (min-width: 768px) {
-//   .prod .imgEmpresas {
-//     width: 200px;  
-//     height: 200px; 
+
+//   // Styling
+//   .slider {
+//     background: transparent;
+//     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+//     height: 100px;
+//     margin: auto;
+//     overflow: hidden;
+//     position: relative;
+//     width: 960px;
+
+//     &::before,
+//     &::after {
+//       @include white-gradient;
+//       content: "";
+//       height: 100px;
+//       position: absolute;
+//       width: 200px;
+//       z-index: 2;
+//     }
+
+//     &::after {
+//       right: 0;
+//       top: 0;
+//       transform: rotateZ(180deg);
+//     }
+
+//     &::before {
+//       left: 0;
+//       top: 0;
+//     }
+
+//     .slide-track {
+//       animation: scroll $animationSpeed linear infinite;
+//       display: flex;
+//       width: calc(250px * 14);
+//     }
+
+//     .slide {
+//       height: 100px;
+//       width: 250px;
+//     }
 //   }
 // }
 
@@ -574,8 +623,8 @@ nav+.carousel {
   flex-wrap: nowrap;
   overflow: hidden;
   position: relative;
-  -webkit-mask-image: linear-gradient(90deg,rgba(0,0,0,0) 0,#000 15%,#000 85%,rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(90deg,rgba(0,0,0,0) 0,#000 15%,#000 85%,rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, #000 15%, #000 85%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, #000 15%, #000 85%, rgba(0, 0, 0, 0) 100%);
 }
 
 .logos-slider-container {
@@ -587,34 +636,34 @@ nav+.carousel {
 }
 
 .logos-slider-container img {
-width:150px;
-max-width: 150px;
+  width: 150px;
+  max-width: 150px;
 }
 
 @keyframes slide {
-0% {
-  transform: translate3d(0,0,0)
-}
-100% {
-  transform: translate3d(-100%,0,0)
-}
+  0% {
+    transform: translate3d(0, 0, 0)
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0)
+  }
 }
 
 .card {
-background: white;
-padding: 2rem;
+  background: white;
+  padding: 2rem;
   margin: 20px;
-border-radius: 1rem;
-max-width: 900px;
-box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
+  border-radius: 1rem;
+  max-width: 900px;
+  box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
 }
 
 .empresasSection {
-background: #292f35;
-display:flex;
-align-items: center;
-flex-direction: column;
-justify-content: center;
+  background: $color-all-empresas;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
-
 // EMPRESAS

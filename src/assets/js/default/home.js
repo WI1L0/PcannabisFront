@@ -87,7 +87,6 @@ function changeImg(x) {
 
 
 // EMPRESAS
-
 (_ => {
     
   const scroller    = document.getElementById('scroller');
