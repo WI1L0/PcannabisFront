@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { CcannabisComponent } from './ccannabis/ccannabis.component';
 import { NoticiasComponent } from './noticias/noticias.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NoticiasComponent } from './noticias/noticias.component';
     HomeComponent,
     NosotrosComponent,
     CcannabisComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

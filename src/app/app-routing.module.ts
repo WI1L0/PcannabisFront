@@ -4,6 +4,7 @@ import { HomeComponent } from './paginas/home/home.component';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 import { CcannabisComponent } from './paginas/ccannabis/ccannabis.component';
 import { NoticiasComponent } from './paginas/noticias/noticias.component';
+import { LoginComponent } from './paginas/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'nt',
     component: NoticiasComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'lg',
+    component: LoginComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
   }
 ];

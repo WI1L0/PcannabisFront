@@ -66,31 +66,50 @@ $color-all-empresas: #bbb9bc;
 
 
 // INFO CANNABIS
-.container {
-  .titulo1 {
-    text-align: left;
-    font-family: 'Lato';
-    color: #f3f3f3;
-    font-size: 25px;
+.cannabisInfoSection {
+
+  .row{
+    padding: 20px;
   }
 
-  .descripcion {
-    text-align: justify;
-    font-family: 'Lato';
-    color: #f3f3f3;
-    font-size: 20px;
+.text-color{
+  color: #000;
+}
+
+.flower-about{
+  margin-top: 65px;
+  animation-name: imgLeft;
+  animation-duration: 3s;
+}
+
+.about-text{
+  animation-name: textRight;
+  animation-duration: 3s;
+}
+
+@keyframes imgLeft {
+  0%{
+      transform: translateX(-120px);
+      opacity: 0;
   }
 
-  img {
-    position: static;
-    width: 80%;
-    height: 80%;
-    display: block;
-    margin: auto;
-    z-index: 1;
-    filter: drop-shadow(5px 5px 5px rgba(black, .5));
-    transition: all linear .3s;
+  100%{
+      transform: translateX(0);
+      opacity: 1;
   }
+}
+
+@keyframes textRight{
+  0%{
+      transform: translateX(30px);
+      opacity: 0;
+  }
+
+  100%{
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
 }
 // INFO CANNABIS
 
