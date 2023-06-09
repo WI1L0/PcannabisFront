@@ -1,4 +1,5 @@
 import {Empleados} from './Empleados';
+import {Roles} from './Roles';
 export class Usuarios{
     idUsuarios?: number;
     nombreUsuarios?:string;
@@ -6,4 +7,5 @@ export class Usuarios{
     fotoUsuarios?:string;
     estUsuarios?:boolean;
     empleados?:Empleados;
+    roles?:Roles[]
 }
