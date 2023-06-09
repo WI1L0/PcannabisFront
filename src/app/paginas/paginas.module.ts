@@ -8,6 +8,8 @@ import { CcannabisComponent } from './ccannabis/ccannabis.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { LoginComponent } from './login/login.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     CommonModule,
-    PaginasRoutingModule
+    PaginasRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class PaginasModule { }

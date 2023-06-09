@@ -22,7 +22,7 @@ import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     //implementar js en los componentes
