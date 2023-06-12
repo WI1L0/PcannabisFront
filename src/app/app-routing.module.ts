@@ -5,6 +5,7 @@ import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 import { CcannabisComponent } from './paginas/ccannabis/ccannabis.component';
 import { NoticiasComponent } from './paginas/noticias/noticias.component';
 import { LoginComponent } from './paginas/login/login.component';
+import { DetalleNoticiaComponent } from './detallenoticia/detallenoticia.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'lg',
     component: LoginComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'dnt',
+    component: DetalleNoticiaComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
   }
 ];

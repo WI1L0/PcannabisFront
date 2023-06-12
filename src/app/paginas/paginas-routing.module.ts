@@ -5,6 +5,7 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { CcannabisComponent } from './ccannabis/ccannabis.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { LoginComponent } from './login/login.component';
+import { DetalleNoticiaComponent } from '../detallenoticia/detallenoticia.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'detallenoticia',
+    component: DetalleNoticiaComponent
   }
 ];
 

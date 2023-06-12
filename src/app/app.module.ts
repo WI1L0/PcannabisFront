@@ -12,13 +12,14 @@ import { HeaderComponent } from './default/header/header.component';
 //router
 import { RouterModule, Route } from '@angular/router';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
+import { DetalleNoticiaComponent } from './detallenoticia/detallenoticia.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent, 
-    FooterComponent
+    FooterComponent, DetalleNoticiaComponent
   ],
   imports: [
     BrowserModule,

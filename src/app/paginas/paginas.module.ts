@@ -9,6 +9,8 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { LoginComponent } from './login/login.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DetalleNoticiaComponent } from '../detallenoticia/detallenoticia.component';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NosotrosComponent,
     CcannabisComponent,
     NoticiasComponent,
-    LoginComponent
+    LoginComponent,
+    DetalleNoticiaComponent
   ],
   imports: [
     CommonModule,
