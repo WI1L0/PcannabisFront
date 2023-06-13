@@ -13,17 +13,19 @@ import { HeaderComponent } from './default/header/header.component';
 import { RouterModule, Route } from '@angular/router';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 import { DetalleNoticiaComponent } from './detallenoticia/detallenoticia.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent, 
-    FooterComponent, DetalleNoticiaComponent
+    FooterComponent, 
+    DetalleNoticiaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [
     //implementar js en los componentes

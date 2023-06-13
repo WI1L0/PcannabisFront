@@ -12,8 +12,6 @@ export class NoticiasComponent implements OnInit{
   constructor(private AllScripts:AllScriptsService){
     AllScripts.Cargar(["default/noticias"]);
   }
-  
-  public page!: number;
 
   ngOnInit(): void {
   }

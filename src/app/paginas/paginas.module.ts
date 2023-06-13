@@ -10,8 +10,9 @@ import { LoginComponent } from './login/login.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DetalleNoticiaComponent } from '../detallenoticia/detallenoticia.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { AllScriptsService } from '../scripts/all-scripts.service';
+import { AppComponent } from '../app.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,18 @@ import { DetalleNoticiaComponent } from '../detallenoticia/detallenoticia.compon
     CcannabisComponent,
     NoticiasComponent,
     LoginComponent,
-    DetalleNoticiaComponent
+    DetalleNoticiaComponent,
   ],
   imports: [
     CommonModule,
     PaginasRoutingModule,
-    NgxPaginationModule
-  ]
+    NgxPaginationModule,
+    HttpClientModule,
+  ],
+  providers: [
+    //implementar js en los componentes
+    AllScriptsService
+  ],
+  bootstrap: [AppComponent]
 })
 export class PaginasModule { }

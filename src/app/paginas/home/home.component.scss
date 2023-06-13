@@ -23,8 +23,6 @@ $color-all-empresas: #bbb9bc;
   text-align: justify;
 }
 
-
-
 .divPrimeroBlack {
   position: relative;
   background-color: $color-all-dos;
@@ -45,8 +43,6 @@ $color-all-empresas: #bbb9bc;
   text-align: justify;
 }
 
-
-
 .divTercero {
   background-color: $color-all-dos;
   font-size: 25px;
@@ -56,15 +52,11 @@ $color-all-empresas: #bbb9bc;
 
 .h1All {
   text-align: center;
-  font-family: 'Lato';
+  font-family: "Lato";
   color: #ffff;
 }
 
 // ALL
-
-
-
-
 
 // CAROUSEL
 .bodyCarusel {
@@ -143,7 +135,7 @@ $color-all-empresas: #bbb9bc;
   top: 0;
 }
 
-nav+.carousel {
+nav + .carousel {
   top: -60px;
   margin-bottom: -60px;
 }
@@ -213,10 +205,6 @@ nav+.carousel {
 
 // CAROUSEL
 
-
-
-
-
 // CARACTERISTICAS
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
@@ -229,9 +217,9 @@ nav+.carousel {
     position: relative;
     display: block;
     padding: 40px 20px 30px;
-    -webkit-transition: all .25s cubic-bezier(.645, .045, .355, 1);
-    -o-transition: all .25s cubic-bezier(.645, .045, .355, 1);
-    transition: all .25s cubic-bezier(.645, .045, .355, 1);
+    -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     border-radius: 5px;
     z-index: 99;
     text-decoration: none;
@@ -239,7 +227,7 @@ nav+.carousel {
 
   .col-md-3 {
     margin-top: 10px;
-    box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
+    box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
   }
 
   .icon-box .icon {
@@ -249,8 +237,8 @@ nav+.carousel {
   .icon-box:hover {
     z-index: 1;
     background-color: #fff;
-    -webkit-box-shadow: 0 0 40px rgba(51, 51, 51, .1);
-    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    -webkit-box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+    box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
     transform: translateY(-15px);
   }
 
@@ -306,15 +294,11 @@ nav+.carousel {
 
 // CARACTERISTICAS
 
-
-
-
-
 // NUNAKAY
 .nunakaySection,
 .bodyNunakay {
   box-sizing: border-box;
-  font-family: 'neuzeit-grotesk', sans-serif;
+  font-family: "neuzeit-grotesk", sans-serif;
   font-weight: 300;
   font-style: normal;
   font-size: 1em;
@@ -349,7 +333,7 @@ nav+.carousel {
 .pNunakay {
   margin-top: 20px;
   font-size: 1em;
-  color: #7B8591;
+  color: #7b8591;
 }
 
 .main-card {
@@ -357,14 +341,14 @@ nav+.carousel {
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  font-family: 'neuzeit-grotesk', sans-serif;
+  font-family: "neuzeit-grotesk", sans-serif;
   font-weight: 300;
   font-style: normal;
   font-size: 1em;
   line-height: 1.5;
   color: #303336;
   background-color: #fff;
-  box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
+  box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
 }
 
 .main-card .card-content {
@@ -420,7 +404,7 @@ nav+.carousel {
 
 .main-card .tag .h6Nunakay {
   color: #fff;
-  font-size: .75em;
+  font-size: 0.75em;
   font-weight: 700;
   letter-spacing: 2px;
 }
@@ -443,7 +427,7 @@ nav+.carousel {
 }
 
 .main-card .mini-imgs .imgNunakay:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .main-card .mini-imgs .imgNunakay:nth-child(2) {
@@ -451,7 +435,6 @@ nav+.carousel {
 }
 
 @media only screen and (max-width: 992px) {
-
   .divmain {
     display: flex;
     justify-content: center;
@@ -499,11 +482,9 @@ nav+.carousel {
     height: 100px;
     border-radius: 10px;
   }
-
 }
 
 @media only screen and (max-width: 500px) {
-
   .main-card {
     margin: 120px 20px;
   }
@@ -527,25 +508,42 @@ nav+.carousel {
     height: 60px;
   }
 
-}
+  .tag {
+    .secundary {
+      color: #048abf;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
 
-.designer {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: 400;
-  color: #46a2b9;
-  letter-spacing: 1px;
-  text-align: center;
-  text-transform: uppercase;
-}
+    .buttonsecundary {
+      display: flex;
+      justify-content: center;
+      border-radius: 50px;
+      background-color: transparent;
+      transition: all 0.3s ease-in-out 0s;
+      box-shadow: #048abf 0px 0px 0px 0px;
+      animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running
+        pulse;
+      align-items: center;
+      border: 0;
 
-.designer .aNunakay {
-  text-decoration: none;
-  color: #23515d;
-}
+      width: 100px;
+      height: 40px;
+    }
 
+    .buttonsecundary:is(:hover, :focus) {
+      transform: scale(1.2);
+    }
+
+    @keyframes pulse {
+      100% {
+        box-shadow: 0 0 0 10px rgba(193, 244, 246, 0);
+      }
+    }
+  }
+}
 // NUNAKAY
 
 // EMPRESA
@@ -572,7 +570,6 @@ nav+.carousel {
 //       transform: translateX(calc(-250px * 7))
 //     }
 //   }
-
 
 //   // Styling
 //   .slider {
@@ -623,8 +620,20 @@ nav+.carousel {
   flex-wrap: nowrap;
   overflow: hidden;
   position: relative;
-  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, #000 15%, #000 85%, rgba(0, 0, 0, 0) 100%);
-  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, #000 15%, #000 85%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0,
+    #000 15%,
+    #000 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0,
+    #000 15%,
+    #000 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .logos-slider-container {
@@ -642,11 +651,11 @@ nav+.carousel {
 
 @keyframes slide {
   0% {
-    transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translate3d(-100%, 0, 0)
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
@@ -656,7 +665,7 @@ nav+.carousel {
   margin: 20px;
   border-radius: 1rem;
   max-width: 900px;
-  box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%)
+  box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
 }
 
 .empresasSection {
