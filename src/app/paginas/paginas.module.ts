@@ -9,7 +9,7 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { LoginComponent } from './login/login.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
-import { DetalleNoticiaComponent } from '../detallenoticia/detallenoticia.component';
+// import { DetallenoticiaComponent } from './detallenoticia/detallenoticia.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AllScriptsService } from '../scripts/all-scripts.service';
 import { AppComponent } from '../app.component';
@@ -21,7 +21,7 @@ import { AppComponent } from '../app.component';
     CcannabisComponent,
     NoticiasComponent,
     LoginComponent,
-    DetalleNoticiaComponent,
+    // DetallenoticiaComponent,
   ],
   imports: [
     CommonModule,

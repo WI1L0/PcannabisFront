@@ -12,7 +12,7 @@ import { HeaderComponent } from './default/header/header.component';
 //router
 import { RouterModule, Route } from '@angular/router';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
-import { DetalleNoticiaComponent } from './detallenoticia/detallenoticia.component';
+// import { DetallenoticiaComponent } from './paginas/detallenoticia/detallenoticia.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent, 
     FooterComponent, 
-    DetalleNoticiaComponent,
+    // DetallenoticiaComponent,
   ],
   imports: [
     BrowserModule,

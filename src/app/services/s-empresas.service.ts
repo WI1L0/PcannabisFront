@@ -8,16 +8,12 @@ import { map, Observable } from 'rxjs';
 })
 export class SEmpresasService {
 
-  private URL = "http://localhost:8080//cbd/empresas/";
-
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
+  private URL = "http://localhost:8080/cbd/empresas/";
 
   constructor(private http: HttpClient) { }
 
-  getEmpresas():Observable<Empresas[]> {
-    console.log("Ingresa");
-    console.log(this.http.get<Empresas[]>(this.URL).pipe(map(Response => Response as Empresas[])));
-    return this.http.get<Empresas[]>(this.URL).pipe(map(Response => Response as Empresas[]));
+  getEmpresas() {
+    return this.http.get<Empresas[]>(this.URL);
 }
 
 postEmpresas(Empresas: Empresas) {
@@ -32,7 +28,7 @@ deleteEmpresas(idEmpresas: number) {
     return this.http.delete<boolean>(this.URL + `/${idEmpresas}`);
 }
 
-getPorId(idEmpresas: any) {
+getPorName(idEmpresas: any) {
     return this.http.get<Empresas>(this.URL + idEmpresas);
 }
 

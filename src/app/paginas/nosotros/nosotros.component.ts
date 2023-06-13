@@ -1,50 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { Empresas } from 'src/app/modelos/Empresas';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
-import { PruebaService } from 'src/app/services/prueba.service';
 import { SEmpresasService } from 'src/app/services/s-empresas.service';
 
 @Component({
   selector: 'app-nosotros',
   templateUrl: './nosotros.component.html',
-  styleUrls: ['./nosotros.component.scss']
+  styleUrls: ['./nosotros.component.scss'],
+  providers: [SEmpresasService],
 })
 export class NosotrosComponent implements OnInit {
   //implementar js en los componentes
-  constructor(private AllScripts: AllScriptsService, private temp: SEmpresasService) {
+  constructor(private AllScripts: AllScriptsService, private ServiceEmpresa: SEmpresasService) {
     AllScripts.Cargar(["default/nosotros"]);
   }
 
-  mision = 'dddddddddd';
-  vision = 'jjjjjjjjjj';
-  histori = 'iiiiiiiiiii'
+  tvalor1?: string; 
+  tvalor2?: string; 
+  tvalor3?: string; 
+  tvalor4?: string; 
+  tvalor5?: string; 
+  tvalor6?: string; 
+
+  cvalor1?: string;
+  cvalor2?: string;
+  cvalor3?: string;
+  cvalor4?: string;
+  cvalor5?: string;
+  cvalor6?: string;
 
   ngOnInit(): void {
     this.obtenerEst();
   }
 
-  listaEmpresas: Empresas[] = [];
-  empresaObject: Empresas = new Empresas();
+ public empresaObject = new Empresas();
 
   obtenerEst() {
-    this.temp.getEmpresas().subscribe(
+    this.ServiceEmpresa.getPorName("Pharma cannabis").subscribe(
       data => {
-        this.listaEmpresas = data.map(result => {
-          let e = new Empresas;
-          e.idEmpresas = result.idEmpresas;
-          e.historia = result.historia;
-          e.mision = result.mision;
-          e.vision = result.vision;
-          e.direccion = result.direccion;
-          e.valores = result.valores;
-          e.longitud = result.longitud;
-          e.latitud = result.latitud;
-          e.estEmpresas = result.estEmpresas;
-          return e;
-        });
-  
-        this.empresaObject = this.listaEmpresas[0];
-        console.log("EEEEEEEEEEEEEEEEEEEEEEEEE" + this.empresaObject.historia);
+        this.empresaObject = data;
+        this.empresaObject.idEmpresas = data.idEmpresas;
+        this.empresaObject.nombreEmp = data.nombreEmp;
+        this.empresaObject.historia = data.historia;
+        this.empresaObject.mision = data.mision;
+        this.empresaObject.vision = data.vision;
+        this.empresaObject.direccion = data.direccion;
+        this.empresaObject.valores = data.valores;
+        this.empresaObject.longitud = data.longitud;
+        this.empresaObject.latitud = data.latitud;
+        this.empresaObject.estEmpresas = data.estEmpresas;
       }
     );
   }

@@ -5,6 +5,7 @@ import {Empleados}from './Empleados';
 
 export class Empresas {
     idEmpresas?: number;
+    nombreEmp?: string;
     historia?: string;
     mision?: string;
     vision?: string;
