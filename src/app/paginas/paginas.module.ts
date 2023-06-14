@@ -13,6 +13,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { AllScriptsService } from '../scripts/all-scripts.service';
 import { AppComponent } from '../app.component';
+import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.component';
+import { ControlNoticiasComponent } from './control-noticias/control-noticias.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AppComponent } from '../app.component';
     CcannabisComponent,
     NoticiasComponent,
     LoginComponent,
+    DetalleNoticiasComponent,
+    ControlNoticiasComponent,
     // DetallenoticiaComponent,
   ],
   imports: [

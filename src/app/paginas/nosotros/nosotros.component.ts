@@ -15,20 +15,6 @@ export class NosotrosComponent implements OnInit {
     AllScripts.Cargar(["default/nosotros"]);
   }
 
-  tvalor1?: string; 
-  tvalor2?: string; 
-  tvalor3?: string; 
-  tvalor4?: string; 
-  tvalor5?: string; 
-  tvalor6?: string; 
-
-  cvalor1?: string;
-  cvalor2?: string;
-  cvalor3?: string;
-  cvalor4?: string;
-  cvalor5?: string;
-  cvalor6?: string;
-
   ngOnInit(): void {
     this.obtenerEst();
   }
@@ -36,7 +22,7 @@ export class NosotrosComponent implements OnInit {
  public empresaObject = new Empresas();
 
   obtenerEst() {
-    this.ServiceEmpresa.getPorName("Pharma cannabis").subscribe(
+    this.ServiceEmpresa.getPorName(1).subscribe(
       data => {
         this.empresaObject = data;
         this.empresaObject.idEmpresas = data.idEmpresas;

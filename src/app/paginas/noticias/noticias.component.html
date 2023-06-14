@@ -1,37 +1,37 @@
-<main role="main">
+<!-- <main role="main">
     <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Ejemplo Paginación Videojuegos</h1>
-            <p class="lead text-muted">Aquí mostraremos una manera más cómoda de gestionar los datos implementados en la
-                web</p>
-        </div>
+      <div class="container">
+        <h1 class="jumbotron-heading">Ejemplo Paginación Videojuegos</h1>
+        <p class="lead text-muted">Aquí mostraremos una manera más cómoda de gestionar los datos implementados en la web</p>
+      </div>
     </section>
-
+  
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-4" *ngFor="let vid  ">
+                <div class="col-md-4" *ngFor="let noti of listNoticias | paginate: {itemsPerPage: 3, currentPage: page} ">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" alt="Thumbnail [100%x225]"
-                            style="height: 225px; width: 100%; display: block;" src="{{vid.thumbnail}}"
-                            data-holder-rendered="true" />
+                        <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="{{noti.idNoticias}}" data-holder-rendered="true"/>
                         <div class="card-body">
                             <h4 class="card-title">
-                                {{vid.title}}
+                                {{noti.tituloNoticias}}
                             </h4>
                             <p class="card-text">
-                                {{vid.short_description}}
+                                {{noti.descripcionNoticias}}
                             </p>
                             <p class="card-text">
-                                Plataforma: {{vid.platform}}
+                                Plataforma: {{noti.fechaNoticias}}
                             </p>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
     </div>
 </main>
+
+<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
+
 
 <!-- <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
 
@@ -45,7 +45,7 @@
         <div class="container">
             <!--BLOG  -->
             <!-- <section class="blog"> -->
-            <div class="row">
+            <div class="row" *ngFor="let noti of listNoticias | paginate: { itemsPerPage: 4, currentPage: pageAct }">
                 <!-- <div class="col-sm-2 col-md-1">
                     <p>categorias</p>
                 </div> -->
@@ -55,16 +55,15 @@
                             <div class="photo" style="background-image: url(../../../assets/img/noticia.jpg)">
                             </div>
                             <ul class="details">
-                                <li class="author"><a href="#">John Doe</a></li>
-                                <li class="date">Aug. 24, 2015</li>
+                                <!-- <li class="author"><a href="#">John Doe</a></li> -->
+                                <li class="date"> {{ noti.fechaNoticias }} </li>
                             </ul>
                         </div>
                         <div class="description">
-                            <h1> Convenio de Investigación y desarrollo con la Universidad Politécnica</h1>
-                            <p> PharmaCannabisMedical firma convenio de Investigación y desarrollo con la Universidad
-                                Politécnica Salesiana, con sede en Cuenca.</p>
+                            <h1> {{ noti.tituloNoticias }} </h1>
+                             <p> {{ noti.descripcionNoticias }} </p>
                             <p class="read-more">
-                                <a href="#">Read More</a>
+                                <a href="/dnt/detallenoticia/">Read More</a>
                             </p>
                         </div>
                     </div>
@@ -72,26 +71,18 @@
                 <div class="col-sm-2 col-md-6">
                     <div class="blog-card alt">
                         <div class="description">
-                            <h1> Convenio de Investigación y desarrollo con la Universidad Politécnica</h1>
-                            <p> PharmaCannabisMedical firma convenio de Investigación y desarrollo con la Universidad
-                                Politécnica Salesiana, con sede en Cuenca.</p>
+                            <h1> {{ noti.tituloNoticias }} </h1>
+                             <p> {{ noti.descripcionNoticias }} </p>
                             <p class="read-more">
-                                <a href="#">Read More</a>
+                                <a href="/dnt/detallenoticia/">Read More</a>
                             </p>
                         </div>
                         <div class="meta">
                             <div class="photo" style="background-image: url(../../../assets/img/noticia3.jpg)">
                             </div>
                             <ul class="details">
-                                <li class="author"><a href="#">Jane Doe</a></li>
-                                <li class="date">July. 15, 2015</li>
-                                <li class="tags">
-                                    <ul>
-                                        <li><a href="#">Learn</a></li>
-                                        <li><a href="#">Code</a></li>
-                                        <li><a href="#">JavaScript</a></li>
-                                    </ul>
-                                </li>
+                                <!-- <li class="author"><a href="#">Jane Doe</a></li> -->
+                                <li class="date"> {{ noti.fechaNoticias }} </li>
                             </ul>
                         </div>
 
@@ -99,128 +90,7 @@
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-sm-2 col-md-6">
-                    <div class="blog-card">
-                        <div class="meta">
-                            <div class="photo" style="background-image: url(../../../assets/img/noticia2.jpg)">
-                            </div>
-                            <ul class="details">
-                                <li class="author"><a href="#">John Doe</a></li>
-                                <li class="date">Aug. 24, 2015</li>
-                                <li class="tags">
-                                    <ul>
-                                        <li><a href="#">Learn</a></li>
-                                        <li><a href="#">Code</a></li>
-                                        <li><a href="#">HTML</a></li>
-                                        <li><a href="#">CSS</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="description">
-                            <h1> Convenio de Investigación y desarrollo con la Universidad Politécnica</h1>
-                            <p> PharmaCannabisMedical firma convenio de Investigación y desarrollo con la Universidad
-                                Politécnica Salesiana, con sede en Cuenca.</p>
-                            <p class="read-more">
-                                <a href="#">Read More</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-md-6">
-                    <div class="blog-card alt">
-                        <div class="description">
-                            <h1>Mastering the Language</h1>
-                            <h2>Java is not the same as JavaScript</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto
-                                obcaecati
-                                enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.
-                            </p>
-                            <p class="read-more">
-                                <a href="#">Read More</a>
-                            </p>
-                        </div>
-                        <div class="meta">
-                            <div class="photo" style="background-image: url(../../../assets/img/noticia.jpg)">
-                            </div>
-                            <ul class="details">
-                                <li class="author"><a href="#">Jane Doe</a></li>
-                                <li class="date">July. 15, 2015</li>
-                                <li class="tags">
-                                    <ul>
-                                        <li><a href="#">Learn</a></li>
-                                        <li><a href="#">Code</a></li>
-                                        <li><a href="#">JavaScript</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
 
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2 col-md-6">
-                    <div class="blog-card">
-                        <div class="meta">
-                            <div class="photo" style="background-image: url(../../../assets/img/noticia2.jpg)">
-                            </div>
-                            <ul class="details">
-                                <li class="author"><a href="#">John Doe</a></li>
-                                <li class="date">Aug. 24, 2015</li>
-                                <li class="tags">
-                                    <ul>
-                                        <li><a href="#">Learn</a></li>
-                                        <li><a href="#">Code</a></li>
-                                        <li><a href="#">HTML</a></li>
-                                        <li><a href="#">CSS</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="description">
-                            <h1> Convenio de Investigación y desarrollo con la Universidad Politécnica</h1>
-                            <p> PharmaCannabisMedical firma convenio de Investigación y desarrollo con la Universidad
-                                Politécnica Salesiana, con sede en Cuenca.</p>
-                            <p class="read-more">
-                                <a href="#">Read More</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-md-6">
-                    <div class="blog-card alt">
-                        <div class="description">
-                            <h1>Mastering the Language</h1>
-                            <h2>Java is not the same as JavaScript</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto
-                                obcaecati
-                                enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.
-                            </p>
-                            <p class="read-more">
-                                <a href="#">Read More</a>
-                            </p>
-                        </div>
-                        <div class="meta">
-                            <div class="photo" style="background-image: url(../../../assets/img/noticia.jpg)">
-                            </div>
-                            <ul class="details">
-                                <li class="author"><a href="#">Jane Doe</a></li>
-                                <li class="date">July. 15, 2015</li>
-                                <li class="tags">
-                                    <ul>
-                                        <li><a href="#">Learn</a></li>
-                                        <li><a href="#">Code</a></li>
-                                        <li><a href="#">JavaScript</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
+            <pagination-controls (pageChange)="pageAct = $event"></pagination-controls>
+            
             <!-- </section> -->

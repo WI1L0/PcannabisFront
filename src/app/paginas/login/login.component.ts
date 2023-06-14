@@ -6,7 +6,7 @@ import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent  implements OnInit{
+export class LoginComponent implements OnInit{
 
   //implementar js en los componentes
   constructor(private AllScripts:AllScriptsService){

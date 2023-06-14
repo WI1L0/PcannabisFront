@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-control-noticias',
+  templateUrl: './control-noticias.component.html',
+  styleUrls: ['./control-noticias.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ControlNoticiasComponent  implements OnInit {
 
   //implementar js en los componentes
   constructor(private AllScripts:AllScriptsService){
-    AllScripts.Cargar(["default/home"]);
+    AllScripts.Cargar(["default/controlNoticias"]);
   }
 
   ngOnInit(): void {

@@ -1,0 +1,59 @@
+// ALL
+$color-all-uno: #bbb9bc;
+$color-all-dos: #bbb9bc;
+$color-all-empresas: #bbb9bc;
+
+.divPrimero {
+  position: relative;
+  background-color: $color-all-uno;
+}
+
+.divSegundo {
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
+  text-align: justify;
+}
+
+.divSegundo_pading {
+  color: #ddd;
+  background-color: $color-all-uno;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+.divPrimeroBlack {
+  position: relative;
+  background-color: $color-all-dos;
+}
+
+.divSegundoBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  text-align: justify;
+}
+
+.divSegundo_padingBlack {
+  color: #ddd;
+  background-color: $color-all-dos;
+  text-align: center;
+  padding: 50px 80px;
+  text-align: justify;
+}
+
+.divTercero {
+  background-color: $color-all-dos;
+  font-size: 25px;
+  color: #f7f7f7;
+  padding: 10px 10px;
+}
+
+.h1All {
+  text-align: center;
+  font-family: "Lato";
+  color: #ffff;
+}
+
+// ALL

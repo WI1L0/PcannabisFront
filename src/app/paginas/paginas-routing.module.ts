@@ -5,7 +5,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { CcannabisComponent } from './ccannabis/ccannabis.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { LoginComponent } from './login/login.component';
-// import { DetallenoticiaComponent } from './detallenoticia/detallenoticia.component';
+import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.component'; 
+import { ControlNoticiasComponent } from './control-noticias/control-noticias.component'; 
 
 const routes: Routes = [
   {
@@ -27,11 +28,15 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'detallenoticia',
+    component: DetalleNoticiasComponent
+  },
+  {
+    path: 'controlnoticia',
+    component: ControlNoticiasComponent
   }
-  // {
-  //   path: 'detallenoticia',
-  //   component: DetallenoticiaComponent
-  // }
 ];
 
 @NgModule({

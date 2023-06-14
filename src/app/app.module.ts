@@ -9,6 +9,9 @@ import { AllScriptsService } from './scripts/all-scripts.service';
 import { FooterComponent } from './default/footer/footer.component';
 import { HeaderComponent } from './default/header/header.component';
 
+
+import { NgxPaginationModule } from 'ngx-pagination';
+
 //router
 import { RouterModule, Route } from '@angular/router';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
@@ -26,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [
     //implementar js en los componentes

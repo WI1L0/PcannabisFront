@@ -4,32 +4,30 @@ import { Empresas } from '../modelos/Empresas';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SEmpresasService {
+  private URL = 'http://localhost:8080/cbd/empresas/';
 
-  private URL = "http://localhost:8080/cbd/empresas/";
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getEmpresas() {
     return this.http.get<Empresas[]>(this.URL);
-}
+  }
 
-postEmpresas(Empresas: Empresas) {
+  postEmpresas(Empresas: Empresas) {
     return this.http.post<Empresas>(this.URL, Empresas);
-}
+  }
 
-putEmpresas(Empresas: Empresas, idEmpresas: any) {
+  putEmpresas(Empresas: Empresas, idEmpresas: any) {
     return this.http.put<Empresas>(this.URL + `/${idEmpresas}`, Empresas);
-}
+  }
 
-deleteEmpresas(idEmpresas: number) {
+  deleteEmpresas(idEmpresas: number) {
     return this.http.delete<boolean>(this.URL + `/${idEmpresas}`);
-}
+  }
 
-getPorName(idEmpresas: any) {
+  getPorName(idEmpresas: any) {
     return this.http.get<Empresas>(this.URL + idEmpresas);
-}
-
+  }
 }

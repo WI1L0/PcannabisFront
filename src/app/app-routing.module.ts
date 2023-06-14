@@ -5,7 +5,8 @@ import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 import { CcannabisComponent } from './paginas/ccannabis/ccannabis.component';
 import { NoticiasComponent } from './paginas/noticias/noticias.component';
 import { LoginComponent } from './paginas/login/login.component';
-// import { DetallenoticiaComponent } from './paginas/detallenoticia/detallenoticia.component';
+import { DetalleNoticiasComponent } from './paginas/detalle-noticias/detalle-noticias.component'; 
+import { ControlNoticiasComponent } from './paginas/control-noticias/control-noticias.component'; 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -33,12 +34,17 @@ const routes: Routes = [
     path: 'lg',
     component: LoginComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'dnt',
+    component: DetalleNoticiasComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'cnt',
+    component: ControlNoticiasComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
   }
-  // {
-  //   path: 'dnt',
-  //   component: DetallenoticiaComponent,
-  //   loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
-  // }
 ];
 
 @NgModule({
