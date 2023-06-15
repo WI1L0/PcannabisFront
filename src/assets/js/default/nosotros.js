@@ -13,5 +13,7 @@
 
 
 // VALORES
-
+$(function(){
+    $('a[title]').tooltip();
+    });
 // VALORES

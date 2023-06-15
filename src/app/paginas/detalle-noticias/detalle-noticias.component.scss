@@ -9,14 +9,14 @@ $color-all-empresas: #bbb9bc;
 }
 
 .divSegundo {
-  color: #ddd;
+  color: #000000;
   background-color: $color-all-uno;
   text-align: center;
   text-align: justify;
 }
 
 .divSegundo_pading {
-  color: #ddd;
+  color: #000000;
   background-color: $color-all-uno;
   text-align: center;
   padding: 50px 80px;
@@ -29,14 +29,14 @@ $color-all-empresas: #bbb9bc;
 }
 
 .divSegundoBlack {
-  color: #ddd;
+  color: #000000;
   background-color: $color-all-dos;
   text-align: center;
   text-align: justify;
 }
 
 .divSegundo_padingBlack {
-  color: #ddd;
+  color: #000000;
   background-color: $color-all-dos;
   text-align: center;
   padding: 50px 80px;
@@ -46,38 +46,38 @@ $color-all-empresas: #bbb9bc;
 .divTercero {
   background-color: $color-all-dos;
   font-size: 25px;
-  color: #f7f7f7;
+  color: #000000;
   padding: 10px 10px;
 }
 
 .h1All {
   text-align: center;
   font-family: "Lato";
-  color: #ffff;
+  color: #000000;
 }
 
 // ALL
 
 
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: 'Roboto', sans-serif;
   color: lighten(black, 40%);
   line-height: 1.5em;
   position: relative;
 }
 
-.navOpen{
+.navOpen {
   overflow: hidden;
 }
 
-.wrapper{
+.wrapper {
   transition-duration: 0.5s;
   transition-timing-function: swing;
   background-color: white;
@@ -85,136 +85,156 @@ body{
   height: 100%;
   position: relative;
   padding: 100px 40px;
-  
-  &.open{
-    transform: translateX(250px)  translateY(50px);
-    -webkit-transform: translateX(250px)  translateY(50px);
+
+  &.open {
+    transform: translateX(250px) translateY(50px);
+    -webkit-transform: translateX(250px) translateY(50px);
     box-shadow: 0 0 50px fade(black, 20%);
   }
-  
-  section{
-    max-width: 600px;
+
+  section {
+    max-width: 1200px;
     margin: 0 auto;
-    
-    h1{
+
+    h1 {
       font-weight: 300;
       font-size: 30px;
       margin-bottom: 10px;
     }
-    
-    h2{
+
+    h2 {
       font-weight: 300;
       font-size: 20px;
       margin-bottom: 40px;
     }
-    
-    p{
+
+    p {
       margin-bottom: 40px;
     }
   }
 }
 
-.openNav{
-  transition-duration: 0.5s;
-  transition-timing-function: swing;
-  width: 50px;
-  height: 50px;
-  background-color: #14B9FF;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 9;
-  
-  &:hover{
-    cursor: pointer;
+.sliderDetalleNoticia {
+  padding-bottom: 20px;
+
+  .htmlDetalle * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: sans-serif;
+  }
+  i {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 5px;
   }
   
-  .icon{
-    transition-duration: 0.2s;
+  i:before, i:after {
+    content: '⥪';
     position: absolute;
-    width: 30px;
-    height: 2px;
-    background-color: white;
-    top: 24px;
-    left: 10px;
-    
-    &:before, &:after{
-      transition-duration: 0.5s;
-      background-color: white;
-      position: absolute;
-      content: "";
-      width: 30px;
-      height: 2px;
-      left: 0px;
-    }
-    
-    &:before{
-      top: -7px;
-    }
-    
-    &:after{
-      top: 7px;
-    }
+    top: 50%;
+    left: 1rem;
+    z-index: 2;
+    width: 2rem;
+    height: 2rem;
+    background: dodgerblue;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
   }
   
-  &.open{
-    transform: translateX(250px) translateY(50px);
-    
-    -webkit-transform: translateX(250px) translateY(50px);
-    
-    .icon{
-      background-color: transparent;
-      
-      &:before, &:after{
-        top: 0;
-      }
-      
-      &:before{
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-      }
-      
-      &:after{
-        transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-      }
-    }
+  i:after {
+    content: '⥭';
+    left: auto;
+    right: 1rem;
   }
+  
+  /* I haven't found a way for IE and Edge to let me style inputs that way */
+  input {
+    appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform: translateX(100%);
+    transition: transform ease-in-out 400ms;
+    z-index: 1;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  input:after {
+    content: attr(title);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+    padding: .5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  input:not(checked):before {
+    content: '';
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    top: 50%;
+    left: calc(-100% + 1rem);
+  }
+  
+  input:checked:before {
+    display: none;
+    left: 1rem;
+  }
+  
+  input:checked {
+    transform: translateX(0);
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: -5px 10px 20px -15px rgba(0,0,0,1);
+  }
+  
+  input:checked + input:before {
+    left: -3rem;
+  }
+  
+  input:checked + input ~ input:before {
+    display: none;
+  }
+  
 }
 
-nav{
-  background-color: #14B9FF;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  
-  ul{
-    width: 250px;
-    margin-top: 50px;
-    
-    &:hover{
-      li{
-        color: fade(white, 50%);
-      }
-    }
-    
-    li{
-      transition-duration: 0.25s;
-      display: block;
-      padding: 5px 40px;
-      color: white;
-      letter-spacing: 0.02em;
-      text-align: right;
-      
-      &:hover{
-        cursor: pointer;
-        color: white;
-      }
-    }
-  }
-  
-  &.open{
-  }
+.fotoDetalle {
+  margin: 50px;
+  justify-content: center;
+  align-items: center;
+
+.fondo{
+  background:url('http://placekitten.com/700/400') no-repeat;
+  height:0; /* altura cero */
+  background-size:100%;
+  text-indent:-9999px;
+  display:block;
+  padding-bottom: 57.14285%; /* (altura/anchura)*100 */
+}
 }
