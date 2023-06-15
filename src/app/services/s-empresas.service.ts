@@ -27,7 +27,7 @@ export class SEmpresasService {
     return this.http.delete<boolean>(this.URL + `/${idEmpresas}`);
   }
 
-  getPorName(idEmpresas: any) {
-    return this.http.get<Empresas>(this.URL + idEmpresas);
+  getPorName(nombreEmp: string): Observable<Empresas> {
+    return this.http.get<Empresas>(this.URL + 'ByName/' + nombreEmp);
   }
 }
