@@ -23,6 +23,8 @@ $color-all-empresas: #bbb9bc;
   text-align: justify;
 }
 
+
+
 .divPrimeroBlack {
   position: relative;
   background-color: $color-all-dos;
@@ -50,13 +52,19 @@ $color-all-empresas: #bbb9bc;
   padding: 10px 10px;
 }
 
+
+
 .h1All {
   text-align: center;
-  font-family: "Lato";
+  font-family: "Montserrat";
   color: #ffff;
 }
 
 // ALL
+
+
+
+
 
 // CAROUSEL
 .bodyCarusel {
@@ -112,15 +120,10 @@ $color-all-empresas: #bbb9bc;
   height: 100%;
 }
 
-.home-hero-header p {
-  font-weight: 500;
-  font-size: 1.4rem;
-}
-
 .carousel-item-bg img {
   width: 100% !important;
   height: auto !important;
-  opacity: 0.5;
+  opacity: -1;
 }
 
 .carousel-inner {
@@ -135,7 +138,7 @@ $color-all-empresas: #bbb9bc;
   top: 0;
 }
 
-nav + .carousel {
+nav+.carousel {
   top: -60px;
   margin-bottom: -60px;
 }
@@ -205,529 +208,384 @@ nav + .carousel {
 
 // CAROUSEL
 
-// CARACTERISTICAS
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
-.bodyCaracteristicas {
-  margin: 10px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
 
-  .icon-box {
-    position: relative;
-    display: block;
-    padding: 40px 20px 30px;
-    -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    -o-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    border-radius: 5px;
-    z-index: 99;
-    text-decoration: none;
-  }
 
-  .col-md-3 {
-    margin-top: 10px;
-  }
-
-  .icon-box .icon {
-    margin-bottom: 24px;
-  }
-
-  .icon-box:hover {
-    z-index: 1;
-    background-color: #abaaac;
-    -webkit-box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
-    box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
-    transform: translateY(-15px);
-  }
-
-  .icon-box .content .title.fz-20 {
-    font-size: 20px;
-  }
-
-  .icon-box .content .title {
-    font-size: 24px;
-    line-height: 1.5;
-    margin: 0;
-    color: #3f3a64;
-  }
-
-  .icon-box .content .desc {
-    margin-top: 10px;
-  }
-
-  .icon-box .content .desc p {
-    line-height: 1.6;
-    color: #696969;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  // .icon-box:hover .content .link {
-  //   color: #20ad96;
-  // }
-
-  // .icon-box .content .link {
-  //   font-size: 14px;
-  //   font-weight: 700;
-  //   line-height: 1;
-  //   display: -webkit-inline-box;
-  //   display: -ms-inline-flexbox;
-  //   display: inline-flex;
-  //   -webkit-box-align: center;
-  //   -ms-flex-align: center;
-  //   align-items: center;
-  //   margin-top: 34px;
-  //   padding: 5px 0;
-  //   color: #8c89a2;
-  // }
-
-  // .icon-box .content .link i {
-  //   font-size: 16px;
-  //   line-height: 14px;
-  //   margin-left: 14px;
-  // }
-}
 
 // CARACTERISTICAS
+.caracteristicasSection {
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
-// NUNAKAY
-.nunakaySection,
-.bodyNunakay {
-  box-sizing: border-box;
-  font-family: "neuzeit-grotesk", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 1em;
-  line-height: 1.5;
-  color: #303336;
-  scroll-behavior: smooth;
-}
+  .bodyCaracteristicas {
+    margin: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
 
-.h6Nunakay {
+    .icon-box {
+      position: relative;
+      display: block;
+      padding: 40px 20px 30px;
+      -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -o-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      border-radius: 5px;
+      z-index: 99;
+      text-decoration: none;
+    }
 
-  .secundary{
-    color: #048ABF;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5;
-    text-decoration: none;
-  }
-  
-  .buttonsecundary {
-    display: flex;
-    justify-content: center;
-    border-radius: 50px;
-    background-color: transparent;
-    transition: all 0.3s ease-in-out 0s;
-    box-shadow: #048ABF 0px 0px 0px 0px;
-    animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
-    align-items: center;
-    border: 0;
-  
-    width: 100px;
-    height: 40px;
-  }
-  
-  .buttonsecundary:is(:hover, :focus) {
-    transform: scale(1.2);
-  }
-  
-  @keyframes pulse {
-    100% {
-      box-shadow: 0 0 0 10px rgba(193,244,246,0);
+    .col-md-3 {
+      margin-top: 10px;
+    }
+
+    .icon-box .icon {
+      margin-bottom: 24px;
+    }
+
+    .icon-box:hover {
+      z-index: 1;
+      background-color: #abaaac;
+      -webkit-box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+      box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+      transform: translateY(-15px);
+    }
+
+    .icon-box .content .title.fz-20 {
+      font-size: 20px;
+    }
+
+    .icon-box .content .title {
+      font-size: 24px;
+      line-height: 1.5;
+      margin: 0;
+      color: #3f3a64;
+    }
+
+    .icon-box .content .desc {
+      margin-top: 10px;
+    }
+
+    .icon-box .content .desc p {
+      line-height: 1.6;
+      color: #696969;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-.divmain {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 70vh;
-  background-color: $color-all-uno;
-}
-
-.h2Nunakay {
-  margin-top: 20px;
-  font-size: 3em;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.pNunakay {
-  margin-top: 20px;
-  font-size: 1em;
-  color: #7b8591;
-}
-
-.main-card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  font-family: "neuzeit-grotesk", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 1em;
-  line-height: 1.5;
-  color: #303336;
-  background-color: $color-all-uno;
-  box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
-}
-
-.main-card .card-content {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  padding: 50px;
-}
-
-.main-card .content-left {
-  position: relative;
-  width: calc(100% - 0px);
-  height: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: $color-all-uno;
-}
-
-.main-card .content-left .imgNunakay {
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
-  display: block;
-  margin: auto;
-  object-fit: contain;
-  object-position: center;
-}
-
-.main-card .divimg .imgNunakay {
-  width: calc(100% - 800px);
-  height: calc(100% - 800px);
-  display: block;
-  margin: auto;
-  object-fit: contain;
-  object-position: center;
-}
-
-.main-card .content-right {
-  position: relative;
-  width: calc(100% - 100px);
-  height: 100%;
-  padding-left: 65px;
-}
-
-.main-card .tag {
-  position: relative;
-  left: 100%;
-  transform: translateX(-100%);
-  width: fit-content;
-  padding: 8px 25px;
-  border-radius: 10px;
-}
-
-.main-card .tag .h6Nunakay {
-  color: #fff;
-  font-size: 0.75em;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.main-card .mini-imgs {
-  position: absolute;
-  display: flex;
-  bottom: 0;
-  height: 300px;
-}
-
-.main-card .mini-imgs .imgNunakay {
-  width: 200px;
-  height: 250px;
-  border-radius: 10px;
-  object-fit: cover;
-  object-position: center;
-  cursor: pointer;
-  transition: 400ms;
-}
-
-.main-card .mini-imgs .imgNunakay:hover {
-  opacity: 0.75;
-}
-
-.main-card .mini-imgs .imgNunakay:nth-child(2) {
-  margin: 0 10px;
-}
+// CARACTERISTICAS
 
 
-@media only screen and (max-width: 1600px) {
+
+
+
+// NUNAKAY
+.nunakaySection {
+  .bodyNunakay {
+    box-sizing: border-box;
+    font-family: "neuzeit-grotesk", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #303336;
+    scroll-behavior: smooth;
+  }
+
+  .h6Nunakay {
+    .secundary {
+      color: #048ABF;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    .buttonsecundary {
+      display: flex;
+      justify-content: center;
+      border-radius: 50px;
+      background-color: transparent;
+      transition: all 0.3s ease-in-out 0s;
+      box-shadow: #048ABF 0px 0px 0px 0px;
+      animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
+      align-items: center;
+      border: 0;
+
+      width: 100px;
+      height: 40px;
+    }
+
+    .buttonsecundary:is(:hover, :focus) {
+      transform: scale(1.2);
+    }
+
+    @keyframes pulse {
+      100% {
+        box-shadow: 0 0 0 10px rgba(193, 244, 246, 0);
+      }
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
   .divmain {
+    position: relative;
     display: flex;
     justify-content: center;
-    align-items: start;
-    height: auto;
-    min-height: 100vh;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+    background-color: $color-all-uno;
+  }
+
+  .h2Nunakay {
+    margin-top: 20px;
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .pNunakay {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #7b8591;
   }
 
   .main-card {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
+    border-radius: 10px;
+    font-family: "neuzeit-grotesk", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #303336;
+    background-color: $color-all-uno;
+    box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
   }
 
   .main-card .card-content {
-    flex-direction: column;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
   }
 
   .main-card .content-left {
-    width: 100%;
-    height: 300px;
+    position: relative;
+    width: calc(100% - 0px);
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50px;
+    background-color: $color-all-uno;
+  }
+
+  .main-card .content-left .imgNunakay {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    display: block;
+    margin: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .main-card .divimg .imgNunakay {
+    width: calc(100% - 800px);
+    height: calc(100% - 800px);
+    display: block;
+    margin: auto;
+    object-fit: contain;
+    object-position: center;
   }
 
   .main-card .content-right {
-    width: 100%;
-    height: auto;
-    padding: 175px 0 0;
+    position: relative;
+    width: calc(100% - 100px);
+    height: 100%;
+    padding-left: 65px;
   }
 
   .main-card .tag {
-    left: 0;
-    transform: translateX(0);
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+    width: fit-content;
+    padding: 8px 25px;
+    border-radius: 10px;
+  }
+
+  .main-card .tag .h6Nunakay {
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 2px;
   }
 
   .main-card .mini-imgs {
     position: absolute;
     display: flex;
-    top: 0;
-    margin-top: 10px;
-    height: 105px;
+    bottom: 0;
+    height: 300px;
   }
 
   .main-card .mini-imgs .imgNunakay {
-    margin: 20px;
-    width: 150px;
+    width: calc(100% / 3);
     height: 200px;
     border-radius: 10px;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  .divmain {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    height: auto;
-    min-height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    transition: 200ms;
   }
 
-  .main-card {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-
-  .main-card .card-content {
-    flex-direction: column;
-  }
-
-  .main-card .content-left {
-    width: 100%;
-    height: 300px;
-  }
-
-  .main-card .content-right {
-    width: 100%;
-    height: auto;
-    padding: 175px 0 0;
-  }
-
-  .main-card .tag {
-    left: 0;
-    transform: translateX(0);
-  }
-
-  .main-card .mini-imgs {
-    position: absolute;
-    display: flex;
-    top: 0;
-    margin-top: 35px;
-    height: 105px;
+  .main-card .mini-imgs .imgNunakay:hover {
+    opacity: 0.75;
   }
 
   .main-card .mini-imgs .imgNunakay {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+
+  @media only screen and (max-width: 1600px) {
+    .divmain {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      height: auto;
+      min-height: 100vh;
+    }
+
+    .main-card {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
+    .main-card .card-content {
+      flex-direction: column;
+    }
+
+    .main-card .content-left {
+      width: 100%;
+      height: 300px;
+    }
+
+    .main-card .content-right {
+      width: 100%;
+      height: auto;
+      padding: 175px 0 0;
+    }
+
+    .main-card .tag {
+      left: 0;
+      transform: translateX(0);
+    }
+
+    .main-card .mini-imgs {
+      position: absolute;
+      display: flex;
+      top: 0;
+      margin-top: 10px;
+      height: 105px;
+    }
+
+    .main-card .mini-imgs .imgNunakay {
+      width: calc(100% / 3);
+      height: 200px;
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .divmain {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      height: auto;
+      min-height: 100vh;
+    }
+
+    .main-card {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
+    .main-card .card-content {
+      flex-direction: column;
+    }
+
+    .main-card .content-left {
+      width: 100%;
+      height: 300px;
+    }
+
+    .main-card .content-right {
+      width: 100%;
+      height: auto;
+      padding: 175px 0 0;
+    }
+
+    .main-card .tag {
+      left: 0;
+      transform: translateX(0);
+    }
+
+    .main-card .mini-imgs {
+      position: absolute;
+      display: flex;
+      top: 0;
+      margin-top: 35px;
+      height: 105px;
+    }
+
+    .main-card .mini-imgs .imgNunakay {
+      width: calc(100% / 3);
+      height: 100px;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .main-card {
+      margin: 120px 20px;
+    }
+
+    .main-card .card-content {
+      padding: 25px;
+    }
+
+    .main-card .content-right {
+      width: 100%;
+      height: auto;
+      padding: 115px 0 0;
+    }
+
+    .main-card .mini-imgs {
+      margin-top: 20px;
+    }
+
+    .main-card .mini-imgs .imgNunakay {
+      width: calc(100% / 3);
+      height: 60px;
+    }
   }
 }
 
-@media only screen and (max-width: 500px) {
-  .main-card {
-    margin: 120px 20px;
-  }
-
-  .main-card .card-content {
-    padding: 25px;
-  }
-
-  .main-card .content-right {
-    width: 100%;
-    height: auto;
-    padding: 115px 0 0;
-  }
-
-  .main-card .mini-imgs {
-    margin-top: 20px;
-  }
-
-  .main-card .mini-imgs .imgNunakay {
-    width: 60px;
-    height: 60px;
-  }
-}
 // NUNAKAY
 
 // EMPRESA
-
-// .empresasSection {
-//   align-items: center;
-//   background: transparent;
-//   display: flex;
-//   justify-content: center;
-
-//   @mixin white-gradient {
-//     background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-//   }
-
-//   $animationSpeed: 40s;
-
-//   // Animation
-//   @keyframes scroll {
-//     0% {
-//       transform: translateX(0);
-//     }
-
-//     100% {
-//       transform: translateX(calc(-250px * 7))
-//     }
-//   }
-
-//   // Styling
-//   .slider {
-//     background: transparent;
-//     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
-//     height: 100px;
-//     margin: auto;
-//     overflow: hidden;
-//     position: relative;
-//     width: 960px;
-
-//     &::before,
-//     &::after {
-//       @include white-gradient;
-//       content: "";
-//       height: 100px;
-//       position: absolute;
-//       width: 200px;
-//       z-index: 2;
-//     }
-
-//     &::after {
-//       right: 0;
-//       top: 0;
-//       transform: rotateZ(180deg);
-//     }
-
-//     &::before {
-//       left: 0;
-//       top: 0;
-//     }
-
-//     .slide-track {
-//       animation: scroll $animationSpeed linear infinite;
-//       display: flex;
-//       width: calc(250px * 14);
-//     }
-
-//     .slide {
-//       height: 100px;
-//       width: 250px;
-//     }
-//   }
-// }
-
-// .logos-slider {
-//   display: flex;
-//   flex-wrap: nowrap;
-//   overflow: hidden;
-//   position: relative;
-//   -webkit-mask-image: linear-gradient(
-//     90deg,
-//     rgba(0, 0, 0, 0) 0,
-//     #000 15%,
-//     #000 85%,
-//     rgba(0, 0, 0, 0) 100%
-//   );
-//   mask-image: linear-gradient(
-//     90deg,
-//     rgba(0, 0, 0, 0) 0,
-//     #000 15%,
-//     #000 85%,
-//     rgba(0, 0, 0, 0) 100%
-//   );
-// }
-
-// .logos-slider-container {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 5rem;
-//   animation: slide 30s linear infinite;
-// }
-
-// .logos-slider-container img {
-//   width: 150px;
-//   max-width: 150px;
-// }
-
-// @keyframes slide {
-//   0% {
-//     transform: translate3d(0, 0, 0);
-//   }
-
-//   100% {
-//     transform: translate3d(-100%, 0, 0);
-//   }
-// }
-
-// .card {
-//   background: white;
-//   padding: 2rem;
-//   margin: 20px;
-//   border-radius: 1rem;
-//   max-width: 900px;
-//   box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
-// }
-
-// .empresasSection {
-//   background: $color-all-empresas;
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-//   justify-content: center;
-// }
-
 .bodyEmpresas {
   display: grid;
   place-items: center;
@@ -737,73 +595,74 @@ nav + .carousel {
     border-bottom-right-radius: 20px;
   }
 
-.slider {
-  height: 300px;
-  margin: auto;
-  position: relative;
-  width: 90%;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-.slide-track {
-  display: flex;
-  width: calc(300px * 18);
-  animation: scroll 40s linear infinite;
-}
-
-.slide-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
+  .slider {
+    height: 300px;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
   }
-  100% {
-    transform: translateX(calc(-300px * 9));
+
+  .slide-track {
+    display: flex;
+    width: calc(300px * 18);
+    animation: scroll 40s linear infinite;
   }
-}
 
-.slide {
-  height: 200px;
-  width: 300px;
-  display: flex;
-  align-items: center;
-  padding: 15px;
-  perspective: 300px;
-}
+  .slide-track:hover {
+    animation-play-state: paused;
+  }
 
-img {
-  width: 100%;
-  transition: transform 200ms;
-}
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
 
-img:hover {
-  transform: translateZ(20px);
-}
+    100% {
+      transform: translateX(calc(-300px * 9));
+    }
+  }
 
-.slider::before,
-.slider::after {
-  background: linear-gradient(to right, $color-all-uno 0%, rgba(255,255,255,00) 100%);
-  content: '';
-  height: 100%;
-  position: absolute;
-  width: 15%;
-  z-index: 2;
-}
+  .slide {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 300px;
+  }
 
-.slider::before {
-  left: 0;
-  top: 0;
-}
+  img {
+    width: 100%;
+    transition: transform 200ms;
+  }
 
-.slider::after {
-  right: 0;
-  top: 0;
-  transform: rotateZ(180deg);
-}
+  img:hover {
+    transform: translateZ(20px);
+  }
+
+  .slider::before,
+  .slider::after {
+    background: linear-gradient(to right, $color-all-uno 0%, rgba(255, 255, 255, 00) 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+  }
+
+  .slider::before {
+    left: 0;
+    top: 0;
+  }
+
+  .slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
 }
 
 

@@ -1,18 +1,3 @@
-
-//CAROUSEL
-
-
-
-
-
-// ALL
-
-// ALL
-
-
-
-
-
 // CARACTERISTICAS
 
 // CARACTERISTICAS

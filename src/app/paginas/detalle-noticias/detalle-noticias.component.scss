@@ -9,19 +9,21 @@ $color-all-empresas: #bbb9bc;
 }
 
 .divSegundo {
-  color: #000000;
+  color: #ddd;
   background-color: $color-all-uno;
   text-align: center;
   text-align: justify;
 }
 
 .divSegundo_pading {
-  color: #000000;
+  color: #ddd;
   background-color: $color-all-uno;
   text-align: center;
   padding: 50px 80px;
   text-align: justify;
 }
+
+
 
 .divPrimeroBlack {
   position: relative;
@@ -29,14 +31,14 @@ $color-all-empresas: #bbb9bc;
 }
 
 .divSegundoBlack {
-  color: #000000;
+  color: #ddd;
   background-color: $color-all-dos;
   text-align: center;
   text-align: justify;
 }
 
 .divSegundo_padingBlack {
-  color: #000000;
+  color: #ddd;
   background-color: $color-all-dos;
   text-align: center;
   padding: 50px 80px;
@@ -46,18 +48,18 @@ $color-all-empresas: #bbb9bc;
 .divTercero {
   background-color: $color-all-dos;
   font-size: 25px;
-  color: #000000;
+  color: #f7f7f7;
   padding: 10px 10px;
 }
+
+
 
 .h1All {
   text-align: center;
   font-family: "Lato";
-  color: #000000;
+  color: #ffff;
 }
-
 // ALL
-
 
 
 * {
@@ -156,7 +158,6 @@ body {
     right: 1rem;
   }
   
-  /* I haven't found a way for IE and Edge to let me style inputs that way */
   input {
     appearance: none;
     -ms-appearance: none;
@@ -231,10 +232,10 @@ body {
 
 .fondo{
   background:url('http://placekitten.com/700/400') no-repeat;
-  height:0; /* altura cero */
+  height:0; 
   background-size:100%;
   text-indent:-9999px;
   display:block;
-  padding-bottom: 57.14285%; /* (altura/anchura)*100 */
+  padding-bottom: 57.14285%; 
 }
 }

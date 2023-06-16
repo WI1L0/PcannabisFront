@@ -45,8 +45,6 @@ $color-all-empresas: #bbb9bc;
   text-align: justify;
 }
 
-
-
 .divTercero {
   background-color: $color-all-dos;
   font-size: 25px;
@@ -54,10 +52,12 @@ $color-all-empresas: #bbb9bc;
   padding: 10px 10px;
 }
 
+
+
 .h1All {
   text-align: center;
-  font-family: 'Lato';
-  color: #44a03b;
+  font-family: "Lato";
+  color: #ffff;
 }
 
 // ALL
@@ -65,56 +65,61 @@ $color-all-empresas: #bbb9bc;
 
 
 
+
 // INFO CANNABIS
 .cannabisInfoSection {
 
-  .row{
+  .row {
     padding: 20px;
   }
 
-.text-color{
-  color: #000;
-}
+  .text-color {
+    color: #000;
+  }
 
-.flower-about{
-  margin-top: 65px;
-  animation-name: imgLeft;
-  animation-duration: 3s;
-}
+  .flower-about {
+    margin-top: 65px;
+    animation-name: imgLeft;
+    animation-duration: 3s;
+  }
 
-.about-text{
-  animation-name: textRight;
-  animation-duration: 3s;
-}
+  .about-text {
+    animation-name: textRight;
+    animation-duration: 3s;
+  }
 
-@keyframes imgLeft {
-  0%{
+  @keyframes imgLeft {
+    0% {
       transform: translateX(-120px);
       opacity: 0;
-  }
+    }
 
-  100%{
+    100% {
       transform: translateX(0);
       opacity: 1;
+    }
   }
-}
 
-@keyframes textRight{
-  0%{
+  @keyframes textRight {
+    0% {
       transform: translateX(30px);
       opacity: 0;
-  }
+    }
 
-  100%{
+    100% {
       transform: translateX(0);
       opacity: 1;
+    }
   }
 }
-}
+
 // INFO CANNABIS
 
 
 
+
+
+// pROCESO cULTIVO
 .tarjetaSection {
   display: flex;
 
@@ -271,3 +276,5 @@ $color-all-empresas: #bbb9bc;
     }
   }
 }
+
+// pROCESO cULTIVO

@@ -1,71 +1,62 @@
-
-
-
-      <div class="fondoo">
-        <div class="bodyfondo">
-          <div class="wrapper">
-            <div class="main">
-              <section class="content">
-                <div class="parallax img-uno" id="m">
-                  <div class="texto-interior">
-                    <h2 id="m">Mecanismo de creación.</h2>
-                  </div>
-                </div><!-- .parallax -->
-                <div class="texto">
-                  <div class="contentBlog">
-                    <div class="row"
-                      *ngFor="let noti of listNoticias | paginate: { itemsPerPage: 3, currentPage: pageAct }">
-                      <!-- <div class="col-sm-2 col-md-1">
-                                <p>categorias</p>
-                            </div> -->
-                      <div class="col-sm-2 col-md-6">
-                        <div class="blog-card">
-                          <div class="meta">
-                            <div class="photo" style="background-image: url(../../../assets/img/noticia.jpg)">
-                            </div>
-                            <ul class="details">
-                              <!-- <li class="author"><a href="#">John Doe</a></li> -->
-                              <li class="date"> {{ noti.fechaNoticias }} </li>
-                            </ul>
-                          </div>
-                          <div class="description">
-                            <h1> {{ noti.tituloNoticias }} </h1>
-                            <p> {{ noti.descripcionNoticias }} </p>
-                            <p class="read-more">
-                              <a href="/dnt/detallenoticia/">Read More</a>
-                            </p>
-                          </div>
-                        </div>
+<!-- ALL -->
+<div class="fondoo">
+  <div class="bodyfondo">
+    <div class="wrapper">
+      <div class="main">
+        <section class="content">
+          <div class="parallax img-uno" id="m">
+            <div class="texto-interior">
+              <h2 id="m">Mecanismo de creación.</h2>
+            </div>
+          </div><!-- .parallax -->
+          <div class="texto">
+            <div class="contentBlog">
+              <!-- PAGINACION CARDS NOTICIAS -->
+              <div class="row" *ngFor="let noti of listNoticias | paginate: { itemsPerPage: 3, currentPage: pageAct }">
+                <div class="col-sm-2 col-md-6">
+                  <div class="blog-card">
+                    <div class="meta">
+                      <div class="photo" style="background-image: url(../../../assets/img/noticia.jpg)">
                       </div>
-                      <div class="col-sm-2 col-md-6">
-                        <div class="blog-card alt">
-                          <div class="description">
-                            <h1> {{ noti.tituloNoticias }} </h1>
-                            <p> {{ noti.descripcionNoticias }} </p>
-                            <p class="read-more">
-                              <a href="/dnt/detallenoticia/">Read More</a>
-                            </p>
-                          </div>
-                          <div class="meta">
-                            <div class="photo" style="background-image: url(../../../assets/img/noticia3.jpg)">
-                            </div>
-                            <ul class="details">
-                              <!-- <li class="author"><a href="#">Jane Doe</a></li> -->
-                              <li class="date"> {{ noti.fechaNoticias }} </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <ul class="details">
+                        <li class="date"> {{ noti.fechaNoticias }} </li>
+                      </ul>
                     </div>
-
+                    <div class="description">
+                      <h1> {{ noti.tituloNoticias }} </h1>
+                      <p> {{ noti.descripcionNoticias }} </p>
+                      <p class="read-more">
+                        <a href="/dnt/detallenoticia/">Read More</a>
+                      </p>
+                    </div>
                   </div>
+                </div>
+                <div class="col-sm-2 col-md-6">
+                  <div class="blog-card alt">
+                    <div class="description">
+                      <h1> {{ noti.tituloNoticias }} </h1>
+                      <p> {{ noti.descripcionNoticias }} </p>
+                      <p class="read-more">
+                        <a href="/dnt/detallenoticia/">Read More</a>
+                      </p>
+                    </div>
+                    <div class="meta">
+                      <div class="photo" style="background-image: url(../../../assets/img/noticia3.jpg)">
+                      </div>
+                      <ul class="details">
+                        <li class="date"> {{ noti.fechaNoticias }} </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                  <pagination-controls (pageChange)="pageAct = $event"></pagination-controls>
-
-                </div><!-- .texto -->
-              </section> <!-- .content -->
-
-            </div><!--.main -->
-          </div> <!-- wrapper -->
-        </div>
+            <pagination-controls (pageChange)="pageAct = $event"></pagination-controls>
+            <!-- PAGINACION CARDS NOTICIAS -->
+          </div>
+        </section>
       </div>
+    </div>
+  </div>
+</div>
