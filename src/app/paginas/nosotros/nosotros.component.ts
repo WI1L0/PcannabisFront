@@ -38,9 +38,12 @@ export class NosotrosComponent implements OnInit {
 
         if (typeof data.valor1 === 'string') {
           this.empresaObject.valor1 = this.splitTitleAndDescription(data.valor1);
-        } else {
+
+        }else {
           this.empresaObject.valor1 = data.valor1;
-        } 
+        }
+        
+      
         // if(typeof data.valor2 === 'string') {
         //   this.empresaObject.valor2 = this.splitTitleAndDescription(data.valor2);
         // } else {
@@ -63,17 +66,19 @@ export class NosotrosComponent implements OnInit {
       }
     );
   }
-  splitTitleAndDescription(value: string): { titulo: string, descripcion: string } {
-    if (!value) {
-      return { titulo: '', descripcion: '' };
-    }
-    const [titulo, descripcion] = value.split('*');
-    return { titulo, descripcion };
-  }
   // splitTitleAndDescription(value: string): { titulo: string, descripcion: string } {
+  //   if (!value) {
+  //     return { titulo: '', descripcion: '' };
+  //   }
   //   const [titulo, descripcion] = value.split('*');
   //   return { titulo, descripcion };
   // }
+  
+  splitTitleAndDescription(value: string): { titulo: string, descripcion: string } {
+    const [titulo, descripcion] = value.split('*');
+    return { titulo, descripcion };
+  }
+
 
 
   //  }

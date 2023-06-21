@@ -1,7 +1,17 @@
 // ALL
-$color-all-uno: #bbb9bc;
-$color-all-dos: #bbb9bc;
+$color-all-uno: #ffffff;
+$color-all-dos: #ffffff;
+$color-fondo1:#1a1e1a;
+$color-letra:#000000;
+$color-letrav: #3fa22d;
+// $color-all-uno: #4d4d4b;
+// $color-all-dos: #4d4d4b;
+// $color-all-uno: #1a1e1a;
+// $color-all-dos: #1a1e1a;
 $color-all-empresas: #bbb9bc;
+$fuente-principal: "Monserrat", sans-serif;
+$fuente-secundaria: "Century Gothic", sans-serif;
+$negrita: bold;
 
 .divPrimero {
   position: relative;
@@ -56,8 +66,8 @@ $color-all-empresas: #bbb9bc;
 
 .h1All {
   text-align: center;
-  font-family: "Montserrat";
-  color: #ffff;
+  font-family: #{$fuente-principal};
+  color: $color-letra;
 }
 
 // ALL
@@ -214,12 +224,13 @@ nav+.carousel {
 
 // CARACTERISTICAS
 .caracteristicasSection {
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
   .bodyCaracteristicas {
     margin: 10px;
-    font-family: "Poppins", sans-serif;
+    font-family: $fuente-secundaria;
     font-weight: 300;
+    text-align: justify;
+
 
     .icon-box {
       position: relative;
@@ -231,6 +242,8 @@ nav+.carousel {
       border-radius: 5px;
       z-index: 99;
       text-decoration: none;
+      background-color: $color-letrav;
+      box-shadow: 0 10px 5px #3fa22d, 0 10px 10px rgba(169, 159, 159, 0.25);
     }
 
     .col-md-3 {
@@ -243,10 +256,13 @@ nav+.carousel {
 
     .icon-box:hover {
       z-index: 1;
-      background-color: #abaaac;
+      background-color: #abac;
+      background-color: $color-fondo1;
+      // background-color: $color-all-uno;
       -webkit-box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
       box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
       transform: translateY(-15px);
+      
     }
 
     .icon-box .content .title.fz-20 {
@@ -257,7 +273,7 @@ nav+.carousel {
       font-size: 24px;
       line-height: 1.5;
       margin: 0;
-      color: #3f3a64;
+      color: $color-letra;
     }
 
     .icon-box .content .desc {
@@ -266,11 +282,21 @@ nav+.carousel {
 
     .icon-box .content .desc p {
       line-height: 1.6;
-      color: #696969;
+      color: $color-letra;
     }
 
     p:last-child {
       margin-bottom: 0;
+    }
+
+    .title.fz-20 {
+      font-weight: $negrita;
+    }
+
+    .parrafo1 {
+      text-align: justify;
+      color: #f7f7f7;
+      
     }
   }
 }
@@ -279,25 +305,24 @@ nav+.carousel {
 
 
 
-
-
 // NUNAKAY
 .nunakaySection {
   .bodyNunakay {
     box-sizing: border-box;
-    font-family: "neuzeit-grotesk", sans-serif;
+    font-family: $fuente-secundaria;
     font-weight: 300;
     font-style: normal;
     font-size: 1em;
     line-height: 1.5;
-    color: #303336;
+    color: $color-fondo1;
     scroll-behavior: smooth;
   }
 
   .h6Nunakay {
+
     .secundary {
       color: #048ABF;
-      font-family: inherit;
+      font-family: $fuente-secundaria;
       font-size: 1rem;
       font-weight: 500;
       line-height: 1.5;
@@ -350,13 +375,15 @@ nav+.carousel {
     margin-top: 20px;
     font-size: 3em;
     font-weight: 700;
+    color: $color-all-uno;
     line-height: 1;
   }
 
   .pNunakay {
     margin-top: 20px;
     font-size: 1em;
-    color: #7b8591;
+    color: $color-all-uno;
+    font-family: $fuente-principal;
   }
 
   .main-card {
@@ -370,7 +397,7 @@ nav+.carousel {
     font-size: 1em;
     line-height: 1.5;
     color: #303336;
-    background-color: $color-all-uno;
+    background-color: $color-fondo1;
     box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
   }
 
@@ -388,7 +415,7 @@ nav+.carousel {
     height: 100%;
     overflow: hidden;
     border-radius: 50px;
-    background-color: $color-all-uno;
+    background-color: $color-fondo1;
   }
 
   .main-card .content-left .imgNunakay {
@@ -580,6 +607,7 @@ nav+.carousel {
       width: calc(100% / 3);
       height: 60px;
     }
+
   }
 }
 
@@ -646,6 +674,8 @@ nav+.carousel {
   .slider::before,
   .slider::after {
     background: linear-gradient(to right, $color-all-uno 0%, rgba(255, 255, 255, 00) 100%);
+    // background-color: $color-fondo1;
+    // background: linear-gradient(to right, $color-fondo1 0%, rgba(255, 255, 255, 00) 100%);
     content: '';
     height: 100%;
     position: absolute;

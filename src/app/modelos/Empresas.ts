@@ -1,7 +1,7 @@
 import { Beneficios } from "./Beneficios";
 import { Noticias } from "./Noticias";
 import { UsosAplicaciones } from "./UsosAplicaciones";
-import {Empleados}from './Empleados';
+import { Empleados } from './Empleados';
 
 export class Empresas {
     idEmpresas?: number;
@@ -16,6 +16,12 @@ export class Empresas {
     valor4?: { titulo: string, descripcion: string };
     valor5?: { titulo: string, descripcion: string };
     valor6?: { titulo: string, descripcion: string };
+    // valor1?: { titulo: string, descripcion: string } = { titulo: '', descripcion: '' };
+    // valor2?: { titulo: string, descripcion: string } = { titulo: '', descripcion: '' };
+    // valor3?: { titulo: string, descripcion: string } = { titulo: '', descripcion: '' };
+    // valor4?: { titulo: string, descripcion: string } = { titulo: '', descripcion: '' };
+    // valor5?: { titulo: string, descripcion: string } = { titulo: '', descripcion: '' };
+    // valor6?: { titulo: string, descripcion: string } = { titulo: '', descripcion: '' };
     // valor1?: { titulo: string, descripcion: string } | "" = "";
     // valor2?: { titulo: string, descripcion: string } | "" = "";
     // valor3?: { titulo: string, descripcion: string } | "" = "";
@@ -25,7 +31,7 @@ export class Empresas {
     longitud?: number;
     latitud?: number;
     estEmpresas?: boolean;
-    usosAplicaciones?:UsosAplicaciones[]
+    usosAplicaciones?: UsosAplicaciones[]
     beneficios?: Beneficios[];
     noticias?: Noticias[];
     empleados?: Empleados[];

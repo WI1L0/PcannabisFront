@@ -27,7 +27,8 @@
                     <div class="col-xs-12 col-sm-4">
                         <h2>¿Quiénes somos?</h2>
                         <blockquote>
-                            <p>
+                            <p >
+                                
                                 {{ empresaObject.historia }}
                             </p>
                         </blockquote>
@@ -84,7 +85,7 @@
 <div class="divPrimero">
     <div class="divSegundo_pading">
         <span class="divTercero">
-            <h1 class="h1All">INSTALACIONES ADMINISTRATIVAS</h1>
+            <h1 class="h1All">Instalaciones Administrativas</h1>
         </span>
         <section class="sectionImagenes">
             <!-- IMAGENES -->
@@ -125,26 +126,45 @@
                     <input type="radio" id="tab3" name="tab-control">
                     <input type="radio" id="tab4" name="tab-control">
                     <ul>
-                        <li title="Features"><label for="tab1" role="button"><img src="../../../assets/img/val1.png"
-                                    alt=""><br><span>COMPROMISO</span></label></li>
-                        <li title="Delivery Contents"><label for="tab2" role="button"><img
-                                    src="../../../assets/img/val2.png" alt=""><br><span>HONESTIDAD</span></label></li>
-                        <li title="Shipping"><label for="tab3" role="button"><img src="../../../assets/img/val3.png"
-                                    alt=""><br><span>INNOVACIÓN</span></label></li>
-                        <li title="Returns"><label for="tab4" role="button"><img src="../../../assets/img/val4.jpg"
-                                    alt=""><br><span>RESPONSABILIDAD</span></label></li>
+                        <!-- <li title="Features"><label for="tab1" role="button"><img src="../../../assets/img/val1.png"
+                                    alt=""><br><span>{{empresaObject.valor1?.titulo}}</span></label></li> -->
+                        <li title="Features">
+                            <label for="tab1" role="button">
+                                <img src="../../../assets/img/val1.png" alt=""><br>
+                                <div class="title">{{empresaObject.valor1?.titulo}}</div>
+                            </label>
+                        </li>
+                        <li title="Delivery Contents">
+                            <label for="tab2" role="button">
+                                <img src="../../../assets/img/val2.png" alt=""><br>
+                                <div class="title">HONESTIDAD</div>
+                            </label>
+                        </li>
+                        <li title="Shipping">
+                            <label for="tab3" role="button">
+                                <img src="../../../assets/img/val3.png" alt=""><br>
+                                <div class="title">INNOVACIÓN</div>
+                            </label>
+                        </li>
+                        <li title="Returns">
+                            <label for="tab4" role="button">
+                                <img src="../../../assets/img/val4.jpg" alt=""><br>
+                                <div class="title">INNOVACIÓN</div>
+                            </label>
+                        </li>
+
                     </ul>
                     <div class="slider">
                         <div class="indicator"></div>
                     </div>
                     <div class="content">
                         <section>
-                            <h2>COMPROMISO</h2>
-                            Nuestro compromiso es mantener altos estándares de calidad desde el inicio de nuestra cadena
-                            productiva hasta su consumidor final.
+                            <h2>
+                                {{empresaObject.valor1?.titulo}}</h2>
+                            {{empresaObject.valor1?.descripcion}}
                         </section>
                         <section>
-                            <h2>HONESTIDAD</h2>
+                            <h2 class="valores">HONESTIDAD</h2>
                             La honestidad en todos nuestros procedimientos de gestión interna y externa es un pilar
                             fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
                         </section>
