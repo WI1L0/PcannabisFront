@@ -1,7 +1,13 @@
 // ALL
-$color-all-uno: #bbb9bc;
-$color-all-dos: #bbb9bc;
+$color-all-uno: #ffffff;
+$color-all-dos: #ffffff;
+$color-fondo1: #1a1e1a;
+$color-letra: #000000;
+$color-letrav: #3fa22d;
 $color-all-empresas: #bbb9bc;
+$fuente-principal: "Monserrat", sans-serif;
+$fuente-secundaria: "Century Gothic", sans-serif;
+$negrita: bold;
 
 .divPrimero {
   position: relative;
@@ -98,21 +104,25 @@ body {
   section {
     max-width: 1200px;
     margin: 0 auto;
+    color:$color-letra ;
 
     h1 {
-      font-weight: 300;
+      font-weight: $negrita;
       font-size: 30px;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     h2 {
       font-weight: 300;
       font-size: 20px;
       margin-bottom: 40px;
+      color: $color-letrav;
     }
 
     p {
       margin-bottom: 40px;
+      
     }
   }
 }

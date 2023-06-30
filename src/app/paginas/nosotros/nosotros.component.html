@@ -18,6 +18,7 @@
 
 
 
+
 <div class="divPrimeroBlack">
     <div class="divSegundo_padingBlack">
         <!-- VISION_MISION -->
@@ -27,8 +28,8 @@
                     <div class="col-xs-12 col-sm-4">
                         <h2>¿Quiénes somos?</h2>
                         <blockquote>
-                            <p >
-                                
+                            <p>
+
                                 {{ empresaObject.historia }}
                             </p>
                         </blockquote>
@@ -81,7 +82,6 @@
 
 
 
-
 <div class="divPrimero">
     <div class="divSegundo_pading">
         <span class="divTercero">
@@ -118,71 +118,167 @@
             <h1 class="h1All">Valores</h1>
         </span>
         <!-- VALORES -->
-        <section class="valoresSection">
+        <section class="valoresSection" id="valores">
             <div class="bodyValores">
-                <div class="tabs">
-                    <input type="radio" id="tab1" name="tab-control" checked>
-                    <input type="radio" id="tab2" name="tab-control">
-                    <input type="radio" id="tab3" name="tab-control">
-                    <input type="radio" id="tab4" name="tab-control">
-                    <ul>
-                        <!-- <li title="Features"><label for="tab1" role="button"><img src="../../../assets/img/val1.png"
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tabs">
+                            <input type="radio" id="tab1" name="tab-control" checked>
+                            <input type="radio" id="tab2" name="tab-control">
+                            <input type="radio" id="tab3" name="tab-control">
+                            <input type="radio" id="tab4" name="tab-control">
+                            <ul>
+                                <!-- <li title="Features"><label for="tab1" role="button"><img src="../../../assets/img/val1.png"
                                     alt=""><br><span>{{empresaObject.valor1?.titulo}}</span></label></li> -->
-                        <li title="Features">
-                            <label for="tab1" role="button">
-                                <img src="../../../assets/img/val1.png" alt=""><br>
-                                <div class="title">{{empresaObject.valor1?.titulo}}</div>
-                            </label>
-                        </li>
-                        <li title="Delivery Contents">
-                            <label for="tab2" role="button">
-                                <img src="../../../assets/img/val2.png" alt=""><br>
-                                <div class="title">HONESTIDAD</div>
-                            </label>
-                        </li>
-                        <li title="Shipping">
-                            <label for="tab3" role="button">
-                                <img src="../../../assets/img/val3.png" alt=""><br>
-                                <div class="title">INNOVACIÓN</div>
-                            </label>
-                        </li>
-                        <li title="Returns">
-                            <label for="tab4" role="button">
-                                <img src="../../../assets/img/val4.jpg" alt=""><br>
-                                <div class="title">INNOVACIÓN</div>
-                            </label>
-                        </li>
 
-                    </ul>
-                    <div class="slider">
-                        <div class="indicator"></div>
-                    </div>
-                    <div class="content">
-                        <section>
-                            <h2>
-                                {{empresaObject.valor1?.titulo}}</h2>
-                            {{empresaObject.valor1?.descripcion}}
-                        </section>
-                        <section>
-                            <h2 class="valores">HONESTIDAD</h2>
-                            La honestidad en todos nuestros procedimientos de gestión interna y externa es un pilar
-                            fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
-                        </section>
-                        <section>
-                            <h2>INNOVACIÓN</h2>
-                            Estamos preparándonos constantemente en las actualizaciones técnicas, formativas,
-                            científicas y normativas, con el fin de aplicarlo en todos nuestros departamentos de
-                            gestión, producción y comercialización.
-                        </section>
-                        <section>
-                            <h2>RESPONSABILIDAD</h2>Nuestra empresa se caracteriza por un alto grado de responsabilidad
-                            social y ambiental por cada una las actividades que sean realizadas.
-                        </section>
+                                <li title="Features">
+                                    <label for="tab1" role="button">
+                                        <img src="../../../assets/img/val1.png" alt=""><br>
+                                        <div class="title">{{empresaObject.valor1?.titulo}}</div>
+                                    </label>
+                                </li>
+                                <li title="Delivery Contents">
+                                    <label for="tab2" role="button">
+                                        <img src="../../../assets/img/val2.png" alt=""><br>
+                                        <div class="title">HONESTIDAD</div>
+                                    </label>
+                                </li>
+                                <li title="Shipping">
+                                    <label for="tab3" role="button">
+                                        <img src="../../../assets/img/val3.png" alt=""><br>
+                                        <div class="title">INNOVACIÓN</div>
+                                    </label>
+                                </li>
+                                <li title="Returns">
+                                    <label for="tab4" role="button">
+                                        <img src="../../../assets/img/val4.jpg" alt=""><br>
+                                        <div class="title">RESPONSABILIDAD</div>
+                                    </label>
+                                </li>
+
+                            </ul>
+                            <div class="slider">
+                                <div class="indicator"></div>
+                            </div>
+                            <div class="content">
+                                <section>
+                                    <h2 class="valores">
+                                        {{empresaObject.valor1?.titulo}}</h2>
+                                    {{empresaObject.valor1?.descripcion}}
+                                </section>
+                                <section>
+                                    <h2 class="valores">HONESTIDAD</h2>
+                                    La honestidad en todos nuestros procedimientos de gestión interna y externa es un
+                                    pilar
+                                    fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
+                                </section>
+                                <section>
+                                    <h2 class="valores">INNOVACIÓN</h2>
+                                    Estamos preparándonos constantemente en las actualizaciones técnicas, formativas,
+                                    científicas y normativas, con el fin de aplicarlo en todos nuestros departamentos de
+                                    gestión, producción y comercialización.
+                                </section>
+                                <section>
+                                    <h2 class="valores">RESPONSABILIDAD</h2>Nuestra empresa se caracteriza por un alto
+                                    grado de
+                                    responsabilidad
+                                    social y ambiental por cada una las actividades que sean realizadas.
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- VALORES -->
     </div>
 </div>
-<!-- ALL -->
+
+<!-- VALORES -->
+
+
+
+<div class="divPrimero">
+    <div class="divSegundo_padingBlack">
+        <span class="divTercero">
+            <h1 class="titulos">Contacto</h1>
+        </span>
+        <!-- FORMULARIO -->
+
+        <section class="formularioSection">
+            <div class="bodyformulario">
+                <form action="">
+                    <section class="layout 2">
+                        <div class="input-box">
+                            <input type="text" placeholder="Name*" required class="campos">
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Email*" required class="campos">
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Subject*" required class="campos">
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Description" class="descripcion">
+                        </div>
+
+                        <body>
+                            <div class="text sign-up-text" class="texto">¿Quieres ser nuestro distribuidor? <a
+                                    class="link" onclick="mostrar()">clic</a></div>
+                        </body>
+
+                        <div class="button input-box">
+                            <!-- <div class="text sign-up-text" >¿Quieres ser nuestro distribuidor? <label for="flip">clic</label> </div> -->
+                            <input type="submit" value="Enviar" class="enviar">
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- DISTRIBUIDOR -->
+
+
+        <section class="layout3" id="layout3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 border p-3 " style="border-color: #3fa22d" > <!-- Sección derecha -->
+                        <!-- Contenido de la segunda sección -->
+                        <h1 class="titulodis">Contacto</h1>
+                        <p class="direccion">Dirección: Av. 10 de Agosto y Eduardo Malo. Cuenca-Ecuador</p>
+                        <p class="email"> Email: ventas@soinmed.com</p>
+                        <i class="celular">Celular</i><a class="telefono" href="https://wa.me/593985696078">(+593) 98
+                            5696078</a>
+
+                    </div>
+                    <div class="col-md-2 border p-1 border-color: #3fa22d;">
+                        <h1 class="titulodis">Horarios</h1>
+                        <p class="horarios">Lunes a Viernes: <br />
+                            08:30AM – 13:00PM / 14:30PM - 18:00PM
+                        </p>
+                    </div>
+                    <div class="col-md-5 " >
+                        <div class="col max-mb-30 aos-init aos-animate" data-aos="fade-up">
+                            <a class="icon-box text-center" style="background-color: #030303" data-abc="true">
+                                <div class="icon">
+                                    <img class="imagen" src="../../../assets/img/disbribuidor pharma.jpeg" />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+        <!-- DISTRIBUIDOR -->
+
+        <!-- FORMULARIO -->
+        <!-- </div> -->
+
+        <!-- </section> -->
+
+
+    </div>
+    <!-- ALL -->

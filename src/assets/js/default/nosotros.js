@@ -28,3 +28,15 @@ $(function(){
     $('a[title]').tooltip();
     });
 // VALORES
+
+
+//formulario
+function mostrar(){
+  // document.getElementById('layout3').style.display = 'block';
+  var layout3 = document.getElementById('layout3');
+  layout3.style.display = 'block';
+  layout3.scrollIntoView({ behavior: 'smooth' });
+  }
+//formulario
+
+//distribuidor

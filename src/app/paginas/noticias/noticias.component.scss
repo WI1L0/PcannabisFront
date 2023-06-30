@@ -1,7 +1,15 @@
 // ALL
-.fondoo {
-  @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+$color-all-uno: #ffffff;
+$color-all-dos: #ffffff;
+$color-fondo1: #1a1e1a;
+$color-letra: #000000;
+$color-letrav: #3fa22d;
+$color-all-empresas: #bbb9bc;
+$fuente-principal: "Monserrat", sans-serif;
+$fuente-secundaria: "Century Gothic", sans-serif;
+$negrita: bold;
 
+.fondoo {
   * {
     border: 0;
     box-sizing: border-box;
@@ -10,8 +18,8 @@
   }
 
   .bodyfondo {
-    color: rgb(100, 100, 100);
-    font-family: 'Poiret One', cursive, helvetica;
+    color: $color-fondo1;
+    font-family: $fuente-principal;
     font-size: 100%;
     line-height: 1.3
   }
@@ -33,9 +41,9 @@
   }
 
   .texto-interior {
-    color: #fff;
+    color: $color-all-uno;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight:$negrita;
     left: 10%;
     position: absolute;
     text-align: center;
@@ -44,13 +52,19 @@
   }
 
   .img-uno {
-    background-image: url('https://tinyurl.com/jp56xcg')
+    background-image: url('../../../assets/img/fondo_1.jpeg')
   }
 
   .texto {
     padding: 5%;
-    width: 90%
+    width: 90%;
+    font-family: $fuente-secundaria;
   }
+  .titulo{
+    font-weight: 600;
+    font-size: 50px;
+  }
+  
 }
 
 .contentBlog {
@@ -133,20 +147,21 @@
       }
 
       .author:before {
-        font-family: FontAwesome;
+        font-family:$fuente-principal;
         margin-right: 10px;
         content: "\f007";
       }
 
       .date:before {
-        font-family: FontAwesome;
+        font-family: $fuente-secundaria;
         margin-right: 10px;
         content: "\f133";
+        font-weight: $negrita;
       }
 
       .tags {
         ul:before {
-          font-family: FontAwesome;
+          font-family: $fuente-secundaria;
           content: "\f02b";
           margin-right: 10px;
         }
@@ -163,13 +178,13 @@
 
     .description {
       padding: 1rem;
-      background: $color_white;
+      background: $color-all-uno;
       position: relative;
       z-index: 1;
 
       h1,
       h2 {
-        font-family: Poppins, sans-serif;
+        font-family: $fuente-principal;
       }
 
       h1 {
@@ -182,7 +197,7 @@
         font-size: 1rem;
         font-weight: 300;
         text-transform: uppercase;
-        color: $color_grey_dark;
+        color: $color-letra;
         margin-top: 5px;
       }
 
@@ -190,7 +205,7 @@
         text-align: right;
 
         a {
-          color: $color_prime;
+          color: $color-letrav;
           display: inline-block;
           position: relative;
 
@@ -214,6 +229,7 @@
     p {
       position: relative;
       margin: 1rem 0 0;
+      font-family: $fuente-secundaria;
 
       &:first-of-type {
         margin-top: 1.25rem;

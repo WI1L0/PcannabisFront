@@ -1,8 +1,8 @@
 // ALL
 $color-all-uno: #ffffff;
 $color-all-dos: #ffffff;
-$color-fondo1:#1a1e1a;
-$color-letra:#000000;
+$color-fondo1: #1a1e1a;
+$color-letra: #000000;
 $color-letrav: #3fa22d;
 // $color-all-uno: #4d4d4b;
 // $color-all-dos: #4d4d4b;
@@ -58,8 +58,8 @@ $negrita: bold;
 .divTercero {
   background-color: $color-all-dos;
   font-size: 25px;
-  color: #f7f7f7;
-  padding: 10px 10px;
+  color: $color-all-dos;
+  // padding: 10px 10px;
 }
 
 
@@ -68,6 +68,10 @@ $negrita: bold;
   text-align: center;
   font-family: #{$fuente-principal};
   color: $color-letra;
+  background-color: $color-letrav;
+  padding: auto;
+  // box-shadow: 0 15px 5px #3fa22d, 0 10px 10px rgba(169, 159, 159, 0.25);
+
 }
 
 // ALL
@@ -78,7 +82,7 @@ $negrita: bold;
 
 // CAROUSEL
 .bodyCarusel {
-  background-color: #000;
+  background-color: $color-letra;
 }
 
 .slide-one-image {
@@ -121,6 +125,7 @@ $negrita: bold;
 .carousel .container {
   z-index: 9999;
   position: relative;
+
 }
 
 .carousel-item-bg {
@@ -128,6 +133,7 @@ $negrita: bold;
   z-index: 2;
   width: 100%;
   height: 100%;
+
 }
 
 .carousel-item-bg img {
@@ -141,6 +147,7 @@ $negrita: bold;
   width: 100%;
   overflow: hidden;
   height: 60vh;
+  margin-top: 70px;
 }
 
 .carousel-control-next,
@@ -151,6 +158,7 @@ $negrita: bold;
 nav+.carousel {
   top: -60px;
   margin-bottom: -60px;
+
 }
 
 .carousel-item .container img {
@@ -163,6 +171,7 @@ nav+.carousel {
   width: 100% !important;
   height: auto !important;
   max-width: 60%;
+  margin-top: 50px;
 }
 
 @media (max-width: 768px) {
@@ -172,15 +181,17 @@ nav+.carousel {
 
   .carousel-inner {
     height: 60vh;
+
   }
 
   .home-hero-header {
-    background-color: #031531;
+    background-color: $color-letra;
     color: #fff;
     padding: 3vh 3vw;
     margin-top: 60vh !important;
     margin-left: 0vw;
     width: 100%;
+
   }
 
   .carousel-control-next,
@@ -243,7 +254,7 @@ nav+.carousel {
       z-index: 99;
       text-decoration: none;
       background-color: $color-letrav;
-      box-shadow: 0 10px 5px #3fa22d, 0 10px 10px rgba(169, 159, 159, 0.25);
+      box-shadow: 0 10px 5px $color-letrav, 0 10px 10px rgba(169, 159, 159, 0.25);
     }
 
     .col-md-3 {
@@ -256,13 +267,13 @@ nav+.carousel {
 
     .icon-box:hover {
       z-index: 1;
-      background-color: #abac;
+      // background-color: #abac;
       background-color: $color-fondo1;
       // background-color: $color-all-uno;
       -webkit-box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
       box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
       transform: translateY(-15px);
-      
+
     }
 
     .icon-box .content .title.fz-20 {
@@ -296,7 +307,7 @@ nav+.carousel {
     .parrafo1 {
       text-align: justify;
       color: #f7f7f7;
-      
+
     }
   }
 }
@@ -327,6 +338,7 @@ nav+.carousel {
       font-weight: 500;
       line-height: 1.5;
       text-decoration: none;
+
     }
 
     .buttonsecundary {
@@ -338,14 +350,25 @@ nav+.carousel {
       box-shadow: #048ABF 0px 0px 0px 0px;
       animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
       align-items: center;
-      border: 0;
+      background-color: #6654c9;
+      background-size: 100% auto;
+      // margin: 200px;
 
-      width: 100px;
-      height: 40px;
+
+      width: 200px;
+      height: 80px;
+    }
+
+    a img {
+      background-color: transparent;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
     }
 
     .buttonsecundary:is(:hover, :focus) {
       transform: scale(1.2);
+
     }
 
     @keyframes pulse {
@@ -377,6 +400,7 @@ nav+.carousel {
     font-weight: 700;
     color: $color-all-uno;
     line-height: 1;
+
   }
 
   .pNunakay {
@@ -397,8 +421,9 @@ nav+.carousel {
     font-size: 1em;
     line-height: 1.5;
     color: #303336;
+    // box-shadow: 0 10px 5px $color-letrav, 0 10px 10px rgba(169, 159, 159, 0.25);
     background-color: $color-fondo1;
-    box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
+    // box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
   }
 
   .main-card .card-content {
@@ -584,32 +609,57 @@ nav+.carousel {
     }
   }
 
-  @media only screen and (max-width: 500px) {
-    .main-card {
-      margin: 120px 20px;
+  // @media only screen and (max-width: 500px) {
+  //   .main-card {
+  //     margin: 120px 20px;
+  //   }
+
+  //   .main-card .card-content {
+  //     padding: 25px;
+  //   }
+
+  //   .main-card .content-right {
+  //     width: 100%;
+  //     height: auto;
+  //     padding: 115px 0 0;
+  //   }
+
+  //   .main-card .mini-imgs {
+  //     margin-top: 20px;
+  //   }
+
+  //   .main-card .mini-imgs .imgNunakay {
+  //     width: calc(100% / 3);
+  //     height: 60px;
+  //   }
+  // @media screen and (max-width: 992px) {
+  //   .content-right {
+  //     padding: 30px 15px;
+  //   }
+
+  //   .mini-img {
+  //     width: 70px;
+  //     height: 70px;
+  //   }
+  // }
+
+  @media screen and (max-width: 768px) {
+    .content-right {
+      padding: 30px 10px;
     }
 
-    .main-card .card-content {
-      padding: 25px;
+    .mini-img {
+      width: 50px;
+      height: 50px;
     }
 
-    .main-card .content-right {
-      width: 100%;
-      height: auto;
-      padding: 115px 0 0;
+    .tag {
+      display: none;
     }
-
-    .main-card .mini-imgs {
-      margin-top: 20px;
-    }
-
-    .main-card .mini-imgs .imgNunakay {
-      width: calc(100% / 3);
-      height: 60px;
-    }
-
   }
+
 }
+
 
 // NUNAKAY
 
@@ -675,6 +725,7 @@ nav+.carousel {
   .slider::after {
     background: linear-gradient(to right, $color-all-uno 0%, rgba(255, 255, 255, 00) 100%);
     // background-color: $color-fondo1;
+    
     // background: linear-gradient(to right, $color-fondo1 0%, rgba(255, 255, 255, 00) 100%);
     content: '';
     height: 100%;

@@ -11,7 +11,7 @@ $negrita: bold;
 
 .divPrimero {
   position: relative;
-  background-color: $color-all-uno;
+  // background-color: $color-all-uno;
 }
 
 .divSegundo {
@@ -19,6 +19,7 @@ $negrita: bold;
   background-color: $color-all-uno;
   text-align: center;
   text-align: justify;
+  padding: 50px 80px;
 }
 
 .divSegundo_pading {
@@ -34,6 +35,7 @@ $negrita: bold;
 .divPrimeroBlack {
   position: relative;
   background-color: $color-all-dos;
+  padding: 50px 80px;
 }
 
 .divSegundoBlack {
@@ -55,7 +57,7 @@ $negrita: bold;
   background-color: $color-all-dos;
   font-size: 25px;
   color: #f7f7f7;
-  padding: 10px 10px;
+  // padding: 10px 10px;
 }
 
 
@@ -67,9 +69,14 @@ $negrita: bold;
   color: $color-letra;
 }
 
+.h1All {
+  background-color: $color-letrav;
+}
+
 .tittle1 {
   font-family: #{$fuente-principal};
 }
+
 
 
 // ALL
@@ -302,6 +309,33 @@ $negrita: bold;
   }
 }
 
+@media screen and (max-width: 774px) {
+  .container {
+    flex-wrap: wrap;
+    height: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  span.image {
+    flex-basis: calc(50% - 1rem);
+    height: 15rem;
+    margin: 0.5rem 0.5rem 2rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: static;
+    transform: none;
+  }
+
+  span.image:before {
+    padding-left: 0;
+  }
+}
+
 // EQUIPO
 
 
@@ -334,7 +368,7 @@ $negrita: bold;
   }
 
   #galeria nav {
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 
   #galeria nav img {
@@ -344,7 +378,53 @@ $negrita: bold;
     width: 150px;
     height: 150px;
   }
+
+
+  /* Estilos para pantallas medianas y grandes */
+  @media screen and (max-width: 774px) {
+    .divPrimero {
+      width: 100%;
+    }
+
+    .divSegundo,
+    .divSegundo_pading {
+      padding: 0px;
+    }
+
+    .sectionImagenes {
+      margin-top: 5px;
+    }
+
+    #galeria {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #galeria nav {
+      margin-top: 0.5em;
+    }
+
+    #ampliacao {
+      width: 90%;
+    }
+
+    #miniaturas {
+      width: 35%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #miniaturas a {
+      margin: 10px;
+      width: calc(50% - 2.5px);
+      height: 100px;
+    }
+  }
 }
+
+
 
 // IMAGENES
 
@@ -355,27 +435,55 @@ $negrita: bold;
 // VALORES
 .valoresSection {
 
-  // @import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
-  // width: 100%;
-  // height: 100%;
-
+  overflow: hidden;
   .bodyValores {
     background: transparent;
     color: $color-fondo1;
     font-family: #{$fuente-principal};
     height: 100%;
     font-family: $negrita;
+    
   }
+  .tittle1{
+    size: 2px;
+  }
+/* Media queries para pantallas pequeñas */
+@media (max-width: 556px) {
+  .tabs li {
+    margin-bottom: 10px;
+  }
+  .content h2 {
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+  }
+}
+
+/* Media queries para pantallas medianas */
+@media (min-width: 774px) and (max-width: 768px) {
+  .tabs li {
+    margin-bottom: 20px;
+  }
+}
 
   .h2All {
     font-family: $negrita;
     color: $color-letra;
+    text-size-adjust: 10px;
   }
 
 
   li img {
     width: 50px;
     margin: 10px;
+  }
+
+  .content {
+    padding: 20px 0;
+    /* Agrega un espacio entre el borde de la sección y el contenido */
+    max-height: 400px;
+    /* Limita la altura máxima del contenido */
+    overflow-y: auto;
+    /* Agrega una barra de desplazamiento vertical si el contenido es demasiado largo */
+   
   }
 
   .tabs {
@@ -386,13 +494,18 @@ $negrita: bold;
     font-family: $fuente-secundaria;
     padding: 50px;
     padding-bottom: 80px;
-    width: 70%;
+    width: 90%;
     height: 250px;
     // box-shadow: 0 14px 28px rgba(155, 144, 144, 0.25), 0 10px 10px rgba(155, 144, 144, 0.25);
     box-shadow: 10px 15px 5px #3fa22d, 0 10px 10px rgba(169, 159, 159, 0.25);
     border-radius: 5px;
     min-width: 240px;
-    text-align: center;
+    padding: 20px 0;
+    /* Agrega un espacio entre el borde de la sección y el contenido */
+    max-height: 400px;
+    /* Limita la altura máxima del contenido */
+    overflow-y: auto;
+
   }
 
   .tabs input[name="tab-control"] {
@@ -502,6 +615,7 @@ $negrita: bold;
   .tabs .content section h2 {
     color: $color-letrav;
     display: none;
+    
   }
 
   .tabs .content section h2::after {
@@ -655,7 +769,127 @@ $negrita: bold;
       display: block;
     }
 
+    /* Media queries para pantallas pequeñas */
+    @media (max-width: 576px) {
+      .tabs li {
+        margin-bottom: 10px;
+      }
+    }
+
   }
+
 }
 
+
 // VALORES
+
+//FORMULARIO
+// .formularioSection{
+.titulos {
+  font-family: $fuente-principal;
+  color: $color-letrav;
+  text-align: center;
+}
+
+.campos {
+  font-family: $fuente-principal;
+  color: $color-letra;
+  background-color: #F3F0F2;
+  border-block-start: none;
+  width: 70%;
+  margin: 3px;
+  background-position: center;
+  background-size: min(80%, 800px) max(30vw, 700px);
+}
+
+.descripcion {
+  font-family: $fuente-principal;
+  color: $color-letra;
+  text-size-adjust: initial;
+  background-color: #F3F0F2;
+  border-block-start: none;
+  height: 200px;
+  margin: 3px;
+  width: 70%;
+  justify-content: center;
+  padding: 12px 10px 3px 5px;
+  background-size: min(80%, 800px) max(30vw, 700px);
+  display: flex;
+
+}
+
+.input-box {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+
+}
+
+.enviar {
+  color: $color-all-uno;
+  background-color: $color-letrav;
+  font-size: 20px;
+  padding: 5px 10px;
+  text-align: right;
+}
+
+.button {
+  text-align: right;
+}
+
+.hola {
+  color: #3fa22d;
+}
+
+.texto {
+  color: #000;
+  margin-left: 15%;
+}
+
+#layout3 {
+  display: none;
+}
+
+.mostrar {
+  display: block;
+}
+
+.link {
+  font-family: $fuente-secundaria;
+  cursor: pointer;
+}
+
+
+//distribuidor 
+.layout3{
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+.imagen{
+  width: 70%;
+  height: 100%;
+}
+.titulodis{
+  font-size: 24px; 
+  font-family: $fuente-principal;
+  font-weight: $negrita;
+  color: $color-letrav;
+}
+.row .col-md-4 .row .col-md-2{
+  border-radius: 3px;
+  border-color:$color-letra;
+  background-color: $color-all-empresas;
+}
+.layout3{
+  color: $color-letra;
+  font-family: $fuente-secundaria;
+  border: #000;
+  border-radius: 30px;
+}
+.horarios1{
+  border-radius: 10px;
+}
+
+
+
+//distribuidor

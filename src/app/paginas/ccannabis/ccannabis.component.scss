@@ -1,7 +1,13 @@
 // ALL
-$color-all-uno: #bbb9bc;
-$color-all-dos: #bbb9bc;
+$color-all-uno: #ffffff;
+$color-all-dos: #ffffff;
+$color-fondo1: #1a1e1a;
+$color-letra: #000000;
+$color-letrav: #3fa22d;
 $color-all-empresas: #bbb9bc;
+$fuente-principal: "Monserrat", sans-serif;
+$fuente-secundaria: "Century Gothic", sans-serif;
+$negrita: bold;
 
 .divPrimero {
   position: relative;
@@ -19,7 +25,7 @@ $color-all-empresas: #bbb9bc;
   color: #ddd;
   background-color: $color-all-uno;
   text-align: center;
-  padding: 50px 80px;
+  padding: 10px 20px;
   text-align: justify;
 }
 
@@ -27,19 +33,19 @@ $color-all-empresas: #bbb9bc;
 
 .divPrimeroBlack {
   position: relative;
-  background-color: $color-all-dos;
+  background-color: $color-letrav;
 }
 
 .divSegundoBlack {
-  color: #ddd;
+  color: $color-all-uno;
   background-color: $color-all-dos;
   text-align: center;
   text-align: justify;
 }
 
 .divSegundo_padingBlack {
-  color: #ddd;
-  background-color: $color-all-dos;
+  color: $color-all-uno;
+  background-color: $color-letrav;
   text-align: center;
   padding: 50px 80px;
   text-align: justify;
@@ -47,18 +53,26 @@ $color-all-empresas: #bbb9bc;
 
 .divTercero {
   background-color: $color-all-dos;
-  font-size: 25px;
+  font-size: 30px;
   color: #f7f7f7;
-  padding: 10px 10px;
+  // padding: 10px 10px;
 }
 
 
 
 .h1All {
   text-align: center;
-  font-family: "Lato";
-  color: #ffff;
+  font-family: $fuente-principal;
+  color: $color-letra;
+  background-color: $color-letrav;
+
 }
+
+.col-lg-7 {
+  box-shadow: 0 10px 5px $color-letrav, 0 10px 10px rgba(169, 159, 159, 0.25);
+  // background-color: $color-letrav;
+}
+
 
 // ALL
 
@@ -71,6 +85,7 @@ $color-all-empresas: #bbb9bc;
 
   .row {
     padding: 20px;
+    overflow: auto;
   }
 
   .text-color {
@@ -78,9 +93,15 @@ $color-all-empresas: #bbb9bc;
   }
 
   .flower-about {
-    margin-top: 65px;
+    // margin-top: 65px;
     animation-name: imgLeft;
     animation-duration: 3s;
+    // margin-top: 65px;
+    animation-name: imgLeft;
+    animation-duration: 3s;
+    max-width: 80%;
+
+    width: 100%;
   }
 
   .about-text {
@@ -111,7 +132,18 @@ $color-all-empresas: #bbb9bc;
       opacity: 1;
     }
   }
+
+  .h2All {
+    font-family: $fuente-secundaria;
+  }
+
+  .cannabisInfoSection .row .text-center {
+    display: flex;
+    align-items: center;
+  }
+
 }
+
 
 // INFO CANNABIS
 
@@ -119,11 +151,15 @@ $color-all-empresas: #bbb9bc;
 
 
 
-// pROCESO cULTIVO
-.tarjetaSection {
-padding-top: 200px;
+// PROCESO cULTIVO
 
-  display: flex;
+.tarjetaSection {
+  padding-top: 20px;
+
+  // display: flex;
+  .col-md-3 {
+    margin-top: 10px;
+  }
 
   h1 {
     color: #fff;
@@ -131,15 +167,6 @@ padding-top: 200px;
     margin: 0 0 5% 0;
     padding: 0.5em;
     margin: 0 0 5% 0;
-  }
-
-  .cardBox {
-    float: left;
-    font-size: 1.2em;
-    margin: 1% 0 0 1%;
-    perspective: 800px;
-    transition: all 0.3s ease 0s;
-    width: 23.7%;
   }
 
   .cardBox:hover .card {
@@ -162,9 +189,15 @@ padding-top: 200px;
     }
   }
 
+  .cardBox {
+    width: 100%;
+    height: 100%;
+  }
+
   .card p {
     margin-bottom: 1.8em;
     font-size: 20px;
+    text-align: justify;
   }
 
   .card .front,
@@ -179,11 +212,19 @@ padding-top: 200px;
     position: absolute;
     text-align: center;
     width: 100%;
+    overflow: auto;
+    /* Agregar esto */
+    padding: px;
+    /* Agregar esto */
+
   }
 
   .card .back {
     transform: rotateY(180deg);
+    // overflow: auto; /* Agregar esto */
+    // padding: 20px; /* Agregar esto */
   }
+
 
   .card .back a {
     padding: 0.3em 0.5em;
@@ -201,20 +242,21 @@ padding-top: 200px;
     text-shadow: 0 0 1px #333;
   }
 
-  .cardBox:nth-child(1) .card .back {
+  .col-md-3:nth-child(1) .cardBox .card .back {
     background: #8BC34A;
   }
 
-  .cardBox:nth-child(2) .card .back {
+  .col-md-3:nth-child(2) .cardBox .card .back {
     background: #4CAF50;
   }
 
-  .cardBox:nth-child(3) .card .back {
+  .col-md-3:nth-child(3) .cardBox .card .back {
     background: #E91E63;
   }
 
-  .cardBox:nth-child(4) .card .back {
+  .col-md-3:nth-child(4) .cardBox .card .back {
     background: #FFC107;
+    z-index: -1;
   }
 
   .cardBox:nth-child(2) .card {
@@ -230,6 +272,7 @@ padding-top: 200px;
   .cardBox:nth-child(4) .card {
     -webkit-animation: giro 2.5s 1;
     animation: giro 2.5s 1;
+
   }
 
   @-webkit-keyframes giro {
@@ -257,6 +300,7 @@ padding-top: 200px;
       margin-left: 2.8%;
       margin-top: 3%;
       width: 46%;
+      clear: both;
     }
 
     .card {

@@ -1,3 +1,14 @@
+:root {
+  --color-all-uno: #ffffff;
+  --color-all-dos: #ffffff;
+  --color-fondo1: #1a1e1a;
+  --color-letra: #000000;
+  --color-letrav: #3fa22d;
+  --color-all-empresas: #bbb9bc;
+  --fuente-principal: "Monserrat", sans-serif;
+  --fuente-secundaria: 'Century Gothic';
+  --negrita: bold;
+}
 .site-footer
 {
     /* border-top-right-radius: 40px;
@@ -12,7 +23,8 @@
   line-height:24px;
 }
 h6, p {
-  color: #F2F2F2;
+  color: #ffffff;
+  font-family:'Monserrat'
 }
 .pad {
   padding-left: 50px;
@@ -38,11 +50,12 @@ i {
   font-size:16px;
   text-transform:uppercase;
   margin-top:5px;
-  letter-spacing:2px
+  letter-spacing:2px;
+  font-family:'Monserrat'
 }
 .site-footer a
 {
-  color: #27313d;
+  color: #ffffff;
 }
 .site-footer a:hover
 {
@@ -56,11 +69,13 @@ i {
 }
 .footer-links li
 {
-  display:block
+  color: #ffffff;
+  display:block;
+  font-family: var(--fuente-principal)
 }
 .footer-links a
 {
-  color: #0D0D0D
+  color: #ffffff
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
@@ -116,7 +131,8 @@ i {
 .social-icons li
 {
   display:inline-block;
-  margin-bottom:4px
+  margin-bottom:4px;
+
 }
 .social-icons li.title
 {
@@ -157,14 +173,6 @@ i {
 {
   background-color:#3b5998
 }
-.social-icons a.twitter:hover
-{
-  background-color:#00aced
-}
-.social-icons a.linkedin:hover
-{
-  background-color:#007bb6
-}
 .social-icons a.dribbble:hover
 {
   background-color:#ea4c89
@@ -198,6 +206,7 @@ i {
   background-image: url(../../../assets/img/telefono.png);
   background-size: cover;
   vertical-align: middle;
+  color: #ffffff;
 }
 .iconubi{
   display: inline-block;
