@@ -309,6 +309,12 @@ nav+.carousel {
       color: #f7f7f7;
 
     }
+
+  }
+  @media only screen and (max-width: 1130px) {
+    .icon-box .icon img {
+      max-width: 100%;
+    }
   }
 }
 
@@ -352,7 +358,7 @@ nav+.carousel {
       align-items: center;
       background-color: #6654c9;
       background-size: 100% auto;
-      // margin: 200px;
+      margin: 1px;
 
 
       width: 200px;
@@ -400,6 +406,7 @@ nav+.carousel {
     font-weight: 700;
     color: $color-all-uno;
     line-height: 1;
+  
 
   }
 
@@ -423,6 +430,7 @@ nav+.carousel {
     color: #303336;
     // box-shadow: 0 10px 5px $color-letrav, 0 10px 10px rgba(169, 159, 159, 0.25);
     background-color: $color-fondo1;
+    overflow: hidden;
     // box-shadow: 0px 3px 8px rgb(61 74 84 / 10%), 0px 3px 12px rgb(61 74 84 / 6%);
   }
 
@@ -447,7 +455,7 @@ nav+.carousel {
     width: calc(100% - 10px);
     height: calc(100% - 10px);
     display: block;
-    margin: auto;
+    // margin: auto;
     object-fit: contain;
     object-position: center;
   }
@@ -496,6 +504,7 @@ nav+.carousel {
     height: 200px;
     border-radius: 10px;
     object-fit: cover;
+    
     object-position: center;
     cursor: pointer;
     transition: 200ms;
@@ -511,54 +520,54 @@ nav+.carousel {
   }
 
 
-  @media only screen and (max-width: 1600px) {
-    .divmain {
-      display: flex;
-      justify-content: center;
-      align-items: start;
-      height: auto;
-      min-height: 100vh;
-    }
+  // @media only screen and (max-width: 997px) {
+  //   .divmain {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: start;
+  //     height: auto;
+  //     min-height: 100vh;
+  //   }
 
-    .main-card {
-      position: relative;
-      width: 100%;
-      height: auto;
-    }
+  //   .main-card {
+  //     position: relative;
+  //     width: 100%;
+  //     height: auto;
+  //   }
 
-    .main-card .card-content {
-      flex-direction: column;
-    }
+  //   .main-card .card-content {
+  //     flex-direction: column;
+  //   }
 
-    .main-card .content-left {
-      width: 100%;
-      height: 300px;
-    }
+  //   .main-card .content-left {
+  //     width: 100%;
+  //     height: 300px;
+  //   }
 
-    .main-card .content-right {
-      width: 100%;
-      height: auto;
-      padding: 175px 0 0;
-    }
+  //   .main-card .content-right {
+  //     width: 100%;
+  //     height: auto;
+  //     padding: 175px 0 0;
+  //   }
 
-    .main-card .tag {
-      left: 0;
-      transform: translateX(0);
-    }
+  //   .main-card .tag {
+  //     left: 0;
+  //     transform: translateX(0);
+  //   }
 
-    .main-card .mini-imgs {
-      position: absolute;
-      display: flex;
-      top: 0;
-      margin-top: 10px;
-      height: 105px;
-    }
+  //   .main-card .mini-imgs {
+  //     position: absolute;
+  //     display: flex;
+  //     top: 0;
+  //     margin-top: 10px;
+  //     height: 105px;
+  //   }
 
-    .main-card .mini-imgs .imgNunakay {
-      width: calc(100% / 3);
-      height: 200px;
-    }
-  }
+  //   .main-card .mini-imgs .imgNunakay {
+  //     width: calc(100% / 3);
+  //     height: 200px;
+  //   }
+  // }
 
   @media only screen and (max-width: 992px) {
     .divmain {
@@ -599,14 +608,38 @@ nav+.carousel {
       position: absolute;
       display: flex;
       top: 0;
-      margin-top: 35px;
+      margin-top: 25px;
       height: 105px;
+      // margin-top: 100px;
     }
 
     .main-card .mini-imgs .imgNunakay {
       width: calc(100% / 3);
       height: 100px;
     }
+  }
+  @media only screen and (min-width: 993px) {
+    .main-card .mini-imgs-container {
+      width: 120%;
+      overflow-x: auto;
+    }
+  
+    .main-card .mini-imgs {
+      position: static;
+      margin-top: 0;
+      // display: inline-flex;
+      white-space: nowrap;
+      display: flex;
+    }
+  
+    .main-card .mini-imgs .imgNunakay {
+      // width: 100%;
+      height: 130px;
+      // margin-right: 15px;
+      vertical-align: top;
+      margin-block: 10px;
+    }
+
   }
 
   // @media only screen and (max-width: 500px) {
@@ -643,7 +676,7 @@ nav+.carousel {
   //   }
   // }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 400px) {
     .content-right {
       padding: 30px 10px;
     }
@@ -655,6 +688,48 @@ nav+.carousel {
 
     .tag {
       display: none;
+    }
+  }
+  @media only screen and (max-width: 540px) {
+    .main-card .mini-imgs .imgNunakay {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    .full-img {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .main-card .buttonsecundary{
+      font-size: 0.75em;
+      width: 150px;
+      height: 50px;
+    }
+  }
+  @media only screen and (max-width: 360px) {
+    .main-card {
+      // padding: 10px;
+    }
+  
+    .main-card .titulo-card {
+      font-size: 1.5em;
+    }
+  
+    .main-card .mini-imgs-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+  
+    .main-card .mini-imgs .imgNunakay {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+  
+    .main-card .buttonsecundary {
+      font-size: 0.75em;
+      padding: 5px 10px;
     }
   }
 

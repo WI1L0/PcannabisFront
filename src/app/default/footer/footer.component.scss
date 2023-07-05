@@ -1,14 +1,12 @@
-:root {
-  --color-all-uno: #ffffff;
-  --color-all-dos: #ffffff;
-  --color-fondo1: #1a1e1a;
-  --color-letra: #000000;
-  --color-letrav: #3fa22d;
-  --color-all-empresas: #bbb9bc;
-  --fuente-principal: "Monserrat", sans-serif;
-  --fuente-secundaria: 'Century Gothic';
-  --negrita: bold;
-}
+$color-all-uno: #ffffff;
+$color-all-dos: #ffffff;
+$color-fondo1: #1a1e1a;
+$color-letra: #000000;
+$color-letrav: #3fa22d;
+$color-all-empresas: #bbb9bc;
+$fuente-principal: "Monserrat", sans-serif;
+$fuente-secundaria: "Century Gothic", sans-serif;
+$negrita: bold;
 .site-footer
 {
     /* border-top-right-radius: 40px;
@@ -51,7 +49,8 @@ i {
   text-transform:uppercase;
   margin-top:5px;
   letter-spacing:2px;
-  font-family:'Monserrat'
+  font-family: $fuente-principal
+
 }
 .site-footer a
 {
@@ -71,7 +70,7 @@ i {
 {
   color: #ffffff;
   display:block;
-  font-family: var(--fuente-principal)
+  font-family: $fuente-principal
 }
 .footer-links a
 {

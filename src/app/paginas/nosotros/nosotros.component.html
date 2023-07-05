@@ -29,8 +29,8 @@
                         <h2>¿Quiénes somos?</h2>
                         <blockquote>
                             <p>
-
-                                {{ empresaObject.historia }}
+                                Es una Empresa Farmacéutica Ecuatoriana que se dedica a la producción y comercialización
+                                de productos con cannabis, con fines medicinales.
                             </p>
                         </blockquote>
                     </div>
@@ -38,7 +38,9 @@
                         <h2>Nuestra Misión</h2>
                         <blockquote>
                             <p>
-                                {{ empresaObject.mision }}
+                                Es ser una solución en la línea de productos con cannabis, así, convertirnos en un
+                                respaldo cercano y al servicio del país, siempre apoyados en el estudio científico y los
+                                profesionales de la salud.
                             </p>
                         </blockquote>
                     </div>
@@ -46,7 +48,8 @@
                         <h2>Nuestra Visión</h2>
                         <blockquote>
                             <p>
-                                {{ empresaObject.vision }}
+                                Es aportar a la salud de los pacientes y sus familias, brindando una plataforma segura y
+                                confiable para el acceso del producto, y así disfrutar de sus múltiples beneficios
                             </p>
                         </blockquote>
                     </div>
@@ -134,7 +137,7 @@
                                 <li title="Features">
                                     <label for="tab1" role="button">
                                         <img src="../../../assets/img/val1.png" alt=""><br>
-                                        <div class="title">{{empresaObject.valor1?.titulo}}</div>
+                                        <div class="title">COMPROMISO</div>
                                     </label>
                                 </li>
                                 <li title="Delivery Contents">
@@ -162,29 +165,22 @@
                             </div>
                             <div class="content">
                                 <section>
-                                    <h2 class="valores">
-                                        {{empresaObject.valor1?.titulo}}</h2>
-                                    {{empresaObject.valor1?.descripcion}}
+                                  <h2 class="valores">COMPROMISO</h2>
+                                  Nuestro compromiso es mantener altos estándares de calidad desde el inicio de nuestra cadena productiva hasta su consumidor final.
                                 </section>
                                 <section>
-                                    <h2 class="valores">HONESTIDAD</h2>
-                                    La honestidad en todos nuestros procedimientos de gestión interna y externa es un
-                                    pilar
-                                    fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
+                                  <h2 class="valores">HONESTIDAD</h2>
+                                  La honestidad en todos nuestros procedimientos de gestión interna y externa es un pilar fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
                                 </section>
                                 <section>
-                                    <h2 class="valores">INNOVACIÓN</h2>
-                                    Estamos preparándonos constantemente en las actualizaciones técnicas, formativas,
-                                    científicas y normativas, con el fin de aplicarlo en todos nuestros departamentos de
-                                    gestión, producción y comercialización.
+                                  <h2 class="valores">INNOVACIÓN</h2>
+                                  Estamos preparándonos constantemente en las actualizaciones técnicas, formativas, científicas y normativas, con el fin de aplicarlo en todos nuestros departamentos de gestión, producción y comercialización.
                                 </section>
                                 <section>
-                                    <h2 class="valores">RESPONSABILIDAD</h2>Nuestra empresa se caracteriza por un alto
-                                    grado de
-                                    responsabilidad
-                                    social y ambiental por cada una las actividades que sean realizadas.
+                                  <h2 class="valores">RESPONSABILIDAD</h2>
+                                  Nuestra empresa se caracteriza por un alto grado de responsabilidad social y ambiental por cada una las actividades que sean realizadas.
                                 </section>
-                            </div>
+                              </div>
                         </div>
                     </div>
                 </div>
@@ -215,10 +211,13 @@
                             <input type="text" placeholder="Email*" required class="campos">
                         </div>
                         <div class="input-box">
+                            <input type="text" placeholder="Celular" class="campos">
+                        </div>
+                        <div class="input-box">
                             <input type="text" placeholder="Subject*" required class="campos">
                         </div>
                         <div class="input-box">
-                            <input type="text" placeholder="Description" class="descripcion">
+                            <input type="text" placeholder="Description*" required class="descripcion">
                         </div>
 
                         <body>
@@ -242,7 +241,7 @@
         <section class="layout3" id="layout3">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 border p-3 " style="border-color: #3fa22d" > <!-- Sección derecha -->
+                    <div class="col-md-4 border p-3 " style="border-color: #3fa22d"> <!-- Sección derecha -->
                         <!-- Contenido de la segunda sección -->
                         <h1 class="titulodis">Contacto</h1>
                         <p class="direccion">Dirección: Av. 10 de Agosto y Eduardo Malo. Cuenca-Ecuador</p>
@@ -257,7 +256,7 @@
                             08:30AM – 13:00PM / 14:30PM - 18:00PM
                         </p>
                     </div>
-                    <div class="col-md-5 " >
+                    <div class="col-md-5 ">
                         <div class="col max-mb-30 aos-init aos-animate" data-aos="fade-up">
                             <a class="icon-box text-center" style="background-color: #030303" data-abc="true">
                                 <div class="icon">

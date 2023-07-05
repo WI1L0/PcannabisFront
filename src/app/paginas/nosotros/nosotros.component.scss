@@ -26,7 +26,7 @@ $negrita: bold;
   color: #ddd;
   background-color: $color-all-uno;
   text-align: center;
-  padding: 50px 80px;
+  // padding: 50px 80px;
   text-align: justify;
 }
 
@@ -357,7 +357,7 @@ $negrita: bold;
 
   #ampliacao {
     width: 800px;
-    height: 800px;
+    // height: 800px;
     background-color: transparent;
     margin: 0 auto;
   }
@@ -405,11 +405,11 @@ $negrita: bold;
     }
 
     #ampliacao {
-      width: 90%;
+      width: 100%;
     }
 
     #miniaturas {
-      width: 35%;
+      width: 25%;
       margin-left: 5%;
       display: flex;
       flex-direction: column;
@@ -422,6 +422,48 @@ $negrita: bold;
       height: 100px;
     }
   }
+  @media screen and (max-width: 500px) {
+    #miniaturas a {
+      margin: 5px;
+      width: calc(30% - 5px);
+      height: 50px;
+    }
+
+  }
+  @media screen and (max-width: 778px) {
+    #miniaturas {
+      width: 100%;
+      margin-left: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-direction: row; /* Establecer la dirección de flujo en horizontal */
+      overflow-x: auto; /* Agregar scroll horizontal */
+      -webkit-overflow-scrolling: touch; /* Agregar scroll fluido en iOS */
+    }
+  
+    #miniaturas a {
+      margin: 10px;
+      width: 100px;
+      height: 100px;
+    }
+  
+    #ampliacao {
+      width: 100%;
+    }
+  }
+  // @media screen and (max-width: 430px) {
+  //   #miniaturas a {
+  //     margin: 5px;
+  //     width: 100%; /* Reducir el ancho de las miniaturas */
+  //     height: 100px; /* Reducir el alto de las miniaturas */
+  //   }
+  
+  //   #ampliacao {
+  //     width: 100px; /* Duplicar el ancho de la imagen ampliada */
+  //     height: 100px; /* Duplicar el alto de la imagen ampliada */
+  //   }
+  // }
 }
 
 
@@ -444,16 +486,22 @@ $negrita: bold;
     font-family: $negrita;
     
   }
+  .valoresSection{
+    border: 10px double;
+    // box-shadow: 10px 15px 5px #3fa22d, 0 10px 10px rgba(169, 159, 159, 0.25);
+    
+  }
   .tittle1{
     size: 2px;
   }
 /* Media queries para pantallas pequeñas */
-@media (max-width: 556px) {
+@media (max-width: 550px) {
   .tabs li {
     margin-bottom: 10px;
   }
   .content h2 {
-    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+    // font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+    display: none;
   }
 }
 
@@ -483,6 +531,7 @@ $negrita: bold;
     /* Limita la altura máxima del contenido */
     overflow-y: auto;
     /* Agrega una barra de desplazamiento vertical si el contenido es demasiado largo */
+    
    
   }
 
@@ -494,11 +543,13 @@ $negrita: bold;
     font-family: $fuente-secundaria;
     padding: 50px;
     padding-bottom: 80px;
-    width: 90%;
+    width: 80%;
     height: 250px;
     // box-shadow: 0 14px 28px rgba(155, 144, 144, 0.25), 0 10px 10px rgba(155, 144, 144, 0.25);
-    box-shadow: 10px 15px 5px #3fa22d, 0 10px 10px rgba(169, 159, 159, 0.25);
+    box-shadow:  5px 10px 10px #000000, 10px 15px 5px #3fa22d;
+    // border-bottom:  5px 10px 10px #000000, 10px 15px 5px #3fa22d;;
     border-radius: 5px;
+    border: 4px double;
     min-width: 240px;
     padding: 20px 0;
     /* Agrega un espacio entre el borde de la sección y el contenido */
@@ -534,6 +585,7 @@ $negrita: bold;
     justify-content: space-between;
     align-items: flex-end;
     flex-wrap: wrap;
+    
   }
 
   .tabs ul li {
@@ -769,12 +821,12 @@ $negrita: bold;
       display: block;
     }
 
-    /* Media queries para pantallas pequeñas */
-    @media (max-width: 576px) {
-      .tabs li {
-        margin-bottom: 10px;
-      }
-    }
+    // /* Media queries para pantallas pequeñas */
+    // @media (max-width: 576px) {
+    //   .tabs li {
+    //     margin-bottom: 10px;
+    //   }
+    // }
 
   }
 
