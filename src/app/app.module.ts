@@ -17,12 +17,13 @@ import { RouterModule, Route } from '@angular/router';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 // import { DetallenoticiaComponent } from './paginas/detallenoticia/detallenoticia.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PrincipaladminComponent } from './principaladmin/principaladmin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent, 
-    FooterComponent, 
+    FooterComponent, PrincipaladminComponent, 
     // DetallenoticiaComponent,
   ],
   imports: [

@@ -7,6 +7,7 @@ import { NoticiasComponent } from './paginas/noticias/noticias.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { DetalleNoticiasComponent } from './paginas/detalle-noticias/detalle-noticias.component'; 
 import { ControlNoticiasComponent } from './paginas/control-noticias/control-noticias.component'; 
+import { PrincipaladminComponent } from './principaladmin/principaladmin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,7 +36,7 @@ const routes: Routes = [
     component: LoginComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
   },
-  {
+  {                                                             
     path: 'dnt',
     component: DetalleNoticiasComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'cnt',
     component: ControlNoticiasComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'admin',
+    component: PrincipaladminComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
   }
 ];

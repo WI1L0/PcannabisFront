@@ -35,5 +35,6 @@ export class Empresas {
     beneficios?: Beneficios[];
     noticias?: Noticias[];
     empleados?: Empleados[];
+    
 
 }

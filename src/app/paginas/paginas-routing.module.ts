@@ -7,6 +7,7 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { LoginComponent } from './login/login.component';
 import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.component'; 
 import { ControlNoticiasComponent } from './control-noticias/control-noticias.component'; 
+import { PrincipaladminComponent } from '../principaladmin/principaladmin.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'controlnoticia',
     component: ControlNoticiasComponent
+  },
+  {
+    path: 'principal',
+    component: PrincipaladminComponent
   }
 ];
 
