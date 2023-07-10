@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { Noticias } from 'src/app/modelos/Noticias';
 import { NoticiasResponse } from 'src/app/modelos/NoticiasResponse';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
+import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 import { SfotosService } from 'src/app/services/s-fotos.service';
 import { SloginService } from 'src/app/services/s-login.service';
 import { SnoticiasService } from 'src/app/services/s-noticias.service';
@@ -23,11 +23,11 @@ export class NoticiasComponent implements OnInit {
   listNoticias: any[] = [];
   listNoticiasModificada: Noticias[] = [];
 
-  cuerpoUrlFoto: string = 'http://localhost:8080/cbd/picture/findOne/';
+  cuerpoUrlFoto: string = baserUrlImagenes;
 
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService, private noticiasServices: SnoticiasService, private loginServices: SloginService, private fotoServices: SfotosService) {
-    AllScripts.Cargar(["default/noticias"]);
+    AllScripts.Cargar(["paginas/noticias"]);
   }
 
   ngOnInit(): void {
@@ -48,9 +48,6 @@ export class NoticiasComponent implements OnInit {
         console.log('Error al obtener noticias:', error);
       }
     );
-
-    // this.getImagenPreviaNoticias();
-
   }
 
   nextPagina() {
@@ -71,24 +68,6 @@ export class NoticiasComponent implements OnInit {
     localStorage.removeItem('noticia')
     localStorage.setItem('noticia', JSON.stringify(noticia));
   }
-
-  // getImagenPreviaNoticias() {
-  //   for (let i = 0; i < this.listNoticias.length; i++) {
-  //     const noticiaNew = this.listNoticias[i];
-
-  //     let noticiaModificada = new Noticias;
-
-  //     noticiaModificada.estNoticia = noticiaNew.estNoticia;
-  //     noticiaModificada.fechaNoticia = noticiaNew.estNoticia;
-  //     noticiaModificada.idNoticia = noticiaNew.estNoticia;
-  //     noticiaModificada.ubicacionNoticia = noticiaNew.ubicacionNoticia;
-  //     noticiaModificada.preDescripcionNoticia = noticiaNew.estNoticia;
-  //     noticiaModificada.tituloNoticia = noticiaNew.estNoticia;
-  //     noticiaModificada.portadaNoticia = this.cuerpoUrlFoto + noticiaNew.portadaNoticia;
-
-  //     this.listNoticiasModificada.push(noticiaModificada);
-  //   }
-  // }
 
   parteAdministrador() {
     this.logeado = this.loginServices.estaLogin();

@@ -1,4 +1,4 @@
-<!-- ALL -->
+<!-- ALL
 <div class="fondoo">
     <div class="bodyfondo">
       <div class="wrapper">
@@ -6,7 +6,6 @@
           <section class="content">
             <div class="texto">
               <div class="contentBlog">
-                <!-- PAGINACION CARDS NOTICIAS -->
                 <div class="row">
                   <div class="col-sm-2 col-md-6" *ngFor="let noti of listNoticias | paginate: { itemsPerPage: 4, currentPage: pageAct }">
                     <div class="blog-card">
@@ -14,12 +13,12 @@
                         <div class="photo" style="background-image: url(../../../assets/img/noticia.jpg)">
                         </div>
                         <ul class="details">
-                          <!-- <li class="date"> {{ noti.fechaNoticias }} </li> -->
+                          <li class="date"> {{ noti.fechaNoticias }} </li>
                         </ul>
                       </div>
                       <div class="description">
-                        <!-- <h1> {{ noti.tituloNoticias }} </h1>
-                        <p> {{ noti.descripcionNoticias }} </p> -->
+                        <h1> {{ noti.tituloNoticias }} </h1>
+                        <p> {{ noti.descripcionNoticias }} </p>
                         <p class="read-more">
                           <a href="/dnt/detallenoticia/">Read More</a>
                         </p>
@@ -30,10 +29,9 @@
               </div>
   
               <pagination-controls (pageChange)="pageAct = $event"></pagination-controls>
-              <!-- PAGINACION CARDS NOTICIAS -->
             </div>
           </section>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->

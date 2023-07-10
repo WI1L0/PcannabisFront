@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService, private loginService: SloginService) {
-    AllScripts.Cargar(["default/login"]);
+    AllScripts.Cargar(["paginas/login"]);
   }
 
   ngOnInit(): void {
@@ -32,20 +32,11 @@ export class LoginComponent implements OnInit {
 
     this.loginService.getTokenBack(this.lgmodel).subscribe(
       (data:any) => {
-        // console.log(data);
         this.loginService.setTokenAndRoles(data);
       },(error) => {
         console.log(error);
       }
     )
-
-    // this.loginService.getTemporal().subscribe(
-    //   (data1:any) => {
-    //     console.log(data1);
-    //   },(error) => {
-    //     console.log(error);
-    //   }
-    // )
 
   }
 

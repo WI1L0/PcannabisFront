@@ -1,7 +1,7 @@
 export class FotosNoticias {
 
-    idFotoNoticias?: number;
-    fotoNoticias?: string;
-    estFotoNoticias?: boolean;
+    idFotosNoticia?: number;
+    fotosNoticia?: string;
+    estFotosNoticia?: boolean;
 
 }

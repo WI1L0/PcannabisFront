@@ -13,12 +13,10 @@
           <div class="htmlDetalle">
             <div class="bodyDetalle">
               <i>
-                <input checked type="radio" name="s"
-                  style="background-image: url('https://picsum.photos/500/300?random=1');">
-                <input type="radio" name="s" style="background-image: url('https://picsum.photos/500/300?random=2');">
-                <input type="radio" name="s" style="background-image: url('https://picsum.photos/500/300?random=3');">
-                <input type="radio" name="s" style="background-image: url('https://picsum.photos/500/300?random=4');">
-                <input type="radio" name="s" style="background-image: url('https://picsum.photos/500/300?random=5');">
+                <input checked type="radio" name="s" *ngIf="imgprincipal1 != ''" style="background-image: url( {{imgprincipal1}} );">
+                <input type="radio" name="s" *ngIf="imgprincipal2 != ''" style="background-image: url( {{imgprincipal2}} );">
+                <input type="radio" name="s" *ngIf="imgprincipal3 != ''" style="background-image: url( {{imgprincipal3}} );">
+                <input type="radio" name="s" *ngIf="imgprincipal4 != ''" style="background-image: url( {{imgprincipal4}} );">
               </i>
             </div>
           </div>
@@ -31,7 +29,7 @@
 
         <!-- FOTO 1 -->
         <div class="fotoDetalle">
-          <a class="fondo" href="#">Gatitos varios</a>
+          <img class="fondo" *ngIf="imgprincipal5 != ''" src="{{imgprincipal5}}" alt="">
         </div>
         <!-- FOTO 1 -->
 
@@ -42,4 +40,3 @@
     </div>
   </div>
 </div>
-<!-- ALL -->

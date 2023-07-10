@@ -7,7 +7,12 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { LoginComponent } from './login/login.component';
 import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.component'; 
 import { ControlNoticiasComponent } from './control-noticias/control-noticias.component'; 
-import { PrincipaladminComponent } from '../principaladmin/principaladmin.component';
+import { AdminprincipalComponent } from './adminprincipal/adminprincipal.component';
+import { GestionusuariosComponent } from './gestionusuarios/gestionusuarios.component';
+import { GestionempresasComponent } from './gestionempresas/gestionempresas.component';
+import { CrearusuarioComponent } from './crearusuario/crearusuario.component';
+import { GestionformularioComponent } from './gestionformulario/gestionformulario.component';
+import { VerformulariosComponent } from './verformularios/verformularios.component';
 
 const routes: Routes = [
   {
@@ -40,7 +45,27 @@ const routes: Routes = [
   },
   {
     path: 'principal',
-    component: PrincipaladminComponent
+    component: AdminprincipalComponent
+  },
+  {
+    path: 'gestion',
+    component: GestionusuariosComponent
+  },
+  {
+    path: 'gestiones',
+    component: GestionempresasComponent
+  },
+  {
+    path: 'crear',
+    component: CrearusuarioComponent
+  },
+  {
+    path: 'ver',
+    component: GestionformularioComponent
+  },
+  {
+    path: 'detalle',
+    component: VerformulariosComponent
   }
 ];
 

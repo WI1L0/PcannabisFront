@@ -7,6 +7,12 @@ import { NoticiasComponent } from './paginas/noticias/noticias.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { DetalleNoticiasComponent } from './paginas/detalle-noticias/detalle-noticias.component'; 
 import { ControlNoticiasComponent } from './paginas/control-noticias/control-noticias.component'; 
+import { AdminprincipalComponent } from './paginas/adminprincipal/adminprincipal.component';
+import { GestionusuariosComponent } from './paginas/gestionusuarios/gestionusuarios.component';
+import { GestionempresasComponent } from './paginas/gestionempresas/gestionempresas.component';
+import { CrearusuarioComponent } from './paginas/crearusuario/crearusuario.component';
+import { GestionformularioComponent } from './paginas/gestionformulario/gestionformulario.component';
+import { VerformulariosComponent } from './paginas/verformularios/verformularios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,7 +41,7 @@ const routes: Routes = [
     component: LoginComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
   },
-  {                                                             
+  {
     path: 'dnt',
     component: DetalleNoticiasComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
@@ -47,9 +53,34 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: PrincipaladminComponent,
+    component: AdminprincipalComponent,
     loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
-  }
+  },
+  {
+    path: 'usuarios',
+    component: GestionusuariosComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'empresas',
+    component: GestionempresasComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'usuarioss',
+    component: CrearusuarioComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'formulario',
+    component: GestionformularioComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
+  {
+    path: 'formularios',
+    component: VerformulariosComponent,
+    loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule)
+  },
 ];
 
 @NgModule({
