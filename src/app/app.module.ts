@@ -16,14 +16,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Route } from '@angular/router';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 // import { DetallenoticiaComponent } from './paginas/detallenoticia/detallenoticia.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PrincipaladminComponent } from './principaladmin/principaladmin.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor, authInterceptorProviders } from './services/defauld/s-interceptor';
+// import { authInterceptorProviders } from './services/defauld/s-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent, 
-    FooterComponent, PrincipaladminComponent, 
+    HeaderComponent,
+    FooterComponent,
     // DetallenoticiaComponent,
   ],
   imports: [
@@ -34,7 +35,10 @@ import { PrincipaladminComponent } from './principaladmin/principaladmin.compone
   ],
   providers: [
     //implementar js en los componentes
-    AllScriptsService
+    AllScriptsService,
+    authInterceptorProviders
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+
   ],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,7 @@ import { FotosNoticias } from '../modelos/FotosNoticias';
 @Injectable({
     providedIn: 'root'
 })
-export class fotosNoticias {
+export class SfotosNoticiasService {
 
     private URL = "http://localhost:8080//cbd/fotosNoticias/";
 

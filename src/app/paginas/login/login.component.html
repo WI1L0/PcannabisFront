@@ -3,14 +3,14 @@
         <div class="left-container">
             <div class="main">
                 <h1>Login</h1>
-                <form action="">
-                    <input type="email" name="mail" placeholder="Type your email">
-                    <input type="password" name="password" placeholder="Type your password">
+                <form (ngSubmit) = "onSubmit()">
+                    <input type="email" name="mail" placeholder="Type your email" [(ngModel)]="lgmodel.usernameOrEmail">
+                    <input type="password" name="password" placeholder="Type your password" [(ngModel)]="lgmodel.password">
                     <div class="forgotPass">
                         <a href="#">Forgot your password?</a>
                     </div>
                     <div class="login-now">
-                        <a href="/cnt/controlnoticia/">Login Now</a>
+                        <a (click)="onSubmit()" >Login Now</a>
                     </div>
 
                     <span class="line"></span>

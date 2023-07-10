@@ -10,11 +10,14 @@ import { LoginComponent } from './login/login.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 // import { DetallenoticiaComponent } from './detallenoticia/detallenoticia.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AllScriptsService } from '../scripts/all-scripts.service';
 import { AppComponent } from '../app.component';
 import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.component';
 import { ControlNoticiasComponent } from './control-noticias/control-noticias.component';
+import { FormsModule } from '@angular/forms';
+import { AuthInterceptor, authInterceptorProviders } from '../services/defauld/s-interceptor';
+// import { authInterceptorProviders } from '../services/defauld/s-interceptor';
 
 @NgModule({
   declarations: [
@@ -32,10 +35,13 @@ import { ControlNoticiasComponent } from './control-noticias/control-noticias.co
     PaginasRoutingModule,
     NgxPaginationModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     //implementar js en los componentes
-    AllScriptsService
+    AllScriptsService,
+    authInterceptorProviders
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

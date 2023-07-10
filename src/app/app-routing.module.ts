@@ -7,7 +7,6 @@ import { NoticiasComponent } from './paginas/noticias/noticias.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { DetalleNoticiasComponent } from './paginas/detalle-noticias/detalle-noticias.component'; 
 import { ControlNoticiasComponent } from './paginas/control-noticias/control-noticias.component'; 
-import { PrincipaladminComponent } from './principaladmin/principaladmin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -7,7 +7,6 @@ import { AllScriptsService } from './scripts/all-scripts.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
-  showHeader = true;
 
   //implementar js en los componentes
   constructor(private AllScripts:AllScriptsService){

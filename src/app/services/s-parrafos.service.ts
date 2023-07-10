@@ -3,19 +3,20 @@ import { Injectable } from '@angular/core';
 import { Empresas } from '../modelos/Empresas';
 import { map, Observable } from 'rxjs';
 import baserUrl from './defauld/helper';
+import { Parrafos } from '../modelos/Parrafos';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SEmpresasService {
+export class SParrafosService {
 
-  private URL = '/cbd/empresas';
+  private URL = '/cbd/parrafos';
 
   constructor(private http: HttpClient) { }
 
-  //OBTENEMOS EL OBJETO EMPRESA
-  public getEmpresa(empresaName: string) {
-    return this.http.get<Empresas>(`${baserUrl + this.URL}/name/${empresaName}`);
+  //OBTENEMOS LA LISTA DE PARRAFOS
+  public getParrafos(idNoticias: any) {
+    return this.http.get<Parrafos[]>(`${baserUrl + this.URL}/noticia/${idNoticias}`);
   }
 
 

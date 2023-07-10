@@ -8,7 +8,9 @@
       </div>
       <div class="col-sm-6 col-md-5 pad">
         <h6>Pharma Cannabis</h6>
-        <iframe [src]="direccion" safe  width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3984.6668545454295!2d-79.0076081!3d-2.9118783!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd186fbba8bc3b%3A0xd735f82a17001dde!2sSoinmed%20Cia%20Ltda!5e0!3m2!1ses!2sec!4v1685477306589!5m2!1ses!2sec"
+          width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="col-xs-6 col-md-2 pad">
@@ -24,12 +26,17 @@
       <div class="col-xs-6 col-md-3 pad">
         <h6>Contactos</h6>
         <ul class="footer-links">
-          <li class="contac"><i>Teléfono:</i><br><span class="icontel"></span> +593 7407938 </li>
+<!-- <div *ngIf="admin && logeado">
+  <li class="contac"><i>Teléfono:</i><br><span class="icontel"></span> <input type="text"> </li>
+</div>          
+<div *ngIf="!(admin && logeado)"> -->
+  <li class="contac"><i>Teléfono:</i><br><span class="icontel"></span> {{empresaData.telefonoEmpresa}} </li>
+<!-- </div>           -->
           <!-- <li class="contac"><i>Teléfono:</i><br> +593 7407938</li> -->
-          <li class="contac"><i>Dirección</i><br><span class="iconubi"></span> <a href="{{direccion1}}">Av.
-              10 de Agosto y Eduardo Malo(Edif. Soinmed) </a></li>
-          <li class="contac"><i>Celular</i><br><span class="iconwpp"></span> <a href="{{whatsapp}}">(+593)
-              98 5696078</a></li>
+          <li class="contac"><i>Dirección</i><br><span class="iconubi"></span> <a
+              href="{{empresaData.urlDireccionEmpresa}}">
+              {{empresaData.direccionEmpresa}} </a></li>
+          <li class="contac"><i>Celular</i><br><span class="iconwpp"></span> <a href="{{empresaData.urlCelularEmpresa}}">(+593) {{empresaData.celularEmpresa}}</a></li>
         </ul>
       </div>
     </div>
