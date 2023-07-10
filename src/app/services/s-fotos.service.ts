@@ -9,6 +9,7 @@ import baserUrl from './defauld/helper';
 })
 export class SfotosService {
 
+<<<<<<< Updated upstream
     private URL = '/cbd/picture';
 
     constructor(private http: HttpClient) { }
@@ -17,6 +18,14 @@ export class SfotosService {
     // public getOneImagen(name: string) {
     //     return this.http.get(`${baserUrl + this.URL}/findOne/${name}`);
     // }
+=======
+    constructor(private http: HttpClient) { }
+
+    //OBTENER LAS IMAGENES
+    public getAllByCategoria(name: string) {
+        return this.http.get(`${baserUrl}/cbd/fotosEmpresas/categoria/${name}`);
+    }
+>>>>>>> Stashed changes
 
     // postFotosNoticias(FotosNoticias: FotosNoticias) {
     //     return this.http.post<FotosNoticias>(this.URL, FotosNoticias);
