@@ -18,6 +18,7 @@ import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 // import { DetallenoticiaComponent } from './paginas/detallenoticia/detallenoticia.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor, authInterceptorProviders } from './services/defauld/s-interceptor';
+import { FormsModule } from '@angular/forms';
 // import { authInterceptorProviders } from './services/defauld/s-interceptor';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AuthInterceptor, authInterceptorProviders } from './services/defauld/s-
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    FormsModule,
   ],
   providers: [
     //implementar js en los componentes

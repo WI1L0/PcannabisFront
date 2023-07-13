@@ -58,7 +58,7 @@ export class DetalleNoticiasComponent implements OnInit {
     this.listaParrafosSuperior = [];
     this.listaParrafosInferior = [];
 
-    this.parrafosServices.getParrafos(this.noticia.idNoticia).subscribe(
+    this.parrafosServices.getParrafos(this.noticia.idNoticia, "activo").subscribe(
       data => {
         this.listaParrafos = data;
 
@@ -84,7 +84,7 @@ export class DetalleNoticiasComponent implements OnInit {
     let activos: number = 0;
     let listaTrue: FotosNoticias[] = [];
 
-    this.fotosNoticiasServices.getImagenes(this.noticia.idNoticia).subscribe(
+    this.fotosNoticiasServices.getImagenes(this.noticia.idNoticia, "activo").subscribe(
       data => {
         this.listaImagenesNoticias = data;
 

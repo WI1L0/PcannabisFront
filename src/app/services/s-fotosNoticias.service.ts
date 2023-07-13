@@ -14,8 +14,8 @@ export class SfotosNoticiasService {
     constructor(private http: HttpClient) { }
   
     //OBTENEMOS LA LISTA DE IMAGENES DE NOTICIAS
-    public getImagenes(idNoticias: any) {
-      return this.http.get<FotosNoticias[]>(`${baserUrl + this.URL}/noticia/${idNoticias}`);
+    public getImagenes(idNoticias: any, estado: string) {
+      return this.http.get<FotosNoticias[]>(`${baserUrl + this.URL}/noticia/${idNoticias}/?estado=${estado}`);
     }
 
     // private URL = "http://localhost:8080//cbd/fotosNoticias/";

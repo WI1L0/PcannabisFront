@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Noticias } from '../modelos/Noticias';
 import baserUrl from './defauld/helper';
-import { NoticiasResponse } from '../modelos/Respuestas/NoticiasResponse';
+import { UsuariosResponse } from '../modelos/Respuestas/UsuariosResponse';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SnoticiasService {
+export class SusuariosService {
 
-    private URL = '/cbd/noticias';
+    private URL = '/cbd/usuarios';
 
     constructor(private http: HttpClient) { }
   
-    //OBTENEMOS EL OBJETO EMPRESA
-    public getNoticias(pageAct: number, estado: string, empresaName: string) {
-      return this.http.get<NoticiasResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&?estado=${estado}`);
+    //OBTENEMOS EL OBJETO DE USUARIOS Y PERSONAS
+    public getUsuariosPersonas(pageAct: number, estado: string, empresaName: string) {
+      return this.http.get<UsuariosResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&?estado=${estado}`);
     }
 
     // postNoticias(Noticias: Noticias) {

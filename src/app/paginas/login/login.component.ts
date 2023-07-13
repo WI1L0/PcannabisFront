@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/modelos/Login';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SloginService } from 'src/app/services/s-login.service';
 
 @Component({
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  postLogin() {
     if (this.lgmodel.usernameOrEmail?.trim() == null || this.lgmodel.usernameOrEmail?.trim() == '') {
       console.log("EL USERNAME ESTA VACIO");
     }

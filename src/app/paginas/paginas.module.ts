@@ -36,6 +36,7 @@ import { AuthInterceptor, authInterceptorProviders } from '../services/defauld/s
     NgxPaginationModule,
     HttpClientModule,
     FormsModule,
+    CommonModule,
   ],
   providers: [
     //implementar js en los componentes

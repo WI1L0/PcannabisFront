@@ -1,4 +1,4 @@
-import { Noticias } from "./Noticias";
+import { Noticias } from "../Noticias";
 
 export class NoticiasResponse {
     contenido?: Noticias[];

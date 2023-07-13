@@ -1,37 +1,37 @@
 <div class="primero">
     <div class="container">
-        <form id="contact" action="" method="post">
             <h3>Editar datos de empresa</h3>
+        <form (ngSubmit) = "postEmpresa()">
             <fieldset>
                 <p class="nom">Nombre</p>
-                <input placeholder="Nombre" type="text" name="nombre_empresa" tabindex="1" required autofocus value="Empresa Pharmacannabis">
+                <input placeholder="Nombre" type="text" name="nombre_empresa" tabindex="1" required autofocus value="{{empresaData.nombreEmpresa}}">
             </fieldset>
             <fieldset>
                 <p class="nom">Email</p>
-                <input placeholder="Email" type="email" name="email_empresa" tabindex="2" required value="SoindMed@gmail.com">
+                <input placeholder="Email" type="email" name="email_empresa" tabindex="2" required value="{{empresaData.emailEmpresa}}">
             </fieldset>
             <fieldset>
                 <p class="nom">Celular</p>
-                <input placeholder="Celular" type="tel" name="celular_empresa" tabindex="3" required value="0999999999">
+                <input placeholder="Celular" type="tel" name="celular_empresa" tabindex="3" required value="{{empresaData.celularEmpresa}}">
             </fieldset>
             <fieldset>
                 <p class="nom">Link de whatsapp</p>
-                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required value="https://wa.me/593985696078">
+                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required value="{{empresaData.urlCelularEmpresa}}">
             </fieldset>
             <fieldset>
                 <p class="nom">Telefono</p>
-                <input placeholder="Telefono" type="tel" name="telefono_empresa" tabindex="5" required value="4185492">
+                <input placeholder="Telefono" type="tel" name="telefono_empresa" tabindex="5" required value="{{empresaData.telefonoEmpresa}}">
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección en html de google maps</p>
-                <input placeholder="Dirección google en html " type="url" name="sitio_web_empresa" tabindex="6" required value="https://www.empresa.xyzhttp://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.6668544054796!2d-79.00760272587242!3d-2.911878339561901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd186fbba8bc3b%3A0xd735f82a17001dde!2sSoinmed%20Cia%20Ltda!5e0!3m2!1ses-419!2sec!4v1688590359833!5m2!1ses-419!2sec">
+                <input placeholder="Dirección google en html " type="url" name="direccion_google_html" tabindex="6" required  value="{{empresaData.urlDireccionEmpresaGoogle}}">
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección de mapa</p>
-                <input placeholder="Dirección maps" type="url" name="sitio_web_empresa" tabindex="7" required value="https://goo.gl/maps/BNGL5Yp3WokmdabR9">
+                <input placeholder="Dirección maps" type="url" name="sitio_web_empresa" tabindex="7" required value="{{empresaData.urlDireccionEmpresa}}">
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" href="/admin">Editar</button>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" href="#" (click)="postEmpresa()" >Editar</button>
             </fieldset>
         </form>
     </div>

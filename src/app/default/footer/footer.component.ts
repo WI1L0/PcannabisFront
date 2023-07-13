@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Empresas } from 'src/app/modelos/Empresas';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
+import nameEmpresa from 'src/app/services/defauld/EmpresaName';
 import { SEmpresasService } from 'src/app/services/s-empresas.service';
 import { SloginService } from 'src/app/services/s-login.service';
 
@@ -27,7 +28,7 @@ export class FooterComponent implements OnInit {
   }
 
   ObtenerEmpresa() {
-    this.empresasService.getEmpresa("Empresa").subscribe(
+    this.empresasService.getEmpresa(nameEmpresa).subscribe(
       (data: any) => {
         this.empresaData = data;
       }, (error) => {

@@ -1,1 +1,0 @@
-export const direccion = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3984.6668545454295!2d-79.0076081!3d-2.9118783!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd186fbba8bc3b%3A0xd735f82a17001dde!2sSoinmed%20Cia%20Ltda!5e0!3m2!1ses!2sec!4v1685477306589!5m2!1ses!2sec";
