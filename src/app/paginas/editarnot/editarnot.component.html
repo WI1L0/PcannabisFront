@@ -1,0 +1,69 @@
+<div class="primero">
+    <div class="container">
+        <form id="contact" action="" method="post">
+            <h3>Editar datos</h3>
+            <fieldset>
+                <p class="nom">Titulo</p>
+                <input placeholder="Nombre" type="text" name="titulo_noti" tabindex="1" required autofocus
+                    value="Contrato">
+            </fieldset>
+            <div class="row">
+                <div class="half-width">
+                    <fieldset>
+                        <p class="nom">Ubicación</p>
+                        <input placeholder="Ubicacion" type="text" name="ubicacion_noti" tabindex="2" required autofocus
+                            value="Av.del Tejar">
+                    </fieldset>
+                </div>
+                <div class="half-width">
+                    <fieldset>
+                        <p class="nom">Fecha de Noticia</p>
+                        <input placeholder="Fecha de noticia" name="fechanoticia" class="date" type="date" tabindex="3"
+                            required autofocus value="2023-09-27">
+                        <!-- <p class="nom">Celular</p>
+                        <input placeholder="Celular" type="tel" name="celular_empresa" tabindex="3" required value="0999999999"> -->
+                    </fieldset>
+                </div>
+            </div>
+            <fieldset>
+                <p class="nom">Descripción</p>
+                <textarea placeholder="Descripcion" type="text" name="titulo_noti" tabindex="4" required autofocus
+                    value="Contrato"></textarea>
+            </fieldset>
+
+            <div class="row">
+
+                <fieldset>
+                    <p class="nom">Parrafos</p>
+                    <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" href="/admin"
+                        style="float: right; width: 50%; margin-top: 0px">Editar Parrafos</button>
+                    <textarea placeholder="Parrafos" type="text" name="parrafo_noti" tabindex="5" required autofocus
+                        value="assssssssssssss"></textarea>
+                    
+                    </fieldset>
+                </div>
+
+            
+            
+            <!-- <div class=" row">
+                        <div class="half-width">
+                            <fieldset>
+                                <p class="nom">Contraseña </p>
+                                <input type="password" name="pass" placeholder="Contraseña" class="half-width"
+                                    required />
+                            </fieldset>
+                        </div>
+                        <div class="half-width">
+                            <fieldset>
+                                <p class="nom">Correo de usuario</p>
+                                <input placeholder="Correo de usuario" type="email" name="correo_user" tabindex="13"
+                                    required autofocus value="maiigeo@gmail.com">
+                            </fieldset>
+                        </div>
+            </div> -->
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando"
+                href="/admin">Editar</button>
+
+        </form>
+    </div>
+</div>

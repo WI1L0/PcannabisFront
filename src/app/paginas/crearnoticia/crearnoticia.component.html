@@ -1,0 +1,66 @@
+<!-- ALL -->
+<div class="divPrimero">
+    <div class="divSegundo">
+        <!-- multistep form -->
+        <form id="msform">
+            <div class="titulo">
+                <h1 class="crear">Crear Noticia</h1>
+            </div>
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Crear Noticia</li>
+                <li>Datos de Noticia</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Crear Noticia</h2>
+                <h3 class="fs-subtitle">Ingrese los datos de Noticias</h3>
+                <input type="text" name="titulo" placeholder="Titulo" required />
+                <!-- <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" /> -->
+                <input type="date" name="fechanoticia" placeholder="Fecha de noticia" value="Fecha de noticia" required>
+                <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required />
+                <textarea name="apellidos" placeholder="Pre Descripción" required></textarea>
+                <div class="row">
+                    <textarea name="parrafo" placeholder="Agregar un Parrafo" class="half-width " required></textarea>
+                    <input type="button" name="parrafos" class="Agregarparr" value="Agregar"
+                        style="float: right; width: 100px; margin-top: 10px;" />
+                </div>
+
+
+                <input type="button" name="next" class="next action-button" value="Siguiente" />
+            </fieldset>
+            <fieldset>
+                <div>
+                    <h2 class="fs-title">Fotos Noticias</h2>
+                    <h3 class="fs-subtitle">Suba las fotos de la Noticia</h3>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        <label for="foto">Seleccionar foto:</label>
+                        <div class="row">
+                            <input type="file" name="foto" id="foto" accept="image/*">
+                            <input type="button" name="parrafos" class="Crearnot" value="Agregar"
+                                style="float: right; width: 100px; margin-top: 10px;" />
+                        </div>
+
+                    </form>
+                </div>
+
+
+
+                <!-- <input type="text" name="nombre_usuario" placeholder="Nombre de Usuario" class="half-width" required />
+                <input type="text" name="correo_usuario" placeholder="Correo de Usuario" class="half-width" required />
+                <select class="select half-width">
+                    <option>Administrador</option>
+                    <option>Empleado</option>
+                    <option>Cliente</option>
+                </select>
+                <input type="password" name="pass" placeholder="Contraseña" class="half-width" required />
+                <input type="password" name="cpass" id="cpass" placeholder="Confirmar Contraseña" class="half-width"
+                    required /> -->
+                <input type="button" name="previous" class="previous action-button" value="Anterior" />
+                <a href="/admin/principal" class="submit action-button" target="_top">Registrar</a>
+            </fieldset>
+        </form>
+    </div>
+
+
+</div>
