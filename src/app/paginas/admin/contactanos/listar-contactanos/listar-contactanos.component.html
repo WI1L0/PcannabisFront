@@ -1,0 +1,33 @@
+<!-- ALL -->
+<div class="divPrimero">
+    <div class="divSegundo">
+        <!-- TABLA -->
+        <div class="row">
+            <h2>RESPUESTAS AL FORMULARIO</h2>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Asunto</th>
+                        <th>Celular</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contac of listContactanos">
+                        <td>{{contac.nombreContactanos}}</td>
+                        <td>{{contac.emailContactanos}}</td>
+                        <td>{{contac.asuntoContactanos}}</td>
+                        <td>{{contac.celularContactanos}}</td>
+                        <td><a href="" class="usuarios">Ocultar</a></td>
+                        <td><a href="/cbd/admin/contactanos/detalle" class="usuarios">Ver Detalle</a></td>
+
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+    </div>
+</div>

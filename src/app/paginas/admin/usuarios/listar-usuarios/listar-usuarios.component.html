@@ -1,0 +1,39 @@
+<!-- ALL -->
+<div class="divPrimero">
+    <div class="divSegundo">
+        <!-- TABLA -->
+        <div class="row">
+            <h2>LISTA DE USUARIOS</h2>
+            <a href="/cbd/admin/usuarios/crear" class="a" style="float: center; width: 100px; margin-top: 10px; margin: auto">Agregar</a>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let i of listPersonas.keys()">
+                    <tr>
+                        <td>{{listPersonas[i].cedula}}</td>
+                        <td>{{listPersonas[i].nombre1}} {{listPersonas[i].nombre2}}</td>
+                        <td>{{listPersonas[i].apellido1}} {{listPersonas[i].apellido2}}</td>
+                        <td>{{listPersonas[i].correo}}</td>
+                        <td>{{listUsuarios[i].nombreUsuario}}</td>
+                        <td><a href="/cbd/admin/usuarios/editar" class="a" style="float: center; width: 100px; margin-top: 10px; margin: auto">Editar</a></td>
+                        <td><a class="a" style="float: center; width: 100px; margin-top: 10px; margin: auto">Eliminar</a></td>
+                        <td><a href="/cbd/admin/usuarios/detalle" class="a" style="float: center; width: 100px; margin-top: 10px; margin: auto">Ver</a></td>
+                        <!-- <td><button class="usuarios">Eliminar</button></td>
+                        <td><button class="usuarios">Ver</button></td> -->
+
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+    </div>
+</div>

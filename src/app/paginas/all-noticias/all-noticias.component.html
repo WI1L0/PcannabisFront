@@ -1,0 +1,73 @@
+<div class="fondoo">
+    <div class="bodyfondo">
+      <div class="wrapper">
+        <div class="main">
+          <section class="content">
+            <div class="parallax img-uno" id="m">
+              <div class="texto-interior">
+                <h2 class="titulo" id="m">BLOG DE NOTICIAS</h2>
+              </div>
+            </div>
+            <!-- .parallax -->
+            <div class="texto">
+              <div class="contentBlog">
+                <!-- PAGINACION CARDS NOTICIAS -->
+                <div class="row">
+                  <div
+                    class="col-sm-2 col-md-6"
+                    *ngFor="let noti of listNoticias"
+                  >
+                    <div class="blog-card">
+                      <div class="meta">
+                        <div class="photo">
+                          <img [src]=" cuerpoUrlFoto + noti.portadaNoticia " alt="" />
+                        </div>
+                        <ul class="details">
+                          <li class="date">{{ noti.fechaNoticia }}</li>
+                          <li class="date">{{ noti.ubicacionNoticia }}</li>
+                        </ul>
+                      </div>
+                      <div class="description">
+                        <h1>{{ noti.tituloNoticia }}</h1>
+                        <p>{{ noti.preDescripcionNoticia }}</p>
+                        <p class="read-more">
+                          <a
+                            href="/cbd/detalle-noticias/"
+                            (click)="setNoticiaADetalle(noti)"
+                            >Read More</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="button-container">
+                <div *ngIf="pagActua != 0; else elseButonPrevio">
+                  <button class="button button1" (click)="previoPagina()">
+                    <<
+                  </button>
+                </div>
+                <ng-template #elseButonPrevio>
+                  <button class="button button1" style="opacity: 0.5"><<</button>
+                </ng-template>
+                <div *ngIf="pagActua != pagExist - 1; else elseButtonNext">
+                  <button class="button button2" (click)="nextPagina()">
+                    >>
+                  </button>
+                </div>
+                <ng-template #elseButtonNext>
+                  <button class="button button2" style="opacity: 0.5">>></button>
+                </ng-template>
+              </div>
+  
+              <!-- <pagination-controls (pageChange)="pageAct = $event"></pagination-controls> -->
+              <!-- PAGINACION CARDS NOTICIAS -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  

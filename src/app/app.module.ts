@@ -19,6 +19,7 @@ import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor, authInterceptorProviders } from './services/defauld/s-interceptor';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 // import { authInterceptorProviders } from './services/defauld/s-interceptor';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    CommonModule,
     FormsModule,
   ],
   providers: [
