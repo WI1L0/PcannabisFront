@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Ocultar el encabezado en la página de inicio
-        if (event.url === '/admin/principal' || event.url == '/usuarios/gestion' || event.url == '/usuarioss/crear' || event.url == '/empresas/gestion' || event.url == '/formulario/ver' || event.url == '/formularios/detalle' || event.url == '/noticias/ver' || event.url == '/noticia/crears' || event.url == '/usuario/edit' || event.url == '/noti/editar') {
+        if (event.url === '/cbd/admin/panel' || event.url == '/cbd/admin/usuarios/listar' || event.url == '/cbd/admin/usuarios/crear' || event.url == '/cbd/admin/usuarios/editar' || event.url == '/cbd/admin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar'|| event.url == '/cbd/login'|| event.url == '/cbd/admin/contactanos/detalle') {
           this.mostrarHeader = false;
         } else {
           this.mostrarHeader = true;
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Ocultar el encabezado en la página de inicio
-        if (event.url === '/admin/principal' || event.url == '/usuarios/gestion' || event.url == '/usuarioss/crear' || event.url == '/empresas/gestion' || event.url == '/formulario/ver' || event.url == '/formularios/detalle' || event.url == '/noticia/crears') {
+        if (event.url === '/cbd/admin/panel' || event.url == '/cbd/admin/usuarios/listar' || event.url == '/cbd/admin/usuarios/crear' || event.url == '/cbd/admin/usuarios/editar' || event.url == '/cbd/admin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar'|| event.url == '/cbd/login'|| event.url == '/cbd/admin/contactanos/detalle') {
           this.mostrarFooter = false;
         } else {
           this.mostrarFooter = true;

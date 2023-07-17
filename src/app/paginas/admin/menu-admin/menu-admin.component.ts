@@ -14,9 +14,9 @@ export class MenuAdminComponent implements OnInit {
   constructor( private loginServices: SloginService, private router: Router ) { }
 
   ngOnInit(): void {
-    if (!this.loginServices.estaLogin()){
-      this.router.navigate(['/lg/login']);
-    }
+    // if (!this.loginServices.estaLogin()){
+    //   this.router.navigate(['/cbd/login']);
+    // }
   }
 
 }

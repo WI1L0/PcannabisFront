@@ -112,3 +112,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	  parrafoInput.value = ''; // Limpiar el textarea
 	});
   });
+

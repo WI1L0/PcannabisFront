@@ -16,17 +16,14 @@
                 <h2 class="fs-title">Crear Noticia</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de Noticias</h3>
                 <input type="text" name="titulo" placeholder="Titulo" required />
-                <!-- <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" /> -->
                 <input type="date" name="fechanoticia" placeholder="Fecha de noticia" value="Fecha de noticia" required>
                 <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required />
-                <textarea name="apellidos" placeholder="Pre Descripción" required></textarea>
-                <div class="row">
-                    <textarea name="parrafo" placeholder="Agregar un Parrafo" class="half-width " required></textarea>
-                    <input type="button" name="parrafos" class="Agregarparr" value="Agregar"
-                        style="float: right; width: 100px; margin-top: 10px;" />
+                <input type="text" placeholder="Pre Descripción" required />
+                <textarea type="text" class="parrafo" placeholder="Agregar un Parrafo" required></textarea>
+                <input type="button" name="botoncito" class="botoncito" required value="Agregar" />
+                <div class="divPrimero">
+
                 </div>
-
-
                 <input type="button" name="next" class="next action-button" value="Siguiente" />
             </fieldset>
             <fieldset>
@@ -37,28 +34,25 @@
                         <label for="foto">Seleccionar foto:</label>
                         <div class="row">
                             <input type="file" name="foto" id="foto" accept="image/*">
-                            <input type="button" name="parrafos" class="Crearnot" value="Agregar"
-                                style="float: right; width: 100px; margin-top: 10px;" />
+                            <input type="button" name="botoncito" class="botoncito" value="Añadir"/>
                         </div>
 
                     </form>
                 </div>
-
-
-
-                <!-- <input type="text" name="nombre_usuario" placeholder="Nombre de Usuario" class="half-width" required />
-                <input type="text" name="correo_usuario" placeholder="Correo de Usuario" class="half-width" required />
-                <select class="select half-width">
-                    <option>Administrador</option>
-                    <option>Empleado</option>
-                    <option>Cliente</option>
-                </select>
-                <input type="password" name="pass" placeholder="Contraseña" class="half-width" required />
-                <input type="password" name="cpass" id="cpass" placeholder="Confirmar Contraseña" class="half-width"
-                    required /> -->
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
-                <a href="/admin/principal" class="submit action-button" target="_top">Registrar</a>
+                <a class="submit action-button" id="boton-registro" data-toggle="collapse"
+                    target="_top">Registrar</a>
             </fieldset>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success collapse" id="alerta-registro" role="alert">
+                            ¡Registro exitoso!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </form>
     </div>
 

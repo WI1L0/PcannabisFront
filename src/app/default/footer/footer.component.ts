@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Empresas } from 'src/app/modelos/Empresas';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import nameEmpresa from 'src/app/services/defauld/EmpresaName';
@@ -14,12 +15,32 @@ export class FooterComponent implements OnInit {
 
   admin = false;
   logeado = false;
-  empresaData: Empresas = new Empresas();
 
+  empresaData: Empresas = new Empresas();
+  myUnsafeUrl: string = '';
+  myUnsafeUrl2: string = '';
+  myUnsafeUrlDireccion:string | undefined = this.empresaData.urlDireccionEmpresa;
+  myUnsafeUrlCelular:string |undefined = this.empresaData.urlCelularEmpresa;
+  sanitizedUrl: SafeResourceUrl = '';
+  sanitizedUrl2: SafeResourceUrl = '';
+  sanitizedUrlDireccion: SafeResourceUrl;
+  sanitizedUrlCelular: SafeResourceUrl = '';
+ 
+  myUnsafeUrlempresa: string | undefined  = this.empresaData.urlDireccionEmpresaGoogle;
+  sanitizedUrlEmpresa: SafeResourceUrl='';
   //implementar js en los componentes
-  constructor(private AllScripts: AllScriptsService, private empresasService: SEmpresasService, private loginServices: SloginService) {
+  constructor(private AllScripts: AllScriptsService, private empresasService: SEmpresasService, private loginServices: SloginService, private sanitizer: DomSanitizer) {
     AllScripts.Cargar(["default/footer"]);
+
+    this.myUnsafeUrl = 'https://www.facebook.com/pharmacanabismedical/';
+    this.myUnsafeUrl2 = 'https://www.instagram.com/pharmacannabismedical/';
+    this.sanitizedUrlDireccion = this.sanitizer.bypassSecurityTrustResourceUrl(this.myUnsafeUrlDireccion ?? '');
+    this.sanitizedUrlCelular = this.sanitizer.bypassSecurityTrustResourceUrl(this.myUnsafeUrlCelular ?? '');
+    this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.myUnsafeUrl);
+    this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.myUnsafeUrl2);
+    this.sanitizedUrlEmpresa = this.sanitizer.bypassSecurityTrustResourceUrl(this.myUnsafeUrlempresa ?? '');
   }
+
 
   ngOnInit(): void {
     this.parteAdministrador();
