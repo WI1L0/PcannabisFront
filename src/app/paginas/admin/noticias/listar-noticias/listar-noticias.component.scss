@@ -194,8 +194,22 @@ h2 {
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+
+      
 }
-.a{
+.contenedor{
+    text-align: center;
+}
+.combo{
+    background-color: $color-letrav;
+    border-color: #b3b3b3;
+    float: left; 
+    width: 100px; 
+    margin: auto;
+    align-items: right;
+  }
+
+.a {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -211,12 +225,18 @@ h2 {
     border-radius: 4px;
     color: #333;
     text-decoration: none;
-  }
-  .a {
+    float: right;
+}
+
+.a {
     background-color: $color-letrav;
     border-color: #b3b3b3;
-    float: center; 
-    width: 100px; 
-    margin-top: 10px; 
+    float: center;
+    width: 100px;
+    margin-top: 10px;
     margin: auto
+}
+
+body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

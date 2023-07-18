@@ -12,6 +12,7 @@ export class CrearNoticiasComponent implements OnInit {
     AllScripts.Cargar(["default/crearnoticias"]);
   }
   ngOnInit(): void {
+    
     mostrarAlertaYRedireccionar('/cbd/admin/noticias/listar', 100);
   }
 

@@ -34,6 +34,8 @@ export class ListarUsuariosComponent  implements OnInit {
     this.obtenerUsuariosPersonas();
 
   }
+  //mensaje de eliminar
+  
 
   obtenerUsuariosPersonas() {
     this.listUsuarios = [];

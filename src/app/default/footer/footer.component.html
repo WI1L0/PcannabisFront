@@ -8,9 +8,9 @@
       </div>
       <div class="col-sm-6 col-md-5 pad">
         <h6>Pharma Cannabis</h6>
-        <iframe [src]="sanitizedUrl" safe  width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+        <iframe [src]="empresaData.urlDireccionEmpresaGoogle" safe width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
       <div class="col-xs-6 col-md-2 pad">
         <h6>Categories</h6>
         <ul class="footer-links">
@@ -31,10 +31,16 @@
   <li class="contac"><i>Teléfono:</i><br><span class="icontel"></span> {{empresaData.telefonoEmpresa}} </li>
 <!-- </div>           -->
           <!-- <li class="contac"><i>Teléfono:</i><br> +593 7407938</li> -->
-          <li class="contac"><i>Dirección</i><br><span class="iconubi"></span> <a
-            [href]="sanitizedUrlDireccion">
-              {{empresaData.direccionEmpresa}} </a></li>
-          <li class="contac"><i>Celular</i><br><span class="iconwpp"></span> <a [href]="sanitizedUrlCelular">(+593) {{empresaData.celularEmpresa}}</a></li>
+          <li class="contac"><i>Dirección</i><br><span class="iconubi"></span> 
+            <a href="{{ empresaData.urlDireccionEmpresa }}">
+                {{ empresaData.direccionEmpresa }}
+            </a>
+        </li>
+        <li class="contac"><i>Celular</i><br><span class="iconwpp"></span> 
+            <a href="tel:+593{{ empresaData.celularEmpresa }}">
+                (+593) {{ empresaData.celularEmpresa }}
+            </a>
+        </li>
         </ul>
       </div>
     </div>
@@ -51,9 +57,9 @@
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <ul class="social-icons">
-          <li><a [href]="sanitizedUrl" class="facebook" ><i
+          <li><a href="https://www.facebook.com/pharmacanabismedical/" class="facebook" ><i
                 class="fa fa-facebook"></i></a></li>
-          <li><a [href]="sanitizedUrl2"  class="dribbble" ><i
+          <li><a href="https://www.instagram.com/pharmacannabismedical/"  class="dribbble" ><i
                 class="fa fa-instagram"></i></a></li>
         </ul>
       </div>
