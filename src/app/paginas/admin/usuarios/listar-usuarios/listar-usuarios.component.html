@@ -25,7 +25,7 @@
                         <td>{{listPersonas[i].apellido1}} {{listPersonas[i].apellido2}}</td>
                         <td>{{listPersonas[i].correo}}</td>
                         <td>{{listUsuarios[i].nombreUsuario}}</td>
-                        <td><a href="/cbd/admin/usuarios/editar" class="a" >Editar</a></td>
+                        <td><a href="/cbd/admin/usuarios/editar" (click)="almacenarUsuario(listUsuarios[i].idUsuario, listPersonas[i].idPersona)" class="a" >Editar</a></td>
                         <td><a class="a">Eliminar</a></td>
                         <td><a href="/cbd/admin/usuarios/detalle" class="a">Ver</a></td>
                         <!-- <td><button class="usuarios">Eliminar</button></td>
@@ -35,5 +35,27 @@
                 <tbody>
             </table>
         </div>
+
+          
+        <div class="button-container">
+            <div *ngIf="pagActua != 0; else elseButonPrevio">
+              <button class="button button1" (click)="previoPagina()">
+                <<
+              </button>
+            </div>
+            <ng-template #elseButonPrevio>
+              <button class="button button1" style="opacity: 0.5"><<</button>
+            </ng-template>
+            <div *ngIf="pagActua != pagExist - 1; else elseButtonNext">
+              <button class="button button2" (click)="nextPagina()">
+                >>
+              </button>
+            </div>
+            <ng-template #elseButtonNext>
+              <button class="button button2" style="opacity: 0.5">>></button>
+            </ng-template>
+          </div>
+
+
     </div>
 </div>

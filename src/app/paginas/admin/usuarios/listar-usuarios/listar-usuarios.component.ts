@@ -67,5 +67,9 @@ export class ListarUsuariosComponent  implements OnInit {
     }
   }
 
+  almacenarUsuario(IdUserSelect: any, IdPersonaSelect: any) {
+    localStorage.setItem('IdUsuarioSelecto', IdUserSelect);
+    localStorage.setItem('IdPersonaSelecto', IdPersonaSelect);
+  }
 
 }

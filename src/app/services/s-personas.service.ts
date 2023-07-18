@@ -4,24 +4,20 @@ import { Observable } from 'rxjs';
 import { Noticias } from '../modelos/Noticias';
 import baserUrl from './defauld/helper';
 import { UsuariosResponse } from '../modelos/Respuestas/UsuariosResponse';
-import { Usuarios } from '../modelos/Usuarios';
+import { Personas } from '../modelos/Personas';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SusuariosService {
+export class SpersonasService {
 
-    private URL = '/cbd/usuarios';
+    private URL = '/cbd/personas';
 
     constructor(private http: HttpClient) { }
   
     //OBTENEMOS EL OBJETO DE USUARIOS Y PERSONAS
-    public getUsuariosPersonas(pageAct: number, estado: string, empresaName: string) {
-      return this.http.get<UsuariosResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&?estado=${estado}`);
-    }
-
-    public getOneUsuario(id: number) {
-      return this.http.get<Usuarios>(`${baserUrl + this.URL}/id/${id}`);
+    public getOnePersona(id: number) {
+      return this.http.get<Personas>(`${baserUrl + this.URL}/id/${id}`);
     }
 
     // postNoticias(Noticias: Noticias) {
