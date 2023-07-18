@@ -203,11 +203,21 @@ h2 {
 .combo{
     background-color: $color-letrav;
     border-color: #b3b3b3;
-    float: left; 
+    float: right; 
     width: 100px; 
     margin: auto;
     align-items: right;
+    font-size: 14px;
+    font-weight: 400;
   }
+  td:first-child {
+    text-align: center;
+  }
+  
+  .contenedor {
+    text-align: right;
+  }
+  
 
 .a {
     display: inline-block;
@@ -225,7 +235,6 @@ h2 {
     border-radius: 4px;
     color: #333;
     text-decoration: none;
-    float: right;
 }
 
 .a {
