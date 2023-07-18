@@ -25,14 +25,14 @@
     "ngx-ui-loader": "^13.0.0",
     "ngx-webstorage-service": "^5.0.0",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.7.18",
+    "sweetalert2": "^11.6.13",
     "tslib": "^2.3.0",
     "tw-elements": "^1.0.0-beta2",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.0",
-    "@angular/cli": "~16.0.0",
+    "@angular/cli": "^16.1.4",
     "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",

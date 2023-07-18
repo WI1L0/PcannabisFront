@@ -33,7 +33,9 @@ export class EditarUsuarioComponent {
     this.objectPersona = new Personas;
     this.personaServices.getOnePersona(Number(localStorage.getItem('IdPersonaSelecto'))).subscribe(
       data => {
+        console.log(data);
         this.objectPersona = data;
+        localStorage.removeItem('IdPersonaSelecto');
       },
       error => {
         console.log('Error al obtener noticias:', error);
@@ -45,11 +47,17 @@ export class EditarUsuarioComponent {
     this.objectUsuario = new Usuarios;
     this.usuarioServices.getOneUsuario(Number(localStorage.getItem('IdUsuarioSelecto'))).subscribe(
       data => {
+        console.log(data);
         this.objectUsuario = data;
+        localStorage.removeItem('IdUsuarioSelecto');
       },
       error => {
         console.log('Error al obtener noticias:', error);
       }
     );
+  }
+
+  updatePersonaUsuario(){
+
   }
 }
