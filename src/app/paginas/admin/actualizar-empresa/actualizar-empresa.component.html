@@ -23,12 +23,16 @@
                 <input placeholder="Telefono" type="tel" name="telefono_empresa" tabindex="5" required [(ngModel)]="empresaData.telefonoEmpresa">
             </fieldset>
             <fieldset>
+                <p class="nom">Dirección</p>
+                <input placeholder="Dirección" type="text" name="direccion_empresa" tabindex="6" >
+            </fieldset>
+            <fieldset>
                 <p class="nom">Dirección en html de google maps</p>
-                <input placeholder="Dirección google en html " type="url" name="sitio_web_empresa" tabindex="6" required [(ngModel)]="empresaData.urlDireccionEmpresaGoogle">
+                <input placeholder="Dirección google en html " type="url" name="sitio_web_empresa" tabindex="7" required [(ngModel)]="empresaData.urlDireccionEmpresaGoogle">
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección de mapa</p>
-                <input placeholder="Dirección maps" type="url" name="sitio_web_empresa" tabindex="7" required [(ngModel)]="empresaData.urlDireccionEmpresa">
+                <input placeholder="Dirección maps" type="url" name="sitio_web_empresa" tabindex="8" required [(ngModel)]="empresaData.urlDireccionEmpresa">
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updateEmpresas(empresaData)">Editar</button>
