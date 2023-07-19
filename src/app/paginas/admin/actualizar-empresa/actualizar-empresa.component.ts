@@ -22,7 +22,7 @@ export class ActualizarEmpresaComponent  implements OnInit {
 
   ngOnInit(): void {
     if (!this.loginServices.estaLogin()){
-      this.router.navigate(['/lg/login']);
+      this.router.navigate(['/cbds/login']);
     }
 
     this.ObtenerEmpresa();
@@ -30,6 +30,7 @@ export class ActualizarEmpresaComponent  implements OnInit {
   }
 
   ObtenerEmpresa() {
+    this.empresaData = new Empresas();
     this.empresasServices.getEmpresa(nameEmpresa).subscribe(
       (data: any) => {
         this.empresaData = data;
@@ -39,7 +40,10 @@ export class ActualizarEmpresaComponent  implements OnInit {
     )
   }
 
-  postEmpresa(){
+  updateEmpresas(emp: any){
+    console.log("ssssssssssssssssssssssssssssssssss");
+    this.empresasServices.putEmpresa(emp.idEmpresa, emp)
+    console.log("ssssssssssssssssssssssssssssssssss");
     
   }
   

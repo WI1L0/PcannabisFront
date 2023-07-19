@@ -18,6 +18,10 @@ export class SEmpresasService {
     return this.http.get<Empresas>(`${baserUrl + this.URL}/name/${empresaName}`);
   }
 
+  public putEmpresa(id: number, empresaName: Empresas) {
+    return this.http.put<any>(`${baserUrl + this.URL}/${id}`, empresaName);
+  }
+
 
   // getEmpresas() {
   //   return this.http.get<Empresas[]>(this.URL);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Personas } from 'src/app/modelos/Personas';
 import { Usuarios } from 'src/app/modelos/Usuarios';
@@ -11,7 +11,7 @@ import { SusuariosService } from 'src/app/services/s-usuarios.service';
   templateUrl: './editar-usuario.component.html',
   styleUrls: ['./editar-usuario.component.scss']
 })
-export class EditarUsuarioComponent {
+export class EditarUsuarioComponent implements OnInit {
 
   objectPersona: Personas = new Personas();
   objectUsuario: Usuarios = new Usuarios();
