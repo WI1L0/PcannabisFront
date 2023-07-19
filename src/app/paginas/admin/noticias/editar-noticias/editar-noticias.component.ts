@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-noticias',
@@ -13,25 +14,28 @@ export class EditarNoticiasComponent  implements OnInit {
     AllScripts.Cargar(["paginas/editarnoticia"]);
   }
   ngOnInit(): void {
-    mostrarAlertaYRedireccionar('/cbd/admin/noticias/listar', 1000);
+  }
+  confirmEditar() {
+    Swal.fire({
+      title: '¿Estas seguro de editar la noticia?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Editar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Editada!',
+          'Noticia editada exitosamente.',
+          'success'
+        );
+      }
+    });
   }
 
 }
 
-function mostrarAlertaYRedireccionar(url: string, tiempoEspera: number){
-    // Obtener el botón de registro y agregar un evento para cuando se haga clic
-    const botonRegistro = document.getElementById('boton-editar');
-    botonRegistro?.addEventListener('click', (event) => {
-      // Prevenir que el enlace del botón de registro recargue la página
-      event.preventDefault();
-      // Obtener el contenedor de la alerta y mostrarla
-      const alertaRegistro = document.getElementById('alerta-registro');
-      alertaRegistro?.classList.add('show');
-      // Redirigir al usuario a la pantalla principal después de un tiempo determinado
-      setTimeout(() => {
-        window.location.href = url;
-      }, tiempoEspera);
-    });
-}
+
 
 

@@ -228,6 +228,31 @@ $negrita: bold;
   width: 50%; 
   margin-top: 0px
 }
+.a {
+  background-color: $color-letrav;
+  border-color: #b3b3b3;
+  width: 100px;
+  margin: auto;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+}
+.contenedor {
+  text-align: center;
+}
+
 
 //Editar
 .layout3{
@@ -322,37 +347,37 @@ $negrita: bold;
 flex-wrap: wrap;
 }
 
-@media only screen and (min-width:320px) and (max-width:768px){
-  .container-card1{
-      flex-wrap: wrap;
-  }
-  .card1{
-      margin: 15px;
-  }
-}
+// @media only screen and (min-width:320px) and (max-width:768px){
+//   .container-card1{
+//       flex-wrap: wrap;
+//   }
+//   .card1{
+//       margin: 15px;
+//   }
+// }
 .txtarea{
   height: 100px;
     max-width: 100%;
     resize: none;
     width: 100%;
 }
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 0 0 33.33%;
+  padding: 0 15px;
+}
+
+@media (max-width: 704px) {
+  .container-card {
+    flex-direction: column;
+  }
+}
+
 /*Fin-Cards*/
 
 
-//alerta
-#alerta-registro {
-	position: fixed;
-	top: 5px;
-	right: 0;
-	width: 30%;
-	background-color: $color-letrav;
-	color: #ffffff;
-	padding: 10px 20px;
-	border-radius: 5px;
-	border: none;
-	text-align: center;
-	font-size: 1.5 rem;
-	font-weight: bold;
-	font-family: $fuente-secundaria;
-	z-index: 9999;
-  }
+

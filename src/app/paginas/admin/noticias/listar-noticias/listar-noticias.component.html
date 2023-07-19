@@ -5,20 +5,29 @@
         <div class="row">
             <h2>NOTICIAS</h2>
             <tr>
-                <table class="fl-table">
-                    <tr>
-                        <td><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
-                        <td class="contenedor"><select class="combo">
-                            <option>Vistas</option>
-                            <option>Ocultas</option>
-                        </select></td>
-                    </tr>
+                <div class="row">
+                    <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <td class="all"><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
+                                <td class="contenedor"><a class="buscar">Buscar Noticias:  </a>
+                                    <select class="combo">
+                                        <option>Vistas</option>
+                                        <option>Ocultas</option>
+                                    </select></td>
+                            </tr>
+                        </thead>
 
-                </table>
+                    </table>
+                </div>
             </tr>
 
         </div>
+    </div>
+</div>
 
+<div class="divPrimero">
+    <div class="divSegundo">
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -27,6 +36,7 @@
                         <th>Ubicación</th>
                         <th>Fecha</th>
                         <th>Pre descripción</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +45,10 @@
                         <td>Av.Larga</td>
                         <td>27/09/2015</td>
                         <td>Noticia ocurrada en el transcurso de la semana</td>
-                        <td><a href="/cbd/admin/noticias/editar" (click)="confirmEditar()" class="a">Editar</a></td>
-                        <td><a class="a">Eliminar</a></td>
-                        <td><a href="/cbd/admin/noticias/detalle" class="a">Ver</a></td>
-                        <td><a href="" class="a">Ocultar</a></td>
+                        <td><a href="/cbd/admin/noticias/editar"  class="a">Editar</a>
+                        <a class="a" (click)="confirmEliminar()" >Eliminar</a>
+                        <a href="/cbd/admin/noticias/detalle" class="a">Ver</a>
+                        <a  class="a" (click)="ocultaralert()">Ocultar</a></td>
                         <!-- <td><button class="usuarios">Eliminar</button></td>
                         <td><button class="usuarios">Editar</button></td>
                         <td><button class="usuarios">Ver detalle</button></td> -->

@@ -12,18 +12,22 @@ import { SloginService } from 'src/app/services/s-login.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  
 
   admin = false;
   logeado = false;
-
+  direccion: SafeResourceUrl='';
+  direccion2:SafeResourceUrl='';
+  whatsapp:SafeResourceUrl='';
+  instagram: SafeResourceUrl = '';
   empresaData: Empresas = new Empresas();
- 
+  facebook: SafeResourceUrl= '';
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService, private empresasService: SEmpresasService, private loginServices: SloginService, private sanitizer: DomSanitizer) {
     AllScripts.Cargar(["default/footer"]);
+    
 
   }
-
 
   ngOnInit(): void {
     this.parteAdministrador();
@@ -35,6 +39,11 @@ export class FooterComponent implements OnInit {
     this.empresasService.getEmpresa(nameEmpresa).subscribe(
       (data: any) => {
         this.empresaData = data;
+        this.direccion = this.sanitizer.bypassSecurityTrustResourceUrl(String(this.empresaData.urlDireccionEmpresaGoogle));
+        this.direccion2 = this.sanitizer.bypassSecurityTrustResourceUrl(String(this.empresaData.urlDireccionEmpresa));
+        this.whatsapp = this.sanitizer.bypassSecurityTrustResourceUrl(String(this.empresaData.urlCelularEmpresa));
+        this.instagram = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.instagram.com/pharmacannabismedical/");
+        this.facebook = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.facebook.com/pharmacanabismedical/");
       }, (error) => {
         console.log(error);
       }

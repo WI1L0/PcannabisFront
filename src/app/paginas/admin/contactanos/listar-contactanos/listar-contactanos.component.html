@@ -4,8 +4,27 @@
         <!-- TABLA -->
         <div class="row">
             <h2>RESPUESTAS AL FORMULARIO</h2>
-        </div>
+            <tr>
+                <div class="row">
+                    <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <td class="contenedor">
+                                    <a class="hola">Buscar Noticias: </a>
+                                    <select class="combo">
+                                        <option>Vistas</option>
+                                        <option>Ocultas</option>
+                                    </select>
+                                </td>
 
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </tr>
+
+        </div>
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -22,9 +41,8 @@
                         <td>{{contac.emailContactanos}}</td>
                         <td>{{contac.asuntoContactanos}}</td>
                         <td>{{contac.celularContactanos}}</td>
-                        <td><a href="" class="usuarios">Ocultar</a></td>
-                        <td><a href="/cbd/admin/contactanos/detalle" class="usuarios">Ver Detalle</a></td>
-
+                        <td><a class="as" (click)="ocultaralert()">Ocultar</a></td>
+                        <td><a href="/cbd/admin/contactanos/detalle" class="as">Ver Detalle</a></td>
                     </tr>
                 <tbody>
             </table>

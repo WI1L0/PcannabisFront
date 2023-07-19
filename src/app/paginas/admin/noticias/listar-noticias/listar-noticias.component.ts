@@ -13,22 +13,40 @@ export class ListarNoticiasComponent implements OnInit {
   }
 
 
-confirmEditar(){
-  Swal.fire({
-    title: '¿Estas seguro de editar la noticia?',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Editar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire(
-        'Editada!',
-        'Noticia editada exitosamente.',
-        'success'
-      );
-    }
-  });
-}
+  confirmEliminar() {
+    Swal.fire({
+      title: '¿Estas seguro de eliminar la noticia?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminada!',
+          'Noticia eliminada exitosamente.',
+          'success'
+        );
+      }
+    });
+  }
+      //alerta
+      ocultaralert() {
+        Swal.fire({
+          position: 'top-right',
+          icon: 'success',
+          title: 'Respuesta Oculta Exitosamente',
+          showConfirmButton: false,
+          timer: 1500,
+          background: '#ffff',
+          iconColor: '#4CAF50',
+          padding: '1.25rem',
+          width: '20rem',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+        });
+      }
+  
+      //alerta
 }

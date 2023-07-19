@@ -11,11 +11,12 @@
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>Cedula</th>
+                        <th>Cédula</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
                         <th>Email</th>
                         <th>Usuario</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let i of listPersonas.keys()">
@@ -25,9 +26,9 @@
                         <td>{{listPersonas[i].apellido1}} {{listPersonas[i].apellido2}}</td>
                         <td>{{listPersonas[i].correo}}</td>
                         <td>{{listUsuarios[i].nombreUsuario}}</td>
-                        <td><a href="/cbd/admin/usuarios/editar" (click)="almacenarUsuario(listUsuarios[i].idUsuario, listPersonas[i].idPersona)" class="a" >Editar</a></td>
-                        <td><a class="a">Eliminar</a></td>
-                        <td><a href="/cbd/admin/usuarios/detalle" class="a">Ver</a></td>
+                        <td><a href="/cbd/admin/usuarios/editar" (click)="almacenarUsuario(listUsuarios[i].idUsuario, listPersonas[i].idPersona)" class="a" >Editar</a>
+                        <a class="a">Eliminar</a>
+                        <a href="/cbd/admin/usuarios/detalle" class="a">Ver</a></td>
                         <!-- <td><button class="usuarios">Eliminar</button></td>
                         <td><button class="usuarios">Ver</button></td> -->
 

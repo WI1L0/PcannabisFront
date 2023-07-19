@@ -5,6 +5,7 @@ import { ScontactanosService } from 'src/app/services/s-contactanos.service';
 import { SloginService } from 'src/app/services/s-login.service';
 import { Router } from '@angular/router';
 import nameEmpresa from 'src/app/services/defauld/EmpresaName';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-contactanos',
@@ -35,6 +36,24 @@ export class ListarContactanosComponent implements OnInit {
       this.obtenerContactenos();
 
     }
+    //alerta
+    ocultaralert() {
+      Swal.fire({
+        position: 'top-right',
+        icon: 'success',
+        title: 'Respuesta Oculta Exitosamente',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false
+      });
+    }
+
+    //alerta
   
     obtenerContactenos() {
       console.log("ssddd")
