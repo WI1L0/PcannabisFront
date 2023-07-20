@@ -15,7 +15,8 @@ export class ListarNoticiasComponent implements OnInit {
 
   confirmEliminar() {
     Swal.fire({
-      title: '¿Estas seguro de eliminar la noticia?',
+      title: '¿Estas seguro de eliminar esta noticia?',
+      text: 'Se eliminarán todos los registros de esta noticia de manera permantente!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -24,27 +25,31 @@ export class ListarNoticiasComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Eliminada!',
-          'Noticia eliminada exitosamente.',
+          'Noticia Eliminada con éxito!',
+          '',
           'success'
         );
       }
     });
   }
       //alerta
-      ocultaralert() {
+      alertOcultar() {
         Swal.fire({
-          position: 'top-right',
-          icon: 'success',
-          title: 'Respuesta Oculta Exitosamente',
-          showConfirmButton: false,
-          timer: 1500,
-          background: '#ffff',
-          iconColor: '#4CAF50',
-          padding: '1.25rem',
-          width: '20rem',
-          allowOutsideClick: false,
-          allowEscapeKey: false
+          title: '¿Estas seguro de ocultar esta noticia?',
+          text: 'Podrá verlas aún en la sección ocultos',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ocultar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Noticia Oculta!',
+              '',
+              'success'
+            );
+          }
         });
       }
   

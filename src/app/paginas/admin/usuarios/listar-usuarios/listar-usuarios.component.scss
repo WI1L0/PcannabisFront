@@ -55,6 +55,8 @@ h2 {
     margin: 10px 70px 70px;
     // box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
     box-shadow: 0 10px 5px $color-letrav, 1px 10px 10px rgba(169, 159, 159, 0.25);
+    overflow-x: auto;
+    display: block;
 }
 
 .fl-table {
@@ -67,6 +69,7 @@ h2 {
     max-width: 100%;
     white-space: nowrap;
     background-color: white;
+    
 }
 
 .fl-table td,
@@ -104,85 +107,7 @@ h2 {
 
 /* Responsive */
 
-// @media (max-width: 767px) {
-//     .fl-table {
-//         display: block;
-//         width: 100%;
-//     }
 
-//     .table-wrapper:before {
-//         content: "Scroll horizontally >";
-//         display: block;
-//         text-align: right;
-//         font-size: 11px;
-//         color: white;
-//         padding: 0 0 10px;
-//     }
-
-//     .fl-table thead,
-//     .fl-table tbody,
-//     .fl-table thead th {
-//         display: block;
-//     }
-
-//     .fl-table thead th:last-child {
-//         border-bottom: none;
-//     }
-
-//     .fl-table thead {
-//         float: left;
-//     }
-
-//     .fl-table tbody {
-//         width: auto;
-//         position: relative;
-//         overflow-x: auto;
-//     }
-
-//     .fl-table td,
-//     .fl-table th {
-//         padding: 20px .625em .625em .625em;
-//         height: 60px;
-//         vertical-align: middle;
-//         box-sizing: border-box;
-//         overflow-x: hidden;
-//         overflow-y: auto;
-//         width: 120px;
-//         font-size: 13px;
-//         text-overflow: ellipsis;
-//     }
-
-//     .fl-table thead th {
-//         text-align: left;
-//         border-bottom: 1px solid #f7f7f9;
-//     }
-
-//     .fl-table tbody tr {
-//         display: table-cell;
-//     }
-
-//     .fl-table tbody tr:nth-child(odd) {
-//         background: none;
-//     }
-
-//     .fl-table tr:nth-child(even) {
-//         background: transparent;
-//     }
-
-//     .fl-table tr td:nth-child(odd) {
-//         background: #F8F8F8;
-//         border-right: 1px solid #E6E4E4;
-//     }
-
-//     .fl-table tr td:nth-child(even) {
-//         border-right: 1px solid #E6E4E4;
-//     }
-
-//     .fl-table tbody td {
-//         display: block;
-//         text-align: center;
-//     }
-// }
 /* CSS for screens larger than 768 pixels */
 .divPrimero {
     display: flex;
@@ -198,31 +123,31 @@ h2 {
   
   /* CSS for screens 768 pixels or less */
   @media (max-width: 768px) {
-    .table-wrapper {
-      overflow-x: scroll;
-    }
-    
-    table {
-      width: 100%;
-    }
-    
-    td, th {
-      white-space: nowrap;
-    }
-    
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .button {
-      width: 100%;
-    }
-    
-    .button1 {
-      margin-bottom: 10px;
-    }
+      .table-wrapper {
+        overflow-x: scroll;
+      }
+      
+      table {
+        width: 100%;
+      }
+      
+      td, th {
+        white-space: nowrap;
+      }
+      
+      .button-container {
+        display: block;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .button {
+        width: 100%;
+      }
+      
+      .button1 {
+        margin-bottom: 10px;
+      }
   }
 
 .row {
@@ -260,6 +185,71 @@ h2 {
     width: 100px; 
     margin-top: 10px; 
     margin: auto
+}
+.combo{
+  background-color: $color-letrav;
+  border-color: #b3b3b3;
+  width: 100px; 
+  margin: auto;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 6px 12px;
+  font-family: Helvetica;
+}
+
+td:first-child {
+  text-align: center;
+}
+
+.contenedor {
+  text-align: right;
+}
+
+
+.a {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  padding: auto;
+}
+.buscar{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+}
+
+
+.a {
+  background-color: $color-letrav;
+  border-color: #b3b3b3;
+  float: center;
+  width: 100px;
+  margin-top: 10px;
+  margin: auto
 }
 
 

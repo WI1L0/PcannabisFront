@@ -5,6 +5,7 @@ import { Usuarios } from 'src/app/modelos/Usuarios';
 import { SloginService } from 'src/app/services/s-login.service';
 import { SpersonasService } from 'src/app/services/s-personas.service';
 import { SusuariosService } from 'src/app/services/s-usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -60,4 +61,25 @@ export class EditarUsuarioComponent implements OnInit {
   updatePersonaUsuario(){
 
   }
+  //alerta//
+  confirmEditar() {
+    Swal.fire({
+      title: '¿Estas seguro de editar este usuario?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Editar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Datos Actualizados!',
+          'Usuario actualizado exitosamente.',
+          'success'
+        );
+      }
+    });
+  }
+
+  //alerta//
 }

@@ -25,7 +25,7 @@ import { AllNoticiasComponent } from './all-noticias/all-noticias.component';
     CcannabisComponent,
     AllNoticiasComponent,
     LoginComponent,
-    DetalleNoticiasComponent,
+    DetalleNoticiasComponent
     // DetallenoticiaComponent,
   ],
   imports: [

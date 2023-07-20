@@ -9,13 +9,15 @@ import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import { authInterceptorProviders } from 'src/app/services/defauld/s-interceptor';
 import { AppComponent } from 'src/app/app.component';
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
+import { EditarNoticiasComponent } from '../noticias/editar-noticias/editar-noticias.component';
+
 
 
 
 @NgModule({
   declarations: [
     ListarUsuariosComponent,
-    CrearUsuarioComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     CommonModule,

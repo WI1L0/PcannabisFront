@@ -13,27 +13,30 @@ import { HeaderComponent } from './default/header/header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 //router
-import { RouterModule, Route } from '@angular/router';
+import { RouterModule, Route, ROUTES } from '@angular/router';
 import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 // import { DetallenoticiaComponent } from './paginas/detallenoticia/detallenoticia.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor, authInterceptorProviders } from './services/defauld/s-interceptor';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HeaderadminComponent } from './paginas/admin/usuarios/headeradmin/headeradmin.component';
+
 // import { authInterceptorProviders } from './services/defauld/s-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
-    // DetallenoticiaComponent,
+    FooterComponent, 
+    HeaderadminComponent // DetallenoticiaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    RouterModule,
     CommonModule,
     FormsModule,
   ],

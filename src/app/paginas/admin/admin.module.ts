@@ -12,6 +12,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginasRoutingModule } from '../paginas-routing.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { HeaderadminComponent } from './usuarios/headeradmin/headeradmin.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 
 
 

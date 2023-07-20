@@ -5,6 +5,7 @@ import nameEmpresa from 'src/app/services/defauld/EmpresaName';
 import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 import { SloginService } from 'src/app/services/s-login.service';
 import { SusuariosService } from 'src/app/services/s-usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-usuarios',
@@ -70,6 +71,46 @@ export class ListarUsuariosComponent  implements OnInit {
   almacenarUsuario(IdUserSelect: any, IdPersonaSelect: any) {
     localStorage.setItem('IdUsuarioSelecto', IdUserSelect);
     localStorage.setItem('IdPersonaSelecto', IdPersonaSelect);
+  }
+
+  confirmEliminar() {
+    Swal.fire({
+      title: '¿Estas seguro de eliminar este usuario?',
+      text: 'Se eliminarán todos los registros de este usuario de manera permantente!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Usuario Eliminado!',
+          '',
+          'success'
+        );
+      }
+    });
+  }
+
+  alertOcultar() {
+    Swal.fire({
+      title: '¿Estas seguro de ocultar este usuario?',
+      text: 'Podrá verlos aún en la sección ocultos',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ocultar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Usuario Oculto!',
+          '',
+          'success'
+        );
+      }
+    });
   }
 
 }
