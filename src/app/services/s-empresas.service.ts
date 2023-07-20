@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Empresas } from '../modelos/Empresas';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import baserUrl from './defauld/helper';
 
 @Injectable({
@@ -18,8 +18,25 @@ export class SEmpresasService {
     return this.http.get<Empresas>(`${baserUrl + this.URL}/name/${empresaName}`);
   }
 
-  public putEmpresa(id: number, empresaName: Empresas) {
-    return this.http.put<any>(`${baserUrl + this.URL}/${id}`, empresaName);
+  // public putEmpresa(empresaObject: Empresas): Observable<boolean>  {
+
+  //   return this.http.put<Empresas>(`${baserUrl + this.URL}/update/${empresaObject.idEmpresa}`, empresaObject)
+  //     .pipe(
+  //       map(respuesta => {
+  //         return true;
+  //       }),
+  //       catchError(error => {
+  //         return of(false);
+  //       })
+  //     );
+  // }
+
+  public putEmpresa(empresaObject: Empresas) {
+    const updateUrl = `${baserUrl}${this.URL}/update/${empresaObject.idEmpresa}`;
+    const body = { ...empresaObject };
+    delete body.idEmpresa;
+  
+    return this.http.patch<Empresas>(updateUrl, body);
   }
 
 

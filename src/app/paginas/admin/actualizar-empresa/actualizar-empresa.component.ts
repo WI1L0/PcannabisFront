@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Empresas } from 'src/app/modelos/Empresas';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import nameEmpresa from 'src/app/services/defauld/EmpresaName';
 import { SEmpresasService } from 'src/app/services/s-empresas.service';
 import { SloginService } from 'src/app/services/s-login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-actualizar-empresa',
   templateUrl: './actualizar-empresa.component.html',
   styleUrls: ['./actualizar-empresa.component.scss']
 })
-export class ActualizarEmpresaComponent  implements OnInit {
+export class ActualizarEmpresaComponent implements OnInit {
 
   empresaData: Empresas = new Empresas();
 
@@ -21,8 +23,8 @@ export class ActualizarEmpresaComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.loginServices.estaLogin()){
-      this.router.navigate(['/cbds/login']);
+    if (!this.loginServices.estaLogin()) {
+      this.router.navigate(['/cbd/login']);
     }
 
     this.ObtenerEmpresa();
@@ -40,11 +42,33 @@ export class ActualizarEmpresaComponent  implements OnInit {
     )
   }
 
-  updateEmpresas(emp: any){
-    console.log("ssssssssssssssssssssssssssssssssss");
-    this.empresasServices.putEmpresa(emp.idEmpresa, emp)
-    console.log("ssssssssssssssssssssssssssssssssss");
-    
+  updateEmpresa(emp: Empresas) {
+    Swal.fire({
+      title: '¿Estas seguro de editar la noticia?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Editar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (this.empresasServices.putEmpresa(emp)) {
+          console.log(emp);
+          Swal.fire(
+            'Editada!',
+            'La Empresa fue editada exitosamente.',
+            'success'
+          );
+        } else {
+          console.log(emp);
+          Swal.fire(
+            'No Editada!',
+            'La empresa no fue editada.',
+            'error'
+          );
+        }
+      }
+    });
   }
-  
+
 }

@@ -24,7 +24,7 @@
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección</p>
-                <input placeholder="Dirección" type="text" name="direccion_empresa" tabindex="6" >
+                <input placeholder="Dirección" type="text" name="direccion_empresa" tabindex="6" required [(ngModel)]="empresaData.direccionEmpresa">
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección en html de google maps</p>
@@ -35,7 +35,7 @@
                 <input placeholder="Dirección maps" type="url" name="sitio_web_empresa" tabindex="8" required [(ngModel)]="empresaData.urlDireccionEmpresa">
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updateEmpresas(empresaData)">Editar</button>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updateEmpresa(empresaData)">Editar</button>
             </fieldset>
         </form>
     </div>
