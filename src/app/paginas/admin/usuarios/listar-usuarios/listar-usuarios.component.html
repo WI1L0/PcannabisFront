@@ -1,6 +1,6 @@
 <!-- ALL -->
 <div class="divPrimero">
-  <div class="divSegundo">
+  <div class="divSegundo2">
     <!-- TABLA -->
     <div class="row">
       <h2>USUARIOS</h2>
@@ -24,61 +24,58 @@
       </tr>
 
     </div>
+    <div class="row">
+      <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th>Cédula</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Email</th>
+              <th>Usuario</th>
+              <th>Acción</th>
+
+            </tr>
+          </thead>
+          <tbody *ngFor="let i of listPersonas.keys()">
+            <tr>
+              <td data-label="Cédula">{{listPersonas[i].cedula}}</td>
+              <td data-label="Nombres">{{listPersonas[i].nombre1}} {{listPersonas[i].nombre2}}</td>
+              <td data-label="Apellidos">{{listPersonas[i].apellido1}} {{listPersonas[i].apellido2}}</td>
+              <td data-label="Email">{{listPersonas[i].correo}}</td>
+              <td data-label="Usuario">{{listUsuarios[i].nombreUsuario}}</td>
+              <td data-label="Acción"><a href="/cbd/admin/usuarios/editar"
+                  (click)="almacenarUsuario(listUsuarios[i].idUsuario, listPersonas[i].idPersona)" class="as">Editar</a>
+              <a class="as">Eliminar </a>
+              <a class="as">Ocultar</a>
+              <a href="/cbd/admin/usuarios/detalle" class="as">Ver</a>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="divPrimero">
-  <div class="divSegundo">
-
-    <div class="table-wrapper">
-      <table class="fl-table">
-        <thead>
-          <tr>
-            <th>Cédula</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Email</th>
-            <th>Usuario</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let i of listPersonas.keys()">
-          <tr>
-            <td>{{listPersonas[i].cedula}}</td>
-            <td>{{listPersonas[i].nombre1}} {{listPersonas[i].nombre2}}</td>
-            <td>{{listPersonas[i].apellido1}} {{listPersonas[i].apellido2}}</td>
-            <td>{{listPersonas[i].correo}}</td>
-            <td>{{listUsuarios[i].nombreUsuario}}</td>
-            <td><a href="/cbd/admin/usuarios/editar"
-                (click)="almacenarUsuario(listUsuarios[i].idUsuario, listPersonas[i].idPersona)" class="a">Editar</a>
-              <a class="a" >Eliminar </a>
-              <a class="a">Ocultar</a>
-              <a href="/cbd/admin/usuarios/detalle" class="a">Ver</a>
-            </td>
-
-          </tr>
-        <tbody>
-      </table>
-    </div>
 
 
 
-    <div class="button-container">
-      <div *ngIf="pagActua != 0; else elseButonPrevio">
-        <button class="button button1" (click)="previoPagina()">
-          << </button>
-      </div>
-      <ng-template #elseButonPrevio>
-        <button class="button button1" style="opacity: 0.5">
-          << </button>
-      </ng-template>
-      <div *ngIf="pagActua != pagExist - 1; else elseButtonNext">
-        <button class="button button2" (click)="nextPagina()">>></button>
-      </div>
-      <ng-template #elseButtonNext>
-        <button class="button button2" style="opacity: 0.5">>></button>
-      </ng-template>
-    </div>
-
-  
+<div class="button-container">
+  <div *ngIf="pagActua != 0; else elseButonPrevio">
+    <button class="button button1" (click)="previoPagina()">
+      << </button>
+  </div>
+  <ng-template #elseButonPrevio>
+    <button class="button button1" style="opacity: 0.5">
+      << </button>
+  </ng-template>
+  <div *ngIf="pagActua != pagExist - 1; else elseButtonNext">
+    <button class="button button2" (click)="nextPagina()">>></button>
+  </div>
+  <ng-template #elseButtonNext>
+    <button class="button button2" style="opacity: 0.5">>></button>
+  </ng-template>
 </div>

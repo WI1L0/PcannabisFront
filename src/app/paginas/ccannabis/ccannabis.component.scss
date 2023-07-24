@@ -19,6 +19,7 @@ $negrita: bold;
   background-color: $color-all-uno;
   text-align: center;
   text-align: justify;
+  padding: 100px 20px;
 }
 
 .divSegundo_pading {
@@ -140,6 +141,9 @@ $negrita: bold;
   .cannabisInfoSection .row .text-center {
     display: flex;
     align-items: center;
+  }
+  .container{
+    max-width: 1310px;
   }
 
 }
