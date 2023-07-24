@@ -70,11 +70,24 @@ h2 {
     display: inline-table;
 }
 
-.fl-table td,
+.fl-table td ,
 .fl-table th {
     text-align: center;
     padding: 10px;
+    max-width: 500px;
 
+}
+.fl-table .no,
+.fl-table th {
+    text-align: center;
+    padding: 10px;
+    word-wrap: break-word; 
+    max-width: 200px; 
+    white-space: normal;
+
+}
+.no{
+    word-wrap: break-word; max-width: 200px; white-space: normal;
 }
 
 
@@ -278,3 +291,29 @@ th {
     white-space: nowrap;
   }
   
+
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+  
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .button1 {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .button2 {
+    background-color: #008CBA;
+    color: white;
+    margin-left: 10px;
+  }
+  }

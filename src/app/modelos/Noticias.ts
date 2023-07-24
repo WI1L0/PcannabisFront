@@ -6,6 +6,7 @@ export class Noticias{
     fechaNoticia?: string;
     ubicacionNoticia?: string;
     portadaNoticia?: string;
+    estOcultoVisibleNoticia?: boolean;
     estNoticia?: boolean;
 
 }

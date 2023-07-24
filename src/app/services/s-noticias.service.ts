@@ -1,38 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Noticias } from '../modelos/Noticias';
 import baserUrl from './defauld/helper';
 import { NoticiasResponse } from '../modelos/Respuestas/NoticiasResponse';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class SnoticiasService {
+  private URL = '/cbd/noticias';
 
-    private URL = '/cbd/noticias';
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) { }
-  
-    //OBTENEMOS EL OBJETO EMPRESA
-    public getNoticias(pageAct: number, estado: string, empresaName: string) {
-      return this.http.get<NoticiasResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&?estado=${estado}`);
+  public getNoticiasId(idNoticia: number) {
+    return this.http.get<Noticias>(`${baserUrl + this.URL}/id/${idNoticia}`);
+  }
+
+  public postNoticias(noticia: Noticias, nombreEmpresa: String) {
+    return this.http.post<Noticias>(`${baserUrl + this.URL}/save/${nombreEmpresa}`, noticia)
+  }
+
+  public putNoticias(noticia: Noticias, idNoticia: number) {
+    return this.http.put<Noticias>(`${baserUrl + this.URL}/update/${idNoticia}`, noticia)
+  }
+
+  public deleteNoticias(idNoticia: number) {
+    return this.http.delete<Noticias>(`${baserUrl + this.URL}/delete/${idNoticia}`)
+  }
+
+  public getNoticias(pageAct: number, estado: string, empresaName: string, busqueda: string) {
+    if(busqueda == null || busqueda == ''){
+      return this.http.get<NoticiasResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&estado=${estado}`);
+    } else {
+      return this.http.get<NoticiasResponse>(`${baserUrl + this.URL}/all/paginacion/busqueda/${empresaName}/${busqueda}/?pageNo=${pageAct}&estado=${estado}`);
     }
+  }
 
-    // postNoticias(Noticias: Noticias) {
-    //     return this.http.post<Noticias>(this.URL, Noticias);
-    // }
-
-    // putNoticias(Noticias: Noticias, idNoticias: any) {
-    //     return this.http.put<Noticias>(this.URL + `/${idNoticias}`, Noticias);
-    // }
-
-    // deleteNoticias(idNoticias: number) {
-    //     return this.http.delete<boolean>(this.URL + `/${idNoticias}`);
-    // }
-
-    // getPorId(idNoticias: any) {
-    //     return this.http.get<Noticias>(this.URL + idNoticias);
-    // }
-
+  putNoticiaEstado(id: number) {
+    return this.http.get<Noticias>(`${baserUrl + this.URL}/update/estado/${id}`)
+  }
 }

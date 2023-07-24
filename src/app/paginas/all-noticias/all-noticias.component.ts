@@ -15,8 +15,8 @@ import { SnoticiasService } from 'src/app/services/s-noticias.service';
 })
 export class AllNoticiasComponent implements OnInit {
 
-  admin = false;
-  logeado = false;
+  // admin = false;
+  // logeado = false;
 
   pagActua: number = 0;
   pagExist: any = 0;
@@ -31,14 +31,14 @@ export class AllNoticiasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.parteAdministrador();
+    // this.parteAdministrador();
 
     this.obtenerNoticias();
   }
 
   obtenerNoticias() {
     this.listNoticias = [];
-    this.noticiasServices.getNoticias(this.pagActua, "activo", nameEmpresa).subscribe(
+    this.noticiasServices.getNoticias(this.pagActua, "activo", nameEmpresa, '').subscribe(
       (response: NoticiasResponse) => {
         this.respuestaNoticias = response;
         this.pagExist = response.totalPagina;
@@ -69,11 +69,11 @@ export class AllNoticiasComponent implements OnInit {
     localStorage.setItem('noticia', JSON.stringify(noticia));
   }
 
-  parteAdministrador() {
-    this.logeado = this.loginServices.estaLogin();
-    if (this.loginServices.getRoles('rolAdministrador') === 'true') {
-      this.admin = true;
-    }
-  }
+  // parteAdministrador() {
+  //   this.logeado = this.loginServices.estaLogin();
+  //   if (this.loginServices.getRoles('rolAdministrador') === 'true') {
+  //     this.admin = true;
+  //   }
+  // }
 
 }
