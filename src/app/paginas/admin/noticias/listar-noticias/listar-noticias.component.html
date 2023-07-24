@@ -6,24 +6,31 @@
             <h2>NOTICIAS</h2>
             <tr>
                 <div class="row">
-                    <table class="fl-table">
-                        <thead>
-                            <tr>
-                                <select id="mySelect" class="combo" [(ngModel)]="datoEstado" (change)="obtenerNoticias()">
-                                    <option disabled selected>Seleccione una opción</option>
-                                    <option value="all">Todo</option>
-                                    <option value="activo">Activos</option>
-                                    <option value="desactivo">Desactivos</option>
-                                </select>
-                                <input placeholder="Nombre" name="titulo_noti" id="busqueda">
+                    <div class="">
+                        <table class="fl-table">
+                            <thead>
+                                <tr>
+                                    <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
+                                        (change)="obtenerNoticias()">
+                                        <option disabled selected>Seleccione una opción</option>
+                                        <option value="all">Todo</option>
+                                        <option value="activo">Activos</option>
+                                        <option value="desactivo">Desactivos</option>
+                                    </select>
+                                </tr>
+                                <i class="fa fa-search"></i>
+                                <input type="text" name="usuario" placeholder="Nombre" required>
+                                <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
                                 <td class="all"><a (click)="obtenerNoticias()" class="a">Buscar</a></td>
+
                                 <td class="all"><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
                                 <td class="contenedor">
                                 </td>
-                            </tr>
-                        </thead>
+                            </thead>
+                        </table>
+                    </div>
 
-                    </table>
+
                 </div>
             </tr>
 

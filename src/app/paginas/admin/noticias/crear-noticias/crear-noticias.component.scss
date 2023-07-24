@@ -22,6 +22,7 @@ $negrita: bold;
 	/* background-color: $color-all-uno; */
 	text-align: center;
 	text-align: justify;
+	padding: 100px;
 }
 
 /* //formulario */
@@ -48,7 +49,7 @@ body {
 
 /*form styles*/
 #msform {
-	width: 600px;
+	width: 1200px;
 	margin: auto;
 	text-align: center;
 	position: relative;
@@ -86,7 +87,7 @@ body {
 	box-sizing: border-box;
 	font-family: montserrat;
 	color: #2C3E50;
-	font-size: 13px;
+
 }
 
 /*buttons*/
@@ -98,7 +99,7 @@ body {
 	border: 0 none;
 	border-radius: 1px;
 	cursor: pointer;
-	padding: 10px;
+	padding: px;
 	margin: 10px 5px;
 	text-decoration: none;
 	font-size: 14px;
@@ -120,7 +121,7 @@ body {
 .fs-subtitle {
 	font-weight: normal;
 	font-size: 13px;
-	color: #666;
+	color: #ffdddd;
 	margin-bottom: 20px;
 }
 
@@ -206,13 +207,33 @@ fieldset {
 }
 #msform textarea {
 	height: 100px;
+	width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    resize: none;
+
+}
+.textarea{
+	height: 100px;
+	width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    resize: none;
 }
 #msform .botoncito {
 	box-shadow: 0 0 0 2px rgb(14, 3, 1), 0 0 0 3px #27AE60;
-	width: 50%;
+	width: 30%;
 	cursor: pointer;
     border: none;
-    background: #000000;
+    background:#595050;
     color: #FFF;
     margin: 0 0 5px;
     padding: 5px;
@@ -233,4 +254,63 @@ fieldset {
 		max-width: 100%;
 	}
 }
+//parrafos 
+.container {
+    display: flex;
+  }
+
+  .izquierda {
+    width: 50%;
+    padding: 20px;
+  }
+
+  .derecha {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .card {
+    width: 48%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .txtarea {
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    resize: none;
+	
+  }
+  .ocultar {
+	display: none;
+  }
+  .card{
+	padding: 10px 10px;
+    margin: 10px;
+  }
+
+  .botoncito {
+    background-color: #428bca;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .botoncito:hover {
+    background-color: #3071a9;
+  }
 

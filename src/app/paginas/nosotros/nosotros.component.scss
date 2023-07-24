@@ -36,7 +36,7 @@ $negrita: bold;
 .divPrimeroBlack {
   position: relative;
   background-color: $color-all-dos;
-  padding: 50px 80px;
+  padding: 0px 80px;
 }
 
 .divSegundoBlack {
@@ -178,7 +178,7 @@ $negrita: bold;
     transition: background-color, color .3s ease-in-out;
   }
 
-  @media only screen and (max-width: 1050px) and (min-width:600px) {
+  @media only screen and (max-width: 679px) and (min-width:680px) {
 
     .banner>h2,
     .banner .info {
@@ -190,7 +190,7 @@ $negrita: bold;
     }
   }
 
-  @media only screen and (max-width: 599px) and (min-width:350px) {
+  @media only screen and (max-width: 664px) and (min-width:700px) {
     .banner a {
       font-size: 1em;
     }
@@ -234,7 +234,7 @@ $negrita: bold;
     }
   }
 
-  @media only screen and (max-width: 768px) and (min-width:550px) {
+  @media only screen and (max-width: 735px) and (min-width:550px) {
 
     .process .row:first-child .col-xs-12,
     .clients .row:first-child .col-xs-12 {

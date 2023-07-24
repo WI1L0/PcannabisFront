@@ -126,7 +126,7 @@ button {
    }
 
    // Media Query Breakpoint
-   @media only screen and (min-width: 850px) {
+   @media only screen and (min-width: 863px) {
       position: relative;
       top: 0;
       width: auto;
@@ -170,7 +170,7 @@ button {
    transition: 0.35s ease;
 
    // Media Query Breakpoint
-   @media only screen and (min-width: 50rem)  {
+   @media only screen and (min-width: 863px)  {
       display: none;
       visibility: hidden;
    }

@@ -13,6 +13,26 @@ export class CrearNoticiasComponent implements OnInit {
     AllScripts.Cargar(["default/crearnoticias"]);
   }
   ngOnInit(): void {
+    const inputFoto = document.querySelector('input[type="file"]') as HTMLInputElement;
+
+    if (inputFoto) {
+      inputFoto.addEventListener('change', () => {
+        const file = inputFoto.files?.[0];
+        if (file) {
+          const reader = new FileReader();
+          
+          reader.addEventListener('load', () => {
+            const imagenPreview = document.getElementById('imagen-preview');
+            if (imagenPreview) {
+              imagenPreview.setAttribute('src', reader.result as string);
+              imagenPreview.style.display = 'block';
+            }
+          });
+          
+          reader.readAsDataURL(file);
+        }
+      });
+    }
   }
 
   crearalert() {

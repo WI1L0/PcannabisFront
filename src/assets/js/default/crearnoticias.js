@@ -101,15 +101,78 @@ $(document).ready(function () {
 
 //     parrafoInput.value = ''; // Limpiar el textarea
 //   });
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	var parrafoInput = document.getElementById('parrafo-input');
 	var agregarBtn = document.getElementById('agregar-btn');
-  
-	agregarBtn.addEventListener('click', function() {
-	  // Aquí puedes hacer lo que necesites con el valor del textarea, como enviarlo a un servidor para guardarlo en una base de datos.
-	  console.log('Valor del textarea:', parrafoInput.value);
-  
-	  parrafoInput.value = ''; // Limpiar el textarea
-	});
-  });
 
+	agregarBtn.addEventListener('click', function () {
+		// Aquí puedes hacer lo que necesites con el valor del textarea, como enviarlo a un servidor para guardarlo en una base de datos.
+		console.log('Valor del textarea:', parrafoInput.value);
+
+		parrafoInput.value = ''; // Limpiar el textarea
+	});
+});
+
+// PREVISUALIZAR LA FOTO
+const inputFoto = document.getElementById('foto');
+const imagenPreview = document.getElementById('imagen-preview');
+
+if (imagenPreview) {
+	inputFoto.addEventListener('change', () => {
+		const file = inputFoto.files[0];
+		const reader = new FileReader();
+
+		reader.addEventListener('load', () => {
+			if (imagenPreview) {
+				imagenPreview.setAttribute('src', reader.result);
+				imagenPreview.style.display = 'block';
+			}
+		});
+
+		reader.readAsDataURL(file);
+	});
+}
+
+//Agregar parrafos
+const btnAgregar = document.getElementById('botones');
+const derecha = document.getElementById('derecha');
+
+btnAgregar.addEventListener('click', function () {
+  const txtarea = document.getElementById('txtarea');
+  // Obtener la última tarjeta existente
+  const ultimaTarjeta = derecha.querySelector('.card:last-child');
+
+  console.log(txtarea); // Verificar si el elemento se está encontrando correctamente
+  if (txtarea) {
+    const contenido = txtarea.value;
+
+    // Crear una nueva tarjeta con el contenido del textarea
+    const nuevaTarjeta = document.createElement('div');
+    nuevaTarjeta.classList.add('card');
+    nuevaTarjeta.innerHTML = `
+      <p class="nom">Parrafo</p>
+	  <button class="botoncito">Quitar</button>
+      <div class="contenido-card">
+        <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea" readonly>${contenido}</textarea>
+      </div>
+    `;
+    if (derecha) {
+      // Agregar la nueva tarjeta debajo de la última tarjeta
+      derecha.insertBefore(nuevaTarjeta, ultimaTarjeta.nextElementSibling);
+
+	  
+      // Agregar controlador de eventos para el botón "quitar"
+      const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
+      btnQuitar.addEventListener('click', function () {
+        nuevaTarjeta.remove();
+      });
+
+      // Limpiar el contenido del textarea
+      txtarea.value = '';
+    } else {
+      console.error('No se encontró el elemento derecha.');
+    }
+  } else {
+    console.error('No se encontró el elemento txtarea.');
+  }
+});
