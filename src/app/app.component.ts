@@ -10,6 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent implements OnInit {
   mostrarHeader = true;
   mostrarFooter = true;
+  mostrarHeader2 = false;
   //implementar js en los componentes
   constructor(private router: Router, private AllScripts: AllScriptsService) {
     AllScripts.Cargar(["default/home"]);
@@ -25,6 +26,17 @@ export class AppComponent implements OnInit {
         }
       }
     });
+        //mostrar el header admin
+        router.events.subscribe(event => {
+          if (event instanceof NavigationEnd) {
+            // Ocultar el encabezado en la página de inicio
+            if (event.url === '/cbd/admin/panel' || event.url == '/cbd/admin/usuarios/listar' || event.url == '/cbd/admin/usuarios/crear' || event.url == '/cbd/admin/usuarios/editar' || event.url == '/cbd/admin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar'|| event.url == '/cbd/login'|| event.url == '/cbd/admin/contactanos/detalle'|| event.url == '/cbd/admin/usuarios/detalle') {
+              this.mostrarHeader2 = true;
+            } else {
+              this.mostrarHeader2 = false;
+            }
+          }
+        });
 
     //quitar el footer
     router.events.subscribe(event => {

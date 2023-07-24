@@ -61,6 +61,10 @@ button {
    height: 4.7rem;
    margin: 0 auto;
 }
+.navbar .img1{
+   width:40px;
+   height:50px
+}
 
 .brand {
    line-height: 1.5;
@@ -122,7 +126,7 @@ button {
    }
 
    // Media Query Breakpoint
-   @media only screen and (min-width: 48rem) {
+   @media only screen and (min-width: 10rem) {
       position: relative;
       top: 0;
       width: auto;
@@ -166,11 +170,6 @@ button {
    transition: 0.35s ease;
 
    // Media Query Breakpoint
-   @media only screen and (min-width: 48rem) {
-      display: none;
-      visibility: hidden;
-   }
-
    &-line {
       position: absolute;
       display: block;
@@ -210,34 +209,6 @@ button {
          transform: rotate(-135deg);
       }
    }
-}
-
-
-.secundary{
-  color: #048ABF;
-  font-family:$fuente-secundaria ;
-  font-size: 1.3rem;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.buttonsecundary {
-  display: flex;
-  justify-content: center;
-  border-radius: 50px;
-  background-color: transparent;
-  transition: all 0.3s ease-in-out 0s;
-  box-shadow: #048ABF 0px 0px 0px 0px;
-  animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
-  align-items: center;
-  border: 0;
-
-  width: 100px;
-  height: 40px;
-}
-
-.buttonsecundary:is(:hover, :focus) {
-  transform: scale(1.2);
 }
 
 @keyframes pulse {
