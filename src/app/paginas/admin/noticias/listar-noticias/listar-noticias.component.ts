@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Noticias } from 'src/app/modelos/Noticias';
 import { NoticiasResponse } from 'src/app/modelos/Respuestas/NoticiasResponse';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
@@ -30,12 +31,15 @@ export class ListarNoticiasComponent implements OnInit {
     private AllScripts: AllScriptsService,
     private noticiasServices: SnoticiasService,
     private loginServices: SloginService,
-    private fotoServices: SfotosService
+    private router: Router
   ) {
     AllScripts.Cargar(['paginas/noticias']);
   }
 
   ngOnInit(): void {
+    if (!this.loginServices.estaLogin()){
+      this.router.navigate(['/cbd/login']);
+    }
     this.almacenarEstado('activo');
   }
 

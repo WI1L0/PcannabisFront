@@ -22,16 +22,17 @@
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
                     <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form>
                         <label for="foto">Seleccionar foto:</label>
                         <div class="row">
-                            <input type="file" name="foto" id="foto" accept="image/*">
-                            <img id="imagen-preview" style="display: none;">
+                        <input type="file" name="foto" id="foto" accept="image/*" (change)="seleccionarFoto($event)">
+                        <img [src]="imagenPreview" *ngIf="imagenPreview">
                         </div>
                         <div>
-                            <input type="button" name="botoncito" class="botoncito" value="Añadir" />
+                        <button ame="botoncito" class="botoncito" (click)="borrarImagen()">Borrar imagen</button>
+                        <button ame="botoncito" class="botoncito" (click)="almacenarFoto()">guardar imagen</button>
                         </div>
-                    </form>
+                      </form>
                 </div>
 
                 <!-- <textarea type="text" class="parrafo" placeholder="Agregar un Parrafo" required></textarea>

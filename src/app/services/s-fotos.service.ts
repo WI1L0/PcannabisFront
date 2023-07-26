@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FotosNoticias } from '../modelos/FotosNoticias';
 import baserUrl from './defauld/helper';
+import { Fotos } from '../modelos/Fotos';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,11 @@ export class SfotosService {
 
     private URL = '/cbd/picture';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
+    
+    public postFotos(formData: FormData) {
+        return this.http.post<Fotos>(`${baserUrl + this.URL}/save`, formData)
+    }
 
     //OBTENER LAS IMAGENES
     // public getOneImagen(name: string) {

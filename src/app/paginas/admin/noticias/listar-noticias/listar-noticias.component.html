@@ -19,7 +19,7 @@
                                     </select>
                                 </tr>
                                 <i class="fa fa-search"></i>
-                                <input type="text" name="usuario" placeholder="Nombre" required>
+                                <input type="text" name="usuario" placeholder="Nombre" id="busqueda">
                                 <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
                                 <td class="all"><a (click)="obtenerNoticias()" class="a">Buscar</a></td>
 
@@ -59,12 +59,9 @@
                         <td class="no">{{noti.preDescripcionNoticia}}</td>
                         <td class="accion">
                             <a *ngIf="noti.estOcultoVisibleNoticia == true" class="a">Editar</a>
-                            <a *ngIf="noti.estOcultoVisibleNoticia == false" class="a"
-                                (click)="confirmEliminar(noti)">Eliminar</a>
-                            <a *ngIf="noti.estOcultoVisibleNoticia == false" class="a"
-                                (click)="alertOcultarMostrar(noti, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
-                            <a *ngIf="noti.estOcultoVisibleNoticia == true" class="a"
-                                (click)="alertOcultarMostrar(noti, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
+                            <a *ngIf="noti.estOcultoVisibleNoticia == false" class="a" (click)="confirmEliminar(noti)">Eliminar</a>
+                            <a *ngIf="noti.estOcultoVisibleNoticia == false" class="a" (click)="alertOcultarMostrar(noti, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
+                            <a *ngIf="noti.estOcultoVisibleNoticia == true" class="a" (click)="alertOcultarMostrar(noti, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
                         </td>
                     </tr>
                 <tbody>
