@@ -15,10 +15,10 @@
             <fieldset>
                 <h2 class="fs-title">Crear Noticia</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de Noticias</h3>
-                <input type="text" name="titulo" placeholder="Titulo" required />
-                <input type="date" name="fechanoticia" placeholder="Fecha de noticia" value="Fecha de noticia" required>
-                <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required />
-                <input type="text" placeholder="Pre Descripción" required />
+                <input type="text" name="titulo" placeholder="Titulo" required [(ngModel)]="objectNoticia.tituloNoticia"/>
+                <input type="date" name="fechanoticia" placeholder="Fecha de noticia" required [(ngModel)]="objectNoticia.fechaNoticia">
+                <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required [(ngModel)]="objectNoticia.ubicacionNoticia" />
+                <input type="text" name="preDescripcion" placeholder="Pre Descripción" required [(ngModel)]="objectNoticia.preDescripcionNoticia" />
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
                     <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
@@ -30,7 +30,7 @@
                         </div>
                         <div>
                         <button ame="botoncito" class="botoncito" (click)="borrarImagen()">Borrar imagen</button>
-                        <button ame="botoncito" class="botoncito" (click)="almacenarFoto()">guardar imagen</button>
+                        <!-- <button ame="botoncito" class="botoncito" (click)="almacenarFoto()">guardar imagen</button> -->
                         </div>
                       </form>
                 </div>

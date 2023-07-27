@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Fotos } from 'src/app/modelos/Fotos';
+import { Noticias } from 'src/app/modelos/Noticias';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import { SfotosService } from 'src/app/services/s-fotos.service';
 import { SloginService } from 'src/app/services/s-login.service';
@@ -16,6 +17,7 @@ export class CrearNoticiasComponent implements OnInit {
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
+  objectNoticia = new Noticias();
 
   //implementar js en los componentes
   constructor(
@@ -25,7 +27,7 @@ export class CrearNoticiasComponent implements OnInit {
     private fotoServices: SfotosService,
     private router: Router
   ) {
-    AllScripts.Cargar(['default/crearnoticias']);
+    AllScripts.Cargar(['paginas/crearnoticias']);
   }
 
   ngOnInit(): void {
@@ -53,6 +55,10 @@ export class CrearNoticiasComponent implements OnInit {
     this.obtenerFoto.value = '';
     this.procesarFoto = null;
     this.imagenPreview = null;
+  }
+
+  pasarSiguiente(){
+
   }
 
   almacenarFoto() {
