@@ -190,8 +190,8 @@ h2 {
 
   
   /* CSS for screens 768 pixels or less */
-  
-@media (max-width: 1050px) {
+  /* Responsive */
+@media (max-width: 767px) {
   .fl-table {
       display: block;
       width: 100%;
@@ -218,14 +218,12 @@ h2 {
 
   .fl-table thead {
       float: left;
-      display: block;
   }
 
   .fl-table tbody {
       width: auto;
       position: relative;
       overflow-x: auto;
-      display: block;
   }
 
   .fl-table td,
@@ -247,7 +245,7 @@ h2 {
   }
 
   .fl-table tbody tr {
-      display: block;
+      display: table-cell;
   }
 
   .fl-table tbody tr:nth-child(odd) {
@@ -258,22 +256,66 @@ h2 {
       background: transparent;
   }
 
-  .fl-table tr td:nth-child(odd) {
-      background: #F8F8F8;
-      border-right: 1px solid #E6E4E4;
-  }
+  // .fl-table tr td:nth-child(odd) {
+  //     // background: #F8F8F8;
+  //     // border-right: 1px solid #E6E4E4;
+  // }
 
-  .fl-table tr td:nth-child(even) {
-      border-right: 1px solid #E6E4E4;
-  }
+  // .fl-table tr td:nth-child(even) {
+  //     border-right: 1px solid #E6E4E4;
+  // }
 
   .fl-table tbody td {
       display: block;
       text-align: center;
-      overflow-x: hidden;
-      overflow-y: auto;
   }
 }
+
+
+.a {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  padding: auto;
+}
+.buscar{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+}
+
+
+.a {
+  background-color: $color-letrav;
+  border-color: #b3b3b3;
+  float: center;
+  width: 100px;
+  margin-top: 10px;
+  margin: auto
+}
+
 
 .row {
     display: flex;
@@ -285,6 +327,7 @@ h2 {
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 30px;
 }
 .a{
     display: inline-block;
@@ -402,3 +445,18 @@ td:first-child {
     margin-left: 10px;
   }
   }
+  //busqueda
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-container input[type="text"] {
+    width: 500px;
+    margin-right: 10px;
+  }
+  
+  .search-button {
+    padding: 5px 10px;
+  }
+  //busqueda

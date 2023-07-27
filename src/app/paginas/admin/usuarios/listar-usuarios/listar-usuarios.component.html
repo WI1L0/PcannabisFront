@@ -9,56 +9,65 @@
           <table class="fl-table">
             <thead>
               <tr>
-                <td class="all"><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
-                <td class="contenedor"><a class="buscar">Buscar Usuarios: </a>
+                <td class="contenedor"><a class="buscar"> </a>
                   <select class="combo">
                     <option>Vistas</option>
                     <option>Ocultas</option>
                   </select>
                 </td>
               </tr>
+              <div class="search-container">
+                <i class="fa fa-search"></i>
+                <input type="text" name="usuario" placeholder="Nombre, Fecha" id="busqueda">
+                <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
+                <td class="all"><a class="a">Buscar</a></td>
+              </div>
+              <td class="all"><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
+              <td class="contenedor"></td>
             </thead>
 
           </table>
         </div>
       </tr>
-
-    </div>
-    <div class="row">
-      <div class="table-wrapper">
-        <table class="fl-table">
-          <thead>
-            <tr>
-              <th>Cédula</th>
-              <th>Nombres</th>
-              <th>Apellidos</th>
-              <th>Email</th>
-              <th>Usuario</th>
-              <th>Acción</th>
-
-            </tr>
-          </thead>
-          <tbody *ngFor="let i of listPersonas.keys()">
-            <tr>
-              <td data-label="Cédula">{{listPersonas[i].cedula}}</td>
-              <td data-label="Nombres">{{listPersonas[i].nombre1}} {{listPersonas[i].nombre2}}</td>
-              <td data-label="Apellidos">{{listPersonas[i].apellido1}} {{listPersonas[i].apellido2}}</td>
-              <td data-label="Email">{{listPersonas[i].correo}}</td>
-              <td data-label="Usuario">{{listUsuarios[i].nombreUsuario}}</td>
-              <td data-label="Acción"><a href="/cbd/admin/usuarios/editar"
-                  (click)="almacenarUsuario(listUsuarios[i].idUsuario, listPersonas[i].idPersona)" class="as">Editar</a>
-              <a class="as">Eliminar </a>
-              <a class="as">Ocultar</a>
-              <a href="/cbd/admin/usuarios/detalle" class="as">Ver</a>
-              </td>
-            </tr>
-          </tbody>
-
-        </table>
-      </div>
     </div>
   </div>
 </div>
+
+<div class="divPrimero">
+  <div class="divSegundo">
+    <!-- <div class="row"> -->
+    <div class="table-wrapper">
+      <table class="fl-table">
+        <thead>
+          <tr>
+            <th>Cédula</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <th>Usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of listPersonas.keys()">
+            <td data-label="Cédula">{{listPersonas[i].cedula}}</td>
+            <td data-label="Nombres">{{listPersonas[i].nombre1}} {{listPersonas[i].nombre2}}</td>
+            <td data-label="Apellidos">{{listPersonas[i].apellido1}} {{listPersonas[i].apellido2}}</td>
+            <td data-label="Email">{{listPersonas[i].correo}}</td>
+            <td data-label="Usuario">{{listUsuarios[i].nombreUsuario}}</td>
+            <td data-label="Acción"><a href="/cbd/admin/usuarios/editar"
+                (click)="almacenarUsuario(listUsuarios[i].idUsuario, listPersonas[i].idPersona)" class="as">Editar</a>
+            </td>
+            <td> <a class="as">Eliminar </a></td>
+            <td><a class="as">Ocultar</a></td>
+            <td><a href="/cbd/admin/usuarios/detalle" class="as">Ver</a></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
 
 
 

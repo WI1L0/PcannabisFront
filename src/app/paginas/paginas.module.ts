@@ -16,6 +16,7 @@ import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.co
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor, authInterceptorProviders } from '../services/defauld/s-interceptor';
 import { AllNoticiasComponent } from './all-noticias/all-noticias.component';
+import { EditarUsuarioComponent } from './admin/usuarios/editar-usuario/editar-usuario.component';
 // import { authInterceptorProviders } from '../services/defauld/s-interceptor';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AllNoticiasComponent } from './all-noticias/all-noticias.component';
     CcannabisComponent,
     AllNoticiasComponent,
     LoginComponent,
-    DetalleNoticiasComponent
+    DetalleNoticiasComponent,
+    EditarUsuarioComponent
     // DetallenoticiaComponent,
   ],
   imports: [

@@ -18,28 +18,26 @@
                                         <option value="desactivo">Desactivos</option>
                                     </select>
                                 </tr>
-                                <i class="fa fa-search"></i>
-                                <input type="text" name="usuario" placeholder="Nombre" id="busqueda">
-                                <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
-                                <td class="all"><a (click)="obtenerNoticias()" class="a">Buscar</a></td>
-
+                                <div class="search-container">
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" name="usuario" placeholder="Nombre, Fecha" id="busqueda">
+                                    <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
+                                    <td class="all"><a (click)="obtenerNoticias()" class="a">Buscar</a></td>
+                                </div>
                                 <td class="all"><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
                                 <td class="contenedor">
                                 </td>
                             </thead>
                         </table>
                     </div>
-
-
                 </div>
             </tr>
 
         </div>
-    </div>
-</div>
 
-<div class="divPrimero">
-    <div class="divSegundo">
+
+        <!-- <div class="divPrimero">
+    <div class="divSegundo"> -->
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -48,7 +46,6 @@
                         <th>Ubicación</th>
                         <th>Fecha</th>
                         <th>Pre descripción</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,11 +54,14 @@
                         <td class="no">{{noti.ubicacionNoticia}}</td>
                         <td class="no">{{noti.fechaNoticia}}</td>
                         <td class="no">{{noti.preDescripcionNoticia}}</td>
-                        <td class="accion">
-                            <a *ngIf="noti.estOcultoVisibleNoticia == true" class="a">Editar</a>
-                            <a *ngIf="noti.estOcultoVisibleNoticia == false" class="a" (click)="confirmEliminar(noti)">Eliminar</a>
-                            <a *ngIf="noti.estOcultoVisibleNoticia == false" class="a" (click)="alertOcultarMostrar(noti, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
-                            <a *ngIf="noti.estOcultoVisibleNoticia == true" class="a" (click)="alertOcultarMostrar(noti, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
+                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a class="a">Editar</a> </td>
+                        <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"
+                                (click)="confirmEliminar(noti)">Eliminar</a> </td>
+                        <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"
+                                (click)="alertOcultarMostrar(noti, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
+                        </td>
+                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a class="a"
+                                (click)="alertOcultarMostrar(noti, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
                         </td>
                     </tr>
                 <tbody>

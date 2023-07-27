@@ -212,6 +212,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
 
+    padding-left: 30px;
       
 }
 .contenedor{
@@ -220,7 +221,7 @@ h2 {
 .combo{
     background-color: $color-letrav;
     border-color: #b3b3b3;
-    width: 100px; 
+    width: 130px;
     margin: auto;
     font-size: 15px;
     font-weight: 500;
@@ -318,3 +319,19 @@ th {
     margin-left: 10px;
   }
   }
+
+  //busqueda
+.search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-container input[type="text"] {
+    width: 500px;
+    margin-right: 10px;
+  }
+  
+  .search-button {
+    padding: 5px 10px;
+  }
+  //busqueda
