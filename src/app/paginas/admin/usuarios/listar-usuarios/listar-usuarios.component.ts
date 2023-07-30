@@ -41,7 +41,7 @@ export class ListarUsuariosComponent  implements OnInit {
   obtenerUsuariosPersonas() {
     this.listUsuarios = [];
     this.listPersonas = [];
-    this.usuarioServices.getUsuariosPersonas(this.pagActua, "activo", nameEmpresa).subscribe(
+    this.usuarioServices.getUsuariosPersonas(this.pagActua, nameEmpresa).subscribe(
       (response: UsuariosResponse) => {
         this.respuestaUsuarios = response;
         this.pagExist = response.totalPagina;
