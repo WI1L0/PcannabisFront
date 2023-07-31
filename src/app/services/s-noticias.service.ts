@@ -12,9 +12,9 @@ export class SnoticiasService {
 
   constructor(private http: HttpClient) {}
 
-  public getNoticiasId(idNoticia: number) {
-    return this.http.get<Noticias>(`${baserUrl + this.URL}/id/${idNoticia}`);
-  }
+  // public getNoticiasId(idNoticia: number) {
+  //   return this.http.get<Noticias>(`${baserUrl + this.URL}/id/${idNoticia}`);
+  // }
 
   public postNoticias(noticia: Noticias, nombreEmpresa: String) {
     return this.http.post<Noticias>(`${baserUrl + this.URL}/save/${nombreEmpresa}`, noticia)

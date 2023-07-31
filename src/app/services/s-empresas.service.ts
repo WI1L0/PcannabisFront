@@ -31,12 +31,9 @@ export class SEmpresasService {
   //     );
   // }
 
-  public putEmpresa(empresaObject: Empresas) {
-    const updateUrl = `${baserUrl}${this.URL}/update/${empresaObject.idEmpresa}`;
-    const body = { ...empresaObject };
-    delete body.idEmpresa;
   
-    return this.http.patch<Empresas>(updateUrl, body);
+  public putEmpresa(empresaObject: Empresas) {
+    return this.http.put<Empresas>(`${baserUrl + this.URL}/update/${empresaObject.idEmpresa}`, empresaObject)
   }
 
 

@@ -1,3 +1,7 @@
+function miFuncionmensaje() {
+	console.log('¡Hola desde JavaScript! ffffffffffffffffffffffffffffffffff');
+  }
+
 
 //jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets

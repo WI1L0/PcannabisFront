@@ -14,6 +14,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./crear-noticias.component.scss'],
 })
 export class CrearNoticiasComponent implements OnInit {
+
+  public submitted: boolean = false;
+
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
@@ -52,13 +55,14 @@ export class CrearNoticiasComponent implements OnInit {
   }
 
   borrarImagen() {
+    window.miFuncionmensaje();
     this.obtenerFoto.value = '';
     this.procesarFoto = null;
     this.imagenPreview = null;
   }
 
-  pasarSiguiente(){
-
+  paseSiguiente1(){
+    this.submitted = true;
   }
 
   almacenarFoto() {

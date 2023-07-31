@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 export class ActualizarEmpresaComponent implements OnInit {
 
   empresaData: Empresas = new Empresas();
+  public submitted: boolean = false;
 
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService, private empresasServices: SEmpresasService, private loginServices: SloginService, private router: Router) {
@@ -42,33 +43,62 @@ export class ActualizarEmpresaComponent implements OnInit {
     )
   }
 
-  updateEmpresa(emp: Empresas) {
-    Swal.fire({
-      title: '¿Estas seguro de editar la noticia?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Editar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        if (this.empresasServices.putEmpresa(emp)) {
-          console.log(emp);
-          Swal.fire(
-            'Editada!',
-            'La Empresa fue editada exitosamente.',
-            'success'
-          );
-        } else {
-          console.log(emp);
-          Swal.fire(
-            'No Editada!',
-            'La empresa no fue editada.',
-            'error'
-          );
+  updateEmpresa() {
+    this.submitted = true;
+    if (this.empresaData.celularEmpresa &&
+      this.empresaData.direccionEmpresa &&
+      this.empresaData.emailEmpresa &&
+      this.empresaData.nombreEmpresa &&
+      this.empresaData.telefonoEmpresa &&
+      this.empresaData.urlCelularEmpresa &&
+      this.empresaData.urlDireccionEmpresa &&
+      this.empresaData.urlDireccionEmpresaGoogle) {
+      Swal.fire({
+        title: '¿Estas seguro de editar la noticia?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Editar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.empresasServices.putEmpresa(this.empresaData).subscribe(
+            (data) => {
+              if (data != null) {
+                Swal.fire(
+                  'Editada!',
+                  'La Empresa fue editada exitosamente.',
+                  'success'
+                ).then((result) => {
+                  if (result.isConfirmed) {
+                    this.empresaData = {} as Empresas;
+                    this.router.navigate(['/cbd/admin/panel']);
+                  }
+                })
+              } else {
+                Swal.fire({
+                  title: 'No Editada!',
+                  text: 'La empresa no fue editada.',
+                  icon: 'error'
+                });
+              }
+            }
+          )
         }
-      }
-    });
+      });
+    } else {
+      Swal.fire({
+
+        title: 'No Editada!',
+        text: 'Los campos estan vacios o erroneos',
+        icon: 'error'
+      })
+    }
+  }
+
+  salir(){
+    this.empresaData = {} as Empresas;
+    this.router.navigate(['/cbd/admin/panel']);
   }
 
 }

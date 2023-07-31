@@ -16,9 +16,13 @@
                 <h2 class="fs-title">Crear Noticia</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de Noticias</h3>
                 <input type="text" name="titulo" placeholder="Titulo" required [(ngModel)]="objectNoticia.tituloNoticia"/>
+                <small class="p-error" *ngIf="submitted && !objectNoticia.tituloNoticia">Observaciones is required.</small>
                 <input type="date" name="fechanoticia" placeholder="Fecha de noticia" required [(ngModel)]="objectNoticia.fechaNoticia">
+                <small class="p-error" *ngIf="submitted && !objectNoticia.fechaNoticia">Observaciones is required.</small>
                 <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required [(ngModel)]="objectNoticia.ubicacionNoticia" />
+                <small class="p-error" *ngIf="submitted && !objectNoticia.ubicacionNoticia">Observaciones is required.</small>
                 <input type="text" name="preDescripcion" placeholder="Pre Descripción" required [(ngModel)]="objectNoticia.preDescripcionNoticia" />
+                <small class="p-error" *ngIf="submitted && !objectNoticia.preDescripcionNoticia">Observaciones is required.</small>
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
                     <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
@@ -29,10 +33,11 @@
                         <img [src]="imagenPreview" *ngIf="imagenPreview">
                         </div>
                         <div>
-                        <button ame="botoncito" class="botoncito" (click)="borrarImagen()">Borrar imagen</button>
+                        <button ame="botoncito" class="botoncito" (click)="borrarImagen()" *ngIf="imagenPreview">Borrar imagen</button>
                         <!-- <button ame="botoncito" class="botoncito" (click)="almacenarFoto()">guardar imagen</button> -->
                         </div>
-                      </form>
+                      </form>                      
+                <small class="p-error" *ngIf="submitted && !imagenPreview">Observaciones is required.</small>
                 </div>
 
                 <!-- <textarea type="text" class="parrafo" placeholder="Agregar un Parrafo" required></textarea>
@@ -40,7 +45,7 @@
                 <div class="divPrimero"> -->
 
                 <!-- </div> -->
-                <input type="button" name="next" class="next action-button" value="Siguiente" />
+                <input type="button" name="next" class="next action-button" onclick="paseSiguiente1()" value="Siguiente" />
             </fieldset>
             <fieldset>
                 <div class="container">
