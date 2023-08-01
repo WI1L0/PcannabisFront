@@ -69,10 +69,24 @@ h2 {
     background-color: white;
 }
 
-.fl-table td,
+.fl-table td ,
 .fl-table th {
     text-align: center;
-    padding: 8px;
+    padding: 10px;
+    max-width: 500px;
+
+}
+.fl-table .no,
+.fl-table th {
+    text-align: center;
+    padding: 10px;
+    word-wrap: break-word; 
+    max-width: 200px; 
+    white-space: normal;
+
+}
+.no{
+    word-wrap: break-word; max-width: 200px; white-space: normal;
 }
 
 .fl-table td {

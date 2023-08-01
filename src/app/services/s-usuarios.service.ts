@@ -12,6 +12,14 @@ export class SusuariosService {
     private URL = '/cbd/usuarios';
 
     constructor(private http: HttpClient) { }
+
+    public getUsuarios(pageAct: number, estado: string, empresaName: string, busqueda: string) {
+      if(busqueda == null || busqueda == ''){
+        return this.http.get<UsuariosResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&estado=${estado}`);
+      } else {
+        return this.http.get<UsuariosResponse>(`${baserUrl + this.URL}/all/paginacion/busqueda/${empresaName}/${busqueda}/?pageNo=${pageAct}&estado=${estado}`);
+      }
+    }
   
     //OBTENEMOS EL OBJETO DE USUARIOS Y PERSONAS
     public getUsuariosPersonas(pageAct: number, empresaName: string) {
@@ -20,6 +28,14 @@ export class SusuariosService {
 
     public getOneUsuario(id: number) {
       return this.http.get<Usuarios>(`${baserUrl + this.URL}/id/${id}`);
+    }
+
+    public deleteUsuarios(idUsuarios: number) {
+      return this.http.delete<Usuarios>(`${baserUrl + this.URL}/delete/${idUsuarios}`)
+    }
+
+    putUsuariosEstadoBloqueado(id: number) {
+      return this.http.get<Usuarios>(`${baserUrl + this.URL}/blocOrNoBloc/${id}`)
     }
 
     // postNoticias(Noticias: Noticias) {

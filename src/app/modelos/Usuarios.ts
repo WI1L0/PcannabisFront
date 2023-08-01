@@ -1,3 +1,5 @@
+import { Personas } from "./Personas";
+
 export class Usuarios {
 
     idUsuario?: string;
@@ -5,5 +7,8 @@ export class Usuarios {
     passwordUsuario?: string;
     fotoUsuario?: string;
     estUsuario?: boolean;
+    bloqueadoUsuario?: boolean;
+
+    personas?: Personas;
 
 }

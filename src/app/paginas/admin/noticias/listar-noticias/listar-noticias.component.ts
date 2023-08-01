@@ -122,13 +122,16 @@ export class ListarNoticiasComponent implements OnInit {
             if (
               confirmValue === `${noti.ubicacionNoticia}:${noti.fechaNoticia}`
             ) {
-              if (
-                this.noticiasServices
-                  .deleteNoticias(Number(noti.idNoticia))
-                  .subscribe((resu) => {
-                    return resu.estNoticia;
-                  })
-              ) {
+              let re = this.noticiasServices
+              .deleteNoticias(Number(noti.idNoticia))
+              .subscribe((resu) => {
+                if (resu != null){
+                  return true;
+                } else {
+                  return false;
+                }
+              })
+              if (re) {
                 Swal.fire('eliminada', 'noticia eliminada', 'success').then(
                   (res) => {
                     this.obtenerNoticias();
@@ -168,13 +171,16 @@ export class ListarNoticiasComponent implements OnInit {
       confirmButtonText: 'Ocultar',
     }).then((result) => {
       if (result.isConfirmed) {
-        if (
-          this.noticiasServices
+        let re = this.noticiasServices
             .putNoticiaEstado(Number(noti.idNoticia))
             .subscribe((resu) => {
-              return resu.estOcultoVisibleNoticia;
+              if(resu != null) {
+                return true;
+              } else {
+                return false;
+              }
             })
-        ) {
+        if (re) {
           Swal.fire(
             'Noticia ' + `${mensajeTrue}` + ' exitosamente',
             'success'
