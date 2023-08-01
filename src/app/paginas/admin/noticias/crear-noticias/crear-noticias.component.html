@@ -16,20 +16,16 @@
                 <h2 class="fs-title">Crear Noticia</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de Noticias</h3>
                 <input type="text" name="titulo" placeholder="Titulo" required [(ngModel)]="objectNoticia.tituloNoticia"/>
-                <small class="p-error" *ngIf="submitted && !objectNoticia.tituloNoticia">Observaciones is required.</small>
                 <input type="date" name="fechanoticia" placeholder="Fecha de noticia" required [(ngModel)]="objectNoticia.fechaNoticia">
-                <small class="p-error" *ngIf="submitted && !objectNoticia.fechaNoticia">Observaciones is required.</small>
                 <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required [(ngModel)]="objectNoticia.ubicacionNoticia" />
-                <small class="p-error" *ngIf="submitted && !objectNoticia.ubicacionNoticia">Observaciones is required.</small>
                 <input type="text" name="preDescripcion" placeholder="Pre Descripción" required [(ngModel)]="objectNoticia.preDescripcionNoticia" />
-                <small class="p-error" *ngIf="submitted && !objectNoticia.preDescripcionNoticia">Observaciones is required.</small>
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
                     <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
                     <form>
                         <label for="foto">Seleccionar foto:</label>
                         <div class="row">
-                        <input type="file" name="foto" id="foto" accept="image/*" (change)="seleccionarFoto($event)">
+                        <input type="file" name="foto" id="foto" accept="image/*" required (change)="seleccionarFoto($event)">
                         <img [src]="imagenPreview" *ngIf="imagenPreview">
                         </div>
                         <div>
@@ -37,7 +33,7 @@
                         <!-- <button ame="botoncito" class="botoncito" (click)="almacenarFoto()">guardar imagen</button> -->
                         </div>
                       </form>                      
-                <small class="p-error" *ngIf="submitted && !imagenPreview">Observaciones is required.</small>
+                
                 </div>
 
                 <!-- <textarea type="text" class="parrafo" placeholder="Agregar un Parrafo" required></textarea>
@@ -45,12 +41,12 @@
                 <div class="divPrimero"> -->
 
                 <!-- </div> -->
-                <input type="button" name="next" class="next action-button" onclick="paseSiguiente1()" value="Siguiente" />
+                <input type="button" name="next" class="next action-button" value="Siguiente" />
             </fieldset>
             <fieldset>
                 <div class="container">
                     <div class="izquierda">
-                        <textarea type="text" class="txtarea" id="txtarea" placeholder="Agregar un Parrafo"
+                        <textarea type="text" class="txtarea" id="txtarea" required placeholder="Agregar un Parrafo"
                             required></textarea>
                         <input type="button" id="botones" class="botoncito" required value="Agregar" />
                     </div>
@@ -60,7 +56,7 @@
                             <p class="nom">Parrafo</p>
                             <button class="botoncito">Quitar</button>
                             <div class="contenido-card">
-                              <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea" readonly>HOLAAAAAAAAAAAAAAAAAAA</textarea>
+                              <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea" required readonly>HOLAAAAAAAAAAAAAAAAAAA</textarea>
                             </div>
                           </div>
                     </div>

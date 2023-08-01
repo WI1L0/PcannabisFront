@@ -1,85 +1,108 @@
-<div class="primero">
-    <div class="container">
-        <section class="formularioSection">
-            <form id="contact" action="" method="post">
-                <h3>Editar datos</h3>
-                <fieldset>
-                    <p class="nom">Titulo</p>
-                    <input placeholder="Nombre" type="text" name="titulo_noti" required value="Contrato">
-                </fieldset>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Ubicación</p>
-                            <input placeholder="Ubicacion" type="text" name="ubicacion_noti" required
-                                value="Av.del Tejar">
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Fecha de Noticia</p>
-                            <input placeholder="Fecha de noticia" name="fechanoticia" class="date" type="date" required
-                                value="2023-09-27">
-                        </fieldset>
-                    </div>
+<!-- ALL -->
+<div class="divPrimero">
+    <div class="divSegundo">
+        <form id="msform">
+
+        <!-- <section class="formularioSection"> -->
+            <!-- <form id="contact" action="" method="post"> -->
+                <div class="titulo">
+                <h1 class="crear">Editar datos</h1>
                 </div>
-                <fieldset>
-                    <p class="nom">Descripción</p>
-                    <textarea placeholder="Descripcion" type="text" name="titulo_noti">Contrato </textarea>
-                </fieldset>
-
-                <div class="row">
-
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Editar Noticia</li>
+                        <li>Social Profiles</li>
+                        <li>Personal Details</li>
+                    </ul>
+                    <!-- fieldsets -->
                     <fieldset>
-                        <p class="nom">Parrafos</p>
-                        <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" class="submit"
-                            href="/admin" onclick="mostrar()">Editar Parrafos
-                        </button>
+                        <h2 class="fs-title">Datos de Noticia</h2>
+                        <input type="text" name="Titulo" placeholder="Título" required />
+                        <input type="date" name="Fecha" placeholder="Fecha" required />
+                        <input type="text" name="Ubicación" placeholder="Ubicación" required />
+                        <input type="text" name="PreDescripción" placeholder="Pre Descripción" required />
+                        <div>
+                            <h2 class="fs-title">Portada de Noticia</h2>
+                            <form>
+                                <label for="foto">Seleccionar foto:</label>
+                                <div class="row">
+                                    <input type="file" name="foto" id="foto" accept="image/*"
+                                        (change)="seleccionarFoto($event)">
+                                </div>
+                                <div>
+                                    <button ame="botoncito" class="botoncito" (click)="borrarImagen()">Borrar
+                                        imagen</button>
+                                    <!-- <button ame="botoncito" class="botoncito" (click)="almacenarFoto()">guardar imagen</button> -->
+                                </div>
+                            </form>
+                        </div>
+                        <input type="button" id="btn-siguiente" name="next" class="next action-button"
+                            value="Siguiente" />
                     </fieldset>
-                </div>
-                <!-- <textarea placeholder="Parrafos" type="text" name="parrafo_noti" tabindex="5" required
-                        value="assssssssssssss"></textarea> -->
+                    <fieldset>
+                        <h2 class="fs-title">Párrafos</h2>
+                        <h3 class="fs-subtitle">Edite los Parrafos</h3>
+                        <div class="container">
+                            <div class="izquierda">
+                                <textarea type="text" class="txtarea" id="txtarea" placeholder="Agregar un Parrafo"
+                                    required></textarea>
+                                <input type="button" id="botones" class="botoncito" required value="Agregar" />
+                            </div>
 
-                <div class="contenedor">
-                    <a id="boton-editar" name="submit" class="a" (click)="confirmEditar()">Editar</a>
-                </div>
-                
-            </form>
-
-        </section>
+                            <div class="derecha" id="derecha">
+                                <div class="card " id="card">
+                                    <p class="nom">Parrafo</p>
+                                    <button class="botoncito">Quitar</button>
+                                    <div class="contenido-card">
+                                        <textarea required placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea"
+                                            readonly>HOLAAAAAAAAAAAAAAAAAAA</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" id="btn-siguiente" name="next" class="next action-button"
+                            value="Siguiente" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Fotos Noticias</h2>
+                        <h3 class="fs-subtitle">Edite las fotos de la Noticia</h3>
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            <label for="foto">Seleccionar foto:</label>
+                            <div class="row">
+                                <input type="file" name="foto[]" id="foto" accept="image/*" multiple>
+                                <img id="imagen-preview" style="display: none;">
+                                <input type="button" name="botoncito" class="botoncito" value="Añadir" />
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 text-lg-right text-lg-right text-color about-text">
+                                    <input type="button" name="botoncito" class="botoncito" value="Quitar" />
+                                    <img src="../../../assets/img/BENEFICIOS DEL CBD.png" alt="primer plano de flores"
+                                        class="img-fluid flower-about">
+                                </div>
+                                <div class="col-lg-3 text-lg-right text-lg-right text-color about-text">
+                                    <input type="button" name="botoncito" class="botoncito" value="Quitar" />
+                                    <img src="../../../assets/img/BENEFICIOS DEL CBD.png" alt="primer plano de flores"
+                                        class="img-fluid flower-about">
+                                </div>
+                                <div class="col-lg-3 text-lg-right text-lg-right text-color about-text">
+                                    <input type="button" name="botoncito" class="botoncito" value="Quitar" />
+                                    <img src="../../../assets/img/BENEFICIOS DEL CBD.png" alt="primer plano de flores"
+                                        class="img-fluid flower-about">
+                                </div>
+                                <div class="col-lg-3 text-lg-right text-lg-right text-color about-text">
+                                    <input type="button" name="botoncito" class="botoncito" value="Quitar" />
+                                    <img src="../../../assets/img/BENEFICIOS DEL CBD.png" alt="primer plano de flores"
+                                        class="img-fluid flower-about">
+                                </div>
+                            </div>
+                            <input type="button" name="previous" class="previous action-button" value="Previous" />
+                            <a href="https://twitter.com/GoktepeAtakan" class="submit action-button"
+                                target="_top">Submit</a>
+                        </form>
+                    </fieldset>
+                </form>
+            <!-- </form> -->
+        <!-- </section> -->
     </div>
 </div>
-
-
-<section class="layout3" id="layout3">
-    <!-- TARJETAS -->
-    <div class="container-card">
-
-        <div class="card">
-            <p class="nom">Parrafo</p>
-            <div class="contenido-card">
-                <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea">HOLAAAAAAAAAAAAAAAAAAA</textarea>
-            </div>
-        </div>
-
-        <div class="card">
-            <p class="nom">Parrafo</p>
-            <div class="contenido-card">
-                <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea">YAAAAAAAAAAAAAAAAAAAAAAA</textarea>
-            </div>
-        </div>
-
-        <div class="card">
-            <p class="nom">Parrafo</p>
-            <div class="contenido-card">
-                <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea">SI SOY</textarea>
-            </div>
-        </div>
-        <div class="card">
-            <p class="nom">Parrafo</p>
-            <div class="contenido-card">
-                <textarea placeholder="Descripcion" type="text" name="titulo_noti" class="txtarea" >chiiiiiiiiiiiiiii</textarea>
-            </div>
-        </div>
-    </div>
-</section>

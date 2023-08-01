@@ -63,7 +63,7 @@ body {
 	// box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 	padding: 20px 30px;
 	box-sizing: border-box;
-	width: 80%;
+	width: 0 10%;
 	background-color: #27AE60;
 
 	/*stacking fieldsets above each other*/
@@ -314,3 +314,8 @@ fieldset {
     background-color: #3071a9;
   }
 
+  //alerta
+  @font-face  {
+	font-family: 'Open Sans';
+	src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+  }

@@ -32,9 +32,11 @@ export class CrearUsuarioComponent implements OnInit {
       allowEscapeKey: false
     });
   }
+  
 
   //alerta//
 
 
 
 }
+

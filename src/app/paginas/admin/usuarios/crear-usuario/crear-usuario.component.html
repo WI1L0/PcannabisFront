@@ -17,7 +17,7 @@
                 <h3 class="fs-subtitle">Ingrese los datos de persona</h3>
                 <div class="row">
                     <input type="text" name="nombre1" placeholder="Nombre 1" class="half-width" required />
-                    <div class="invalid-feedback">Por favor, complete este campo.</div>
+                    <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
                     <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" />
                 </div>
                 <div class="row">
@@ -43,7 +43,7 @@
 
                 <input type="text" name="referencia" placeholder="Dirección" required />
 
-                <input type="button" name="next" class="next action-button" value="Siguiente" />
+                <input type="button" name="next" class="next action-button" id="next" value="Siguiente" />
                 </fieldset>
             <fieldset>
                 <h2 class="fs-title">Datos de Usuario</h2>
@@ -58,7 +58,7 @@
                 <input type="password" name="pass" placeholder="Contraseña"  class="half-width" required />
                 <input type="password" name="cpass" id="cpass" placeholder="Confirmar Contraseña"   class="half-width" required/>
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
-                <a href="/admin" class="submit action-button" target="_top">Registrar</a>
+                <a href="/admin" class="submit action-button" id="btn-registrar" target="_top">Registrar</a>
             </fieldset>
         </form>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Noticias } from 'src/app/modelos/Noticias';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import Swal from 'sweetalert2';
 
@@ -9,6 +10,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./editar-noticias.component.scss']
 })
 export class EditarNoticiasComponent  implements OnInit {
+  obtenerFoto: any;
+  procesarFoto: any;
+  imagenPreview: any;
+  objectNoticia: Noticias = new Noticias();
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService,private sanitizer: DomSanitizer) {
     AllScripts.Cargar(["paginas/editarnoticia"]);
@@ -33,6 +38,29 @@ export class EditarNoticiasComponent  implements OnInit {
       }
     });
   }
+
+
+  seleccionarFoto(evento: Event) {
+    this.obtenerFoto = evento.target as HTMLInputElement;
+  
+    if (this.obtenerFoto.files?.length) {
+      const reader = new FileReader();
+      this.procesarFoto = this.obtenerFoto.files[0];
+  
+      reader.addEventListener('load', () => {
+        this.imagenPreview = reader.result as string;
+      });
+  
+      reader.readAsDataURL(this.procesarFoto);
+    }
+  }
+
+  borrarImagen() {
+    this.obtenerFoto.value = '';
+    this.procesarFoto = null;
+    this.imagenPreview = null;
+  }
+  
 
 }
 
