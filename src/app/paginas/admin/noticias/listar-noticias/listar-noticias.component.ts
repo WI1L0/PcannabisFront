@@ -5,7 +5,6 @@ import { NoticiasResponse } from 'src/app/modelos/Respuestas/NoticiasResponse';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import nameEmpresa from 'src/app/services/defauld/EmpresaName';
 import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
-import { SfotosService } from 'src/app/services/s-fotos.service';
 import { SloginService } from 'src/app/services/s-login.service';
 import { SnoticiasService } from 'src/app/services/s-noticias.service';
 import Swal from 'sweetalert2';
@@ -16,17 +15,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./listar-noticias.component.scss'],
 })
 export class ListarNoticiasComponent implements OnInit {
-  //paginacion
+
+  //PAGINACION
   pagActua: number = 0;
   pagExist: any = 0;
   listNoticias: any[] = [];
-  cuerpoUrlFoto: string = baserUrlImagenes;
   respuestaNoticias: NoticiasResponse = new NoticiasResponse();
 
-  //para estados
+  // CUERPO DE LA URL IMAGENES
+  cuerpoUrlFoto: string = baserUrlImagenes;
+
+  //ESTADOS 
   datoEstado: any = '';
 
-  //implementar js en los componentes
   constructor(
     private AllScripts: AllScriptsService,
     private noticiasServices: SnoticiasService,
@@ -37,7 +38,7 @@ export class ListarNoticiasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.loginServices.estaLogin()){
+    if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/cbd/login']);
     }
     this.almacenarEstado('activo');
@@ -52,7 +53,7 @@ export class ListarNoticiasComponent implements OnInit {
 
   // MOSTRAR NOTICIAS
   obtenerNoticias() {
-    this.listNoticias = [];
+    this.limpiarAll();
     let TituloOrFecha = (<HTMLInputElement>document.getElementById('busqueda'))
       .value;
 
@@ -72,6 +73,13 @@ export class ListarNoticiasComponent implements OnInit {
       );
   }
   // MOSTRAR NOTICIAS
+
+  // LIMPIAR LISTAS VARIABLES
+  limpiarAll() {
+    this.respuestaNoticias = {} as NoticiasResponse;
+    this.listNoticias = [];
+  }
+  // LIMPIAR LISTAS VARIABLES
 
   // PAGINACION
   nextPagina() {
@@ -123,14 +131,14 @@ export class ListarNoticiasComponent implements OnInit {
               confirmValue === `${noti.ubicacionNoticia}:${noti.fechaNoticia}`
             ) {
               let re = this.noticiasServices
-              .deleteNoticias(Number(noti.idNoticia))
-              .subscribe((resu) => {
-                if (resu != null){
-                  return true;
-                } else {
-                  return false;
-                }
-              })
+                .deleteNoticias(Number(noti.idNoticia))
+                .subscribe((resu) => {
+                  if (resu != null) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                })
               if (re) {
                 Swal.fire('eliminada', 'noticia eliminada', 'success').then(
                   (res) => {
@@ -172,14 +180,14 @@ export class ListarNoticiasComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         let re = this.noticiasServices
-            .putNoticiaEstado(Number(noti.idNoticia))
-            .subscribe((resu) => {
-              if(resu != null) {
-                return true;
-              } else {
-                return false;
-              }
-            })
+          .putNoticiaEstado(Number(noti.idNoticia))
+          .subscribe((resu) => {
+            if (resu != null) {
+              return true;
+            } else {
+              return false;
+            }
+          })
         if (re) {
           Swal.fire(
             'Noticia ' + `${mensajeTrue}` + ' exitosamente',

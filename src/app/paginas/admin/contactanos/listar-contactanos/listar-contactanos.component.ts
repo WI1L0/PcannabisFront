@@ -15,15 +15,21 @@ import { Contactanos } from 'src/app/modelos/Contactanos';
 })
 export class ListarContactanosComponent implements OnInit {
 
+  //PAGINACION
   pagActua: number = 0;
   pagExist: any = 0;
   listContactanos: any[] = [];
   respuestaContactanos: ContactanosResponse = new ContactanosResponse();
 
+  // ESTADOS
   datoEstado: any = '';
 
-    //implementar js en los componentes
-    constructor(private AllScripts: AllScriptsService, private contactanosServices: ScontactanosService, private router: Router, private loginServices: SloginService) {
+    constructor(
+      private AllScripts: AllScriptsService, 
+      private contactanosServices: ScontactanosService, 
+      private router: Router, 
+      private loginServices: SloginService
+      ) {
       // AllScripts.Cargar(["paginas/contactanos"]);
     }
   
@@ -41,9 +47,9 @@ export class ListarContactanosComponent implements OnInit {
   }
   // ALMACENAR ESTADO DE VISUALIZACION
 
-  // MOSTRAR NOTICIAS
+  // MOSTRAR CONTACTANOS
   obtenerContactanos() {
-    this.listContactanos = [];
+    this.limpiarAll();
     let TituloOrFecha = (<HTMLInputElement>document.getElementById('busqueda'))
       .value;
 
@@ -62,9 +68,15 @@ export class ListarContactanosComponent implements OnInit {
         }
       );
   }
-  // MOSTRAR NOTICIAS
-
+  // MOSTRAR CONTACTANOS
   
+  // LIMPIAR LISTAS VARIABLES
+  limpiarAll() {
+    this.respuestaContactanos = {} as ContactanosResponse;
+    this.listContactanos = [];
+  }
+  // LIMPIAR LISTAS VARIABLES
+
   // PAGINACION
   nextPagina() {
     if (this.pagActua != this.pagExist) {
@@ -81,16 +93,14 @@ export class ListarContactanosComponent implements OnInit {
   }
   // PAGINACION
 
-  // PASAR A DETALLE NOTICIA
+  // PASAR A DETALLE CONTACTANOS
   setNoticiaADetalle(contactanos: Contactanos) {
     localStorage.removeItem('contactanos');
     localStorage.setItem('contactanos', JSON.stringify(contactanos));
   }
-  // PASAR A DETALLE NOTICIA
+  // PASAR A DETALLE CONTACTANOS
 
-
-  
-  // ELIMINAR NOTICIA
+  // ELIMINAR CONTACTANOS
   confirmEliminar(contac: Contactanos) {
     Swal.fire({
       title: '¿Estás seguro de eliminar esta noticia?',
@@ -142,9 +152,9 @@ export class ListarContactanosComponent implements OnInit {
       }
     });
   }
-  // ELIMINAR NOTICIA
+  // ELIMINAR CONTACTANOS
 
-  // OCULTAR Y MOSTRAR NOTICIAS
+  // OCULTAR Y MOSTRAR CONTACTANOS
   alertOcultarMostrar(
     contac: Contactanos,
     mensajeTitle: string,
@@ -187,5 +197,5 @@ export class ListarContactanosComponent implements OnInit {
       }
     });
   }
-  // OCULTAR Y MOSTRAR NOTICIAS
+  // OCULTAR Y MOSTRAR CONTACTANOS
   }

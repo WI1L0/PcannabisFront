@@ -13,38 +13,43 @@ import Swal from 'sweetalert2';
   templateUrl: './listar-usuarios.component.html',
   styleUrls: ['./listar-usuarios.component.scss']
 })
-export class ListarUsuariosComponent  implements OnInit {
+export class ListarUsuariosComponent implements OnInit {
 
+  // PAGINACION
   pagActua: number = 0;
   pagExist: any = 0;
-  listUsu: Usuarios[] = [];
-  listUsuariosAny: UsuariosResponse[] = [];
+  listUsu: any[] = [];
   cuerpoUrlFoto: string = baserUrlImagenes;
+
+  // CUERPO DE LA URL IMAGENES
   respuestaUsuarios: UsuariosResponse = new UsuariosResponse;
-  
-  //para estados
+
+  // ESTADOS
   datoEstado: any = '';
 
-  constructor( private loginServices: SloginService, private router: Router, private usuarioServices: SusuariosService ) { }
+  constructor(
+    private loginServices: SloginService,
+    private router: Router,
+    private usuarioServices: SusuariosService
+  ) { }
 
   ngOnInit(): void {
-    if (!this.loginServices.estaLogin()){
+    if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/lg/login']);
     }
     this.almacenarEstado('desbloqueado');
   }
-  
+
   // ALMACENAR ESTADO DE VISUALIZACION
   almacenarEstado(estado: string) {
     this.datoEstado = estado;
     this.obtenerUsuarios();
   }
   // ALMACENAR ESTADO DE VISUALIZACION
-  
+
   // MOSTRAR USUARIOS
   obtenerUsuarios() {
-    this.listUsuariosAny = [];
-    this.listUsu = [];
+    this.limpiarAll();
     let TituloOrFecha = (<HTMLInputElement>document.getElementById('busqueda'))
       .value;
 
@@ -54,8 +59,8 @@ export class ListarUsuariosComponent  implements OnInit {
         (response: UsuariosResponse) => {
           this.respuestaUsuarios = response;
           this.pagExist = response.totalPagina;
-          if (this.respuestaUsuarios.contenidoUsuarios != null){
-          this.listUsu = this.respuestaUsuarios.contenidoUsuarios;
+          if (this.respuestaUsuarios.contenidoUsuarios != null) {
+            this.listUsu = this.respuestaUsuarios.contenidoUsuarios;
           }
         },
         (error) => {
@@ -65,6 +70,14 @@ export class ListarUsuariosComponent  implements OnInit {
   }
   // MOSTRAR USUARIOS
 
+  // LIMPIAR LISTAS VARIABLES
+  limpiarAll() {
+    this.respuestaUsuarios = {} as UsuariosResponse;
+    this.listUsu = [];
+  }
+  // LIMPIAR LISTAS VARIABLES
+
+  // PAGINACION
   nextPagina() {
     if (this.pagActua != this.pagExist - 1) {
       this.pagActua++;
@@ -78,14 +91,16 @@ export class ListarUsuariosComponent  implements OnInit {
       this.obtenerUsuarios();
     }
   }
+  // PAGINACION
 
+  // PASAR A DETALLE USUARIOS
   almacenarUsuario(usuarios: Usuarios) {
     localStorage.removeItem('usuario');
     localStorage.setItem('usuario', JSON.stringify(usuarios));
   }
+  // PASAR A DETALLE USUARIOS
 
-  
-  // ELIMINAR NOTICIA
+  // ELIMINAR USUARIOS
   confirmEliminar(usua: Usuarios) {
     Swal.fire({
       title: '¿Estás seguro de eliminar esta noticia?',
@@ -112,14 +127,14 @@ export class ListarUsuariosComponent  implements OnInit {
               confirmValue === `${usua.nombreUsuario}:${usua.personas?.cedula}`
             ) {
               let re = this.usuarioServices
-              .deleteUsuarios(Number(usua.idUsuario))
-              .subscribe((resu) => {
-                if (resu != null){
-                  return true;
-                } else {
-                  return false;
-                }
-              })
+                .deleteUsuarios(Number(usua.idUsuario))
+                .subscribe((resu) => {
+                  if (resu != null) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                })
               if (re) {
                 Swal.fire('eliminada', 'noticia eliminada', 'success').then(
                   (res) => {
@@ -137,10 +152,10 @@ export class ListarUsuariosComponent  implements OnInit {
       }
     });
   }
-  // ELIMINAR NOTICIA
+  // ELIMINAR USUARIOS
 
 
-  // OCULTAR Y MOSTRAR NOTICIAS
+  // BLOQUEAR Y DESBLOQUEAR USUARIOS
   alertBloquearOrDesbloquear(
     usua: Usuarios,
     mensajeTitle: string,
@@ -162,14 +177,14 @@ export class ListarUsuariosComponent  implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         let re = this.usuarioServices
-            .putUsuariosEstadoBloqueado(Number(usua.idUsuario))
-            .subscribe((resu) => {
-              if(resu != null) {
-                return true;
-              } else {
-                return false;
-              }
-            })
+          .putUsuariosEstadoBloqueado(Number(usua.idUsuario))
+          .subscribe((resu) => {
+            if (resu != null) {
+              return true;
+            } else {
+              return false;
+            }
+          })
         if (re) {
           Swal.fire(
             'Noticia ' + `${mensajeTrue}` + ' exitosamente',
@@ -183,6 +198,6 @@ export class ListarUsuariosComponent  implements OnInit {
       }
     });
   }
-  // OCULTAR Y MOSTRAR NOTICIAS
+  // BLOQUEAR Y DESBLOQUEAR USUARIOS
 
 }
