@@ -10,17 +10,21 @@
                         <thead>
                             <tr>
                                 <td class="contenedor">
-                                    <a class="hola"></a>
-                                    <select class="combo">
-                                        <option>Vistas</option>
-                                        <option>Ocultas</option>
+                                    <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
+                                        (change)="obtenerContactanos()">
+                                        <option disabled selected>Seleccione una opción</option>
+                                        <option value="all">Todo</option>
+                                        <option value="activo">Activos</option>
+                                        <option value="desactivo">Desactivos</option>
                                     </select>
                                 </td>
                                 <div class="search-container">
                                     <i class="fa fa-search"></i>
                                     <input type="text" name="usuario" placeholder="Nombre, Fecha" id="busqueda">
+                <td class="all"><a (click)="obtenerContactanos()" class="a">Buscar</a></td>
+
                                     <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
-                                    <td class="all"><a  class="a">Buscar</a></td>
+                                    <!-- <td class="all"><a  class="a">Buscar</a></td> -->
                                 </div>
 
                             </tr>
@@ -48,8 +52,15 @@
                         <td>{{contac.emailContactanos}}</td>
                         <td>{{contac.asuntoContactanos}}</td>
                         <td>{{contac.celularContactanos}}</td>
-                        <td><a class="as" (click)="ocultaralert()">Ocultar</a></td>
-                        <td><a href="/cbd/admin/contactanos/detalle" class="as">Ver Detalle</a></td>
+                        <td *ngIf="contac.estOcultoVisibleContactanos == true"><a class="a">Editar</a> </td>
+                        <td *ngIf="contac.estOcultoVisibleContactanos == false"><a class="a"
+                                (click)="confirmEliminar(contac)">Eliminar</a> </td>                        
+                                <!-- <td><a href="/cbd/admin/contactanos/detalle" class="as">Ver Detalle</a></td> -->
+                        <td *ngIf="contac.estOcultoVisibleContactanos == false"><a class="a"
+                            (click)="alertOcultarMostrar(contac, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
+                    </td>
+                    <td *ngIf="contac.estOcultoVisibleContactanos == true"><a class="a"
+                            (click)="alertOcultarMostrar(contac, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
                     </tr>
                 <tbody>
             </table>

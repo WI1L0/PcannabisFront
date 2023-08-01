@@ -6,6 +6,7 @@ import { SloginService } from 'src/app/services/s-login.service';
 import { Router } from '@angular/router';
 import nameEmpresa from 'src/app/services/defauld/EmpresaName';
 import Swal from 'sweetalert2';
+import { Contactanos } from 'src/app/modelos/Contactanos';
 
 @Component({
   selector: 'app-listar-contactanos',
@@ -14,13 +15,12 @@ import Swal from 'sweetalert2';
 })
 export class ListarContactanosComponent implements OnInit {
 
-  admin = false;
-  logeado = false;
-
   pagActua: number = 0;
   pagExist: any = 0;
-  respuestaContactanos: ContactanosResponse = new ContactanosResponse;
   listContactanos: any[] = [];
+  respuestaContactanos: ContactanosResponse = new ContactanosResponse();
+
+  datoEstado: any = '';
 
     //implementar js en los componentes
     constructor(private AllScripts: AllScriptsService, private contactanosServices: ScontactanosService, private router: Router, private loginServices: SloginService) {
@@ -31,57 +31,161 @@ export class ListarContactanosComponent implements OnInit {
       if (!this.loginServices.estaLogin()){
         this.router.navigate(['/lg/login']);
       }
-      
-      console.log("t3422243")
-      this.obtenerContactenos();
-
-    }
-    //alerta
-    ocultaralert() {
-      Swal.fire({
-        position: 'top-right',
-        icon: 'success',
-        title: 'Respuesta Oculta Exitosamente',
-        showConfirmButton: false,
-        timer: 1500,
-        background: '#ffff',
-        iconColor: '#4CAF50',
-        padding: '1.25rem',
-        width: '20rem',
-        allowOutsideClick: false,
-        allowEscapeKey: false
-      });
+    this.almacenarEstado('activo');
     }
 
-    //alerta
-  
-    obtenerContactenos() {
-      console.log("ssddd")
-      this.listContactanos = [];
-      this.contactanosServices.getContactanos(this.pagActua, "activo", nameEmpresa).subscribe(
+      // ALMACENAR ESTADO DE VISUALIZACION
+  almacenarEstado(estado: string) {
+    this.datoEstado = estado;
+    this.obtenerContactanos();
+  }
+  // ALMACENAR ESTADO DE VISUALIZACION
+
+  // MOSTRAR NOTICIAS
+  obtenerContactanos() {
+    this.listContactanos = [];
+    let TituloOrFecha = (<HTMLInputElement>document.getElementById('busqueda'))
+      .value;
+
+    this.contactanosServices
+      .getContactanos(this.pagActua, this.datoEstado, nameEmpresa, TituloOrFecha)
+      .subscribe(
         (response: ContactanosResponse) => {
           this.respuestaContactanos = response;
           this.pagExist = response.totalPagina;
-          this.listContactanos = this.listContactanos.concat(this.respuestaContactanos.contenido);
-          console.log(this.listContactanos)
+          this.listContactanos = this.listContactanos.concat(
+            this.respuestaContactanos.contenido
+          );
         },
-        error => {
+        (error) => {
           console.log('Error al obtener noticias:', error);
         }
       );
-    }
+  }
+  // MOSTRAR NOTICIAS
+
   
-    nextPagina() {
-      if (this.pagActua != this.pagExist - 1) {
-        this.pagActua++;
-        this.obtenerContactenos();
-      }
+  // PAGINACION
+  nextPagina() {
+    if (this.pagActua != this.pagExist) {
+      this.pagActua++;
+      this.obtenerContactanos();
     }
+  }
+
+  previoPagina() {
+    if (this.pagActua != 0) {
+      this.pagActua--;
+      this.obtenerContactanos();
+    }
+  }
+  // PAGINACION
+
+  // PASAR A DETALLE NOTICIA
+  setNoticiaADetalle(contactanos: Contactanos) {
+    localStorage.removeItem('contactanos');
+    localStorage.setItem('contactanos', JSON.stringify(contactanos));
+  }
+  // PASAR A DETALLE NOTICIA
+
+
   
-    previoPagina() {
-      if (this.pagActua != 0) {
-        this.pagActua--;
-        this.obtenerContactenos();
+  // ELIMINAR NOTICIA
+  confirmEliminar(contac: Contactanos) {
+    Swal.fire({
+      title: '¿Estás seguro de eliminar esta noticia?',
+      text: 'Se eliminarán todos los registros de esta noticia de manera permanente y no se podrán recuperar',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Para confirmar la eliminación, escriba la siguiente cadena:',
+          text: `${contac.nombreContactanos}:${contac.emailContactanos}`,
+          input: 'text',
+          inputAttributes: {
+            autocapitalize: 'off',
+          },
+          showCancelButton: true,
+          confirmButtonText: 'Confirmar',
+          showLoaderOnConfirm: true,
+          preConfirm: (confirmValue) => {
+            if (
+              confirmValue === `${contac.nombreContactanos}:${contac.emailContactanos}`
+            ) {
+              let re = this.contactanosServices
+              .deleteContactanos(Number(contac.idContactanos))
+              .subscribe((resu) => {
+                if (resu != null){
+                  return true;
+                } else {
+                  return false;
+                }
+              })
+              if (re) {
+                Swal.fire('eliminada', 'noticia eliminada', 'success').then(
+                  (res) => {
+                    this.obtenerContactanos();
+                  }
+                );
+              } else {
+                Swal.fire('no eliminada', 'noticia no eliminada', 'error');
+              }
+            } else {
+              Swal.showValidationMessage('El valor ingresado no es correcto');
+            }
+          },
+        });
       }
-    }
+    });
+  }
+  // ELIMINAR NOTICIA
+
+  // OCULTAR Y MOSTRAR NOTICIAS
+  alertOcultarMostrar(
+    contac: Contactanos,
+    mensajeTitle: string,
+    mensajeText: string,
+    mensajeTrue: string,
+    mensajeFalse: string
+  ) {
+    Swal.fire({
+      title: '¿Estas seguro de ' + `${mensajeTitle}` + ' esta noticia?',
+      text:
+        'las noticias ocultas ' +
+        `${mensajeText}` +
+        ' ser vistas por el publico en general',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ocultar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let re = this.contactanosServices
+            .putContactanosEstado(Number(contac.idContactanos))
+            .subscribe((resu) => {
+              if(resu != null) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+        if (re) {
+          Swal.fire(
+            'Noticia ' + `${mensajeTrue}` + ' exitosamente',
+            'success'
+          ).then((res) => {
+            this.obtenerContactanos();
+          });
+        } else {
+          Swal.fire(' Error al ' + `${mensajeFalse}` + ' noticia', 'error');
+        }
+      }
+    });
+  }
+  // OCULTAR Y MOSTRAR NOTICIAS
   }

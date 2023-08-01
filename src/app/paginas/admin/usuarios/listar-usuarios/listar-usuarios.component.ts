@@ -17,7 +17,8 @@ export class ListarUsuariosComponent  implements OnInit {
 
   pagActua: number = 0;
   pagExist: any = 0;
-  listUsuarios: any[] = [];
+  listUsu: Usuarios[] = [];
+  listUsuariosAny: UsuariosResponse[] = [];
   cuerpoUrlFoto: string = baserUrlImagenes;
   respuestaUsuarios: UsuariosResponse = new UsuariosResponse;
   
@@ -42,7 +43,8 @@ export class ListarUsuariosComponent  implements OnInit {
   
   // MOSTRAR USUARIOS
   obtenerUsuarios() {
-    this.listUsuarios = [];
+    this.listUsuariosAny = [];
+    this.listUsu = [];
     let TituloOrFecha = (<HTMLInputElement>document.getElementById('busqueda'))
       .value;
 
@@ -52,9 +54,9 @@ export class ListarUsuariosComponent  implements OnInit {
         (response: UsuariosResponse) => {
           this.respuestaUsuarios = response;
           this.pagExist = response.totalPagina;
-          this.listUsuarios = this.listUsuarios.concat(
-            this.respuestaUsuarios.contenidoUsuarios
-          );
+          if (this.respuestaUsuarios.contenidoUsuarios != null){
+          this.listUsu = this.respuestaUsuarios.contenidoUsuarios;
+          }
         },
         (error) => {
           console.log('Error al obtener noticias:', error);

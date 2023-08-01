@@ -55,7 +55,7 @@ export class CrearNoticiasComponent implements OnInit {
   }
 
   borrarImagen() {
-    window.miFuncionmensaje();
+    // window.miFuncionmensaje();
     this.obtenerFoto.value = '';
     this.procesarFoto = null;
     this.imagenPreview = null;

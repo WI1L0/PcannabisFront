@@ -25,13 +25,13 @@ export class ScontactanosService {
     }
 
     //OBTENEMOS EL OBJETO EMPRESA
-    // public getContactanos(pageAct: number, estado: string, empresaName: string, busqueda: string) {
-      public getContactanos(pageAct: number, estado: string, empresaName: string) {
-    // if(busqueda == null || busqueda == ''){
-      return this.http.get<ContactanosResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&?estado=${estado}`);
-    // } else {
-    //   return this.http.get<ContactanosResponse>(`${baserUrl + this.URL}/all/paginacion/busqueda/${empresaName}/${busqueda}/?pageNo=${pageAct}`);
-    // }
+    public getContactanos(pageAct: number, estado: string, empresaName: string, busqueda: string) {
+      // public getContactanos(pageAct: number, estado: string, empresaName: string) {
+    if(busqueda == null || busqueda == ''){
+      return this.http.get<ContactanosResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&estado=${estado}`);
+    } else {
+      return this.http.get<ContactanosResponse>(`${baserUrl + this.URL}/all/paginacion/busqueda/${empresaName}/${busqueda}/?pageNo=${pageAct}&estado=${estado}`);
+    }
   }
 
   putContactanosEstado(id: number) {
