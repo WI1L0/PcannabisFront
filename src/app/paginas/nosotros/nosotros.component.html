@@ -86,9 +86,9 @@
 <div class="divPrimeroBlack">
     <h1 class="h1All">Instalaciones Administrativas</h1>
     <div class="divSegundo_pading">
-        
+
         <span class="divTercero">
-           
+
         </span>
         <section class="sectionImagenes">
             <!-- IMAGENES -->
@@ -101,8 +101,10 @@
                         <a href="../../../assets/img/adm2.jpg"><img src="../../../assets/img/adm2.jpg" alt="" /></a>
                         <a href="../../../assets/img/adm3.jpg"><img src="../../../assets/img/adm3.jpg" alt="" /></a>
                         <a href="../../../assets/img/adm4.jpg"><img src="../../../assets/img/adm4.jpg" alt="" /></a>
-                        <a href="../../../assets/img/instalaciones.jpeg"><img src="../../../assets/img/instalaciones.jpeg" alt="" /></a>
-                        <a href="../../../assets/img/Empresanuna.jpeg"><img src="../../../assets/img/Empresanuna.jpeg" alt="" /></a>
+                        <a href="../../../assets/img/instalaciones.jpeg"><img
+                                src="../../../assets/img/instalaciones.jpeg" alt="" /></a>
+                        <a href="../../../assets/img/Empresanuna.jpeg"><img src="../../../assets/img/Empresanuna.jpeg"
+                                alt="" /></a>
                     </nav>
                 </div>
             </div>
@@ -165,22 +167,27 @@
                             </div>
                             <div class="content">
                                 <section>
-                                  <h2 class="valores">COMPROMISO</h2>
-                                  Nuestro compromiso es mantener altos estándares de calidad desde el inicio de nuestra cadena productiva hasta su consumidor final.
+                                    <h2 class="valores">COMPROMISO</h2>
+                                    Nuestro compromiso es mantener altos estándares de calidad desde el inicio de
+                                    nuestra cadena productiva hasta su consumidor final.
                                 </section>
                                 <section>
-                                  <h2 class="valores">HONESTIDAD</h2>
-                                  La honestidad en todos nuestros procedimientos de gestión interna y externa es un pilar fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
+                                    <h2 class="valores">HONESTIDAD</h2>
+                                    La honestidad en todos nuestros procedimientos de gestión interna y externa es un
+                                    pilar fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
                                 </section>
                                 <section>
-                                  <h2 class="valores">INNOVACIÓN</h2>
-                                  Estamos preparándonos constantemente en las actualizaciones técnicas, formativas, científicas y normativas, con el fin de aplicarlo en todos nuestros departamentos de gestión, producción y comercialización.
+                                    <h2 class="valores">INNOVACIÓN</h2>
+                                    Estamos preparándonos constantemente en las actualizaciones técnicas, formativas,
+                                    científicas y normativas, con el fin de aplicarlo en todos nuestros departamentos de
+                                    gestión, producción y comercialización.
                                 </section>
                                 <section>
-                                  <h2 class="valores">RESPONSABILIDAD</h2>
-                                  Nuestra empresa se caracteriza por un alto grado de responsabilidad social y ambiental por cada una las actividades que sean realizadas.
+                                    <h2 class="valores">RESPONSABILIDAD</h2>
+                                    Nuestra empresa se caracteriza por un alto grado de responsabilidad social y
+                                    ambiental por cada una las actividades que sean realizadas.
                                 </section>
-                              </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -204,21 +211,102 @@
             <div class="bodyformulario">
                 <form action="">
                     <section class="layout 2">
-                        <div class="input-box">
-                            <input type="text" placeholder="Name*" required class="campos">
+                        <fieldset class="input-box">
+                            <!-- <p class="nom">Name</p> -->
+                            <input class="campos" placeholder="Name" type="Name" name="Name_contactanos" tabindex="1"
+                                required [(ngModel)]="contactanosObject.nombreContactanos">
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.nombreContactanos">Observaciones is
+                                required.</small>
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <!-- <p class="nom">Name</p> -->
+                            <input class="campos" placeholder="Email" type="Email" name="Email_contactanos" tabindex="2"
+                                required [(ngModel)]="contactanosObject.emailContactanos">
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.emailContactanos">Observaciones is
+                                required.</small>
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <!-- <p class="nom">Name</p> -->
+                            <input class="campos" placeholder="Celular" type="Celular" name="Celular_contactanos"
+                                tabindex="3" required [(ngModel)]="contactanosObject.celularContactanos">
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.celularContactanos">Observaciones is
+                                required.</small>
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <!-- <p class="nom">Name</p> -->
+                            <input class="campos" placeholder="Asunto" type="Asunto" name="Asunto_contactanos"
+                                tabindex="4" required [(ngModel)]="contactanosObject.asuntoContactanos">
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.asuntoContactanos">Observaciones is
+                                required.</small>
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <!-- <p class="nom">Name</p> -->
+                            <textarea class="campos" placeholder="Descripcion" type="Descripcion"
+                                name="Descripcion_contactanos" rows="8" required tabindex="5"
+                                [(ngModel)]="contactanosObject.detalleContactanos"></textarea>
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.detalleContactanos">Observaciones is
+                                required.</small>
+                        </fieldset>
+                        <!-- <div class="input-box">
+                            <input type="text" placeholder="Name*" required class="campos" tabindex="1"
+                                [(ngModel)]="contactanosObject.nombreContactanos">
+                        </div> -->
+                        <!-- <div class="input-box">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.nombreContactanos">Observaciones is
+                                required.</small>
+                        </div> -->
+                        <!-- <div class="input-box">
+                            <input type="text" placeholder="Email*" required class="campos" tabindex="2"
+                                [(ngModel)]="contactanosObject.emailContactanos">
                         </div>
                         <div class="input-box">
-                            <input type="text" placeholder="Email*" required class="campos">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.emailContactanos">Observaciones is
+                                required.</small>
+                        </div> -->
+                        <!-- <div class="input-box">
+                            <input type="text" placeholder="Celular" class="campos" tabindex="3"
+                                [(ngModel)]="contactanosObject.celularContactanos">
                         </div>
                         <div class="input-box">
-                            <input type="text" placeholder="Celular" class="campos">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.celularContactanos">Observaciones is
+                                required.</small>
                         </div>
                         <div class="input-box">
-                            <input type="text" placeholder="Subject*" required class="campos">
+                            <input type="text" placeholder="Subject*" required class="campos" tabindex="4"
+                                [(ngModel)]="contactanosObject.asuntoContactanos">
                         </div>
                         <div class="input-box">
-                            <input type="text" placeholder="Description*" required class="descripcion">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.asuntoContactanos">Observaciones is
+                                required.</small>
                         </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Description*" required class="descripcion" tabindex="5"
+                                [(ngModel)]="contactanosObject.detalleContactanos">
+                        </div>
+                        <div class="input-box">
+                            <small class="p-error"
+                                *ngIf="submitted && !contactanosObject.detalleContactanos">Observaciones is
+                                required.</small> -->
+                        <!-- </div> -->
 
                         <body>
                             <div class="text sign-up-text" class="texto">¿Quieres ser nuestro distribuidor? <a
@@ -227,7 +315,7 @@
 
                         <div class="button input-box">
                             <!-- <div class="text sign-up-text" >¿Quieres ser nuestro distribuidor? <label for="flip">clic</label> </div> -->
-                            <input type="submit" value="Enviar" class="enviar">
+                            <input type="submit" value="Enviar" class="enviar" (click)="postContactanos()">
                         </div>
                     </section>
                 </form>
