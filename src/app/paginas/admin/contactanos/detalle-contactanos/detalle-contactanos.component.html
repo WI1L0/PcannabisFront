@@ -44,27 +44,27 @@
             <h3>Respuesta del Formulario</h3>
             <fieldset>
                 <p class="nom">Nombre</p>
-                <input placeholder="Nombre" type="text" name="nombre_contactanos" tabindex="1" required [(ngModel)]=" contactanosObject.nombreContactanos" disabled="true">
+                <input placeholder="Nombre" type="text" name="nombre_contactanos" tabindex="1" required value="{{contactanosObject.nombreContactanos}}" disabled="true">
                 <!-- <small class="p-error" *ngIf="submitted == true && validar(empresaData.nombreEmpresa) == true">Observaciones is required.</small> -->
             </fieldset>
             <fieldset>
                 <p class="nom">Email</p>
-                <input placeholder="Email" type="email" name="email_contactanos" tabindex="2" required [(ngModel)]="contactanosObject.emailContactanos" disabled="true">
+                <input placeholder="Email" type="email" name="email_contactanos" tabindex="2" required value="{{contactanosObject.emailContactanos}}" disabled="true">
                 <!-- <small class="p-error" *ngIf="submitted && !empresaData.emailEmpresa">Observaciones is required.</small> -->
             </fieldset>
             <fieldset>
                 <p class="nom">Celular</p>
-                <input placeholder="Celular" type="tel" name="celular_contactanos" tabindex="3" required [(ngModel)]="contactanosObject.celularContactanos" disabled="true">
+                <input placeholder="Celular" type="tel" name="celular_contactanos" tabindex="3" required value="{{contactanosObject.celularContactanos}}" disabled="true">
                 <!-- <small class="p-error" *ngIf="submitted && !empresaData.celularEmpresa">Observaciones is required.</small> -->
             </fieldset>
             <fieldset>
                 <p class="nom">Asunto</p>
-                <input placeholder="Asunto " type="url" name="asunto_contactanos" tabindex="4" required [(ngModel)]="contactanosObject.asuntoContactanos" disabled="true">
+                <input placeholder="Asunto " type="url" name="asunto_contactanos" tabindex="4" required value="{{contactanosObject.asuntoContactanos}}" disabled="true">
                 <!-- <small class="p-error" *ngIf="submitted && !empresaData.urlCelularEmpresa">Observaciones is required.</small> -->
             </fieldset>
             <fieldset>
                 <p class="nom">Descripcion</p>
-                <textarea placeholder="Detalle" type="tel" name="detalle_contactanos" tabindex="5" required [(ngModel)]="contactanosObject.detalleContactanos" disabled="true"></textarea>
+                <textarea placeholder="Detalle" type="tel" name="detalle_contactanos" tabindex="5" required value="{{contactanosObject.detalleContactanos}}" disabled="true"></textarea>
                 <!-- <small class="p-error" *ngIf="submitted && !empresaData.telefonoEmpresa">Observaciones is required.</small> -->
             </fieldset>
             <fieldset>

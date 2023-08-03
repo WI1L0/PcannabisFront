@@ -18,7 +18,7 @@ import { NosotrosComponent } from './paginas/nosotros/nosotros.component';
 // import { DetallenoticiaComponent } from './paginas/detallenoticia/detallenoticia.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor, authInterceptorProviders } from './services/defauld/s-interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderadminComponent } from './paginas/admin/headeradmin/headeradmin.component';
 
@@ -41,6 +41,7 @@ import { HeaderadminComponent } from './paginas/admin/headeradmin/headeradmin.co
     RouterModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     //implementar js en los componentes

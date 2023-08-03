@@ -63,6 +63,8 @@
                         <td *ngIf="noti.estOcultoVisibleNoticia == true"><a class="a"
                                 (click)="alertOcultarMostrar(noti, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
                         </td>
+                        <td><a class="a" (click)="setNoticiaADetalle(noti)">Ver</a>
+                        </td>
                     </tr>
                 <tbody>
             </table>

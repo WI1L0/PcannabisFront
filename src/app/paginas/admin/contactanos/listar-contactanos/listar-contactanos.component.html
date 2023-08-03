@@ -87,7 +87,7 @@
                 <button class="button button1" style="opacity: 0.5">
                     <<< </button>
             </ng-template>
-            <div *ngIf="pagActua != pagExist - 1; else elseButtonNext">
+            <div *ngIf="pagActua != pagExist; else elseButtonNext">
                 <button class="button button2" (click)="nextPagina()">
                     >>
                 </button>

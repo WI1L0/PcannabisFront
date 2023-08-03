@@ -13,7 +13,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AllScriptsService } from '../scripts/all-scripts.service';
 import { AppComponent } from '../app.component';
 import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor, authInterceptorProviders } from '../services/defauld/s-interceptor';
 import { AllNoticiasComponent } from './all-noticias/all-noticias.component';
 import { EditarUsuarioComponent } from './admin/usuarios/editar-usuario/editar-usuario.component';
@@ -37,6 +37,7 @@ import { EditarUsuarioComponent } from './admin/usuarios/editar-usuario/editar-u
     HttpClientModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     //implementar js en los componentes

@@ -99,8 +99,9 @@ export class ListarNoticiasComponent implements OnInit {
 
   // PASAR A DETALLE NOTICIA
   setNoticiaADetalle(noticia: Noticias) {
-    localStorage.removeItem('noticia');
-    localStorage.setItem('noticia', JSON.stringify(noticia));
+    localStorage.removeItem('noticiaAdm');
+    localStorage.setItem('noticiaAdm', JSON.stringify(noticia));
+    this.router.navigate(['/cbd/admin/noticias/detalle']);
   }
   // PASAR A DETALLE NOTICIA
 

@@ -64,7 +64,7 @@
             <td *ngIf="usulist.bloqueadoUsuario == true  && usulist.estUsuario == true"><a class="a"
                 (click)="alertBloquearOrDesbloquear(usulist, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desbloquear</a>
             </td>
-            <td><a href="/cbd/admin/usuarios/detalle" class="as">Ver</a></td>
+            <td><a (click)="almacenarUsuario(usulist)" class="as">Ver</a></td>
           </tr>
         </tbody>
 
@@ -86,7 +86,7 @@
     <button class="button button1" style="opacity: 0.5">
       << </button>
   </ng-template>
-  <div *ngIf="pagActua != pagExist - 1; else elseButtonNext">
+  <div *ngIf="pagActua != pagExist; else elseButtonNext">
     <button class="button button2" (click)="nextPagina()">>></button>
   </div>
   <ng-template #elseButtonNext>

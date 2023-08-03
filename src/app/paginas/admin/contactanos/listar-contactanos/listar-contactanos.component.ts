@@ -79,7 +79,7 @@ export class ListarContactanosComponent implements OnInit {
 
   // PAGINACION
   nextPagina() {
-    if (this.pagActua != this.pagExist - 1) {
+    if (this.pagActua != this.pagExist) {
       this.pagActua++;
       this.obtenerContactanos();
     }

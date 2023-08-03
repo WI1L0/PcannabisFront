@@ -15,8 +15,8 @@ export class SParrafosService {
   constructor(private http: HttpClient) { }
 
   //OBTENEMOS LA LISTA DE PARRAFOS
-  public getParrafos(idNoticias: any, estado: string) {
-    return this.http.get<Parrafos[]>(`${baserUrl + this.URL}/noticia/${idNoticias}/?estado=${estado}`);
+  public getParrafos(idNoticias: any) {
+    return this.http.get<Parrafos[]>(`${baserUrl + this.URL}/noticia/${idNoticias}`);
   }
 
 

@@ -1,6 +1,4 @@
-<div class="container ">
-    <!-- <div class="row">
-        <div class="col-md-6"> -->
+<!-- <div class="container ">
     <section class="layout">
         <h2 class="info">Noticias</h2>
         <div class="divPrimero">
@@ -52,4 +50,52 @@
         </div>
 
     </section>
-</div>
+</div> -->
+
+<!-- ALL -->
+<div class="divPrimero">
+    <div class="divSegundo">
+      <div class="wrapper">
+        <section>
+          <!-- TITULO-FECHA -->
+          <h1> {{ noticia.tituloNoticia }} </h1>
+           <h2> {{ noticia.ubicacionNoticia }} : {{ noticia.fechaNoticia }} </h2>
+          <!-- TITULO-FECHA -->
+  
+          <!-- SLIDER PRINCIPAL -->
+          <div class="sliderDetalleNoticia">
+            <div class="htmlDetalle">
+              <div class="bodyDetalle">
+                <i>
+                  <input checked type="radio" name="s" *ngIf="imgprincipal1 != ''" style="background-image: url( {{imgprincipal1}} );">
+                  <input type="radio" name="s" *ngIf="imgprincipal2 != ''" style="background-image: url( {{imgprincipal2}} );">
+                  <input type="radio" name="s" *ngIf="imgprincipal3 != ''" style="background-image: url( {{imgprincipal3}} );">
+                  <input type="radio" name="s" *ngIf="imgprincipal4 != ''" style="background-image: url( {{imgprincipal4}} );">
+                </i>
+              </div>
+            </div>
+          </div>
+          <!-- SLIDER PRINCIPAL -->
+  
+          <!-- TEXTO 1 -->
+          <p *ngFor="let parrafoSup of listaParrafosSuperior"> {{ parrafoSup.parrafo }} </p>
+          <!-- TEXTO 1 -->
+  
+          <!-- FOTO 1 -->
+          <div class="fotoDetalle">
+            <img class="fondo" *ngIf="imgprincipal5 != ''" src="{{imgprincipal5}}" alt="">
+          </div>
+          <!-- FOTO 1 -->
+  
+          <!-- TEXTO 2 -->
+          <p *ngFor="let parrafoInf of listaParrafosInferior"> {{ parrafoInf.parrafo }} </p>
+          <!-- TEXTO 2 -->
+
+            <!-- <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updateEmpresa()">Editar</button> -->
+            <button class="butonuu" id="contact-submit" data-submit="...Saliendo" (click)="salir()">Exit</button>
+
+        </section>
+        
+      </div>
+    </div>
+  </div>

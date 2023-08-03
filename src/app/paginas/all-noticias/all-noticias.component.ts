@@ -51,7 +51,7 @@ export class AllNoticiasComponent implements OnInit {
   }
 
   nextPagina() {
-    if (this.pagActua != this.pagExist - 1) {
+    if (this.pagActua != this.pagExist) {
       this.pagActua++;
       this.obtenerNoticias();
     }

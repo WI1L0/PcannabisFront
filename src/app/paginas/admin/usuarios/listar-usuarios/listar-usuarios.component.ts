@@ -19,10 +19,10 @@ export class ListarUsuariosComponent implements OnInit {
   pagActua: number = 0;
   pagExist: any = 0;
   listUsu: any[] = [];
-  cuerpoUrlFoto: string = baserUrlImagenes;
+  respuestaUsuarios: UsuariosResponse = new UsuariosResponse();
 
   // CUERPO DE LA URL IMAGENES
-  respuestaUsuarios: UsuariosResponse = new UsuariosResponse;
+  cuerpoUrlFoto: string = baserUrlImagenes;
 
   // ESTADOS
   datoEstado: any = '';
@@ -79,7 +79,7 @@ export class ListarUsuariosComponent implements OnInit {
 
   // PAGINACION
   nextPagina() {
-    if (this.pagActua != this.pagExist - 1) {
+    if (this.pagActua != this.pagExist) {
       this.pagActua++;
       this.obtenerUsuarios();
     }
@@ -97,6 +97,7 @@ export class ListarUsuariosComponent implements OnInit {
   almacenarUsuario(usuarios: Usuarios) {
     localStorage.removeItem('usuario');
     localStorage.setItem('usuario', JSON.stringify(usuarios));
+    this.router.navigate(['/cbd/admin/usuarios/detalle']);
   }
   // PASAR A DETALLE USUARIOS
 
