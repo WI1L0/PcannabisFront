@@ -53,7 +53,11 @@ export class SEmpresasService {
   //   return this.http.delete<boolean>(this.URL + `/${idEmpresas}`);
   // }
 
-  // getPorName(nombreEmp: string): Observable<Empresas> {
-  //   return this.http.get<Empresas>(this.URL + 'ByName/' + nombreEmp);
-  // }
+  getPorName(nombreEmp: string): Observable<Empresas> {
+    return this.http.get<Empresas>(this.URL + 'ByName/' + nombreEmp);
+  }
+
+  listarEmpresasId(idEmpresas: number): Observable<Empresas> {
+    return this.http.get<Empresas>(`${this.URL}id/${idEmpresas}`);
+  }
 }

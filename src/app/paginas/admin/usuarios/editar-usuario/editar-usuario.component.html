@@ -7,13 +7,13 @@
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Nombre</p>
-                            <input placeholder="Nombre" type="text" name="nombre_user" tabindex="1" required autofocus>
+                            <input placeholder="Nombre" type="text" name="nombre_user" tabindex="1"  required [(ngModel)]="objectPersona.nombre1" disabled="true">
                         </fieldset>
                     </div>
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Nombre 2</p>
-                            <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required
+                            <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required [(ngModel)]="objectPersona.nombre2"
                                 autofocus value="Juliana">
                             <!-- <input placeholder="Email" type="email" name="email_empresa" tabindex="2" required
                             value="SoindMed@gmail.com"> -->
@@ -24,14 +24,14 @@
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Apellido </p>
-                            <input placeholder="Apellido" type="text" name="apellido_user" tabindex="3" required
+                            <input placeholder="Apellido" type="text" name="apellido_user" tabindex="3" required [(ngModel)]="objectPersona.apellido1"
                                 autofocus value="Perez">
                         </fieldset>
                     </div>
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Apellido 2</p>
-                            <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="4" required
+                            <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="4" required [(ngModel)]="objectPersona.apellido2"
                                 autofocus value="Quezada">
                         </fieldset>
                     </div>
@@ -40,14 +40,14 @@
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Cédula </p>
-                            <input placeholder="Cedula" type="text" name="cedula_user" tabindex="5" required autofocus
+                            <input placeholder="Cedula" type="text" name="cedula_user" tabindex="5" required  [(ngModel)]="objectPersona.cedula"
                                 value="0104103080">
                         </fieldset>
                     </div>
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Celular</p>
-                            <input placeholder="Celular" type="tel" name="celular_user" tabindex="6" required autofocus
+                            <input placeholder="Celular" type="tel" name="celular_user" tabindex="6"  required [(ngModel)]="objectPersona.celular"
                                 value="0985860636">
                         </fieldset>
                     </div>
@@ -57,13 +57,13 @@
                         <fieldset>
                             <p class="nom">Fecha de Nacimiento</p>
                             <input placeholder="Fecha de nacimiento" name="fechanacimiento" class="date" type="date"
-                                tabindex="7" required autofocus value="2023-09-27">
+                                tabindex="7" required  value="2023-09-27" required [(ngModel)]="objectPersona.fNacimiento">
                         </fieldset>
                     </div>
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Sexo</p>
-                            <select class="select half-width" tabindex="8" name="sexo_user">
+                            <select class="select half-width" tabindex="8" name="sexo_user" required [(ngModel)]="objectPersona.genero"> 
                                 <option>Femenino</option>
                                 <option>Masculino</option>
                             </select>
@@ -74,14 +74,14 @@
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Ciudad </p>
-                            <input placeholder="Ciudad" type="text" name="ciudad_user" tabindex="9" required autofocus
+                            <input placeholder="Ciudad" type="text" name="ciudad_user" tabindex="9" required [(ngModel)]="objectPersona.ciudad"
                                 value="Cuenca">
                         </fieldset>
                     </div>
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Barrio</p>
-                            <input placeholder="Barrio" type="text" name="barrio_user" tabindex="10" required autofocus
+                            <input placeholder="Barrio" type="text" name="barrio_user" tabindex="10" required [(ngModel)]="objectPersona.barrio"
                                 value="Barrio">
                         </fieldset>
                     </div>
@@ -90,15 +90,15 @@
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Dirección</p>
-                            <input placeholder="Direccion" type="text" name="direccion_user" tabindex="11" required
-                                autofocus value="San Jose de Balzay">
+                            <input placeholder="Direccion" type="text" name="direccion_user" tabindex="11" required  [(ngModel)]="objectPersona.referencia">
+                            <small class="p-error" *ngIf="submitted && !objectPersona.referencia">Observaciones is required.</small>
                         </fieldset>
                     </div>
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Correo Electrónico</p>
-                            <input placeholder="Correo Electrónico" type="text" name="correo_user" tabindex="12" required
-                                autofocus value="chiquis@hotmail.com">
+                            <input placeholder="Correo Electrónico" type="text" name="correo_user" tabindex="12" required  [(ngModel)]="objectPersona.correo"
+                                >
                         </fieldset>
                     </div>
                 </div>
@@ -108,28 +108,28 @@
                         <fieldset>
                             <p class="nom">Nombre de Usuario </p>
                             <input placeholder="Nombre de Usuario" type="text" name="nombre_user" tabindex="13" required
-                                autofocus value="maiigeo">
+                                 value="maiigeo">
                         </fieldset>
                     </div>
                     <div class="half-width">
                         <fieldset>
                             <p class="nom">Correo de usuario</p>
                             <input placeholder="Correo de usuario" type="email" name="correo_user" tabindex="14"
-                                required autofocus value="maiigeo@gmail.com">
+                                required  value="maiigeo@gmail.com">
                         </fieldset>
                     </div>
                 </div>
                 <fieldset>
                     <p class="nom">Rol</p>
-                    <select class="select half-width" tabindex="15" name="rol_user">
+                    <select class="select half-width" tabindex="15" name="rol_user" required>
                         <option>Administrador</option>
                         <option>Empleado</option>
                         <option>Cliente</option>
                     </select>
                 </fieldset>
 
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando"
-                    href="/admin">Editar</button>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando"  (click)="updatePersonaUsuario()"
+                    href="/admin" required>Editar</button>
             </form>
 
         </div>

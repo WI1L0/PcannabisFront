@@ -16,12 +16,13 @@ export class EditarUsuarioComponent implements OnInit {
 
   objectPersona: Personas = new Personas();
   objectUsuario: Usuarios = new Usuarios();
+  public submitted: boolean = false;
 
 
-  constructor( private loginServices: SloginService, private router: Router, private usuarioServices: SusuariosService, private personaServices: SpersonasService ) { }
+  constructor(private loginServices: SloginService, private router: Router, private usuarioServices: SusuariosService, private personaServices: SpersonasService) { }
 
   ngOnInit(): void {
-    if (!this.loginServices.estaLogin()){
+    if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/lg/login']);
     }
 
@@ -58,8 +59,62 @@ export class EditarUsuarioComponent implements OnInit {
     );
   }
 
-  updatePersonaUsuario(){
-
+  updatePersonaUsuario() {
+    this.submitted = true;
+    if (this.objectPersona.nombre1 && 
+      this.objectPersona.nombre2 && 
+      this.objectPersona.apellido1 &&
+      this.objectPersona.apellido2 &&
+      this.objectPersona.celular &&
+      this.objectPersona.cedula &&
+      this.objectPersona.correo &&
+      this.objectPersona.barrio &&
+      this.objectPersona.ciudad &&
+      this.objectPersona.fNacimiento &&
+      this.objectPersona.referencia &&
+      this.objectPersona.genero ){
+        Swal.fire({
+          title: '¿Estas seguro de editar la noticia?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Editar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.usuarioServices.putUsuario(this.objectUsuario).subscribe(
+              (data) => {
+                if (data != null) {
+                  Swal.fire(
+                    'Editada!',
+                    'La Empresa fue editada exitosamente.',
+                    'success'
+                  ).then((result) => {
+                    if (result.isConfirmed) {
+                      this.objectUsuario = {} as Usuarios;
+                      this.router.navigate(['/cbd/admin/panel']);
+                    }
+                  })
+                } else {
+                  Swal.fire({
+                    title: 'No Editada!',
+                    text: 'La empresa no fue editada.',
+                    icon: 'error'
+                  });
+                }
+              }
+            )
+          }
+        });
+      } else {
+        Swal.fire({
+  
+          title: 'No Editada!',
+          text: 'Los campos estan vacios o erroneos',
+          icon: 'error'
+        })
+      }
+      
   }
   //alerta//
   confirmEditar() {

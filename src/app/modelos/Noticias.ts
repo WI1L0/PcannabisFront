@@ -1,3 +1,5 @@
+import { Empresas } from "./Empresas";
+
 export class Noticias{
 
     idNoticia?: number;

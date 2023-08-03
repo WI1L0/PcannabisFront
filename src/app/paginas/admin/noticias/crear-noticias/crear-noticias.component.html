@@ -15,10 +15,10 @@
             <fieldset>
                 <h2 class="fs-title">Crear Noticia</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de Noticias</h3>
-                <input type="text" name="titulo" placeholder="Titulo" required [(ngModel)]="objectNoticia.tituloNoticia"/>
-                <input type="date" name="fechanoticia" placeholder="Fecha de noticia" required [(ngModel)]="objectNoticia.fechaNoticia">
-                <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required [(ngModel)]="objectNoticia.ubicacionNoticia" />
-                <input type="text" name="preDescripcion" placeholder="Pre Descripción" required [(ngModel)]="objectNoticia.preDescripcionNoticia" />
+                <input type="text" name="titulo" placeholder="Titulo" required [(ngModel)]="noticias.tituloNoticia"/>
+                <input type="date" name="fechanoticia" placeholder="Fecha de noticia" required [(ngModel)]="noticias.fechaNoticia">
+                <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required [(ngModel)]="noticias.ubicacionNoticia" />
+                <input type="text" name="preDescripcion" placeholder="Pre Descripción" required [(ngModel)]="noticias.preDescripcionNoticia" />
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
                     <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
@@ -69,13 +69,13 @@
                         <div class="row">
                             <input type="file" name="foto[]" id="foto" accept="image/*" multiple>
                             <img id="imagen-preview" style="display: none;">
-                            <input type="button" name="botoncito" class="botoncito" value="Añadir" />
+                            <input type="button" name="botoncito" class="botoncito" (click)="guardarNoticias()" value="Añadir" />
                         </div>
 
                     </form>
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
-                <a class="previous action-button" id="boton-registro" target="_top" (click)="crearalert()">Registrar</a>
+                <a class="action-button" id="boton-registro" target="_top"  >Registrar</a>
             </fieldset>
         </form>
     </div>

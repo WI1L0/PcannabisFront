@@ -38,6 +38,15 @@ export class SusuariosService {
       return this.http.get<Usuarios>(`${baserUrl + this.URL}/blocOrNoBloc/${id}`)
     }
 
+    guardarUsuarios(idPersona: number, idRol: string, nombreEmpresa: string, dtos: any) {
+      const url = `/save/persona/${idPersona}/rol/${idRol}/empresa/${nombreEmpresa}`;
+      return this.http.post<Usuarios>(url, dtos);
+    }
+    public putUsuario(usuarioObject: Usuarios){
+      return this.http.put<Usuarios>(`${baserUrl + this.URL}/update/${usuarioObject.idUsuario}`, usuarioObject)
+    }
+      
+
     // postNoticias(Noticias: Noticias) {
     //     return this.http.post<Noticias>(this.URL, Noticias);
     // }
