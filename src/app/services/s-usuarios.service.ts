@@ -42,6 +42,7 @@ export class SusuariosService {
       const url = `/save/persona/${idPersona}/rol/${idRol}/empresa/${nombreEmpresa}`;
       return this.http.post<Usuarios>(url, dtos);
     }
+    
     public putUsuario(usuarioObject: Usuarios){
       return this.http.put<Usuarios>(`${baserUrl + this.URL}/update/${usuarioObject.idUsuario}`, usuarioObject)
     }

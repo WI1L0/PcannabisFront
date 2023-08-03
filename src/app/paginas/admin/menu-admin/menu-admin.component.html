@@ -7,7 +7,7 @@
         <!-- TARJETAS -->
         <div class="container-card">
 
-            <div class="card">
+            <div class="card" *ngIf="rolAdmin == true">
                 <figure>
                     <img src="../../../assets/img/usuarios.jpeg">
                 </figure>
@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" *ngIf="rolAdmin == true">
                 <figure>
                     <img src="../../../assets/img/empresas.jpeg">
                 </figure>

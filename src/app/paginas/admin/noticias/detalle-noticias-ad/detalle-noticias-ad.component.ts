@@ -55,6 +55,7 @@ export class DetalleNoticiasAdComponent implements OnInit {
       this.noticia = JSON.parse(not);
       this.getParrafos();
     } else {
+      // history.back();
       this.router.navigate(['/cbd/admin/noticias/listar']);
     }
   }
@@ -130,7 +131,8 @@ export class DetalleNoticiasAdComponent implements OnInit {
 
   salir() {
     localStorage.removeItem('noticiaAdm');
-    this.router.navigate(['/cbd/admin/noticias/listar']);
+    history.back();
+    // this.router.navigate(['/cbd/admin/noticias/listar']);
   }
 
 }

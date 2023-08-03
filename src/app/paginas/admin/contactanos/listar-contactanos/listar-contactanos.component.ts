@@ -35,7 +35,7 @@ export class ListarContactanosComponent implements OnInit {
   
     ngOnInit(): void {
       if (!this.loginServices.estaLogin()){
-        this.router.navigate(['/lg/login']);
+        this.router.navigate(['/cbd/login']);
       }
     this.almacenarEstado('activo');
     }

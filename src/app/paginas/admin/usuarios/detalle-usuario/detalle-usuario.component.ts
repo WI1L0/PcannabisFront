@@ -29,17 +29,23 @@ export class DetalleUsuarioComponent implements OnInit {
   }
 
   obtenerUsuarios() {
+
+    // limpiar
+    this.usuariosObject = {} as Usuarios;
+
     const usuario = localStorage.getItem('usuario');
     if (usuario != null) {
       this.usuariosObject = JSON.parse(usuario);
     } else {
+      // history.back();
       this.router.navigate(['/cbd/admin/usuarios/listar']);
     }
   }
 
   salir() {
     localStorage.removeItem('usuario');
-    this.router.navigate(['/cbd/admin/usuarios/listar']);
+    history.back();
+    // this.router.navigate(['/cbd/admin/usuarios/listar']);
   }
 
 }

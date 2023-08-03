@@ -13,7 +13,7 @@ import { PaginasRoutingModule } from '../paginas-routing.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
-import { HeaderadminComponent } from './headeradmin/headeradmin.component';
+import { HeaderadminComponent } from '../../default/headeradmin/headeradmin.component';
 
 
 
