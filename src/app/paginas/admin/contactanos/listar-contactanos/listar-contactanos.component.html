@@ -21,7 +21,7 @@
                                 <div class="search-container">
                                     <i class="fa fa-search"></i>
                                     <input type="text" name="usuario" placeholder="Nombre, Fecha" id="busqueda">
-                <td class="all"><a (click)="obtenerContactanos()" class="a">Buscar</a></td>
+                                    <td class="all"><a (click)="obtenerContactanos()" class="a">Buscar</a></td>
 
                                     <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
                                     <!-- <td class="all"><a  class="a">Buscar</a></td> -->
@@ -35,7 +35,7 @@
             </tr>
 
         </div>
-        
+
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -48,22 +48,53 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let contac of listContactanos">
-                        <td>{{contac.nombreContactanos}}</td>
-                        <td>{{contac.emailContactanos}}</td>
-                        <td>{{contac.asuntoContactanos}}</td>
-                        <td>{{contac.celularContactanos}}</td>
+                        <ng-container *ngIf="contac.estVisto == false">
+                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.nombreContactanos}}</td>
+                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.emailContactanos}}</td>
+                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.asuntoContactanos}}</td>
+                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.celularContactanos}}</td>
+                        </ng-container>
+
+                        <ng-container *ngIf="contac.estVisto == true">
+                            <td>{{contac.nombreContactanos}}</td>
+                            <td>{{contac.emailContactanos}}</td>
+                            <td>{{contac.asuntoContactanos}}</td>
+                            <td>{{contac.celularContactanos}}</td>
+                        </ng-container>
                         <td *ngIf="contac.estOcultoVisibleContactanos == true"><a class="a">Editar</a> </td>
                         <td *ngIf="contac.estOcultoVisibleContactanos == false"><a class="a"
-                                (click)="confirmEliminar(contac)">Eliminar</a> </td>                        
-                                <!-- <td><a href="/cbd/admin/contactanos/detalle" class="as">Ver Detalle</a></td> -->
+                                (click)="confirmEliminar(contac)">Eliminar</a> </td>
+                        <!-- <td><a href="/cbd/admin/contactanos/detalle" class="as">Ver Detalle</a></td> -->
                         <td *ngIf="contac.estOcultoVisibleContactanos == false"><a class="a"
-                            (click)="alertOcultarMostrar(contac, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
-                    </td>
-                    <td *ngIf="contac.estOcultoVisibleContactanos == true"><a class="a"
-                            (click)="alertOcultarMostrar(contac, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
+                                (click)="alertOcultarMostrar(contac, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
+                        </td>
+                        <td *ngIf="contac.estOcultoVisibleContactanos == true"><a class="a"
+                                (click)="alertOcultarMostrar(contac, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
+                        </td>
+                        <td><a class="a" (click)="setContactanosDetalle(contac)">Ver</a>
+                        </td>
                     </tr>
                 <tbody>
             </table>
+        </div>
+
+        <div class="button-container">
+            <div *ngIf="pagActua != 0; else elseButonPrevio">
+                <button class="button button1" (click)="previoPagina()">
+                    << </button>
+            </div>
+            <ng-template #elseButonPrevio>
+                <button class="button button1" style="opacity: 0.5">
+                    <<< </button>
+            </ng-template>
+            <div *ngIf="pagActua != pagExist - 1; else elseButtonNext">
+                <button class="button button2" (click)="nextPagina()">
+                    >>
+                </button>
+            </div>
+            <ng-template #elseButtonNext>
+                <button class="button button2" style="opacity: 0.5">>></button>
+            </ng-template>
         </div>
     </div>
 </div>

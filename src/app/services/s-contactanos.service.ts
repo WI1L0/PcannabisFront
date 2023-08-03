@@ -38,6 +38,10 @@ export class ScontactanosService {
     return this.http.get<Contactanos>(`${baserUrl + this.URL}/update/estado/${id}`)
   }
 
+  putContactanosEstadoVistoOrNoVisto(id: number) {
+    return this.http.get<Contactanos>(`${baserUrl + this.URL}/update/estadoVistoOrNoVisto/${id}`)
+  }
+
     // postNoticias(Noticias: Noticias) {
     //     return this.http.post<Noticias>(this.URL, Noticias);
     // }

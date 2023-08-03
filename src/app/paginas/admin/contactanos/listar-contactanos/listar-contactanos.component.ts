@@ -79,7 +79,7 @@ export class ListarContactanosComponent implements OnInit {
 
   // PAGINACION
   nextPagina() {
-    if (this.pagActua != this.pagExist) {
+    if (this.pagActua != this.pagExist - 1) {
       this.pagActua++;
       this.obtenerContactanos();
     }
@@ -94,9 +94,10 @@ export class ListarContactanosComponent implements OnInit {
   // PAGINACION
 
   // PASAR A DETALLE CONTACTANOS
-  setNoticiaADetalle(contactanos: Contactanos) {
+  setContactanosDetalle(contactanos: Contactanos) {
     localStorage.removeItem('contactanos');
     localStorage.setItem('contactanos', JSON.stringify(contactanos));
+    this.router.navigate(['/cbd/admin/contactanos/detalle']);
   }
   // PASAR A DETALLE CONTACTANOS
 

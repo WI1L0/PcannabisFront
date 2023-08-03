@@ -6,7 +6,9 @@ export class Contactanos {
     emailContactanos?: string;
     asuntoContactanos?: string;
     detalleContactanos?: string;
+    fechaContactanos?: string;
     estOcultoVisibleContactanos?: boolean;
+    estVisto?: boolean;
     estContactanos?: boolean;
 
 }
