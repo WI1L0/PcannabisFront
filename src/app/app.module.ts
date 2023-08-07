@@ -20,6 +20,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor, authInterceptorProviders } from './services/defauld/s-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FlotanteComponent } from './default/flotante/flotante.component';
 import { HeaderadminComponent } from './default/headeradmin/headeradmin.component';
 
 
@@ -31,7 +32,8 @@ import { HeaderadminComponent } from './default/headeradmin/headeradmin.componen
     AppComponent,
     HeaderComponent,
     FooterComponent, 
-    HeaderadminComponent// DetallenoticiaComponent,
+    HeaderadminComponent, 
+    FlotanteComponent// DetallenoticiaComponent,
   ],
   imports: [
     BrowserModule,

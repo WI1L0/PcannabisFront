@@ -9,7 +9,9 @@ import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import { authInterceptorProviders } from 'src/app/services/defauld/s-interceptor';
 import { AppComponent } from 'src/app/app.component';
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
-import { EditarNoticiasComponent } from '../noticias/editar-noticias/editar-noticias.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { DetalleUsuarioComponent } from './detalle-usuario/detalle-usuario.component';
+// import { EditarNoticiasComponent } from '../noticias/editar-noticias/editar-noticias.component';
 
 
 
@@ -17,7 +19,9 @@ import { EditarNoticiasComponent } from '../noticias/editar-noticias/editar-noti
 @NgModule({
   declarations: [
     ListarUsuariosComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    EditarUsuarioComponent, 
+    DetalleUsuarioComponent
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListarContactanosComponent } from './contactanos/listar-contactanos/listar-contactanos.component';
-import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
-import { ActualizarEmpresaComponent } from './actualizar-empresa/actualizar-empresa.component';
+// import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
+import { ActualizarEmpresaComponent } from '../super-admin/actualizar-empresa/actualizar-empresa.component';
 import { AppComponent } from 'src/app/app.component';
 import { authInterceptorProviders } from 'src/app/services/defauld/s-interceptor';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
@@ -11,19 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginasRoutingModule } from '../paginas-routing.module';
 import { AdminRoutingModule } from './admin-routing.module';
-import { MenuAdminComponent } from './menu-admin/menu-admin.component';
-import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
-import { HeaderadminComponent } from '../../default/headeradmin/headeradmin.component';
+import { MenuAdminComponent } from '../menu-admin/menu-admin.component';
+import { ContactanosModule } from './contactanos/contactanos.module';
+import { NoticiasModule } from './noticias/noticias.module';
+// import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+// import { HeaderadminComponent } from '../../default/headeradmin/headeradmin.component';
 
 
 
 @NgModule({
-  declarations: [
-    ActualizarEmpresaComponent,
-    MenuAdminComponent
-  ],
+  declarations: [],
   imports: [
-    CommonModule,
     AdminRoutingModule,
     NgxPaginationModule,
     HttpClientModule,

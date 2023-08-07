@@ -15,8 +15,14 @@ export class SEmpresasService {
 
   //OBTENEMOS EL OBJETO EMPRESA
   public getEmpresa(empresaName: string) {
-    return this.http.get<Empresas>(`${baserUrl + this.URL}/name/${empresaName}`);
+    return this.http.get<Empresas>(`${baserUrl + this.URL}/name/${empresaName}`)
   }
+
+  // public getEmpresaWas(empresaName: string) {
+  //       console.log(this.http.get<string>(`${baserUrl}${this.URL}/flotante/${empresaName}`));
+  //       // localStorage.removeItem('linkWa');
+  //       // localStorage.setItem('linkWa', String(url));
+  // }
 
   // public putEmpresa(empresaObject: Empresas): Observable<boolean>  {
 
@@ -31,7 +37,7 @@ export class SEmpresasService {
   //     );
   // }
 
-  
+
   public putEmpresa(empresaObject: Empresas) {
     return this.http.put<Empresas>(`${baserUrl + this.URL}/update/${empresaObject.idEmpresa}`, empresaObject)
   }
@@ -53,11 +59,11 @@ export class SEmpresasService {
   //   return this.http.delete<boolean>(this.URL + `/${idEmpresas}`);
   // }
 
-  getPorName(nombreEmp: string): Observable<Empresas> {
-    return this.http.get<Empresas>(this.URL + 'ByName/' + nombreEmp);
-  }
+  // getPorName(nombreEmp: string): Observable<Empresas> {
+  //   return this.http.get<Empresas>(this.URL + 'ByName/' + nombreEmp);
+  // }
 
-  listarEmpresasId(idEmpresas: number): Observable<Empresas> {
-    return this.http.get<Empresas>(`${this.URL}id/${idEmpresas}`);
-  }
+  // listarEmpresasId(idEmpresas: number): Observable<Empresas> {
+  //   return this.http.get<Empresas>(`${this.URL}id/${idEmpresas}`);
+  // }
 }

@@ -16,7 +16,9 @@ import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor, authInterceptorProviders } from '../services/defauld/s-interceptor';
 import { AllNoticiasComponent } from './all-noticias/all-noticias.component';
-import { EditarUsuarioComponent } from './admin/usuarios/editar-usuario/editar-usuario.component';
+// import { EditarUsuarioComponent } from './admin/usuarios/editar-usuario/editar-usuario.component';
+import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { EditarUsuarioComponent } from './super-admin/usuarios/editar-usuario/editar-usuario.component';
 // import { authInterceptorProviders } from '../services/defauld/s-interceptor';
 
 @NgModule({
@@ -27,7 +29,7 @@ import { EditarUsuarioComponent } from './admin/usuarios/editar-usuario/editar-u
     AllNoticiasComponent,
     LoginComponent,
     DetalleNoticiasComponent,
-    EditarUsuarioComponent
+    MenuAdminComponent,
     // DetallenoticiaComponent,
   ],
   imports: [
