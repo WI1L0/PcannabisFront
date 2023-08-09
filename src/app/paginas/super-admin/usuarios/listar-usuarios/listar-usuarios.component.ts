@@ -97,7 +97,7 @@ export class ListarUsuariosComponent implements OnInit {
   almacenarUsuario(usuarios: Usuarios) {
     localStorage.removeItem('usuario');
     localStorage.setItem('usuario', JSON.stringify(usuarios));
-    this.router.navigate(['/cbd/admin/usuarios/detalle']);
+    this.router.navigate(['/cbd/superAdmin/usuarios/detalle']);
   }
   // PASAR A DETALLE USUARIOS
 

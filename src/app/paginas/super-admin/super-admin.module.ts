@@ -9,12 +9,14 @@ import { AppComponent } from 'src/app/app.component';
 import { authInterceptorProviders } from 'src/app/services/defauld/s-interceptor';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import { ActualizarEmpresaComponent } from './actualizar-empresa/actualizar-empresa.component';
+import { FotosGaleriasComponent } from './fotos-galerias/fotos-galerias.component';
 // import { DfghComponent } from './dfgh/dfgh.component';
 
 
 @NgModule({
   declarations: [
-    ActualizarEmpresaComponent
+    ActualizarEmpresaComponent,
+    FotosGaleriasComponent
   ],
   imports: [
     CommonModule,

@@ -72,7 +72,7 @@ export class ActualizarEmpresaComponent implements OnInit {
                 ).then((result) => {
                   if (result.isConfirmed) {
                     this.empresaData = {} as Empresas;
-                    this.router.navigate(['/cbd/admin/panel']);
+                    this.router.navigate(['/cbd/panel']);
                   }
                 })
               } else {
@@ -98,7 +98,7 @@ export class ActualizarEmpresaComponent implements OnInit {
 
   salir(){
     this.empresaData = {} as Empresas;
-    this.router.navigate(['/cbd/admin/panel']);
+    this.router.navigate(['/cbd/panel']);
   }
 
 }
