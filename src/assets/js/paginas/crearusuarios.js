@@ -11,7 +11,7 @@ $(".next").click(function () {
 
 	// todo este lleno
 	var formCompleted = true;
-	$(this).parent().find('input[required], textarea[required]','file[required]').each(function () {
+	$(this).parent().find('input[required], select[required]').each(function () {
 		if ($.trim($(this).val()) == '') {
 			formCompleted = false;
 			Swal.fire({

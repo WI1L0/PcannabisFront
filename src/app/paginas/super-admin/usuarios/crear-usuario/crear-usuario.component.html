@@ -16,49 +16,83 @@
                 <h2 class="fs-title">Crear Usuario</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de persona</h3>
                 <div class="row">
-                    <input type="text" name="nombre1" placeholder="Nombre 1" class="half-width" required />
+                    <input type="text" name="nombre1" placeholder="Nombre 1" class="half-width" required
+                        [(ngModel)]="personaObject.nombre1" />
                     <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
-                    <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" />
+                    <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" required
+                        [(ngModel)]="personaObject.nombre2" />
                 </div>
                 <div class="row">
-                    <input type="text" name="apellido1" placeholder="Apellido 1" class="half-width" required />
-                    <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" />
+                    <input type="text" name="apellido1" placeholder="Apellido 1" class="half-width" required
+                        [(ngModel)]="personaObject.apellido1" />
+                    <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" required
+                        [(ngModel)]="personaObject.apellido2" />
                 </div>
                 <div class="row">
-                    <input type="text" name="cedula" placeholder="Cédula" class="half-width " required />
-                    <input type="text" name="celular" placeholder="Celular" class="half-width" required />
+                    <input type="text" name="cedula" placeholder="Cédula" class="half-width " required
+                        [(ngModel)]="personaObject.cedula" />
+                    <input type="text" name="celular" placeholder="Celular" class="half-width" required
+                        [(ngModel)]="personaObject.celular" />
                 </div>
 
-                <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento" value="Fecha de nacimiento"
-                    required>
+                <!-- <div class="row"> -->
+                    <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento"
+                        value="Fecha de nacimiento" required [(ngModel)]="personaObject.fNacimiento">
 
-                <div class="row">
-                    <input type="text" name="ciudad" placeholder="Ciudad" class="half-width" required />
-                    <select class="select half-width">
-                        <option>Femenino</option>
-                        <option>Masculino</option>
+                    <select id="mySelect" [(ngModel)]="generoSelect" required >
+                        <option disabled selected>Seleccione una opción</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
                     </select>
+                <!-- </div> -->
+                <input type="email" name="correo" placeholder="Correo Electrónico" required
+                    [(ngModel)]="personaObject.correo" />
+
+                <div class="row">
+
+                    <input type="text" name="ciudad" placeholder="Ciudad" class="half-width" required [(ngModel)]="personaObject.ciudad" />
+
+                    <input type="text" name="bario" placeholder="Barrio" class="half-width" required [(ngModel)]="personaObject.barrio" />
                 </div>
-                <input type="email" name="referencia" placeholder="Correo Electrónico" required />
+                <input type="text" name="referencia" placeholder="Referencia" required
+                    [(ngModel)]="personaObject.referencia" />
 
-                <input type="text" name="referencia" placeholder="Dirección" required />
-
-                <input type="button" name="next" class="next action-button" id="next" value="Siguiente" />
-                </fieldset>
+                <input type="button" name="next" class="next action-button" id="next" value="Siguiente"/>
+            </fieldset>
             <fieldset>
                 <h2 class="fs-title">Datos de Usuario</h2>
                 <h3 class="fs-subtitle">ingrese los Datos de Usuario</h3>
-                <input type="text" name="nombre_usuario" placeholder="Nombre de Usuario"  class="half-width" required />
-                <input type="text" name="correo_usuario" placeholder="Correo de Usuario"  class="half-width" required />
-                <select class="select half-width">
-                    <option>Administrador</option>
-                    <option>Empleado</option>
-                    <option>Cliente</option>
+                <input type="text" name="nombre_usuario" placeholder="Nombre de Usuario" class="half-width" required [(ngModel)]="usuarioData.nombreUsuario"/>
+                <!-- <input type="text" name="correo_usuario" placeholder="Correo de Usuario"  class="half-width" required /> -->
+                <select id="mySelect" class="select half-width" [(ngModel)]="rolSelect" required>
+                    <option disabled selected>Seleccione una opción</option>
+                    <option value="ROLE_ADMIN">Administrador</option>
+                    <option value="ROLE_EMPLEADO">Empleado</option>
                 </select>
-                <input type="password" name="pass" placeholder="Contraseña"  class="half-width" required />
-                <input type="password" name="cpass" id="cpass" placeholder="Confirmar Contraseña"   class="half-width" required/>
+                <input type="password" name="pass" placeholder="Contraseña" class="half-width" required [(ngModel)]="usuarioData.passwordUsuario" />
+                <input type="password" name="cpass" id="cpass" placeholder="Confirmar Contraseña" class="half-width"
+                    required />
+
+                    <div>
+                        <h2 class="fs-title">Portada de Noticia</h2>
+                        <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
+                        <form>
+                            <label for="foto">Seleccionar foto:</label>
+                            <div class="row">
+                                <input type="file" name="foto" id="foto" accept="image/*" required
+                                    (change)="seleccionarFoto($event)">
+                                <img [src]="imagenPreview" *ngIf="imagenPreview">
+                            </div>
+                            <div>
+                                <button ame="botoncito" class="botoncito" (click)="borrarImagen()"
+                                    *ngIf="imagenPreview">Borrar imagen</button>
+                            </div>
+                        </form>
+    
+                    </div>
+
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
-                <a href="/admin" class="submit action-button" id="btn-registrar" target="_top">Registrar</a>
+                <a class="submit action-button" id="btn-registrar" target="_top" (click)="almacenarNew()" >Registrar</a>
             </fieldset>
         </form>
     </div>

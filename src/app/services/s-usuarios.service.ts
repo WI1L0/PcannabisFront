@@ -38,9 +38,8 @@ export class SusuariosService {
       return this.http.get<Usuarios>(`${baserUrl + this.URL}/blocOrNoBloc/${id}`)
     }
 
-    guardarUsuarios(idPersona: number, idRol: string, nombreEmpresa: string, dtos: any) {
-      const url = `/save/persona/${idPersona}/rol/${idRol}/empresa/${nombreEmpresa}`;
-      return this.http.post<Usuarios>(url, dtos);
+    guardarUsuarios(idPersona: number, nombreRol: string, nombreEmpresa: string, usuario: Usuarios) {
+      return this.http.post<Usuarios>(`${baserUrl + this.URL}/save/persona/${idPersona}/rol/${nombreRol}/empresa/${nombreEmpresa}`, usuario);
     }
     
     public putUsuario(usuarioObject: Usuarios){
