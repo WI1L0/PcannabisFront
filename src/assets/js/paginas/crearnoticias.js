@@ -172,43 +172,83 @@ if (imagenPreview) {
 //Agregar parrafos
 const btnAgregar = document.getElementById('botones');
 const derecha = document.getElementById('derecha');
-
 btnAgregar.addEventListener('click', function () {
 	const txtarea = document.getElementById('txtarea');
-	// Obtener la última tarjeta existente
-	const ultimaTarjeta = derecha.querySelector('.card:last-child');
-
+	const derecha = document.getElementById('derecha'); // Agrega esta línea para obtener el elemento "derecha"
+  
 	console.log(txtarea); // Verificar si el elemento se está encontrando correctamente
 	if (txtarea) {
-		const contenido = txtarea.value;
-
-		// Crear una nueva tarjeta con el contenido del textarea
-		const nuevaTarjeta = document.createElement('div');
-		nuevaTarjeta.classList.add('card');
-		nuevaTarjeta.innerHTML = `
-      <p class="nom">Parrafo</p>
-	  <button class="botoncito">Quitar</button>
-      <div class="contenido-card">
-        <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea" readonly>${contenido}</textarea>
-      </div>
-    `;
-		if (derecha) {
-			// Agregar la nueva tarjeta debajo de la última tarjeta
-			derecha.insertBefore(nuevaTarjeta, ultimaTarjeta.nextElementSibling);
-
-
-			// Agregar controlador de eventos para el botón "quitar"
-			const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
-			btnQuitar.addEventListener('click', function () {
-				nuevaTarjeta.remove();
-			});
-
-			// Limpiar el contenido del textarea
-			txtarea.value = '';
-		} else {
-			console.error('No se encontró el elemento derecha.');
-		}
+	  const contenido = txtarea.value;
+  
+	  // Crear una nueva tarjeta con el contenido del textarea
+	  const nuevaTarjeta = document.createElement('div');
+	  nuevaTarjeta.classList.add('card');
+	  nuevaTarjeta.innerHTML = `
+		<p class="nom">Parrafo</p>
+		<button class="botoncito">Quitar</button>
+		<div class="contenido-card">
+		  <textarea rows="5" type="text" name="ubicacion" id="txtarea"  ></textarea>
+		</div>
+	  `;
+	  if (derecha) {
+		// Obtener la última tarjeta existente en "derecha"
+		const ultimaTarjeta = derecha.querySelector('.card:last-child');
+  
+		// Agregar la nueva tarjeta debajo de la última tarjeta
+		derecha.insertBefore(nuevaTarjeta, ultimaTarjeta ? ultimaTarjeta.nextElementSibling : null);
+  
+		// Agregar controlador de eventos para el botón "quitar"
+		const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
+		btnQuitar.addEventListener('click', function () {
+		  nuevaTarjeta.remove();
+		});
+  
+		// Limpiar el contenido del textarea
+		txtarea.value = '';
+	  } else {
+		console.error('No se encontró el elemento derecha.');
+	  }
 	} else {
-		console.error('No se encontró el elemento txtarea.');
+	  console.error('No se encontró el elemento txtarea.');
 	}
-});
+  });
+
+// btnAgregar.addEventListener('click', function () {
+// 	const txtarea = document.getElementById('txtarea');
+// 	// Obtener la última tarjeta existente
+// 	const ultimaTarjeta = derecha.querySelector('.card:last-child');
+
+// 	console.log(txtarea); // Verificar si el elemento se está encontrando correctamente
+// 	if (txtarea) {
+// 		const contenido = txtarea.value;
+
+// 		// Crear una nueva tarjeta con el contenido del textarea
+// 		const nuevaTarjeta = document.createElement('div');
+// 		nuevaTarjeta.classList.add('card');
+// 		nuevaTarjeta.innerHTML = `
+// 		<p class="nom">Parrafo</p>
+// 		<button class="botoncito">Quitar</button>
+// 		<div class="contenido-card">
+// 			<textarea rows="5" type="text" name="ubicacion" id="txtarea"  ></textarea>
+// 		</div>
+//     `;
+// 		if (derecha) {
+// 			// Agregar la nueva tarjeta debajo de la última tarjeta
+// 			derecha.insertBefore(nuevaTarjeta, ultimaTarjeta.nextElementSibling);
+
+
+// 			// Agregar controlador de eventos para el botón "quitar"
+// 			const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
+// 			btnQuitar.addEventListener('click', function () {
+// 				nuevaTarjeta.remove();
+// 			});
+
+// 			// Limpiar el contenido del textarea
+// 			txtarea.value = '';
+// 		} else {
+// 			console.error('No se encontró el elemento derecha.');
+// 		}
+// 	} else {
+// 		console.error('No se encontró el elemento txtarea.');
+// 	}
+// });

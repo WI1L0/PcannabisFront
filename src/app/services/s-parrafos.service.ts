@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Empresas } from '../modelos/Empresas';
-import { map, Observable } from 'rxjs';
+import { catchError, map, mapTo, Observable, throwError } from 'rxjs';
 import baserUrl from './defauld/helper';
 import { Parrafos } from '../modelos/Parrafos';
 
@@ -24,9 +24,17 @@ export class SParrafosService {
   //   return this.http.get<Empresas[]>(this.URL);
   // }
 
-  // postEmpresas(Empresas: Empresas) {
-  //   return this.http.post<Empresas>(this.URL, Empresas);
+  // postParrafos(parrafos: Parrafos): Observable<Parrafos> {
+  //   const url = `${baserUrl}${this.URL}/save/`;
+  //   return this.http.post<Parrafos>(url, parrafos);
   // }
+
+
+  public postParrafo(parrafos: Parrafos, IDNoticia: number) {
+    return this.http.post<Parrafos>(`${baserUrl + this.URL}/save/${IDNoticia}`, parrafos)
+  }
+
+
 
   // putEmpresas(Empresas: Empresas, idEmpresas: any) {
   //   return this.http.put<Empresas>(this.URL + `/${idEmpresas}`, Empresas);
