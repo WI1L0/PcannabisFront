@@ -10,8 +10,7 @@
             <thead>
               <tr>
                 <td class="contenedor"><a class="buscar"> </a>
-                    <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
-                    (change)="obtenerUsuarios()">
+                  <select id="mySelect" class="combo" [(ngModel)]="datoEstado" (change)="obtenerUsuarios()">
                     <option value="all">Todo</option>
                     <option value="desbloqueado">Activos</option>
                     <option value="bloqueado">Bloqueados</option>
@@ -56,8 +55,10 @@
             <td class="no">{{usulist.personas?.apellido1}} {{usulist.personas?.apellido2}}</td>
             <td class="no">{{usulist.personas?.correo}}</td>
             <td class="no">{{usulist.nombreUsuario}}</td>
-            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a" (click)="confirmEliminar(usulist)">Eliminar</a> </td>
-            <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a" (click)="confirmEliminar(usulist)">Editar</a> </td>
+            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a"
+                (click)="confirmEliminar(usulist)">Eliminar</a> </td>
+            <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a"
+                (click)="confirmEliminar(usulist)">Editar</a> </td>
             <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a"
                 (click)="alertBloquearOrDesbloquear(usulist, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Bloquear</a>
             </td>
