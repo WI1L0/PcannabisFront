@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.loginService.getTokenBack(this.lgmodel).subscribe(
       (data:any) => {
         this.loginService.setTokenAndRoles(data);
-        this.router.navigate(['/cbd/admin/panel/']);
+        this.router.navigate(['/cbd/panel/']);
       },(error) => {
         console.log(error);
       }

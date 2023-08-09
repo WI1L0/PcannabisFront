@@ -31,6 +31,10 @@ export class DetalleContactanosComponent implements OnInit {
   }
 
   obtenerContactanos() {
+
+    // limpiar
+    this.contactanosObject = {} as Contactanos;
+
     const contactanos = localStorage.getItem('contactanos');
     if (contactanos != null) {
       this.contactanosObject = JSON.parse(contactanos);
@@ -43,13 +47,15 @@ export class DetalleContactanosComponent implements OnInit {
         );
       }
     } else {
+      // history.back();
       this.router.navigate(['/cbd/admin/contactanos/listar']);
     }
   }
 
   salir() {
     localStorage.removeItem('contactanos');
-    this.router.navigate(['/cbd/admin/contactanos/listar']);
+    history.back();
+    // this.router.navigate(['/cbd/admin/contactanos/listar']);
   }
 
 }

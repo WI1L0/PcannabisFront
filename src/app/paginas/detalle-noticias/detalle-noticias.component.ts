@@ -40,24 +40,21 @@ export class DetalleNoticiasComponent implements OnInit {
   }
 
   getNoticiaADetalle() {
+    this.limpiarAll();
     const not = localStorage.getItem('noticia');
     if (not) {
-      this.noticia = new Noticias;
       this.noticia = JSON.parse(not);
       localStorage.removeItem('noticia')
 
       this.getParrafos();
 
     } else {
-      this.router.navigate(['/nt/noticias_Pharma_cannabis']);
+      // history.back();
+      this.router.navigate(['/cbd/all-noticias']);
     }
   }
 
   getParrafos() {
-    this.listaParrafos = [];
-    this.listaParrafosSuperior = [];
-    this.listaParrafosInferior = [];
-
     this.parrafosServices.getParrafos(this.noticia.idNoticia).subscribe(
       data => {
         this.listaParrafos = data;
@@ -72,14 +69,6 @@ export class DetalleNoticiasComponent implements OnInit {
   }
 
   getImagenesNoticias() {
-
-    this.listaImagenesNoticias = [];
-
-    this.imgprincipal1 = '';
-    this.imgprincipal2 = '';
-    this.imgprincipal3 = '';
-    this.imgprincipal4 = '';
-    this.imgprincipal5 = '';
 
     let activos: number = 0;
     let listaTrue: FotosNoticias[] = [];
@@ -117,6 +106,22 @@ export class DetalleNoticiasComponent implements OnInit {
     const mitad = Math.floor(this.listaParrafos.length / 2);
     this.listaParrafosSuperior = this.listaParrafos.slice(0, mitad);
     this.listaParrafosInferior = this.listaParrafos.slice(mitad);
+  }
+
+  limpiarAll(){
+    this.noticia = new Noticias;
+
+    this.listaParrafos = [];
+    this.listaParrafosSuperior = [];
+    this.listaParrafosInferior = [];
+
+    this.listaImagenesNoticias = [];
+
+    this.imgprincipal1 = '';
+    this.imgprincipal2 = '';
+    this.imgprincipal3 = '';
+    this.imgprincipal4 = '';
+    this.imgprincipal5 = '';
   }
 
 }

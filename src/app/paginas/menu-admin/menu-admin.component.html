@@ -2,30 +2,31 @@
 <div class="divPrimero">
     <div class="divSegundo">
         <div class="title-cards">
-            <h2>ADMINISTRADOR</h2>
+            <h2 *ngIf="rolAdmin == true">SUPER ADMINISTRADOR</h2>
+            <h2 *ngIf="rolAdmin == false">ADMINISTRADOR</h2>
         </div>
         <!-- TARJETAS -->
         <div class="container-card">
 
-            <div class="card">
+            <div class="card" *ngIf="rolAdmin == true">
                 <figure>
                     <img src="../../../assets/img/usuarios.jpeg">
                 </figure>
                 <div class="contenido-card">
                     <h3>USUARIOS</h3>
                     <p>Gestión de usuarios</p>
-                    <a href="/cbd/admin/usuarios/listar/">Acceder</a>
+                    <a href="/cbd/superAdmin/usuarios/listar/">Acceder</a>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" *ngIf="rolAdmin == true">
                 <figure>
                     <img src="../../../assets/img/empresas.jpeg">
                 </figure>
                 <div class="contenido-card">
                     <h3>EMPRESAS</h3>
                     <p>Gestión imágenes y datos</p>
-                    <a href="/cbd/admin/empresa/">Acceder</a>
+                    <a href="/cbd/superAdmin/empresa/">Acceder</a>
                 </div>
             </div>
 
@@ -47,6 +48,16 @@
                     <h3>NOTICIAS</h3>
                     <p>Gestión de Noticias</p>
                     <a href="/cbd/admin/noticias/listar">Acceder</a>
+                </div>
+            </div>
+            <div class="card" *ngIf="rolAdmin == true">
+                <figure>
+                    <img src="../../../assets/img/galerias.jpeg">
+                </figure>
+                <div class="contenido-card">
+                    <h3>GALERIAS</h3>
+                    <p>Gestión de galerias de Nunakay, Equipo y Administracion</p>
+                    <a href="/cbd/superAdmin/galeria">Acceder</a>
                 </div>
             </div>
         </div>
