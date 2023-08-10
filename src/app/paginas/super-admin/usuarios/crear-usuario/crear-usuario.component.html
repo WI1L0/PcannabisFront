@@ -39,7 +39,7 @@
                     <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento"
                         value="Fecha de nacimiento" required [(ngModel)]="personaObject.fNacimiento">
 
-                    <select id="mySelect" [(ngModel)]="generoSelect" required >
+                    <select id="mySelectGenero" >
                         <option disabled selected>Seleccione una opción</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Masculino">Masculino</option>
@@ -64,7 +64,7 @@
                 <h3 class="fs-subtitle">ingrese los Datos de Usuario</h3>
                 <input type="text" name="nombre_usuario" placeholder="Nombre de Usuario" class="half-width" required [(ngModel)]="usuarioData.nombreUsuario"/>
                 <!-- <input type="text" name="correo_usuario" placeholder="Correo de Usuario"  class="half-width" required /> -->
-                <select id="mySelect" class="select half-width" [(ngModel)]="rolSelect" required>
+                <select id="mySelectRol" class="select half-width" >
                     <option disabled selected>Seleccione una opción</option>
                     <option value="ROLE_ADMIN">Administrador</option>
                     <option value="ROLE_EMPLEADO">Empleado</option>

@@ -19,13 +19,11 @@ export class CrearUsuarioComponent implements OnInit {
 
   personaObject: Personas = new Personas();
   usuarioData: Usuarios = new Usuarios();
-  rolSelect: string = 'ROLE_ADMIN';
-  generoSelect: string = '';
-
 
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
+  urlFoto: any;
 
 
   //implementar js en los componentes
@@ -65,32 +63,30 @@ export class CrearUsuarioComponent implements OnInit {
 
       let nameFoto = new Fotos;
       this.fotoServices.postFotos(formData).subscribe((data) => {
-        nameFoto = data;
-
-        console.log(data);
-        console.log(nameFoto.url);
-        return nameFoto.url;
+        if (data != null) {
+          nameFoto = data;
+          console.log(nameFoto.url + "           fffffffffffffffffff")
+          this.urlFoto = nameFoto.url;
+        }
       });
     }
   }
 
   borrarImagen() {
-    // window.miFuncionmensaje();
     this.obtenerFoto.value = '';
     this.procesarFoto = null;
     this.imagenPreview = null;
   }
 
   almacenarNew() {
-    this.personaObject.genero = this.generoSelect;
+    this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
     console.log(this.personaObject)
     this.personasServices.postPersona(this.personaObject).subscribe(
       (data) => {
         if (data != null) {
-          // this.almacenarFoto
-          this.usuarioData.fotoUsuario = String(this.almacenarFoto);
-    console.log(this.usuarioData)
-          this.usuarioService.guardarUsuarios(Number(data.idPersona), this.rolSelect, nameEmpresa, this.usuarioData).subscribe(
+          this.almacenarFoto();
+          this.usuarioData.fotoUsuario = this.urlFoto;      
+          this.usuarioService.guardarUsuarios(Number(data.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
             (data2) => {
               if (data2 != null) {
                 Swal.fire({
