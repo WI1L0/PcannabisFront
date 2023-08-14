@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Fotos } from 'src/app/modelos/Fotos';
 import { Personas } from 'src/app/modelos/Personas';
 import { Usuarios } from 'src/app/modelos/Usuarios';
+import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
+import { SfotosService } from 'src/app/services/s-fotos.service';
 import { SloginService } from 'src/app/services/s-login.service';
 import { SpersonasService } from 'src/app/services/s-personas.service';
 import { SusuariosService } from 'src/app/services/s-usuarios.service';
@@ -19,16 +22,94 @@ export class EditarUsuarioComponent implements OnInit {
   public submitted: boolean = false;
 
 
-  constructor(private loginServices: SloginService, private router: Router, private usuarioServices: SusuariosService, private personaServices: SpersonasService) { }
+  usuariosObject: Usuarios = new Usuarios();
+  personasObject: Personas = new Personas();
+
+  obtenerFoto: any;
+  procesarFoto: any;
+  imagenPreview: any;
+  urlFoto: any;
+  editFoto: boolean = false;
+
+  cuerpoUrlFoto: string = baserUrlImagenes;
+
+  constructor(
+    private loginServices: SloginService, 
+    private router: Router, 
+    private fotoServices: SfotosService,
+    private usuarioServices: SusuariosService, 
+    private personaServices: SpersonasService
+    ) { }
 
   ngOnInit(): void {
     if (!this.loginServices.estaLogin()) {
-      this.router.navigate(['/lg/login']);
+      this.router.navigate(['/cbd/login']);
     }
 
-    this.obtenerPersona();
-    this.obtenerUsuario();
+    // this.obtenerPersona();
+    // this.obtenerUsuario();
+    this.obtenerUsuarios();
 
+
+  }
+
+  obtenerUsuarios() {
+
+    // limpiar
+    this.usuariosObject = {} as Usuarios;
+
+    const usuario = localStorage.getItem('usuario');
+    if (usuario != null) {
+      this.usuariosObject = JSON.parse(usuario);
+      if(this.usuariosObject.personas != null){
+        this.personasObject = this.usuariosObject.personas;
+      }
+    } else {
+      // history.back();
+      this.router.navigate(['/cbd/admin/usuarios/listar']);
+    }
+  }
+  
+  seleccionarFoto(evento: Event) {
+    this.obtenerFoto = evento.target as HTMLInputElement;
+
+    if (this.obtenerFoto.files?.length) {
+      const reader = new FileReader();
+      this.procesarFoto = this.obtenerFoto.files[0];
+
+      reader.addEventListener('load', () => {
+        this.imagenPreview = reader.result as string;
+      });
+
+      reader.readAsDataURL(this.procesarFoto);
+    }
+
+  }
+
+  almacenarFoto() {
+    if (this.procesarFoto) {
+      const formData = new FormData();
+      formData.append('file', this.procesarFoto, this.procesarFoto.name);
+
+      let nameFoto = new Fotos;
+      this.fotoServices.postFotos(formData).subscribe((data) => {
+        if (data != null) {
+          nameFoto = data;
+          console.log(nameFoto.url + "           fffffffffffffffffff")
+          this.urlFoto = nameFoto.url;
+        }
+      });
+    }
+  }
+
+  borrarImagen() {
+    this.obtenerFoto.value = '';
+    this.procesarFoto = null;
+    this.imagenPreview = null;
+  }
+
+  editarFoto(){
+    this.editFoto = true;
   }
 
   obtenerPersona() {

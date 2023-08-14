@@ -61,7 +61,6 @@
                             <td>{{contac.asuntoContactanos}}</td>
                             <td>{{contac.celularContactanos}}</td>
                         </ng-container>
-                        <td *ngIf="contac.estOcultoVisibleContactanos == true"><a class="a">Editar</a> </td>
                         <td *ngIf="contac.estOcultoVisibleContactanos == false"><a class="a"
                                 (click)="confirmEliminar(contac)">Eliminar</a> </td>
                         <!-- <td><a href="/cbd/admin/contactanos/detalle" class="as">Ver Detalle</a></td> -->

@@ -20,7 +20,7 @@ export class DetalleUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.loginServices.estaLogin()) {
-      this.router.navigate(['/lg/login']);
+      this.router.navigate(['/cbd/login']);
     }
     // if (Object.keys(this.contactanosObject).length === 0) {
     //   this.router.navigate(['/cbd/admin/contactanos/listar']);

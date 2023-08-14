@@ -94,11 +94,15 @@ export class ListarUsuariosComponent implements OnInit {
   // PAGINACION
 
   // PASAR A DETALLE USUARIOS
-  almacenarUsuario(usuarios: Usuarios) {
+  almacenarUsuario(usuarios: Usuarios, ir: string) {
     localStorage.removeItem('usuario');
     localStorage.setItem('usuario', JSON.stringify(usuarios));
+    if(ir == "editar"){
+      this.router.navigate(['/cbd/superAdmin/usuarios/editar']);
+    } else {
     this.router.navigate(['/cbd/superAdmin/usuarios/detalle']);
   }
+}
   // PASAR A DETALLE USUARIOS
 
   // ELIMINAR USUARIOS

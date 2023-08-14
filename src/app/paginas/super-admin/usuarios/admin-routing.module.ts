@@ -7,7 +7,7 @@ import { DetalleUsuarioComponent } from './detalle-usuario/detalle-usuario.compo
 
 const routes: Routes = [
   { path: 'listar', component: ListarUsuariosComponent},
-  { path: 'editarus/:id', component: EditarUsuarioComponent},
+  { path: 'editar', component: EditarUsuarioComponent},
   { path: 'crear', component: CrearUsuarioComponent},
   { path: 'detalle', component: DetalleUsuarioComponent},
 ];
