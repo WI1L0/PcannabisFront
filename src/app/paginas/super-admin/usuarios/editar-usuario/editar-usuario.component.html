@@ -1,4 +1,4 @@
-<div class="primero">
+<!-- <div class="primero">
     <div class="container">
         <div class="primero center">
             <form id="contact" action="" method="post">
@@ -15,8 +15,6 @@
                             <p class="nom">Nombre 2</p>
                             <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required [(ngModel)]="objectPersona.nombre2"
                                 autofocus value="Juliana">
-                            <!-- <input placeholder="Email" type="email" name="email_empresa" tabindex="2" required
-                            value="SoindMed@gmail.com"> -->
                         </fieldset>
                     </div>
                 </div>
@@ -133,5 +131,135 @@
             </form>
 
         </div>
+    </div>
+</div> -->
+
+
+<div class="primero">
+    <div class="container">
+        <form id="contact">
+            <h3>Usuario</h3>
+            <!-- <div class="card"> -->
+            <!-- <div class="card-header">
+            Featured
+          </div> -->
+            <div class="card-body">
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <form>
+                                    <div class="row" *ngIf="editFoto">
+                                        <div *ngIf="!imagenPreview">
+                                            <input type="file" name="foto" id="foto" accept="image/*" required
+                                                (change)="seleccionarFoto($event)">
+                                        </div>
+                                        <img [src]="imagenPreview" *ngIf="imagenPreview"
+                                            style="padding: 20px; width: 100%;">
+                                    </div>
+                                    <div class="row" *ngIf="!editFoto">
+                                        <img [src]=" cuerpoUrlFoto + usuariosObject.fotoUsuario "
+                                            (alt)="usuariosObject.fotoUsuario" style="padding: 20px; width: 79%;" />
+                                        <button name="submit" type="submit" id="contact-submit"
+                                            data-submit="...Editando" (click)="editarFoto()">Editar</button>
+                                    </div>
+                                    <div>
+                                        <button name="submit" type="submit" id="contact-submit"
+                                            data-submit="...Editando" (click)="borrarImagen()"
+                                            *ngIf="imagenPreview">Borrar Imagen</button>
+                                        <!-- <button ame="botoncito" class="botoncito" (click)="borrarImagen()"
+                                            >Borrar imagen</button> -->
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="inputCedula" class="form-label">Cedula</label>
+                                    <input type="text" class="form-control" id="inputCedula" disabled="true" value="{{personasObject.cedula}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputNacimiento" class="form-label">Fecha de nacimiento</label>
+                                    <input type="text" class="form-control" id="inputNacimiento" value="{{personasObject.fNacimiento}}"
+                                        disabled="true">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="inputGenero" class="form-label">Genero</label>
+                                    <input type="text" class="form-control" id="inputGenero" disabled="true" value="{{personasObject.genero}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputNombre" class="form-label">Nombre de usuario</label>
+                                    <input type="text" class="form-control" id="inputNombre" required  disabled="true" value="{{usuariosObject.nombreUsuario}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="inputNombre1" class="form-label">Nombre 1</label>
+                                    <input type="text" class="form-control" id="inputNombre1" required [ngModel]="personasObject.nombre1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputNombre2" class="form-label">Nombre 2</label>
+                                    <input type="text" class="form-control" id="inputNombre2" [ngModel]="personasObject.nombre2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="inputApellido1" class="form-label">Apellido 1</label>
+                                    <input type="text" class="form-control" id="inputApellido1" required [(ngModel)]="personasObject.apellido1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputApellido2" class="form-label">Apellido 2</label>
+                                    <input type="text" class="form-control" id="inputApellido2" required [(ngModel)]="personasObject.apellido2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="inputCelular" class="form-label">Celular</label>
+                                <input type="text" class="form-control" id="inputCelular" required [(ngModel)]="personasObject.celular">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="inputCorreo" class="form-label">Correo</label>
+                                <input type="text" class="form-control" id="inputCorreo" required [(ngModel)]="personasObject.correo">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="inputpass" class="form-label">Password</label>
+                                <input type="password" name="pass" id="inputpass" class="form-control" required [(ngModel)]="usuariosObject.passwordUsuario"/>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="mySelectRol" class="form-label">Rol</label>
+                                <select id="mySelectRol" class="form-control" >
+                                    <option disabled selected>Seleccione una opción</option>
+                                    <option value="ROLE_ADMIN">Administrador</option>
+                                    <option value="ROLE_EMPLEADO">Empleado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label for="inputCiudad" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" id="inputCiudad" required [(ngModel)]="personasObject.ciudad">
+
+                                <label for="inputBarrio" class="form-label">Barrio</label>
+                                <input type="text" class="form-control" id="inputBarrio" required [(ngModel)]="personasObject.barrio">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="inputReferencia" class="form-label">Referencia</label>
+                                <textarea type="text" class="form-control" id="inputReferencia" [(ngModel)]="personasObject.referencia"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo">Exit</button>
+            </div>
+        </form>
     </div>
 </div>

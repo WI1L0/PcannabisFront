@@ -32,8 +32,8 @@ export class SpersonasService {
     return this.http.get<Boolean>(`${baserUrl + this.URL}/existCorreo/${correo}`);
   }
 
-  public existCedula(cedula: string) {
-    return this.http.get<Boolean>(`${baserUrl + this.URL}/existCedula/${cedula}`);
+  public getOnePersonaCedula(cedula: string) {
+    return this.http.get<Personas>(`${baserUrl + this.URL}/cedula/${cedula}`);
   }
 
   // putNoticias(Noticias: Noticias, idNoticias: any) {
