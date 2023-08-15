@@ -17,8 +17,6 @@ import Swal from 'sweetalert2';
 })
 export class EditarUsuarioComponent implements OnInit {
 
-  objectPersona: Personas = new Personas();
-  objectUsuario: Usuarios = new Usuarios();
   public submitted: boolean = false;
 
 
@@ -34,42 +32,52 @@ export class EditarUsuarioComponent implements OnInit {
   cuerpoUrlFoto: string = baserUrlImagenes;
 
   constructor(
-    private loginServices: SloginService, 
-    private router: Router, 
+    private loginServices: SloginService,
+    private router: Router,
     private fotoServices: SfotosService,
-    private usuarioServices: SusuariosService, 
+    private usuarioServices: SusuariosService,
     private personaServices: SpersonasService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/cbd/login']);
     }
 
-    // this.obtenerPersona();
-    // this.obtenerUsuario();
     this.obtenerUsuarios();
-
-
   }
 
   obtenerUsuarios() {
-
-    // limpiar
     this.usuariosObject = {} as Usuarios;
 
     const usuario = localStorage.getItem('usuario');
     if (usuario != null) {
       this.usuariosObject = JSON.parse(usuario);
-      if(this.usuariosObject.personas != null){
+      if (this.usuariosObject.personas != null) {
         this.personasObject = this.usuariosObject.personas;
+      }
+
+      this.usuarioServices.getObtenerRolUsuario(Number(this.usuariosObject.idUsuario)).subscribe(
+        (data) => {
+          if (data != null) {
+            const selectElement = document.getElementById("mySelectRol") as HTMLSelectElement;
+            const desiredOption = Array.from(selectElement.options).find((option) => option.value === data.nombreRol);
+          }
+        }
+      )
+
+      const selectElement = document.getElementById("mySelectGenero") as HTMLSelectElement;
+      const desiredOption = Array.from(selectElement.options).find((option) => option.value === this.personasObject.genero);
+
+      if (desiredOption) {
+        desiredOption.selected = true;
       }
     } else {
       // history.back();
-      this.router.navigate(['/cbd/admin/usuarios/listar']);
+      this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
     }
   }
-  
+
   seleccionarFoto(evento: Event) {
     this.obtenerFoto = evento.target as HTMLInputElement;
 
@@ -83,23 +91,31 @@ export class EditarUsuarioComponent implements OnInit {
 
       reader.readAsDataURL(this.procesarFoto);
     }
-
   }
 
-  almacenarFoto() {
-    if (this.procesarFoto) {
-      const formData = new FormData();
-      formData.append('file', this.procesarFoto, this.procesarFoto.name);
+  almacenarFoto(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      if (this.procesarFoto) {
+        const formData = new FormData();
+        formData.append('file', this.procesarFoto, this.procesarFoto.name);
 
-      let nameFoto = new Fotos;
-      this.fotoServices.postFotos(formData).subscribe((data) => {
-        if (data != null) {
-          nameFoto = data;
-          console.log(nameFoto.url + "           fffffffffffffffffff")
-          this.urlFoto = nameFoto.url;
-        }
-      });
-    }
+        let nameFoto = new Fotos();
+        this.fotoServices.postFotos(formData).subscribe((data) => {
+          if (data != null) {
+            nameFoto = data;
+            console.log(nameFoto.url + "           fffffffffffffffffff");
+            this.urlFoto = nameFoto.url;
+            if (nameFoto.url) {
+              resolve(nameFoto.url); // Resuelve la promesa con el valor de nameFoto.url
+            } else {
+              resolve("");
+            }
+          }
+        }, (error) => {
+          reject(error);
+        });
+      }
+    });
   }
 
   borrarImagen() {
@@ -108,114 +124,90 @@ export class EditarUsuarioComponent implements OnInit {
     this.imagenPreview = null;
   }
 
-  editarFoto(){
+  editarFoto() {
     this.editFoto = true;
   }
 
-  obtenerPersona() {
-    this.objectPersona = new Personas;
-    this.personaServices.getOnePersona(Number(localStorage.getItem('IdPersonaSelecto'))).subscribe(
-      data => {
-        console.log(data);
-        this.objectPersona = data;
-        localStorage.removeItem('IdPersonaSelecto');
-      },
-      error => {
-        console.log('Error al obtener noticias:', error);
-      }
-    );
-  }
-
-  obtenerUsuario() {
-    this.objectUsuario = new Usuarios;
-    this.usuarioServices.getOneUsuario(Number(localStorage.getItem('IdUsuarioSelecto'))).subscribe(
-      data => {
-        console.log(data);
-        this.objectUsuario = data;
-        localStorage.removeItem('IdUsuarioSelecto');
-      },
-      error => {
-        console.log('Error al obtener noticias:', error);
-      }
-    );
-  }
-
   updatePersonaUsuario() {
+    this.personasObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
     this.submitted = true;
-    if (this.objectPersona.nombre1 && 
-      this.objectPersona.nombre2 && 
-      this.objectPersona.apellido1 &&
-      this.objectPersona.apellido2 &&
-      this.objectPersona.celular &&
-      this.objectPersona.cedula &&
-      this.objectPersona.correo &&
-      this.objectPersona.barrio &&
-      this.objectPersona.ciudad &&
-      this.objectPersona.fNacimiento &&
-      this.objectPersona.referencia &&
-      this.objectPersona.genero ){
-        Swal.fire({
-          title: '¿Estas seguro de editar la noticia?',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Editar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.usuarioServices.putUsuario(this.objectUsuario).subscribe(
-              (data) => {
-                if (data != null) {
-                  Swal.fire(
-                    'Editada!',
-                    'La Empresa fue editada exitosamente.',
-                    'success'
-                  ).then((result) => {
-                    if (result.isConfirmed) {
-                      this.objectUsuario = {} as Usuarios;
-                      this.router.navigate(['/cbd/admin/panel']);
+    if (this.personasObject.nombre1 &&
+      this.personasObject.nombre2 &&
+      this.personasObject.apellido1 &&
+      this.personasObject.apellido2 &&
+      this.personasObject.celular &&
+      this.personasObject.correo &&
+      this.personasObject.barrio &&
+      this.personasObject.ciudad &&
+      this.personasObject.referencia &&
+      this.personasObject.genero != "Seleccione una opción" &&
+      (<HTMLSelectElement>document.getElementById('mySelectRol')).value != "Seleccione una opción" &&
+      this.usuariosObject.passwordUsuario) {
+      Swal.fire({
+        title: '¿Estas seguro de editar la noticia?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Editar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.almacenarFoto().then(
+            (url) => {
+              this.usuariosObject.fotoUsuario = url;
+            }
+          )
+          this.personaServices.putPersona(this.personasObject).subscribe(
+            (data) => {
+              if (data != null) {
+                this.usuarioServices.putUsuario(this.usuariosObject, (<HTMLSelectElement>document.getElementById('mySelectRol')).value).subscribe(
+                  (data) => {
+                    if (data != null) {
+                      Swal.fire(
+                        'Editada!',
+                        'El ususario fue editada exitosamente.',
+                        'success'
+                      ).then((result) => {
+                        if (result.isConfirmed) {
+                          this.personasObject = {} as Personas;
+                          this.usuariosObject = {} as Usuarios;
+                          this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+                        }
+                      })
+                    } else {
+                      Swal.fire({
+                        title: 'No Editada!',
+                        text: 'La empresa no fue editada.',
+                        icon: 'error'
+                      });
                     }
-                  })
-                } else {
-                  Swal.fire({
-                    title: 'No Editada!',
-                    text: 'La empresa no fue editada.',
-                    icon: 'error'
-                  });
-                }
+                  }
+                )
+              } else {
+                Swal.fire({
+                  title: 'No Editada!',
+                  text: 'La empresa no fue editada.',
+                  icon: 'error'
+                });
               }
-            )
-          }
-        });
-      } else {
-        Swal.fire({
-  
-          title: 'No Editada!',
-          text: 'Los campos estan vacios o erroneos',
-          icon: 'error'
-        })
-      }
-      
-  }
-  //alerta//
-  confirmEditar() {
-    Swal.fire({
-      title: '¿Estas seguro de editar este usuario?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Editar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Datos Actualizados!',
-          'Usuario actualizado exitosamente.',
-          'success'
-        );
-      }
-    });
+            }
+          )
+        }
+      });
+    } else {
+      Swal.fire({
+
+        title: 'No Editada!',
+        text: 'Los campos estan vacios o erroneos',
+        icon: 'error'
+      })
+    }
+
   }
 
-  //alerta//
+  salir() {
+    localStorage.removeItem('usuario');
+    history.back();
+  }
+
 }

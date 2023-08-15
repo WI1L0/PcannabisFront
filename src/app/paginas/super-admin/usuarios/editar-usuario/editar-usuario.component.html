@@ -1,265 +1,167 @@
-<!-- <div class="primero">
-    <div class="container">
-        <div class="primero center">
-            <form id="contact" action="" method="post">
-                <h3>Editar datos</h3>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Nombre</p>
-                            <input placeholder="Nombre" type="text" name="nombre_user" tabindex="1"  required [(ngModel)]="objectPersona.nombre1" disabled="true">
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Nombre 2</p>
-                            <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required [(ngModel)]="objectPersona.nombre2"
-                                autofocus value="Juliana">
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Apellido </p>
-                            <input placeholder="Apellido" type="text" name="apellido_user" tabindex="3" required [(ngModel)]="objectPersona.apellido1"
-                                autofocus value="Perez">
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Apellido 2</p>
-                            <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="4" required [(ngModel)]="objectPersona.apellido2"
-                                autofocus value="Quezada">
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Cédula </p>
-                            <input placeholder="Cedula" type="text" name="cedula_user" tabindex="5" required  [(ngModel)]="objectPersona.cedula"
-                                value="0104103080">
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Celular</p>
-                            <input placeholder="Celular" type="tel" name="celular_user" tabindex="6"  required [(ngModel)]="objectPersona.celular"
-                                value="0985860636">
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Fecha de Nacimiento</p>
-                            <input placeholder="Fecha de nacimiento" name="fechanacimiento" class="date" type="date"
-                                tabindex="7" required  value="2023-09-27" required [(ngModel)]="objectPersona.fNacimiento">
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Sexo</p>
-                            <select class="select half-width" tabindex="8" name="sexo_user" required [(ngModel)]="objectPersona.genero"> 
-                                <option>Femenino</option>
-                                <option>Masculino</option>
-                            </select>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Ciudad </p>
-                            <input placeholder="Ciudad" type="text" name="ciudad_user" tabindex="9" required [(ngModel)]="objectPersona.ciudad"
-                                value="Cuenca">
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Barrio</p>
-                            <input placeholder="Barrio" type="text" name="barrio_user" tabindex="10" required [(ngModel)]="objectPersona.barrio"
-                                value="Barrio">
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Dirección</p>
-                            <input placeholder="Direccion" type="text" name="direccion_user" tabindex="11" required  [(ngModel)]="objectPersona.referencia">
-                            <small class="p-error" *ngIf="submitted && !objectPersona.referencia">Observaciones is required.</small>
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Correo Electrónico</p>
-                            <input placeholder="Correo Electrónico" type="text" name="correo_user" tabindex="12" required  [(ngModel)]="objectPersona.correo"
-                                >
-                        </fieldset>
-                    </div>
-                </div>
-                <p>Datos Usuario</p>
-                <div class="row">
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Nombre de Usuario </p>
-                            <input placeholder="Nombre de Usuario" type="text" name="nombre_user" tabindex="13" required
-                                 value="maiigeo">
-                        </fieldset>
-                    </div>
-                    <div class="half-width">
-                        <fieldset>
-                            <p class="nom">Correo de usuario</p>
-                            <input placeholder="Correo de usuario" type="email" name="correo_user" tabindex="14"
-                                required  value="maiigeo@gmail.com">
-                        </fieldset>
-                    </div>
-                </div>
-                <fieldset>
-                    <p class="nom">Rol</p>
-                    <select class="select half-width" tabindex="15" name="rol_user" required>
-                        <option>Administrador</option>
-                        <option>Empleado</option>
-                        <option>Cliente</option>
-                    </select>
-                </fieldset>
-
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando"  (click)="updatePersonaUsuario()"
-                    href="/admin" required>Editar</button>
-            </form>
-
-        </div>
-    </div>
-</div> -->
-
-
 <div class="primero">
     <div class="container">
-        <form id="contact">
-            <h3>Usuario</h3>
-            <!-- <div class="card"> -->
-            <!-- <div class="card-header">
-            Featured
-          </div> -->
-            <div class="card-body">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div>
-                                <form>
-                                    <div class="row" *ngIf="editFoto">
-                                        <div *ngIf="!imagenPreview">
-                                            <input type="file" name="foto" id="foto" accept="image/*" required
-                                                (change)="seleccionarFoto($event)">
-                                        </div>
-                                        <img [src]="imagenPreview" *ngIf="imagenPreview"
-                                            style="padding: 20px; width: 100%;">
+        <div class="primero center">
+            <form id="contact">
+                <h3>Editar datos</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <form>
+                                <div class="row" *ngIf="editFoto">
+                                    <div *ngIf="!imagenPreview">
+                                        <input type="file" name="foto" id="foto" accept="image/*" required
+                                            (change)="seleccionarFoto($event)">
                                     </div>
-                                    <div class="row" *ngIf="!editFoto">
-                                        <img [src]=" cuerpoUrlFoto + usuariosObject.fotoUsuario "
-                                            (alt)="usuariosObject.fotoUsuario" style="padding: 20px; width: 79%;" />
-                                        <button name="submit" type="submit" id="contact-submit"
-                                            data-submit="...Editando" (click)="editarFoto()">Editar</button>
-                                    </div>
-                                    <div>
-                                        <button name="submit" type="submit" id="contact-submit"
-                                            data-submit="...Editando" (click)="borrarImagen()"
-                                            *ngIf="imagenPreview">Borrar Imagen</button>
-                                        <!-- <button ame="botoncito" class="botoncito" (click)="borrarImagen()"
-                                            >Borrar imagen</button> -->
-                                    </div>
-                                </form>
-
-                            </div>
+                                    <img [src]="imagenPreview" *ngIf="imagenPreview"
+                                        style="padding: 20px; width: 100%;">
+                                </div>
+                                <div class="row" *ngIf="!editFoto">
+                                    <img [src]=" cuerpoUrlFoto + usuariosObject.fotoUsuario "
+                                        (alt)="usuariosObject.fotoUsuario" style="padding: 20px; width: 79%;" />
+                                    <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
+                                        (click)="editarFoto()">Editar</button>
+                                </div>
+                                <div>
+                                    <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
+                                        (click)="borrarImagen()" *ngIf="imagenPreview">Borrar Imagen</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-8">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="inputCedula" class="form-label">Cedula</label>
-                                    <input type="text" class="form-control" id="inputCedula" disabled="true" value="{{personasObject.cedula}}">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNacimiento" class="form-label">Fecha de nacimiento</label>
-                                    <input type="text" class="form-control" id="inputNacimiento" value="{{personasObject.fNacimiento}}"
-                                        disabled="true">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="inputGenero" class="form-label">Genero</label>
-                                    <input type="text" class="form-control" id="inputGenero" disabled="true" value="{{personasObject.genero}}">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNombre" class="form-label">Nombre de usuario</label>
-                                    <input type="text" class="form-control" id="inputNombre" required  disabled="true" value="{{usuariosObject.nombreUsuario}}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="inputNombre1" class="form-label">Nombre 1</label>
-                                    <input type="text" class="form-control" id="inputNombre1" required [ngModel]="personasObject.nombre1">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputNombre2" class="form-label">Nombre 2</label>
-                                    <input type="text" class="form-control" id="inputNombre2" [ngModel]="personasObject.nombre2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="inputApellido1" class="form-label">Apellido 1</label>
-                                    <input type="text" class="form-control" id="inputApellido1" required [(ngModel)]="personasObject.apellido1">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputApellido2" class="form-label">Apellido 2</label>
-                                    <input type="text" class="form-control" id="inputApellido2" required [(ngModel)]="personasObject.apellido2">
-                                </div>
-                            </div>
-                        </div>
-
+                    </div>
+                    <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-3">
-                                <label for="inputCelular" class="form-label">Celular</label>
-                                <input type="text" class="form-control" id="inputCelular" required [(ngModel)]="personasObject.celular">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <p class="nom">Cedula</p>
+                                    <input placeholder="Cedula" type="text" name="cedula_user" tabindex="2"
+                                        disabled="true" value="{{personasObject.cedula}}" autofocus>
+                                </fieldset>
                             </div>
-                            <div class="col-md-3">
-                                <label for="inputCorreo" class="form-label">Correo</label>
-                                <input type="text" class="form-control" id="inputCorreo" required [(ngModel)]="personasObject.correo">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <p class="nom">Fecha de Nacimiento</p>
+                                    <input placeholder="Fnacimiento" type="text" name="Fnacimiento_user" tabindex="2"
+                                        disabled="true" value="{{personasObject.fNacimiento}}" autofocus>
+                                </fieldset>
                             </div>
-                            <div class="col-md-3">
-                                <label for="inputpass" class="form-label">Password</label>
-                                <input type="password" name="pass" id="inputpass" class="form-control" required [(ngModel)]="usuariosObject.passwordUsuario"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div>
+                                </div>
+                                <fieldset>
+                                    <p class="nom">Genero</p>
+                                    <select id="mySelectGenero" required>
+                                        <option disabled>Seleccione una opción</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Masculino">Masculino</option>
+                                    </select>
+                                    <!-- <input placeholder="Genero" type="text" name="genero_user" tabindex="2" required
+                                        [(ngModel)]="personasObject.genero" autofocus> -->
+                                </fieldset>
                             </div>
-                            <div class="col-md-3">
-                                <label for="mySelectRol" class="form-label">Rol</label>
-                                <select id="mySelectRol" class="form-control" >
-                                    <option disabled selected>Seleccione una opción</option>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <p class="nom">Nombre de Usuario</p>
+                                    <input placeholder="Nombre usu" type="text" name="nombre_user" tabindex="2"
+                                        disabled="true" value="{{usuariosObject.nombreUsuario}}" autofocus>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <p class="nom">Nombre 1</p>
+                                    <input placeholder="Nombre 1" type="text" name="nombre1_user" tabindex="2" required
+                                        [(ngModel)]="personasObject.nombre1" autofocus>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <p class="nom">Nombre 2</p>
+                                    <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required
+                                        [(ngModel)]="personasObject.nombre2" autofocus>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <p class="nom">Apellido 1</p>
+                                    <input placeholder="Apellido 1" type="text" name="apellido1_user" tabindex="2"
+                                        required [(ngModel)]="personasObject.apellido1" autofocus>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <p class="nom">Apellido 2</p>
+                                    <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="2"
+                                        required [(ngModel)]="personasObject.apellido2" autofocus>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <fieldset>
+                                <p class="nom">Celular</p>
+                                <input placeholder="Celular" type="text" name="celular_user" tabindex="2" required
+                                    [(ngModel)]="personasObject.celular" autofocus>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-3">
+                            <fieldset>
+                                <p class="nom">Correo</p>
+                                <input placeholder="Correo" type="text" name="correo_user" tabindex="2" required
+                                    [(ngModel)]="personasObject.correo" autofocus>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-3">
+                            <fieldset>
+                                <p class="nom">Password</p>
+                                <input placeholder="password" type="password" name="password_user" tabindex="2" required
+                                    [(ngModel)]="usuariosObject.passwordUsuario" autofocus>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-3">
+                            <fieldset>
+                                <p class="nom">Rol</p>
+                                <select id="mySelectRol" class="select half-width" required>
+                                    <option disabled>Seleccione una opción</option>
                                     <option value="ROLE_ADMIN">Administrador</option>
                                     <option value="ROLE_EMPLEADO">Empleado</option>
                                 </select>
-                            </div>
+                            </fieldset>
                         </div>
-                        <div class="row">
-
-                            <div class="col-md-4">
-                                <label for="inputCiudad" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control" id="inputCiudad" required [(ngModel)]="personasObject.ciudad">
-
-                                <label for="inputBarrio" class="form-label">Barrio</label>
-                                <input type="text" class="form-control" id="inputBarrio" required [(ngModel)]="personasObject.barrio">
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputReferencia" class="form-label">Referencia</label>
-                                <textarea type="text" class="form-control" id="inputReferencia" [(ngModel)]="personasObject.referencia"></textarea>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <fieldset>
+                                <p class="nom">Ciudad</p>
+                                <input placeholder="ciudad" type="text" name="ciudad_user" tabindex="2" required
+                                    [(ngModel)]="personasObject.ciudad" autofocus>
+                            </fieldset>
+                            <fieldset>
+                                <p class="nom">Barrio</p>
+                                <input placeholder="barrio" type="text" name="barrio_user" tabindex="2" required
+                                    [(ngModel)]="personasObject.barrio" autofocus>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-8">
+                            <fieldset>
+                                <p class="nom">Referencia</p>
+                                <textarea placeholder="referencia" type="text" name="referencia_user" tabindex="2"
+                                    required [(ngModel)]="personasObject.referencia" autofocus></textarea>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo">Exit</button>
-            </div>
-        </form>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updatePersonaUsuario()"
+                     required>Editar</button>
+                    <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo" (click)="salir()"
+                     required>Salir</button>
+            </form>
+        </div>
     </div>
 </div>

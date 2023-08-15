@@ -24,8 +24,8 @@ export class SpersonasService {
     return this.http.post<Personas>(`${baserUrl + this.URL}/save/`, person);
   }
 
-  putPersona(person: Personas, idPerson: number) {
-    return this.http.put<Personas>(`${baserUrl + this.URL}/update/${idPerson}`, person);
+  putPersona(person: Personas) {
+    return this.http.put<Personas>(`${baserUrl + this.URL}/update/${person.idPersona}`, person);
   }
 
   public existCorreo(correo: string) {

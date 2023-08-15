@@ -78,51 +78,61 @@
       <div class="card-body">
         <div class="container text-center">
           <div class="row">
+            <div class="col-md-4">
+              <img [src]=" cuerpoUrlFoto + usuariosObject.fotoUsuario "
+                                        (alt)="usuariosObject.fotoUsuario" style="padding: 20px; max-width: 180px;" />
+                                        <br>
+              <label for="inputNombre" class="form-label">Nombre de usuario</label>
+              <input type="text" class="form-control" id="inputNombre" value="{{usuariosObject.nombreUsuario}}" required
+                disabled="true">
+            </div>
             <div class="col-md-8">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <label for="inputNombres" class="form-label">Nombres</label>
-                  <input type="text"  class="form-control" id="inputNombres" value="{{usuariosObject.personas?.nombre1}}  {{usuariosObject.personas?.nombre2}}" required disabled="true">
+                  <input type="text" class="form-control" id="inputNombres"
+                    value="{{usuariosObject.personas?.nombre1}}  {{usuariosObject.personas?.nombre2}}" required
+                    disabled="true">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                   <label for="inputApellidos" class="form-label">Apellidos</label>
-                  <input type="text"  class="form-control" id="inputApellidos" value="{{usuariosObject.personas?.apellido1}}  {{usuariosObject.personas?.apellido2}}" required disabled="true">
+                  <input type="text" class="form-control" id="inputApellidos"
+                    value="{{usuariosObject.personas?.apellido1}}  {{usuariosObject.personas?.apellido2}}" required
+                    disabled="true">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputNacimiento" class="form-label">Fecha de nacimiento</label>
+                  <input type="text" class="form-control" id="inputNacimiento"
+                    value="{{usuariosObject.personas?.fNacimiento}}" required disabled="true">
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
-                  <label for="inputNombre" class="form-label">Nombre de usuario</label>
-                  <input type="text"  class="form-control" id="inputNombre" value="{{usuariosObject.nombreUsuario}}" required disabled="true">
+                <div class="col-md-4">
+                  <label for="inputCedula" class="form-label">Cedula</label>
+                  <input type="text" class="form-control" id="inputCedula" value="{{usuariosObject.personas?.cedula}}"
+                    required disabled="true">
                 </div>
-                <div class="col-md-5">
-                  <label for="inputNacimiento" class="form-label">Fecha de nacimiento</label>
-                  <input type="text"  class="form-control" id="inputNacimiento" value="{{usuariosObject.personas?.fNacimiento}}" required disabled="true">
+                <div class="col-md-4">
+                  <label for="inputCelular" class="form-label">Celular</label>
+                  <input type="text" class="form-control" id="inputCelular" value="{{usuariosObject.personas?.celular}}"
+                    required disabled="true">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputCorreo" class="form-label">Correo</label>
+                  <input type="text" class="form-control" id="inputCorreo" value="{{usuariosObject.personas?.correo}}"
+                    required disabled="true">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="inputCiudad" class="form-label">Ciudad</label>
-                  <input type="text"  class="form-control" id="inputCiudad" value="{{usuariosObject.personas?.ciudad}}" required disabled="true">
+                  <input type="text" class="form-control" id="inputCiudad" value="{{usuariosObject.personas?.ciudad}}"
+                    required disabled="true">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <label for="inputBarrio" class="form-label">Barrio</label>
-                  <input type="text"  class="form-control" id="inputBarrio" value="{{usuariosObject.personas?.barrio}}" required disabled="true">
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="row">
-                <div class="col-md-12">
-                  <label for="inputCedula" class="form-label">Cedula</label>
-                  <input type="text"  class="form-control" id="inputCedula" value="{{usuariosObject.personas?.cedula}}" required disabled="true">
-                </div>
-                <div class="col-md-12">
-                  <label for="inputCelular" class="form-label">Celular</label>
-                  <input type="text"  class="form-control" id="inputCelular" value="{{usuariosObject.personas?.celular}}" required disabled="true">
-                </div>
-                <div class="col-md-12">
-                  <label for="inputCorreo" class="form-label">Correo</label>
-                  <input type="text"  class="form-control" id="inputCorreo" value="{{usuariosObject.personas?.correo}}" required disabled="true">
+                  <input type="text" class="form-control" id="inputBarrio" value="{{usuariosObject.personas?.barrio}}"
+                    required disabled="true">
                 </div>
               </div>
             </div>
@@ -131,7 +141,8 @@
               <div class="row">
                 <div class="col-md-12">
                   <label for="inputReferencia" class="form-label">Referencia</label>
-                  <textarea type="text"  class="form-control" id="inputReferencia" value="{{usuariosObject.personas?.referencia}}"></textarea>
+                  <textarea type="text" class="form-control" id="inputReferencia"
+                    value="{{usuariosObject.personas?.referencia}}"></textarea>
                 </div>
               </div>
             </div>
@@ -140,7 +151,8 @@
         </div>
       </div>
       <div class="col-12">
-        <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo" (click)="salir()">Exit</button>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo"
+          (click)="salir()">Exit</button>
       </div>
     </form>
   </div>
