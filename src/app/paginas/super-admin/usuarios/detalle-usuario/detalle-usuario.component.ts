@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuarios } from 'src/app/modelos/Usuarios';
+import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 import { SloginService } from 'src/app/services/s-login.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { SloginService } from 'src/app/services/s-login.service';
 export class DetalleUsuarioComponent implements OnInit {
 
   usuariosObject: Usuarios = new Usuarios();
+  cuerpoUrlFoto: string = baserUrlImagenes;
+
 
   constructor(
     private router: Router,

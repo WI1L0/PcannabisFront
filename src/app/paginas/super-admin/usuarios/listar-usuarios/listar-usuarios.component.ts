@@ -37,6 +37,8 @@ export class ListarUsuariosComponent implements OnInit {
     if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/cbd/login']);
     }
+    
+    localStorage.removeItem('usuario');
     this.almacenarEstado('desbloqueado');
   }
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import baserUrl from './defauld/helper';
 import { UsuariosResponse } from '../modelos/Respuestas/UsuariosResponse';
 import { Usuarios } from '../modelos/Usuarios';
+import { Roles } from '../modelos/Roles';
 
 @Injectable({
     providedIn: 'root'
@@ -42,10 +43,13 @@ export class SusuariosService {
       return this.http.post<Usuarios>(`${baserUrl + this.URL}/save/persona/${idPersona}/rol/${nombreRol}/empresa/${nombreEmpresa}`, usuario);
     }
     
-    public putUsuario(usuarioObject: Usuarios){
-      return this.http.put<Usuarios>(`${baserUrl + this.URL}/update/${usuarioObject.idUsuario}`, usuarioObject)
+    public putUsuario(usuarioObject: Usuarios, nombreRol: string){
+      return this.http.put<Usuarios>(`${baserUrl + this.URL}/update/${usuarioObject.idUsuario}/rol/${nombreRol}/`, usuarioObject)
     }
       
+    public getObtenerRolUsuario(id: number) {
+      return this.http.get<Roles>(`${baserUrl + this.URL}/obtenerRolUsuario/${id}`);
+    }
 
     // postNoticias(Noticias: Noticias) {
     //     return this.http.post<Noticias>(this.URL, Noticias);
