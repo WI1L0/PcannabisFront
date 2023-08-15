@@ -319,3 +319,26 @@ fieldset {
 	font-family: 'Open Sans';
 	src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
   }
+
+//tarjetas
+.preview-card {
+	width: 100px; /* Tamaño pequeño de la tarjeta */
+	height: 100px; /* Tamaño pequeño de la tarjeta */
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	display: inline-block;
+	overflow: hidden;
+  }
+  
+  .preview-image {
+	// width: 100%; /* Tamaño pequeño de la imagen */
+	// height: 100%; /* Tamaño pequeño de la imagen */
+	object-fit: cover;
+	height: 200px;
+    width: 200px;
+  }
+
+  .row img{
+	height: 200px;
+    width: 200px;
+  }

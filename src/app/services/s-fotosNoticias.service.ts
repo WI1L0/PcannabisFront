@@ -26,8 +26,8 @@ export class SfotosNoticiasService {
     //     return this.http.get<FotosNoticias[]>(this.URL);
     // }
 
-    postFotosNoticias(FotosNoticias: FotosNoticias) {
-        return this.http.post<FotosNoticias>(this.URL, FotosNoticias);
+    postFotosNoticias(FotosNoticias: FotosNoticias, IDNoticia: number) {
+        return this.http.post<FotosNoticias>(`${baserUrl + this.URL}/save/${IDNoticia}`, FotosNoticias)
     }
 
     // putFotosNoticias(FotosNoticias: FotosNoticias, idFotosNoticias: any) {

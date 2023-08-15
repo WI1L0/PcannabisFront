@@ -10,6 +10,7 @@
             <ul id="progressbar">
                 <li class="active">Crear Noticia</li>
                 <li>Datos de Noticia</li>
+                <li>Parrafos</li>
             </ul>
             <!-- fieldsets -->
             <fieldset>
@@ -22,7 +23,6 @@
                     [(ngModel)]="noticias.ubicacionNoticia" />
                 <textarea rows="5" type="text" name="ubicacion" placeholder="Predescripción de la noticia" required
                     [(ngModel)]="noticias.preDescripcionNoticia"></textarea>
-                <!-- <input type="text" class="txtarea" placeholder="PreDescripción de la noticia" required [(ngModel)]="noticias.preDescripcionNoticia" /> -->
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
                     <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
@@ -33,12 +33,7 @@
                                 (change)="seleccionarFoto($event)">
                             <img [src]="imagenPreview" *ngIf="imagenPreview">
                         </div>
-                        <!-- <div>
-                            <button ame="botoncito" class="botoncito" (click)="borrarImagen()"
-                                *ngIf="imagenPreview">Borrar imagen</button>
-                        </div> -->
                     </form>
-
                 </div>
                 <input type="button" name="next" class="next action-button" value="Siguiente" />
             </fieldset>
@@ -46,35 +41,45 @@
                 <div>
                     <div class="container">
                         <div class="izquierda">
-                            <textarea [(ngModel)]="parrafoInput" rows="5" type="text" name="txtarea" placeholder="Predescripción de la noticia" required></textarea>
-                            <!-- <textarea [(ngModel)]="parrafoInput" type="text" id="txtarea" required placeholder="Agregar un Párrafo"></textarea> -->
-                            <input type="button" id="botones" class="botoncito" required value="Agregar" (click)="agregarParrafo()" />
+                            <textarea [(ngModel)]="parrafoInput" rows="5" type="text" name="txtarea"
+                                placeholder="Agrega un parrafo"></textarea>>
+                            <input type="button" id="botones" class="botoncito" required value="Agregar"
+                                (click)="agregarParrafo()" />
                         </div>
-                    
+
                         <div class="derecha" id="derecha">
                             <div class="card ocultar" *ngFor="let p of listaParrafos; let i = index">
                                 <p class="nom">Párrafo {{ i + 1 }}</p>
-                                <button class="botoncito">Quitar</button>
                                 <div class="contenido-card">
-                                    <textarea [(ngModel)]="listaParrafos[i]" rows="5" type="text" name="ubicacion" id="txtarea" placeholder="Predescripción de la noticia" required></textarea>
+                                    <textarea [(ngModel)]="listaParrafos[i]" rows="5" type="text" name="ubicacion"
+                                        id="txtarea" placeholder="Predescripción de la noticia"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <h2 class="fs-title">Fotos Noticias</h2>
-                    <h3 class="fs-subtitle">Suba las fotos de la Noticia</h3>
-                    <form method="POST" action="" enctype="multipart/form-data">
-                        <label for="foto">Seleccionar foto:</label>
-                        <div class="row">
-                            <input type="file" name="foto[]" id="foto" accept="image/*"  >multiple>
-                            <img id="imagen-preview" style="display: none;">
-                            <input type="button" name="botoncito" class="botoncito" value="Añadir" />
-                        </div>
 
-                    </form>
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
-                <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a>
+                <a class="action-button" name="next" class="next action-button" target="_top"
+                    (click)="guardarNoticias()">Siguiente</a>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Fotos Noticias</h2>
+                <h3 class="fs-subtitle">Suba las fotos de la Noticia</h3>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    <label for="foto">Seleccionar foto:</label>
+                    <div class="row">
+                        <input type="file" name="fotos[]" id="fotos" accept="image/*"
+                            (change)="seleccionarFoto($event)">multiple>
+                        <input type="button" name="botoncito" class="botoncito" value="Añadir" id="btnfotos"
+                            (click)="almacenarFotoNoticia()" />
+                    </div>
+                </form>
+                <div id="previsualizacion" class="img"></div>
+                <!-- <input type="button" name="previous" class="previous action-button" value="Previous" /> -->
+                <input type="button" name="previous" class="botoncito" value="Finalizar" />
+                <!-- <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a> -->
+                <!-- </form> -->
             </fieldset>
         </form>
     </div>

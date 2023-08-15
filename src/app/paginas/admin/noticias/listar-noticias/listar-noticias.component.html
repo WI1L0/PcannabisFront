@@ -54,7 +54,7 @@
                         <td class="no">{{noti.ubicacionNoticia}}</td>
                         <td class="no">{{noti.fechaNoticia}}</td>
                         <td class="no">{{noti.preDescripcionNoticia}}</td>
-                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a href="/cbd/admin/noticias/editar"  class="a">Editar</a> </td>
+                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a (click)="setNoticiaAEditar(noti)"  class="a">Editar</a> </td>
                         <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"
                                 (click)="confirmEliminar(noti)">Eliminar</a> </td>
                         <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"

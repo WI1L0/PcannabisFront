@@ -14,6 +14,7 @@ import { SParrafosService } from 'src/app/services/s-parrafos.service';
 import Swal from 'sweetalert2';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap, map, tap } from 'rxjs/operators';
+import { SfotosNoticiasService } from 'src/app/services/s-fotosNoticias.service';
 
 @Component({
   selector: 'app-crear-noticias',
@@ -28,12 +29,16 @@ export class CrearNoticiasComponent implements OnInit {
   procesarFoto: any;
   imagenPreview: any;
   noticias: Noticias = new Noticias();
+  fotosNoticias: FotosNoticias = new FotosNoticias();
   empresas: Empresas = new Empresas();
   nombreEmpresa: string = 'Nunakay'; // Cambia el nombre de la empresa según tu necesidad
   idNoticia: number = 0;
   parrafoInput: string = '';
   listaParrafos: string[] = [];
   parrafos: Parrafos = new Parrafos();
+  fotosNoticiasUrls: string[] = [];
+
+  parrafoObject: Parrafos = new Parrafos;
 
   //implementar js en los componentes
   constructor(
@@ -42,7 +47,8 @@ export class CrearNoticiasComponent implements OnInit {
     private loginServices: SloginService,
     private fotoServices: SfotosService,
     private router: Router,
-    private parrafosServices: SParrafosService
+    private parrafosServices: SParrafosService,
+    private fotosNoticiasServices: SfotosNoticiasService
   ) {
     AllScripts.Cargar(['paginas/crearnoticias']);
   }
@@ -67,20 +73,20 @@ export class CrearNoticiasComponent implements OnInit {
       });
 
       reader.readAsDataURL(this.procesarFoto);
+      console.log(this.procesarFoto)
     }
 
   }
 
   borrarImagen() {
-    // window.miFuncionmensaje();
     this.obtenerFoto.value = '';
     this.procesarFoto = null;
     this.imagenPreview = null;
   }
 
-  paseSiguiente1() {
-    this.submitted = true;
-  }
+  // paseSiguiente1() {
+  //   this.submitted = true;
+  // }
 
   almacenarFoto() {
     if (this.procesarFoto) {
@@ -97,40 +103,46 @@ export class CrearNoticiasComponent implements OnInit {
       });
     }
   }
+  //FOTONOTICIAS
+  guardarfotos() {
 
+  }
+
+
+  //NOTICIAS
 
   guardarNoticias() {
     if (this.listaParrafos.length > 0) {
       const formData = new FormData();
       formData.append('file', this.procesarFoto);
-
       this.fotoServices.postFotos(formData).subscribe(respuesta => {
         // Asignar la URL de la imagen
+        console.log(respuesta.url)
         this.noticias.portadaNoticia = respuesta.url;
+        
         // guardar foto
-        this.noticiasServices.postNoticias(this.noticias, this.nombreEmpresa).subscribe(resultado => {
-          const idNoticia = resultado.idNoticia; // Capturar el ID de la noticia
-          console.log(idNoticia);
-          // Mostrar una notificación de éxito
-          Swal.fire({
-            position: 'top-right',
-            icon: 'success',
-            title: 'Noticia Creada Exitosamente',
-            showConfirmButton: false,
-            timer: 1500,
-            background: '#ffff',
-            iconColor: '#4CAF50',
-            padding: '1.25rem',
-            width: '20rem',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-          });
-          if (idNoticia !== undefined) {
-            console.log('ID de la noticia:', idNoticia);
-            this.registrarNoticia(idNoticia);
-          } else {
-            console.error('El ID de la noticia es undefined');
-          }
+        this.noticiasServices.postNoticias(this.noticias, this.nombreEmpresa).subscribe(
+          (data) => {
+            if (data != null) {
+              this.noticias = data;
+
+              Swal.fire({
+                position: 'top-right',
+                icon: 'success',
+                title: 'Datos noticia guardados exitosamente',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#ffff',
+                iconColor: '#4CAF50',
+                padding: '1.25rem',
+                width: '20rem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+              });
+
+            this.registrarNoticia(Number(data.idNoticia));
+
+            }
         }, error => {
           // Mostrar una notificación de error
           Swal.fire({
@@ -146,6 +158,7 @@ export class CrearNoticiasComponent implements OnInit {
         // Mostrar una notificación de error
         alert('No se pudo subir la imagen');
       });
+
     } else {
       // Mostrar una notificación de error
       Swal.fire({
@@ -159,6 +172,54 @@ export class CrearNoticiasComponent implements OnInit {
     }
   }
 
+  almacenarFotoNoticia() {
+    const formData = new FormData();
+    formData.append('file', this.procesarFoto);
+    this.fotoServices.postFotos(formData).subscribe(respuesta => {
+      // Asignar la URL de la imagen
+      console.log(respuesta.url);
+      this.fotosNoticias.fotosNoticia = respuesta.url;
+      console.log(this.fotosNoticias);
+      this.subirFotosNoticias();
+    }, error => {
+      // Mostrar una notificación de error
+      alert('No se pudo subir la imagen');
+    });
+  }
+  
+  subirFotosNoticias() {
+    console.log(this.idNoticia);
+    console.log(this.fotosNoticias)
+    this.fotosNoticiasServices.postFotosNoticias(this.fotosNoticias, Number(this.noticias.idNoticia)).subscribe(resultado => {
+      console.log(this.idNoticia);
+  
+      // Mostrar una notificación de éxito
+      Swal.fire({
+        position: 'top-right',
+        icon: 'success',
+        title: 'Fotos de Noticia subidas exitosamente',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
+    }, error => {
+      // Mostrar una notificación de error
+      Swal.fire({
+        title: 'No se pudo guardar',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      });
+    });
+  }
+
   registrarNoticia(idNoticia: number) {
     this.listaParrafos.forEach(parrafo => {
       this.guardarParrafo(parrafo, idNoticia);
@@ -166,11 +227,13 @@ export class CrearNoticiasComponent implements OnInit {
   }
 
   guardarParrafo(parrafo: string, idNoticia: number) {
-    const parrafosObj: Parrafos = {
-      parrafo: parrafo
-    };
+    this.parrafoObject = {} as Parrafos;
+    this.parrafoObject.parrafo = parrafo;
+    // const parrafosObj: Parrafos = {
+    //   parrafo: parrafo
+    // };
 
-    this.parrafosServices.postParrafo(parrafosObj, idNoticia).subscribe(
+    this.parrafosServices.postParrafo(this.parrafoObject, idNoticia).subscribe(
       resultado => {
         console.log({ parrafo });
       }
@@ -196,5 +259,13 @@ export class CrearNoticiasComponent implements OnInit {
     }
 
   }
+
+
+  //fotos
+
+
+
+
 }
+
 

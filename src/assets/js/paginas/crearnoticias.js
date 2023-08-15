@@ -185,7 +185,6 @@ btnAgregar.addEventListener('click', function () {
 	  nuevaTarjeta.classList.add('card');
 	  nuevaTarjeta.innerHTML = `
 		<p class="nom">Parrafo</p>
-		<button class="botoncito">Quitar</button>
 		<div class="contenido-card">
 		  <textarea rows="5" type="text" name="ubicacion" id="txtarea"  ></textarea>
 		</div>
@@ -213,42 +212,31 @@ btnAgregar.addEventListener('click', function () {
 	}
   });
 
-// btnAgregar.addEventListener('click', function () {
-// 	const txtarea = document.getElementById('txtarea');
-// 	// Obtener la última tarjeta existente
-// 	const ultimaTarjeta = derecha.querySelector('.card:last-child');
 
-// 	console.log(txtarea); // Verificar si el elemento se está encontrando correctamente
-// 	if (txtarea) {
-// 		const contenido = txtarea.value;
-
-// 		// Crear una nueva tarjeta con el contenido del textarea
-// 		const nuevaTarjeta = document.createElement('div');
-// 		nuevaTarjeta.classList.add('card');
-// 		nuevaTarjeta.innerHTML = `
-// 		<p class="nom">Parrafo</p>
-// 		<button class="botoncito">Quitar</button>
-// 		<div class="contenido-card">
-// 			<textarea rows="5" type="text" name="ubicacion" id="txtarea"  ></textarea>
-// 		</div>
-//     `;
-// 		if (derecha) {
-// 			// Agregar la nueva tarjeta debajo de la última tarjeta
-// 			derecha.insertBefore(nuevaTarjeta, ultimaTarjeta.nextElementSibling);
-
-
-// 			// Agregar controlador de eventos para el botón "quitar"
-// 			const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
-// 			btnQuitar.addEventListener('click', function () {
-// 				nuevaTarjeta.remove();
-// 			});
-
-// 			// Limpiar el contenido del textarea
-// 			txtarea.value = '';
-// 		} else {
-// 			console.error('No se encontró el elemento derecha.');
-// 		}
-// 	} else {
-// 		console.error('No se encontró el elemento txtarea.');
-// 	}
-// });
+  document.getElementById('btnfotos').addEventListener('click', function() {
+	var inputFotos = document.getElementById('fotos');
+	var files = inputFotos.files; // Obtener los archivos seleccionados
+  
+	for (var i = 0; i < files.length; i++) {
+	  var file = files[i];
+	  var reader = new FileReader();
+  
+	  reader.onload = function(e) {
+		var previewCard = document.createElement('div');
+		previewCard.classList.add('preview-card');
+		previewCard.style.display = 'inline-block'; // Establecer el estilo de visualización en línea
+		
+		var img = document.createElement('img');
+		img.src = e.target.result;
+		img.alt = 'Previsualización de la foto';
+		img.classList.add('preview-image');
+		img.style.width = '400px'; // Establecer el ancho de la imagen
+		img.style.height = '400px'; 
+		previewCard.appendChild(img);
+		
+		document.getElementById('previsualizacion').appendChild(previewCard);
+	  };
+  
+	  reader.readAsDataURL(file);
+	}
+  });
