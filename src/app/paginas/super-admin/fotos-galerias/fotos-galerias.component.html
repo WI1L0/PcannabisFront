@@ -1,1 +1,24 @@
-<p>fotos-galerias works!</p>
+<div class="primero">
+    <div class="container">
+        <form id="contact">
+            <h3>Usuario</h3>
+            <div class="texto">
+                <div class="contentBlog">
+                    <!-- PAGINACION CARDS NOTICIAS -->
+                    <div class="row">
+                        <div class="col-2" *ngFor="let Fempresas of FotosEmpresasList" style="padding: 10px;">
+                            <div class="card">
+                                <div class="card_image"><img [src]=" cuerpoUrlFoto + Fempresas.fotoEmpresa "style="height: 200px;"
+                                        (alt)="Fempresas.fotoEmpresa">
+                                </div>
+                                <div class="card_content">
+                                    <button class="btn card_btn">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
