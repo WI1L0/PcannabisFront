@@ -41,36 +41,36 @@ $(".next").click(function(){
 	});
 });
 
-$(".previous").click(function () {
-	if (animating) return false;
+$(".previous").click(function(){
+	if(animating) return false;
 	animating = true;
-
+	
 	current_fs = $(this).parent();
 	previous_fs = $(this).parent().prev();
-
+	
 	//de-activate current step on progressbar
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
+	
 	//show the previous fieldset
-	previous_fs.show();
+	previous_fs.show(); 
 	//hide the current fieldset with style
-	current_fs.animate({ opacity: 0 }, {
-		step: function (now, mx) {
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
 			//as the opacity of current_fs reduces to 0 - stored in "now"
 			//1. scale previous_fs from 80% to 100%
 			scale = 0.8 + (1 - now) * 0.2;
 			//2. take current_fs to the right(50%) - from 0%
-			left = ((1 - now) * 50) + "%";
+			left = ((1-now) * 50)+"%";
 			//3. increase opacity of previous_fs to 1 as it moves in
 			opacity = 1 - now;
-			current_fs.css({ 'left': left });
-			previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
-		},
-		duration: 800,
-		complete: function () {
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
 			current_fs.hide();
 			animating = false;
-		},
+		}, 
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
@@ -121,5 +121,32 @@ btnAgregar.addEventListener('click', function () {
     console.error('No se encontró el elemento txtarea.');
   }
 });
+
+const cardContainer = document.getElementById('card-container');
+
+if (cardContainer) {
+  listaParrafos.forEach(parrafo => {
+    const nuevaTarjeta = document.createElement('div');
+    nuevaTarjeta.classList.add('card');
+    nuevaTarjeta.innerHTML = `
+      <p class="nom">Parrafo</p>
+      <button class="botoncito">Quitar</button>
+      <div class="contenido-card">
+        <textarea placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea" readonly>${parrafo.parrafo}</textarea>
+      </div>
+    `;
+    
+    // Agregar la nueva tarjeta al contenedor
+    cardContainer.appendChild(nuevaTarjeta);
+    
+    // Agregar controlador de eventos para el botón "quitar"
+    const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
+    btnQuitar.addEventListener('click', function () {
+      nuevaTarjeta.remove();
+    });
+  });
+} else {
+  console.error('No se encontró el elemento card-container.');
+}
 
 //

@@ -16,21 +16,26 @@
                     </ul>
                     <!-- fieldsets -->
                     <fieldset>
+                        
                         <h2 class="fs-title">Datos de Noticia</h2>
-                        <input type="text" name="Titulo" placeholder="Título" required />
-                        <input type="date" name="Fecha" placeholder="Fecha" required />
-                        <input type="text" name="Ubicación" placeholder="Ubicación" required />
-                        <input type="text" name="PreDescripción" placeholder="Pre Descripción" required />
+                        <input type="text" name="Titulo" value="{{ noticia.tituloNoticia }}" placeholder="Título" required />
+                        <input type="date" name="Fecha" [value]="noticia.fechaNoticia" placeholder="Fecha" required /> 
+                        <input type="text" name="Ubicación" value="{{ noticia.ubicacionNoticia }}" placeholder="Ubicación" required />
+                        <input type="text" name="PreDescripción" value="{{ noticia.preDescripcionNoticia }}" placeholder="PreDescripción" required />
                         <div>
                             <h2 class="fs-title">Portada de Noticia</h2>
                             <form>
                                 <label for="foto">Seleccionar foto:</label>
                                 <div class="row">
-                                    <input type="file" name="foto" id="foto" accept="image/*"
-                                        (change)="seleccionarFoto($event)">
+                                    <input type="file" name="foto" id="foto" value="noticia.portadaNoticia" accept="image/*"
+                                       >
+                                       <div class="fotoDetalle">
+                                        <img class="fondo" *ngIf="imgprincipal5 != ''" src="{{imgprincipal5}}" alt="">
+                                      </div>
+                                       
                                 </div>
                                 <div>
-                                    <button ame="botoncito" class="botoncito" (click)="borrarImagen()">Borrar
+                                    <button ame="botoncito" class="botoncito" >Borrar
                                         imagen</button>
                                     <!-- <button ame="botoncito" class="botoncito" (click)="almacenarFoto()">guardar imagen</button> -->
                                 </div>
@@ -54,8 +59,8 @@
                                     <p class="nom">Parrafo</p>
                                     <button class="botoncito">Quitar</button>
                                     <div class="contenido-card">
-                                        <textarea required placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea"
-                                            readonly>HOLAAAAAAAAAAAAAAAAAAA</textarea>
+                                        <textarea required placeholder="Parrafo" type="text" name="titulo_noti" class="txtarea" 
+                                            readonly></textarea>
                                     </div>
                                 </div>
                             </div>

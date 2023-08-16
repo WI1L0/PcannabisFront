@@ -105,6 +105,14 @@ export class ListarNoticiasComponent implements OnInit {
   }
   // PASAR A DETALLE NOTICIA
 
+  //PASAR A EDITAR
+  setNoticiaAEditar(noticia: Noticias) {
+    localStorage.removeItem('noticiaAdm');
+    localStorage.setItem('noticiaAdm', JSON.stringify(noticia));
+    this.router.navigate(['/cbd/admin/noticias/editar']);
+  }
+  //PASAR A EDITAR
+
   // ELIMINAR NOTICIA
   confirmEliminar(noti: Noticias) {
     Swal.fire({
@@ -170,7 +178,7 @@ export class ListarNoticiasComponent implements OnInit {
     Swal.fire({
       title: '¿Estas seguro de ' + `${mensajeTitle}` + ' esta noticia?',
       text:
-        'las noticias ocultas ' +
+        'Las noticias ocultas ' +
         `${mensajeText}` +
         ' ser vistas por el publico en general',
       icon: 'warning',
