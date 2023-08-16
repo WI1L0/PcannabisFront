@@ -79,9 +79,9 @@
         <div class="container text-center">
           <div class="row">
             <div class="col-md-4">
-              <img [src]=" cuerpoUrlFoto + usuariosObject.fotoUsuario "
-                                        (alt)="usuariosObject.fotoUsuario" style="padding: 20px; max-width: 180px;" />
-                                        <br>
+              <img [src]=" cuerpoUrlFoto + usuariosObject.fotoUsuario " (alt)="usuariosObject.fotoUsuario"
+                style="padding: 20px; max-width: 260px;" />
+              <br>
               <label for="inputNombre" class="form-label">Nombre de usuario</label>
               <input type="text" class="form-control" id="inputNombre" value="{{usuariosObject.nombreUsuario}}" required
                 disabled="true">
@@ -134,11 +134,6 @@
                   <input type="text" class="form-control" id="inputBarrio" value="{{usuariosObject.personas?.barrio}}"
                     required disabled="true">
                 </div>
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="row">
                 <div class="col-md-12">
                   <label for="inputReferencia" class="form-label">Referencia</label>
                   <textarea type="text" class="form-control" id="inputReferencia"
@@ -146,7 +141,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
