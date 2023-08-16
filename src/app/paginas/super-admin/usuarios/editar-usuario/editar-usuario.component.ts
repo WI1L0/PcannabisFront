@@ -26,7 +26,6 @@ export class EditarUsuarioComponent implements OnInit {
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
-  urlFoto: any;
   editFoto: boolean = false;
 
   cuerpoUrlFoto: string = baserUrlImagenes;
@@ -103,8 +102,6 @@ export class EditarUsuarioComponent implements OnInit {
         this.fotoServices.postFotos(formData).subscribe((data) => {
           if (data != null) {
             nameFoto = data;
-            console.log(nameFoto.url + "           fffffffffffffffffff");
-            this.urlFoto = nameFoto.url;
             if (nameFoto.url) {
               resolve(nameFoto.url); // Resuelve la promesa con el valor de nameFoto.url
             } else {

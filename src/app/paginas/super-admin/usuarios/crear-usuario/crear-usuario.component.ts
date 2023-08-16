@@ -32,7 +32,6 @@ export class CrearUsuarioComponent implements OnInit {
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
-  urlFoto: any;
 
 
   //implementar js en los componentes
@@ -83,20 +82,27 @@ export class CrearUsuarioComponent implements OnInit {
 
   }
 
-  almacenarFoto() {
-    if (this.procesarFoto) {
-      const formData = new FormData();
-      formData.append('file', this.procesarFoto, this.procesarFoto.name);
+  almacenarFoto(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      if (this.procesarFoto) {
+        const formData = new FormData();
+        formData.append('file', this.procesarFoto, this.procesarFoto.name);
 
-      let nameFoto = new Fotos;
-      this.fotoServices.postFotos(formData).subscribe((data) => {
-        if (data != null) {
-          nameFoto = data;
-          console.log(nameFoto.url + "           fffffffffffffffffff")
-          this.urlFoto = nameFoto.url;
-        }
-      });
-    }
+        let nameFoto = new Fotos();
+        this.fotoServices.postFotos(formData).subscribe((data) => {
+          if (data != null) {
+            nameFoto = data;
+            if (nameFoto.url) {
+              resolve(nameFoto.url); // Resuelve la promesa con el valor de nameFoto.url
+            } else {
+              resolve("");
+            }
+          }
+        }, (error) => {
+          reject(error);
+        });
+      }
+    });
   }
 
   borrarImagen() {
@@ -134,51 +140,55 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   validarContra() {
-      const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
-      this.valContra = regex.test(String(this.usuarioData.passwordUsuario));
-      if(!this.valContra){
-        Swal.fire({
-          position: 'top-right',
-          icon: 'error',
-          title: 'La contrase;a debe tener minimo una Mayuscula, Minuscula, un numero un caracter y 8 dijitos',
-          showConfirmButton: false,
-          timer: 1500,
-          background: '#ffff',
-          iconColor: '#4CAF50',
-          padding: '1.25rem',
-          width: '20rem',
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-        });
-      }
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
+    this.valContra = regex.test(String(this.usuarioData.passwordUsuario));
+    if (!this.valContra) {
+      Swal.fire({
+        position: 'top-right',
+        icon: 'error',
+        title: 'La contrase;a debe tener minimo una Mayuscula, Minuscula, un numero un caracter y 8 dijitos',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
+    }
   }
 
   almacenarNew() {
 
-    if(this.valContra){
-    this.almacenarFoto();
+    if (this.valContra) {
+      this.almacenarFoto();
 
-    if (this.cedulaRegistrada) {
-      this.almacenarUsuario();
+      if (this.cedulaRegistrada) {
+        this.almacenarUsuario();
 
-    } else {
-      if (this.existCorreov == false) {
-        this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
-        this.personasServices.postPersona(this.personaObject).subscribe(
-          (data) => {
-            if (data != null) {
-              this.personaObject = data;
-              this.almacenarUsuario();
+      } else {
+        if (this.existCorreov == false) {
+          this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
+          this.personasServices.postPersona(this.personaObject).subscribe(
+            (data) => {
+              if (data != null) {
+                this.personaObject = data;
+                this.almacenarUsuario();
+              }
             }
-          }
-        )
+          )
+        }
       }
     }
   }
-  }
 
   almacenarUsuario() {
-    this.usuarioData.fotoUsuario = this.urlFoto;
+    this.almacenarFoto().then(
+      (url) => {
+        this.usuarioData.fotoUsuario = url;
+      }
+    )
     this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
       (data2) => {
         if (data2 != null) {
@@ -196,7 +206,7 @@ export class CrearUsuarioComponent implements OnInit {
             allowEscapeKey: false,
           });
 
-            this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+          this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
         }
       }
     )
