@@ -20,4 +20,12 @@ export class SfotosEmpresasService {
         return this.http.get<FotosEmpresas[]>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/${categoria}/`);
     }
 
+    public deleteFotosEmpresas(idFtEmpresas: number) {
+        return this.http.delete<Boolean>(`${baserUrl + this.URL}/Definitivo/${idFtEmpresas}`);
+    }
+
+    public saveFotosEmpresas(ftEmpresas: FotosEmpresas, empres: string) {
+        return this.http.post<FotosEmpresas>(`${baserUrl + this.URL}/save/${empres}/`, ftEmpresas);
+    }
+
 }
