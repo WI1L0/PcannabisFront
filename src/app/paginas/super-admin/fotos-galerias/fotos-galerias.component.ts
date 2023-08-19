@@ -28,7 +28,7 @@ export class FotosGaleriasComponent implements OnInit {
   // CUERPO DE LA URL IMAGENES
   cuerpoUrlFoto: string = baserUrlImagenes;
 
-FotoEmpresasObject: FotosEmpresas = new FotosEmpresas();
+  FotoEmpresasObject: FotosEmpresas = new FotosEmpresas();
 
   constructor(
     private loginServices: SloginService,
@@ -54,7 +54,7 @@ FotoEmpresasObject: FotosEmpresas = new FotosEmpresas();
         if (data != null) {
           this.FotosEmpresasList = data;
           console.log(this.FotosEmpresasList);
-          if(this.FotosEmpresasList.length < 5){
+          if (this.FotosEmpresasList.length < 5) {
             this.guardarsi = false;
           } else {
             this.guardarsi = true;
@@ -75,16 +75,16 @@ FotoEmpresasObject: FotosEmpresas = new FotosEmpresas();
   }
   // LIMPIAR LISTAS VARIABLES
 
-  deleteFotos(ft: FotosEmpresas){
-   this.fotosEmpresasServices.deleteFotosEmpresas(Number(ft.idFotoEmpresa)).subscribe(
-    (data) => {
-      if (data != null){
-        this.obtenerFotos();
-      } else {
-        console.log("error almacenar fotos empresas...")
+  deleteFotos(ft: FotosEmpresas) {
+    this.fotosEmpresasServices.deleteFotosEmpresas(Number(ft.idFotoEmpresa)).subscribe(
+      (data) => {
+        if (data != null) {
+          this.obtenerFotos();
+        } else {
+          console.log("error almacenar fotos empresas...")
+        }
       }
-    }
-   )
+    )
   }
 
   seleccionarFoto(evento: Event) {
@@ -131,23 +131,30 @@ FotoEmpresasObject: FotosEmpresas = new FotosEmpresas();
     this.imagenPreview = null;
   }
 
-  saveFotosEmpresas(categoria: string){
+  saveFotosEmpresas(categoria: string) {
     this.almacenarFoto().then(
       (url) => {
-        this.FotoEmpresasObject.fotoEmpresa = url;
-      }
-    )
-    this.FotoEmpresasObject.categoriaFotoEmpresa = categoria;
-    this.fotosEmpresasServices.saveFotosEmpresas(this.FotoEmpresasObject, nameEmpresa).subscribe(
-      (data) => {
-        if (data != null){
-          this.borrarImagen();
-          this.obtenerFoto();
+        if (url != null){
+          this.FotoEmpresasObject.fotoEmpresa = url;
+
+          this.FotoEmpresasObject.categoriaFotoEmpresa = categoria;
+          this.fotosEmpresasServices.saveFotosEmpresas(this.FotoEmpresasObject, nameEmpresa).subscribe(
+            (data) => {
+              if (data != null) {
+                this.borrarImagen();
+                this.obtenerFotos()
+              } else {
+                console.log("foto empresas no almacenada");
+              }
+            }
+          )
         } else {
-          console.log("foto empresas no almacenada");
+          console.log("foto empresas no almacenada 2");
         }
+
       }
     )
+
   }
 
 }
