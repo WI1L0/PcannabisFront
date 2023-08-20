@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Fotos } from 'src/app/modelos/Fotos';
 import { FotosEmpresas } from 'src/app/modelos/FotosEmpresas';
-import { FotosEmpresasResponse } from 'src/app/modelos/Respuestas/FotosEmpresasResponse';
+import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import nameEmpresa from 'src/app/services/defauld/EmpresaName';
 import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 import { SfotosService } from 'src/app/services/s-fotos.service';
@@ -23,8 +23,13 @@ export class FotosGaleriasComponent implements OnInit {
   procesarFoto: any;
   imagenPreview: any;
 
+  btnEquipo: boolean = true;
+  btnAdministrativo: boolean = false;
+  btnNunakay: boolean = false;
+
   guardarsi: boolean = true;
 
+  disableBtnGuardar: boolean = true;
   // CUERPO DE LA URL IMAGENES
   cuerpoUrlFoto: string = baserUrlImagenes;
 
@@ -34,27 +39,30 @@ export class FotosGaleriasComponent implements OnInit {
     private loginServices: SloginService,
     private router: Router,
     private fotoServices: SfotosService,
-    private fotosEmpresasServices: SfotosEmpresasService
-  ) { }
+    private fotosEmpresasServices: SfotosEmpresasService,
+  ) {
+  }
 
   ngOnInit(): void {
     if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/cbd/login']);
     }
 
-    this.obtenerFotos();
+    this.obtenerFotos('Equipo');
 
   }
 
   // MOSTRAR FOTOS
-  obtenerFotos() {
+  obtenerFotos(tipo: string) {
     this.limpiarAll();
-    this.fotosEmpresasServices.getFotosEmpresas(nameEmpresa, "instalaciones").subscribe(
+    this.fotosEmpresasServices.getFotosEmpresas(nameEmpresa, tipo).subscribe(
       (data) => {
         if (data != null) {
           this.FotosEmpresasList = data;
           console.log(this.FotosEmpresasList);
-          if (this.FotosEmpresasList.length < 5) {
+          if (this.FotosEmpresasList.length < 4 && tipo != 'Administrativo') {
+            this.guardarsi = false;
+          } else if (tipo === 'Administrativo') {
             this.guardarsi = false;
           } else {
             this.guardarsi = true;
@@ -79,7 +87,7 @@ export class FotosGaleriasComponent implements OnInit {
     this.fotosEmpresasServices.deleteFotosEmpresas(Number(ft.idFotoEmpresa)).subscribe(
       (data) => {
         if (data != null) {
-          this.obtenerFotos();
+          this.ObtenerFotosRecargar();
         } else {
           console.log("error almacenar fotos empresas...")
         }
@@ -131,18 +139,42 @@ export class FotosGaleriasComponent implements OnInit {
     this.imagenPreview = null;
   }
 
-  saveFotosEmpresas(categoria: string) {
+  preSaveFotosEmpresas() {
+    let cont = this.FotosEmpresasList.length;
+    this.disableBtnGuardar = false;
+    let categoria = '';
+
+    if (this.btnNunakay) {
+      categoria = 'Nunakay';
+    } else if (this.btnAdministrativo) {
+      categoria = 'Administrativo';
+    } else if (this.btnEquipo) {
+      categoria = 'Equipo';
+    }
+
+    if(cont < 4 && categoria != 'Administrativo'){
+      this.saveFotosEmpresas(categoria);
+    }
+
+    if(categoria === 'Administrativo'){
+      this.saveFotosEmpresas(categoria);
+    }
+
+  }
+
+  saveFotosEmpresas(categoria: string){
     this.almacenarFoto().then(
       (url) => {
-        if (url != null){
+        if (url != null) {
           this.FotoEmpresasObject.fotoEmpresa = url;
 
           this.FotoEmpresasObject.categoriaFotoEmpresa = categoria;
           this.fotosEmpresasServices.saveFotosEmpresas(this.FotoEmpresasObject, nameEmpresa).subscribe(
             (data) => {
               if (data != null) {
+                this.disableBtnGuardar = true;
                 this.borrarImagen();
-                this.obtenerFotos()
+                this.ObtenerFotosRecargar()
               } else {
                 console.log("foto empresas no almacenada");
               }
@@ -157,4 +189,38 @@ export class FotosGaleriasComponent implements OnInit {
 
   }
 
+  gtnBtn(tipo: string) {
+    if (tipo === 'N') {
+      this.btnNunakay = !this.btnNunakay;
+      this.obtenerFotos('Nunakay');
+      if (this.btnNunakay) {
+        this.btnEquipo = false;
+        this.btnAdministrativo = false;
+      }
+    } else if (tipo === 'A') {
+      this.btnAdministrativo = !this.btnAdministrativo;
+      this.obtenerFotos('Administrativo');
+      if (this.btnAdministrativo) {
+        this.btnEquipo = false;
+        this.btnNunakay = false;
+      }
+    } else if (tipo === 'E') {
+      this.btnEquipo = !this.btnEquipo;
+      this.obtenerFotos('Equipo');
+      if (this.btnEquipo) {
+        this.btnNunakay = false;
+        this.btnAdministrativo = false;
+      }
+    }
+  }
+
+  ObtenerFotosRecargar() {
+    if (this.btnNunakay) {
+      this.obtenerFotos('Nunakay');
+    } else if (this.btnAdministrativo) {
+      this.obtenerFotos('Administrativo');
+    } else if (this.btnEquipo) {
+      this.obtenerFotos('Equipo');
+    }
+  }
 }

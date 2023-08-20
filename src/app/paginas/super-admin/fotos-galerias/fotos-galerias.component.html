@@ -1,50 +1,76 @@
 <div class="primero">
     <div class="container">
         <form id="contact">
-            <h3>Usuario</h3>
+            <h3 *ngIf="btnEquipo">Gestion de galeria EQUIPO</h3>
+            <h3 *ngIf="btnAdministrativo">Gestion de galeria ADMINISTRATIVO</h3>
+            <h3 *ngIf="btnNunakay">Gestion de galeria NUNAKAY</h3>
             <div class="texto">
                 <div class="contentBlog">
                     <!-- PAGINACION CARDS NOTICIAS -->
-
-                    <div class="row">
-                        <div class="col-4">
-                            <div>
-                                <form>
-                                    <div class="row">
-                                        <div *ngIf="!imagenPreview">
-                                            <input type="file" name="foto" id="foto" accept="image/*" required
-                                                (change)="seleccionarFoto($event)">
-                                        </div>
-                                        <div *ngIf="guardarsi">
-                                            <img [src]="imagenPreview" *ngIf="imagenPreview"
-                                            style="padding: 20px; height: 200px;">
-                                        </div>
-                                    </div>
-                                    <div class="row" *ngIf="!guardarsi && imagenPreview">
-                                        <img [src]="imagenPreview" *ngIf="imagenPreview"
-                                            style="padding: 20px; height: 150px;">
-                                        <button name="submit" type="submit" id="contact-submit"
-                                            data-submit="...Guardando" 
-                                            (click)="saveFotosEmpresas('instalaciones')">Guardar</button>
-                                    </div>
-                                    <div>
-                                        <button name="submit" type="submit" id="contact-submit"
-                                            data-submit="...Guardando" (click)="borrarImagen()"
-                                            *ngIf="imagenPreview">Borrar Imagen</button>
-                                    </div>
-                                </form>
+                    <div class="row" style="padding: 50px;">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <button name="submit" type="submit" id="contact-submit-equipo" [class]="btnEquipo ? 'pressed' : ''" 
+                                    [disabled]="btnEquipo" data-submit="...Cargando" (click)="gtnBtn('E')">Equipo</button>
+                                </div>
+                                <div class="col-4">
+                                    <button name="submit" type="submit" id="contact-submit-administrador" [class]="btnAdministrativo ? 'pressed' : ''" 
+                                    [disabled]="btnAdministrativo" data-submit="...Cargando" (click)="gtnBtn('A')">Administrativo</button>
+                                </div>
+                                <div class="col-4">
+                                    <button name="submit" type="submit" id="contact-submit-nunakay" [class]="btnNunakay ? 'pressed' : ''" 
+                                    [disabled]="btnNunakay" data-submit="...Cargando" (click)="gtnBtn('N')">Nunakay</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-8">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
                             <div class="row">
-                                <div class="col-2" *ngFor="let Fempresas of FotosEmpresasList" style="padding: 10px;">
-                                    <div class="card">
-                                        <div class="card_image"><img [src]=" cuerpoUrlFoto + Fempresas.fotoEmpresa "
-                                                style="height: 150px;" (alt)="Fempresas.fotoEmpresa">
-                                        </div>
-                                        <div class="card_content">
-                                            <button class="btn card_btn"
-                                                (click)="deleteFotos(Fempresas)">Eliminar</button>
+                                <div class="col-4">
+                                    <div>
+                                        <form>
+                                            <div class="row">
+                                                <div *ngIf="!imagenPreview">
+                                                    <input type="file" name="foto" id="foto" accept="image/*" required
+                                                        (change)="seleccionarFoto($event)">
+                                                </div>
+                                                <div *ngIf="guardarsi">
+                                                    <img [src]="imagenPreview" *ngIf="imagenPreview"
+                                                        style="padding: 20px; height: 250px;">
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngIf="!guardarsi && imagenPreview">
+                                                <img [src]="imagenPreview" *ngIf="imagenPreview"
+                                                    style="padding: 20px; height: 200px;">
+                                                <button name="submit" type="submit" id="contact-submit"
+                                                    data-submit="...Guardando" [disabled]="!disableBtnGuardar"
+                                                    (click)="preSaveFotosEmpresas()">Guardar</button>
+                                            </div>
+                                            <div>
+                                                <button name="submit" type="submit" id="contact-submit"
+                                                    data-submit="...Guardando" (click)="borrarImagen()"
+                                                    *ngIf="imagenPreview">Borrar Imagen</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-3" *ngFor="let Fempresas of FotosEmpresasList"
+                                            style="padding: 10px;">
+                                            <div class="card">
+                                                <div class="card_image"><img
+                                                        [src]=" cuerpoUrlFoto + Fempresas.fotoEmpresa "
+                                                        style="height: 200px;" (alt)="Fempresas.fotoEmpresa">
+                                                </div>
+                                                <div class="card_content">
+                                                    <button class="btn card_btn"
+                                                        (click)="deleteFotos(Fempresas)">Eliminar</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

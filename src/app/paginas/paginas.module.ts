@@ -19,6 +19,7 @@ import { AllNoticiasComponent } from './all-noticias/all-noticias.component';
 // import { EditarUsuarioComponent } from './admin/usuarios/editar-usuario/editar-usuario.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { EditarUsuarioComponent } from './super-admin/usuarios/editar-usuario/editar-usuario.component';
+import { AllProductosComponent } from './all-productos/all-productos.component';
 // import { authInterceptorProviders } from '../services/defauld/s-interceptor';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { EditarUsuarioComponent } from './super-admin/usuarios/editar-usuario/ed
     LoginComponent,
     DetalleNoticiasComponent,
     MenuAdminComponent,
+    AllProductosComponent,
     // DetallenoticiaComponent,
   ],
   imports: [

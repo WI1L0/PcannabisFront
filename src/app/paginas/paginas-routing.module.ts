@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { DetalleNoticiasComponent } from './detalle-noticias/detalle-noticias.component'; 
 import { AllNoticiasComponent } from './all-noticias/all-noticias.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { AllProductosComponent } from './all-productos/all-productos.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent},
   { path: 'cannabis', component: CcannabisComponent},
   { path: 'all-noticias', component: AllNoticiasComponent},
+  { path: 'all-productos', component: AllProductosComponent},
   { path: 'detalle-noticias', component: DetalleNoticiasComponent},
   { path: 'login', component: LoginComponent},
   { path: 'panel', component: MenuAdminComponent},
