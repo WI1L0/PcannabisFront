@@ -1,1 +1,89 @@
-<p>listar-productos works!</p>
+<!-- ALL -->
+<div class="divPrimero">
+    <div class="divSegundo">
+        <!-- TABLA -->
+        <div class="row">
+            <h2>PRODUCTOS</h2>
+            <tr>
+                <div class="row">
+                    <div class="">
+                        <table class="fl-table">
+                            <thead>
+                                <tr>
+                                    <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
+                                        (change)="obtenerProductos()">
+                                        <option disabled selected>Seleccione una opción</option>
+                                        <option value="all">Todo</option>
+                                        <option value="activo">Activos</option>
+                                        <option value="desactivo">Desactivos</option>
+                                    </select>
+                                </tr>
+                                <div class="search-container">
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" name="usuario" placeholder="Nombre, Fecha" id="busqueda">
+                                    <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
+                                    <td class="all"><a (click)="obtenerProductos()" class="a">Buscar</a></td>
+                                </div>
+                                <td class="all"><a href="/cbd/admin/productos/crear" class="a">Agregar</a></td>
+                                <td class="contenedor">
+                                </td>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </tr>
+
+        </div>
+
+
+        <!-- <div class="divPrimero">
+    <div class="divSegundo"> -->
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Pre Descripcion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of listProductos">
+                        <td class="no">{{producto.nombreProducto}}</td>
+                        <td class="no">{{producto.preDescripcionProducto}}</td>
+                        <td *ngIf="producto.estOcultoVisibleProducto == true"><a (click)="setProductosAEditar(producto)"  class="a">Editar</a> </td>
+                        <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a"
+                                (click)="confirmEliminar(producto)">Eliminar</a> </td>
+                        <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a"
+                                (click)="alertOcultarMostrar(producto, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
+                        </td>
+                        <td *ngIf="producto.estOcultoVisibleProducto == true"><a class="a"
+                                (click)="alertOcultarMostrar(producto, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
+                        </td>
+                        <td><a class="a" (click)="setProductosADetalle(producto)">Ver</a>
+                        </td>
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+
+        <div class="button-container">
+            <div *ngIf="pagActua != 0; else elseButonPrevio">
+                <button class="button button1" (click)="previoPagina()">
+                    << </button>
+            </div>
+            <ng-template #elseButonPrevio>
+                <button class="button button1" style="opacity: 0.5">
+                    <<< </button>
+            </ng-template>
+            <div *ngIf="pagActua != pagExist; else elseButtonNext">
+                <button class="button button2" (click)="nextPagina()">
+                    >>
+                </button>
+            </div>
+            <ng-template #elseButtonNext>
+                <button class="button button2" style="opacity: 0.5">>></button>
+            </ng-template>
+        </div>
+
+    </div>
+</div>

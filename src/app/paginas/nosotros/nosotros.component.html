@@ -70,10 +70,10 @@
         <section class="equipoSection">
             <!-- EQUIPO -->
             <div class="container">
-                <span class="image"><img src="../../../assets/img/eq1.jpg"></span>
-                <span class="image"><img src="../../../assets/img/eq2.jpg"></span>
-                <span class="image"><img src="../../../assets/img/eq3.jpg"></span>
-                <span class="image"><img src="../../../assets/img/eq4.jpg"></span>
+                <span class="image"><img [src]=" cuerpoUrlFoto + fotoequipo1 "></span>
+                <span class="image"><img [src]=" cuerpoUrlFoto + fotoequipo2 "></span>
+                <span class="image"><img [src]=" cuerpoUrlFoto + fotoequipo3 "></span>
+                <span class="image"><img [src]=" cuerpoUrlFoto + fotoequipo4 "></span>
             </div>
             <!-- EQUIPO -->
         </section>
@@ -93,20 +93,35 @@
         <section class="sectionImagenes">
             <!-- IMAGENES -->
             <div class="bodyImagenes">
-                <div id="galeria">
-                    <figure id="ampliacao">
-                        <img src="../../../assets/img/adm1.jpg" alt="" />
+                <div class="row">
+                    <div class="col-12">
+                        <!-- <img id="galeria" [src]="cuerpoUrlFoto + fotoAdministrativoInicio " alt="">
+                <nav>
+                    <ul>
+                        <li *ngFor="let fotosAdm of fotosListAdministrativo"><a
+                                (click)="cargarfoto(fotosAdm)"><img
+                                    [src]="cuerpoUrlFoto + fotosAdm.fotoEmpresa" alt=""></a>
+                        </li>
+                    </ul>
+                </nav> -->
+
+ <div id="galeria">
+                    <figure id="ampliacao" style="max-width: 1000px; max-height: 1000px;">
+                        <img [src]="cuerpoUrlFoto + fotoAdministrativoInicio " alt="" />
                     </figure>
                     <nav id="miniaturas">
-                        <a href="../../../assets/img/adm2.jpg"><img src="../../../assets/img/adm2.jpg" alt="" /></a>
-                        <a href="../../../assets/img/adm3.jpg"><img src="../../../assets/img/adm3.jpg" alt="" /></a>
-                        <a href="../../../assets/img/adm4.jpg"><img src="../../../assets/img/adm4.jpg" alt="" /></a>
-                        <a href="../../../assets/img/instalaciones.jpeg"><img
-                                src="../../../assets/img/instalaciones.jpeg" alt="" /></a>
-                        <a href="../../../assets/img/Empresanuna.jpeg"><img src="../../../assets/img/Empresanuna.jpeg"
-                                alt="" /></a>
+                        <a *ngFor="let fotosAdm of fotosListAdministrativo" (click)="cargarfoto(fotosAdm)">
+                            <img [src]="cuerpoUrlFoto + fotosAdm.fotoEmpresa" alt="" />
+                        </a>
                     </nav>
                 </div>
+
+                    </div>
+                </div>
+                
+
+
+               
             </div>
             <!-- IMAGENES -->
         </section>
@@ -257,14 +272,15 @@
                                 *ngIf="submitted && !contactanosObject.detalleContactanos">Observaciones is
                                 required.</small>
                         </fieldset> -->
-                        
+
                         <div class="input-box">
                             <input type="text" placeholder="Name*" required class="campos" tabindex="1"
                                 [(ngModel)]="contactanosObject.nombreContactanos">
                         </div>
                         <div class="input-box">
                             <small class="p-error"
-                                 *ngIf="submitted && !contactanosObject.nombreContactanos && mensajeUsername != true">Observaciones is
+                                *ngIf="submitted && !contactanosObject.nombreContactanos && mensajeUsername != true">Observaciones
+                                is
                                 required.</small>
                         </div>
                         <div class="input-box">
@@ -273,7 +289,8 @@
                         </div>
                         <div class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.emailContactanos && mensajeEmail != true">Observaciones is
+                                *ngIf="submitted && !contactanosObject.emailContactanos && mensajeEmail != true">Observaciones
+                                is
                                 required.</small>
                         </div>
                         <div class="input-box">
@@ -282,7 +299,8 @@
                         </div>
                         <div class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.celularContactanos && mensajeCelular != true">Observaciones is
+                                *ngIf="submitted && !contactanosObject.celularContactanos && mensajeCelular != true">Observaciones
+                                is
                                 required.</small>
                         </div>
                         <div class="input-box">
@@ -291,7 +309,8 @@
                         </div>
                         <div class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.asuntoContactanos && mensajeAsunto != true">Observaciones is
+                                *ngIf="submitted && !contactanosObject.asuntoContactanos && mensajeAsunto != true">Observaciones
+                                is
                                 required.</small>
                         </div>
                         <div class="input-box">
@@ -300,9 +319,10 @@
                         </div>
                         <div class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.detalleContactanos && mensajeDescripcion != true">Observaciones is
-                                required.</small> 
-                        <!-- </div>
+                                *ngIf="submitted && !contactanosObject.detalleContactanos && mensajeDescripcion != true">Observaciones
+                                is
+                                required.</small>
+                            <!-- </div>
 
                         <body>
                             <div class="text sign-up-text" class="texto">¿Quieres ser nuestro distribuidor? <a

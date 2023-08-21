@@ -4,7 +4,7 @@ import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import { ScontactanosService } from 'src/app/services/s-contactanos.service';
 import { SloginService } from 'src/app/services/s-login.service';
 import { Router } from '@angular/router';
-import nameEmpresa from 'src/app/services/defauld/EmpresaName';
+import { nameEmpresa } from 'src/app/services/defauld/EmpresaName';
 import Swal from 'sweetalert2';
 import { Contactanos } from 'src/app/modelos/Contactanos';
 

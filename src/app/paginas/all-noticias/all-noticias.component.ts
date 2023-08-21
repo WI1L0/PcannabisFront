@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Noticias } from 'src/app/modelos/Noticias';
 import { NoticiasResponse } from 'src/app/modelos/Respuestas/NoticiasResponse';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
-import nameEmpresa from 'src/app/services/defauld/EmpresaName';
+import { nameEmpresa } from 'src/app/services/defauld/EmpresaName';
 import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 import { SfotosService } from 'src/app/services/s-fotos.service';
 import { SloginService } from 'src/app/services/s-login.service';

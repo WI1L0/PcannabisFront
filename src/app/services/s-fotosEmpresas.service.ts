@@ -16,7 +16,7 @@ export class SfotosEmpresasService {
 
     //OBTENEMOS LA LISTA DE IMAGENES DE Empresas
     public getFotosEmpresas(categoria: string, empresaName: string) {
-        return this.http.get<FotosEmpresas[]>(`${baserUrl + this.URL}/all/${empresaName}/${categoria}/`);
+        return this.http.get<FotosEmpresas[]>(`${baserUrl + this.URL}/all/categoria/${empresaName}/${categoria}/`);
     }
 
     public deleteFotosEmpresas(idFtEmpresas: number) {

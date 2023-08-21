@@ -8,18 +8,23 @@
 
 
 // IMAGENES
-function qs(selector) { return document.querySelector(selector); }
+// function cargarfoto(base, img) {
+//   document.getElementById("galeria").src = base + img;
+// }
+ 
 
-var imgAmpliada = qs("#ampliacao img");
-var miniaturas = qs("#miniaturas");
+// function qs(selector) { return document.querySelector(selector); }
 
-miniaturas.addEventListener("click", function(event){
-  event.preventDefault();
+// var imgAmpliada = qs("#ampliacao img");
+// var miniaturas = qs("#miniaturas");
 
-  var urlAmpliacao = event.target.parentNode.href;
-  imgAmpliada.src = urlAmpliacao;
+// miniaturas.addEventListener("click", function(event){
+//   event.preventDefault();
+
+//   var urlAmpliacao = event.target.parentNode.href;
+//   imgAmpliada.src = urlAmpliacao;
   
-}, true);
+// }, true);
 // IMAGENES
 
 

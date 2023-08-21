@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuariosResponse } from 'src/app/modelos/Respuestas/UsuariosResponse';
 import { Usuarios } from 'src/app/modelos/Usuarios';
-import nameEmpresa from 'src/app/services/defauld/EmpresaName';
+import { nameEmpresa } from 'src/app/services/defauld/EmpresaName';
 import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 import { SloginService } from 'src/app/services/s-login.service';
 import { SusuariosService } from 'src/app/services/s-usuarios.service';

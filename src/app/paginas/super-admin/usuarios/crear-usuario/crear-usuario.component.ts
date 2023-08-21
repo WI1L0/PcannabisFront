@@ -4,7 +4,7 @@ import { Fotos } from 'src/app/modelos/Fotos';
 import { Personas } from 'src/app/modelos/Personas';
 import { Usuarios } from 'src/app/modelos/Usuarios';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
-import nameEmpresa from 'src/app/services/defauld/EmpresaName';
+import { nameEmpresa } from 'src/app/services/defauld/EmpresaName';
 import { SfotosService } from 'src/app/services/s-fotos.service';
 import { SfotosNoticiasService } from 'src/app/services/s-fotosNoticias.service';
 import { SpersonasService } from 'src/app/services/s-personas.service';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Empresas } from 'src/app/modelos/Empresas';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
-import nameEmpresa from 'src/app/services/defauld/EmpresaName';
+import { nameEmpresa } from 'src/app/services/defauld/EmpresaName';
 import { SEmpresasService } from 'src/app/services/s-empresas.service';
 import { SloginService } from 'src/app/services/s-login.service';
 

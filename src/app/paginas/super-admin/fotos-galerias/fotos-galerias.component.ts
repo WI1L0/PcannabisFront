@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Fotos } from 'src/app/modelos/Fotos';
 import { FotosEmpresas } from 'src/app/modelos/FotosEmpresas';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
-import nameEmpresa from 'src/app/services/defauld/EmpresaName';
+import { nameEmpresa } from 'src/app/services/defauld/EmpresaName';
 import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 import { SfotosService } from 'src/app/services/s-fotos.service';
 import { SfotosEmpresasService } from 'src/app/services/s-fotosEmpresas.service';
