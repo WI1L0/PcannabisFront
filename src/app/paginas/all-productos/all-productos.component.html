@@ -1,174 +1,109 @@
 <!-- FONDO -->
 <div class="bodyfondo">
-  <div class="header">
-    <h1 class="header_logo">Resizing Fixed Header</h1>
-  </div>
   <div class="offset">
-
     <!-- Cards -->
-    <div class="cardsProduct">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2 col-md-6">
+    <section class="cardsView">
+      <div class="cardsHtml">
+        <div class="cardsBody">
+          <section class="app-main">
+            <div class="row">
+              <div class="col-sm-2 col-md-3" *ngFor="let produ of listProductos">
+                <div class="card-wrapper main-card">
+                  <a class="card cardItemjs" onclick="openModal()" (click)="showModal(produ)">
+                    <div class="card-image-wrapper">
+                      <img [src]="cuerpoUrlFoto + produ.portadaProducto">
+                    </div>
+                    <div class="card-info">
+                      <div class="card-text big cardText-js">{{produ.nombreProducto}}</div>
+                      <div class="card-text small">{{produ.preDescripcionProducto}}</div>
+                      <div class="card-text small">
+                        Starts from:
+                        <span class="card-price"> $1800</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
 
-            <div class="product">
-              <div class="product-card">
-                <h2 class="name">Xiomi 7 Smart Watch</h2>
-                <span class="price">$100.00</span>
-                <a class="popup-btn">Quick View</a>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                  class="product-img" alt="">
-              </div>
-              <div class="popup-view">
-                <div class="popup-card">
-                  <a><i class="fas fa-times close-btn"></i></a>
-                  <div class="product-img">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                      alt="">
+          <div id="modal-window" class="hideModal">
+            <div class="main-modal">
+              <div class="modal-left">
+
+                <div class="modal-image-wrapper">
+                  <img [src]="cuerpoUrlFoto + productoObject.portadaProducto">
+                </div>
+
+                <div class="modal-info-header">
+                  <div class="left-side">
+                    <h1 class="modalHeader-js"></h1>
+                    <p>Stockton Street</p>
                   </div>
-                  <div class="info">
-                    <h2>Xiomi 7 Smart Watch<br><span>Smart Sport Modes</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore
-                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat.</p>
-                    <span class="price">$100.00</span>
-                    <a href="#" class="add-cart-btn">Add to Cart</a>
-                    <a href="#" class="add-wish">Add to Wishlist</a>
+                  <div class="right-side">
+                    Starts from:
+                    <span class="amount">$1000</span>
                   </div>
                 </div>
-              </div>
-            </div>
-            </div>
-            <div class="col-sm-2 col-md-6">
-            <div class="product">
-              <div class="product-card">
-                <h2 class="name">Xiomi 7 Smart Watch</h2>
-                <span class="price">$100.00</span>
-                <a class="popup-btn">Quick View</a>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                  class="product-img" alt="">
-              </div>
-              <div class="popup-view">
-                <div class="popup-card">
-                  <a><i class="fas fa-times close-btn"></i></a>
-                  <div class="product-img">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                      alt="">
+
+                <div class="desc-wrapper">
+                  <div class="modal-info-header">
+                    <h1>Description</h1>
+                    <p>
+                      {{productoObject.descripcionProducto}}
+                    </p>
                   </div>
-                  <div class="info">
-                    <h2>Xiomi 7 Smart Watch<br><span>Smart Sport Modes</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore
-                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat.</p>
-                    <span class="price">$100.00</span>
-                    <a href="#" class="add-cart-btn">Add to Cart</a>
-                    <a href="#" class="add-wish">Add to Wishlist</a>
+                  <div class="desc-actions">
+                    <button class="btn-book" onclick="closeM()">Book Now</button>
+                    <div class="add-favourite">
+                      <input type="checkbox" id="favourite">
+                      <label for="favourite">
+
+                        <span class="favourite-icon">
+                          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                            <path
+                              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                          </svg>
+                        </span>
+
+                        <span>Add to favourites</span>
+
+                      </label>
+                    </div>
                   </div>
                 </div>
+
               </div>
             </div>
-            <div class="product">
-              <div class="product-card">
-                <h2 class="name">Xiomi 7 Smart Watch</h2>
-                <span class="price">$100.00</span>
-                <a class="popup-btn">Quick View</a>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                  class="product-img" alt="">
-              </div>
-              <div class="popup-view">
-                <div class="popup-card">
-                  <a><i class="fas fa-times close-btn"></i></a>
-                  <div class="product-img">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                      alt="">
-                  </div>
-                  <div class="info">
-                    <h2>Xiomi 7 Smart Watch<br><span>Smart Sport Modes</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore
-                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat.</p>
-                    <span class="price">$100.00</span>
-                    <a href="#" class="add-cart-btn">Add to Cart</a>
-                    <a href="#" class="add-wish">Add to Wishlist</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="product">
-              <div class="product-card">
-                <h2 class="name">Xiomi 7 Smart Watch</h2>
-                <span class="price">$100.00</span>
-                <a class="popup-btn">Quick View</a>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                  class="product-img" alt="">
-              </div>
-              <div class="popup-view">
-                <div class="popup-card">
-                  <a><i class="fas fa-times close-btn"></i></a>
-                  <div class="product-img">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                      alt="">
-                  </div>
-                  <div class="info">
-                    <h2>Xiomi 7 Smart Watch<br><span>Smart Sport Modes</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore
-                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat.</p>
-                    <span class="price">$100.00</span>
-                    <a href="#" class="add-cart-btn">Add to Cart</a>
-                    <a href="#" class="add-wish">Add to Wishlist</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="product">
-              <div class="product-card">
-                <h2 class="name">Xiomi 7 Smart Watch</h2>
-                <span class="price">$100.00</span>
-                <a class="popup-btn">Quick View</a>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                  class="product-img" alt="">
-              </div>
-              <div class="popup-view">
-                <div class="popup-card">
-                  <a><i class="fas fa-times close-btn"></i></a>
-                  <div class="product-img">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTA-GU5hfvjuHibMn5hU5SRgt-NJUBiR5mw&usqp=CAU"
-                      alt="">
-                  </div>
-                  <div class="info">
-                    <h2>Xiomi 7 Smart Watch<br><span>Smart Sport Modes</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore
-                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat.</p>
-                    <span class="price">$100.00</span>
-                    <a href="#" class="add-cart-btn">Add to Cart</a>
-                    <a href="#" class="add-wish">Add to Wishlist</a>
-                  </div>
-                </div>
-              </div>
+
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<!-- Cards -->
+    </section>
 
-</div>
+    <div class="button-container">
+      <div *ngIf="pagActua != 0; else elseButonPrevio">
+        <button class="button button1" (click)="previoPagina()">
+          << </button>
+      </div>
+      <ng-template #elseButonPrevio>
+        <button class="button button1" style="opacity: 0.5">
+          <<< </button>
+      </ng-template>
+      <div *ngIf="pagActua != pagExist; else elseButtonNext">
+        <button class="button button2" (click)="nextPagina()">
+          >>
+        </button>
+      </div>
+      <ng-template #elseButtonNext>
+        <button class="button button2" style="opacity: 0.5">>></button>
+      </ng-template>
+    </div>
+
+    <!-- Cards -->
+
+  </div>
 </div>
 <!-- FONDO -->

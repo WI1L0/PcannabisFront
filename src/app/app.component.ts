@@ -49,6 +49,18 @@ export class AppComponent implements OnInit {
       }
     });
 
+    //quitar el Footer y Header de Nunakay
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Ocultar el encabezado en la página de inicio
+        if (event.url === '/cbd/all-productos') {
+          this.mostrarHeader = false;
+          this.mostrarHeader2 = false;
+          this.mostrarFooter = false;
+        }
+      }
+    });
+
     //quitar el footer
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

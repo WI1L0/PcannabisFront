@@ -19,6 +19,10 @@ export class SfotosEmpresasService {
         return this.http.get<FotosEmpresas[]>(`${baserUrl + this.URL}/all/categoria/${empresaName}/${categoria}/`);
     }
 
+    public getFotosEmpresasVerificacion(categoria: string, empresaName: string) {
+        return this.http.get<Boolean>(`${baserUrl + this.URL}/all/categoria/verificacion/${empresaName}/${categoria}/`);
+    }
+
     public deleteFotosEmpresas(idFtEmpresas: number) {
         return this.http.delete<Boolean>(`${baserUrl + this.URL}/Definitivo/${idFtEmpresas}`);
     }

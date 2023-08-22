@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FlotanteComponent } from './default/flotante/flotante.component';
 import { HeaderadminComponent } from './default/headeradmin/headeradmin.component';
+import { HeaderNunakayComponent } from './default/header-nunakay/header-nunakay.component';
 
 
 
@@ -33,7 +34,7 @@ import { HeaderadminComponent } from './default/headeradmin/headeradmin.componen
     HeaderComponent,
     FooterComponent, 
     HeaderadminComponent, 
-    FlotanteComponent// DetallenoticiaComponent,
+    FlotanteComponent, HeaderNunakayComponent// DetallenoticiaComponent,
   ],
   imports: [
     BrowserModule,

@@ -105,23 +105,23 @@
                     </ul>
                 </nav> -->
 
- <div id="galeria">
-                    <figure id="ampliacao" style="max-width: 1000px; max-height: 1000px;">
-                        <img [src]="cuerpoUrlFoto + fotoAdministrativoInicio " alt="" />
-                    </figure>
-                    <nav id="miniaturas">
-                        <a *ngFor="let fotosAdm of fotosListAdministrativo" (click)="cargarfoto(fotosAdm)">
-                            <img [src]="cuerpoUrlFoto + fotosAdm.fotoEmpresa" alt="" />
-                        </a>
-                    </nav>
-                </div>
+                        <div id="galeria">
+                            <figure id="ampliacao" style="max-width: 1000px; max-height: 1000px;">
+                                <img [src]="cuerpoUrlFoto + fotoAdministrativoInicio " alt="" style="max-width: 1000px; max-height: 1000px;" />
+                            </figure>
+                            <nav id="miniaturas">
+                                <a *ngFor="let fotosAdm of fotosListAdministrativo" (click)="cargarfoto(fotosAdm)">
+                                    <img [src]="cuerpoUrlFoto + fotosAdm.fotoEmpresa" alt="" />
+                                </a>
+                            </nav>
+                        </div>
 
                     </div>
                 </div>
-                
 
 
-               
+
+
             </div>
             <!-- IMAGENES -->
         </section>

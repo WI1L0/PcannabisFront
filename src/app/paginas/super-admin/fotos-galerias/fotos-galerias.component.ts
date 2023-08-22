@@ -54,25 +54,38 @@ export class FotosGaleriasComponent implements OnInit {
 
   // MOSTRAR FOTOS
   obtenerFotos(tipo: string) {
+    let veri;
     this.limpiarAll();
-    this.fotosEmpresasServices.getFotosEmpresas(nameEmpresa, tipo).subscribe(
-      (data) => {
-        if (data != null) {
-          this.FotosEmpresasList = data;
-          console.log(this.FotosEmpresasList);
-          if (this.FotosEmpresasList.length < 4 && tipo != 'Administrativo') {
-            this.guardarsi = false;
-          } else if (tipo === 'Administrativo') {
-            this.guardarsi = false;
+    this.fotosEmpresasServices.getFotosEmpresasVerificacion(nameEmpresa, tipo).subscribe(
+      (verificacion) => {
+        if (verificacion != null) {
+
+          veri = !!verificacion;
+          if (veri) {
+            this.fotosEmpresasServices.getFotosEmpresas(nameEmpresa, tipo).subscribe(
+              (data) => {
+                if (data != null) {
+                  this.FotosEmpresasList = data;
+                  if (this.FotosEmpresasList.length < 4 && tipo != 'Administrativo') {
+                    this.guardarsi = false;
+                  } else if (tipo === 'Administrativo') {
+                    this.guardarsi = false;
+                  } else {
+                    this.guardarsi = true;
+                  }
+                }
+              },
+              (error) => {
+                console.log('Error al obtener Fotos Empresas:', error);
+              }
+            );
           } else {
-            this.guardarsi = true;
+            this.guardarsi = false;
           }
         }
-      },
-      (error) => {
-        console.log('Error al obtener Fotos Empresas:', error);
       }
-    );
+    )
+
   }
   // MOSTRAR FOTOS
 
@@ -84,9 +97,11 @@ export class FotosGaleriasComponent implements OnInit {
   // LIMPIAR LISTAS VARIABLES
 
   deleteFotos(ft: FotosEmpresas) {
+    let veri;
     this.fotosEmpresasServices.deleteFotosEmpresas(Number(ft.idFotoEmpresa)).subscribe(
       (data) => {
-        if (data != null) {
+        veri = !!data;
+        if (veri) {
           this.ObtenerFotosRecargar();
         } else {
           console.log("error almacenar fotos empresas...")
@@ -152,17 +167,17 @@ export class FotosGaleriasComponent implements OnInit {
       categoria = 'Equipo';
     }
 
-    if(cont < 4 && categoria != 'Administrativo'){
+    if (cont < 4 && categoria != 'Administrativo') {
       this.saveFotosEmpresas(categoria);
     }
 
-    if(categoria === 'Administrativo'){
+    if (categoria === 'Administrativo') {
       this.saveFotosEmpresas(categoria);
     }
 
   }
 
-  saveFotosEmpresas(categoria: string){
+  saveFotosEmpresas(categoria: string) {
     this.almacenarFoto().then(
       (url) => {
         if (url != null) {
