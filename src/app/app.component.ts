@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   mostrarFooter = true;
   mostrarFlotante = true;
   mostrarHeader2 = false;
+  mostrarHeaderNunakay = false;
 
   empresaData: Empresas = new Empresas();
 
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Ocultar el encabezado en la página de inicio
-        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/admin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear') {
+        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/admin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear' || event.url == '/cbd/all-productos') {
           this.mostrarHeader = false;
         } else {
           this.mostrarHeader = true;
@@ -54,9 +55,9 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         // Ocultar el encabezado en la página de inicio
         if (event.url === '/cbd/all-productos') {
-          this.mostrarHeader = false;
-          this.mostrarHeader2 = false;
-          this.mostrarFooter = false;
+          this.mostrarHeaderNunakay = true;
+        } else {
+          this.mostrarHeaderNunakay = false;
         }
       }
     });
@@ -65,7 +66,7 @@ export class AppComponent implements OnInit {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Ocultar el encabezado en la página de inicio
-        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/superAdmin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear') {
+        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/superAdmin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear' || event.url == '/cbd/all-productos') {
           this.mostrarFooter = false;
         } else {
           this.mostrarFooter = true;

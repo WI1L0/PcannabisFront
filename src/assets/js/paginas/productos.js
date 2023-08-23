@@ -16,11 +16,8 @@ $(document).scroll(function() {
 // CARD Y MODAL
 function openModal(){
     let modal= document.querySelector('#modal-window');
-    let fondo= document.querySelector('.cardsView');
     modal.classList.add("showModal");
     modal.style.display = "block";
-    modal.classList.toggle("ocultar-tarjeta");
-    fondo.classList.toggle("ocultar-fondo");
   }
   
   function closeM(){
