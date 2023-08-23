@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap, map, tap } from 'rxjs/operators';
 import { SfotosNoticiasService } from 'src/app/services/s-fotosNoticias.service';
+import baserUrlImagenes from 'src/app/services/defauld/helperImagenes';
 
 @Component({
   selector: 'app-crear-noticias',
@@ -28,19 +29,26 @@ export class CrearNoticiasComponent implements OnInit {
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
-  contadorFotos:number = 0;
-  contadorParrafos:number = 0;
+  contadorFotos: number = 0;
+  contadorParrafos: number = 0;
   limiteFotosAlcanzado = false;
-  accionCompletada=false;
+  accionCompletada = false;
   noticias: Noticias = new Noticias();
   fotosNoticias: FotosNoticias = new FotosNoticias();
   empresas: Empresas = new Empresas();
   nombreEmpresa: string = 'Nunakay'; // Cambia el nombre de la empresa según tu necesidad
   idNoticia: number = 0;
   parrafoInput: string = '';
-  listaParrafos: string[] = [];
   parrafos: Parrafos = new Parrafos();
   fotosNoticiasUrls: string[] = [];
+
+  cuerpoUrlFoto: string = baserUrlImagenes;
+
+  listaParrafo: Parrafos[] = [];
+  listaImagenesNoticias: FotosNoticias[] = [];
+
+
+
 
   parrafoObject: Parrafos = new Parrafos;
 
@@ -108,115 +116,117 @@ export class CrearNoticiasComponent implements OnInit {
     }
   }
   //FOTONOTICIAS
-  guardarfotos() {
-
-  }
-
-
-  //NOTICIAS
 
   guardarNoticias() {
-    if (this.listaParrafos.length > 0) {
-      const formData = new FormData();
-      formData.append('file', this.procesarFoto);
-      this.fotoServices.postFotos(formData).subscribe(respuesta => {
-        // Asignar la URL de la imagen
-        console.log(respuesta.url)
-        this.noticias.portadaNoticia = respuesta.url;
-
-        // guardar foto
-        this.noticiasServices.postNoticias(this.noticias, this.nombreEmpresa).subscribe(
-          (data) => {
-            if (data != null) {
-              this.noticias = data;
-              console.log(this.noticias)
-              Swal.fire({
-                position: 'top-right',
-                icon: 'success',
-                title: 'Datos noticia guardados exitosamente',
-                showConfirmButton: false,
-                timer: 1500,
-                background: '#ffff',
-                iconColor: '#4CAF50',
-                padding: '1.25rem',
-                width: '20rem',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-              });
-
-              this.registrarNoticia(Number(data.idNoticia));
-
-            }
-          }, error => {
-            // Mostrar una notificación de error
+    const formData = new FormData();
+    formData.append('file', this.procesarFoto);
+    this.fotoServices.postFotos(formData).subscribe(respuesta => {
+      // Asignar la URL de la imagen
+      console.log(respuesta.url)
+      this.noticias.portadaNoticia = respuesta.url;
+      // guardar foto
+      this.noticiasServices.postNoticias(this.noticias, this.nombreEmpresa).subscribe(
+        (data) => {
+          if (data != null) {
+            this.noticias = data;
+            console.log(this.noticias)
             Swal.fire({
-              title: 'No se pudo guardar',
-              icon: 'warning',
-              showCancelButton: false,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'OK'
-            })
-          });
-      }, error => {
-        // Mostrar una notificación de error
-        alert('No se pudo subir la imagen');
-      });
+              position: 'top-right',
+              icon: 'success',
+              title: 'Datos noticia guardados exitosamente',
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffff',
+              iconColor: '#4CAF50',
+              padding: '1.25rem',
+              width: '20rem',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
+          }
+        }, error => {
+          // Mostrar una notificación de error
+          Swal.fire({
+            title: 'No se pudo guardar',
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          })
+        });
+    }, error => {
+      // Mostrar una notificación de error
+      alert('No se pudo subir la imagen');
+    });
+  }
 
-    } else {
+  almacenarFotoNoticia() {
+    // Verificar si se ha alcanzado el límite de 5 fotos
+    if (this.contadorFotos >= 5) {
       // Mostrar una notificación de error
       Swal.fire({
-        title: 'No se puede guardar una noticia sin parrafos',
+        title: 'No se pueden añadir más fotos',
+        text: 'Ya se han agregado 5 fotos',
         icon: 'warning',
         showCancelButton: false,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'OK'
-      })
+      });
+      this.limiteFotosAlcanzado = true;
+      return; // Salir del método si se alcanza el límite
+    } else {
+      const formData = new FormData();
+      formData.append('file', this.procesarFoto);
+      this.fotoServices.postFotos(formData).subscribe(respuesta => {
+        // Asignar la URL de la imagen
+        console.log(respuesta.url);
+        this.fotosNoticias.fotosNoticia = respuesta.url;
+        console.log(this.fotosNoticias);
+        this.subirFotosNoticias();
+        // Incrementar el contador después de almacenar la foto
+        this.contadorFotos++;
+      }, error => {
+        // Mostrar una notificación de error
+        alert('No se pudo subir la imagen');
+      });
+
     }
-  }
 
-  almacenarFotoNoticia() {
-      // Verificar si se ha alcanzado el límite de 5 fotos
-  if (this.contadorFotos >= 5) {
-    // Mostrar una notificación de error
-    Swal.fire({
-      title: 'No se pueden añadir más fotos',
-      text: 'Ya se han agregado 5 fotos',
-      icon: 'warning',
-      showCancelButton: false,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'OK'
-    });
-    this.limiteFotosAlcanzado = true;
-    return; // Salir del método si se alcanza el límite
-  }else{
-    const formData = new FormData();
-    formData.append('file', this.procesarFoto);
-    this.fotoServices.postFotos(formData).subscribe(respuesta => {
-      // Asignar la URL de la imagen
-      console.log(respuesta.url);
-      this.fotosNoticias.fotosNoticia = respuesta.url;
-      console.log(this.fotosNoticias);
-      this.subirFotosNoticias();
-      // Incrementar el contador después de almacenar la foto
-      this.contadorFotos++;
-    }, error => {
-      // Mostrar una notificación de error
-      alert('No se pudo subir la imagen');
-    });
 
   }
 
-    
+  getImagenesNoticias() {
+    let activos: number = 0;
+    let listaTrue: FotosNoticias[] = [];
+
+    this.fotosNoticiasServices.getImagenes(this.noticias.idNoticia).subscribe(
+      data => {
+        this.listaImagenesNoticias = data;
+        console.log(this.listaImagenesNoticias)
+
+        for (let lista of this.listaImagenesNoticias) {
+          if (lista.estFotosNoticia == true) {
+            listaTrue.push(lista);
+            activos = activos + 1;
+          }
+        }
+      },
+      error => {
+        console.log('Error al obtener noticias:', error);
+      }
+    );
   }
+
+  //FOTOSNOTICIAS
 
   subirFotosNoticias() {
     console.log(this.idNoticia);
     console.log(this.fotosNoticias)
     this.fotosNoticiasServices.postFotosNoticias(this.fotosNoticias, Number(this.noticias.idNoticia)).subscribe(resultado => {
       console.log(this.idNoticia);
+      this.getImagenesNoticias();
 
       // Mostrar una notificación de éxito
       Swal.fire({
@@ -245,66 +255,14 @@ export class CrearNoticiasComponent implements OnInit {
     });
   }
 
-  registrarNoticia(idNoticia: number) {
-    this.listaParrafos.forEach(parrafo => {
-      this.guardarParrafo(parrafo, idNoticia);
-    });
-  }
+  //FOTOSNOTICIAS
 
-  guardarParrafo(parrafo: string, idNoticia: number) {
-    this.parrafoObject = {} as Parrafos;
-    this.parrafoObject.parrafo = parrafo;
-   
-    // const parrafosObj: Parrafos = {
-    //   parrafo: parrafo
-    // };
+//parrafos
 
-
-    this.parrafosServices.postParrafo(this.parrafoObject, idNoticia).subscribe(
-      resultado => {
-        console.log({ parrafo });
-      }
-    );
-  }
-
-  guardarParrafos(idNoticia: number) {
-    console.log(this.listaParrafos);
-    this.listaParrafos.forEach(parrafo => {
-      this.guardarParrafo(parrafo, idNoticia);
-    });
-  }
-
-  // agregarParrafo() {
-  //   if(this.contadorParrafos>=10){
-  //     Swal.fire({
-  //       title: 'No se pueden añadir más de 10 parrafos',
-  //       text: 'Ya se han agregado 10 parrados',
-  //       icon: 'warning',
-  //       showCancelButton: false,
-  //       confirmButtonColor: '#3085d6',
-  //       cancelButtonColor: '#d33',
-  //       confirmButtonText: 'OK'
-  //     });
-  //   }else{
-  //     if (this.parrafoInput && this.parrafoInput.trim() !== '') {
-  //       const nuevoParrafo = this.parrafoInput; // Almacenar el valor en una variable temporal
-  //       this.listaParrafos.push(nuevoParrafo);
-  //       this.parrafoInput = '';
-  //       console.log(this.listaParrafos);
-  //       const idNoticia = this.noticias.idNoticia || 0;
-  //       // Llamar a la función guardarParrafos() con la lista actualizada de párrafos
-  //       this.guardarParrafos(idNoticia);
-  //       this.contadorParrafos++;
-  //       this.accionCompletada = true;
-  //     }
-  //   }
-    
-
-  // }
-  agregarParrafo() {
+  guardarparrafos() {
     if (this.contadorParrafos >= 10) {
       Swal.fire({
-        title: 'No se pueden añadir más de 10 párrafos',
+        title: 'No se pueden añadir más de 10 párrafos, continue con fotos noticias',
         text: 'Ya se han agregado 10 párrafos',
         icon: 'warning',
         showCancelButton: false,
@@ -313,24 +271,52 @@ export class CrearNoticiasComponent implements OnInit {
         confirmButtonText: 'OK'
       });
     } else {
-      if (this.parrafoInput && this.parrafoInput.trim() !== '') {
-        const nuevoParrafo: string = this.parrafoInput;
-        this.listaParrafos = [...this.listaParrafos, nuevoParrafo]; // Agregar el nuevo párrafo a la lista sin modificar los existentes
-        this.parrafoInput = '';
-        console.log(this.listaParrafos);
-        const idNoticia = this.noticias.idNoticia || 0;
-        this.guardarParrafos(idNoticia);
-        this.contadorParrafos++;
-        this.accionCompletada = true;
-      }
+      console.log(this.parrafos);
+      console.log(this.noticias.idNoticia)
+      this.parrafosServices.postParrafo(this.parrafos, Number(this.noticias.idNoticia)).subscribe(
+        (data) => {
+          this.parrafos = data;
+          this.listaParrafo.push(this.parrafos); // Agrega el párrafo a la lista
+          console.log(this.parrafos);
+          this.getParrafos();
+          Swal.fire({
+            title: 'Parrafo agregado exitosamente párrafo',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          });
+          this.contadorParrafos++;
+          this.parrafos = {}; // Limpiar el valor de this.parrafo        
+        },
+        (error) => {
+          // Mostrar una notificación de error
+          Swal.fire({
+            title: 'No se pudo agregar párrafo',
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          });
+        }
+      );
     }
+
   }
+  getParrafos() {
+    this.parrafosServices.getParrafos(this.noticias.idNoticia).subscribe(
+      data => {
+        this.listaParrafo = data;
 
-
-  //fotos
-
-
-
+      },
+      error => {
+        console.log('Error al obtener noticias:', error);
+      }
+    );
+  }
+  //parrafos
 
 }
 

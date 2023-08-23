@@ -24,12 +24,13 @@ export class EditarNoticiasComponent implements OnInit {
   fotosNoticias: FotosNoticias = new FotosNoticias();
   parrafoInput: string = '';
   listaParrafos: Parrafos[] = [];
-  nuevoParrafo: string='';  
+  nuevoParrafo: string = '';
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
   editFoto: boolean = false;
   cuerpoUrlFoto: string = baserUrlImagenes;
+  contadorParrafos: number = 0;
 
   listaImagenesNoticias: FotosNoticias[] = [];
   //implementar js en los componentes
@@ -74,8 +75,6 @@ export class EditarNoticiasComponent implements OnInit {
     );
   }
 
-
-
   getImagenesNoticias() {
     let activos: number = 0;
     let listaTrue: FotosNoticias[] = [];
@@ -98,49 +97,103 @@ export class EditarNoticiasComponent implements OnInit {
     );
   }
 
+  // editarnoticia() {
+  //   console.log(this.noticia.idNoticia)
+  //   console.log(this.listaParrafos)
+  //   this.almacenarFoto().then(
+  //     (url) => {
+  //       this.noticia.portadaNoticia = url;
+  //       console.log(url)
+  //       console.log(this.noticia)
+  //       console.log(this.noticia.portadaNoticia+"jnj jnjnj njnj")
+  //       console.log(this.noticia)
+      
+  //     this.noticiasServices.putNoticias(this.noticia, Number(this.noticia.idNoticia)).subscribe(
+  //       (data) => {
+  //         if (data != null) {
+  //           Swal.fire({
+  //             position: 'top-right',
+  //             icon: 'success',
+  //             title: 'Noticia editada exitosamente',
+  //             showConfirmButton: false,
+  //             timer: 1500,
+  //             background: '#ffff',
+  //             iconColor: '#4CAF50',
+  //             padding: '1.25rem',
+  //             width: '20rem',
+  //             allowOutsideClick: false,
+  //             allowEscapeKey: false,
+  //           });
+
+  //         }
+  //       }, error => {
+  //         // Mostrar una notificación de error
+  //         Swal.fire({
+  //           title: 'No se pudo guardar',
+  //           icon: 'warning',
+  //           showCancelButton: false,
+  //           confirmButtonColor: '#3085d6',
+  //           cancelButtonColor: '#d33',
+  //           confirmButtonText: 'OK'
+  //         })
+  //       });
+    
+  // console.log(this.noticia)
+  // console.log(this.noticia.portadaNoticia)
+  //     }
+  //   )
+
+  // }
+
+
   editarnoticia() {
-    console.log(this.noticia.idNoticia)
-    console.log(this.listaParrafos)
+    console.log(this.noticia.idNoticia);
+    console.log(this.listaParrafos);
     this.almacenarFoto().then(
       (url) => {
         this.noticia.portadaNoticia = url;
-        console.log(this.noticia)
-
-        this.noticiasServices.putNoticias(this.noticia, Number(this.noticia.idNoticia)).subscribe(
-          (data) => {
-            if (data != null) {
-              Swal.fire({
-                position: 'top-right',
-                icon: 'success',
-                title: 'Noticia editada exitosamente',
-                showConfirmButton: false,
-                timer: 1500,
-                background: '#ffff',
-                iconColor: '#4CAF50',
-                padding: '1.25rem',
-                width: '20rem',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-              });
-
-            }
-          }, error => {
-            // Mostrar una notificación de error
-            Swal.fire({
-              title: 'No se pudo guardar',
-              icon: 'warning',
-              showCancelButton: false,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'OK'
-            })
-          });
+        console.log(url);
+        console.log(this.noticia);
+        console.log(this.noticia.portadaNoticia + "jnj jnjnj njnj");
+        console.log(this.noticia);
+  
+        // Realiza el put incluso si no se edita la imagen
+        this.guardarNoticia();
       }
-
-    )
-    console.log(this.noticia)
-    console.log(this.noticia.portadaNoticia)
-
+    );
+  }
+  
+  guardarNoticia() {
+    this.noticiasServices.putNoticias(this.noticia, Number(this.noticia.idNoticia)).subscribe(
+      (data) => {
+        if (data != null) {
+          Swal.fire({
+            position: 'top-right',
+            icon: 'success',
+            title: 'Noticia editada exitosamente',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
+        }
+      },
+      (error) => {
+        // Mostrar una notificación de error
+        Swal.fire({
+          title: 'No se pudo guardar',
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+      }
+    );
   }
 
   editarparrafos(parrafo: Parrafos) {
@@ -167,6 +220,7 @@ export class EditarNoticiasComponent implements OnInit {
             allowOutsideClick: false,
             allowEscapeKey: false,
           });
+          this.parrafo = {};
         }
       }, error => {
         // Mostrar una notificación de error
@@ -215,34 +269,49 @@ export class EditarNoticiasComponent implements OnInit {
 
   guardarparrafos() {
     console.log(this.parrafo);
-    parrafo: this.nuevoParrafo
-    this.parrafosServices.postParrafo(this.parrafo, Number(this.noticia.idNoticia)).subscribe(
-      (data) => {
-        this.parrafo = data;
-        this.listaParrafos.push(this.parrafo); // Agrega el párrafo a la lista
-        console.log(this.parrafo);
-        this.getParrafos();
-        Swal.fire({
-          title: 'Parrafo agregado exitosamente párrafo',
-          icon: 'success',
-          showCancelButton: false,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'OK'
-        });
-      },
-      (error) => {
-        // Mostrar una notificación de error
-        Swal.fire({
-          title: 'No se pudo agregar párrafo',
-          icon: 'warning',
-          showCancelButton: false,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'OK'
-        });
-      }
-    );
+    if (this.contadorParrafos >= 10) {
+      Swal.fire({
+        title: 'No se pueden añadir más de 10 párrafos, continue con fotos noticias',
+        text: 'Ya se han agregado 10 párrafos',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      });
+
+    } else {
+
+      this.parrafosServices.postParrafo(this.parrafo, Number(this.noticia.idNoticia)).subscribe(
+        (data) => {
+          this.parrafo = data;
+          this.listaParrafos.push(this.parrafo); // Agrega el párrafo a la lista
+          console.log(this.parrafo);
+          this.getParrafos();
+          Swal.fire({
+            title: 'Parrafo agregado exitosamente párrafo',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          });
+          this.contadorParrafos++;
+          this.parrafo = {};
+        },
+        (error) => {
+          // Mostrar una notificación de error
+          Swal.fire({
+            title: 'No se pudo agregar párrafo',
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          });
+        }
+      );
+    }
 
   }
 

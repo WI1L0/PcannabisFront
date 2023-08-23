@@ -39,7 +39,7 @@ export class ListarNoticiasComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.loginServices.estaLogin()) {
-      this.router.navigate(['/cbd/login']);
+      this.router.navigate(['/cbd/ffff']);
     }
     this.almacenarEstado('activo');
   }

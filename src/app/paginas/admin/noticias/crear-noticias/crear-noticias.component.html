@@ -35,24 +35,28 @@
                         </div>
                     </form>
                 </div>
-                <input type="button" name="next" class="next action-button" value="Siguiente" />
+                <input type="button" name="next" class="next action-button" value="Siguiente" (click)="guardarNoticias()"/>
             </fieldset>
             <fieldset>
                 <div>
                     <div class="container">
                         <div class="izquierda">
-                            <textarea [(ngModel)]="parrafoInput" rows="5" type="text" name="txtarea"
+                            <textarea [(ngModel)]="parrafos.parrafo" rows="5" type="text" name="txtarea"
                                 placeholder="Agrega un parrafo"></textarea>>
-                            <input type="button" id="botones" class="botoncito" required value="Agregar"
-                                (click)="agregarParrafo()" />
+                            <!-- <input type="button" id="botones" class="botoncito" required value="Agregar"
+                                (click)="agregarParrafo()" /> -->
+                                <input type="button" id="botones" class="botoncito" required value="Agregar"
+                                (click)="guardarparrafos()" />
                         </div>
-
                         <div class="derecha" id="derecha">
-                            <div class="card ocultar" *ngFor="let p of listaParrafos; let i = index">
-                                <p class="nom">Párrafo {{ i + 1 }}</p>
-                                <div class="contenido-card">
-                                    <textarea [(ngModel)]="listaParrafos[i]" rows="5" type="text" name="ubicacion"
-                                        id="txtarea" placeholder="Predescripción de la noticia"></textarea>
+                            <div class="card" id="card">
+                                <div *ngFor="let parrafos of listaParrafo; let i=index" class="derecha" id="derecha">
+                                    <!-- <button class="botoncito" (click)="eliminarParrafos(parrafo)">Quitar</button> -->
+                                    <p class="nom" value="parrafo.idParrafo">Parrafo {{ i + 1 }}</p>
+                                    <textarea type="text" [(ngModel)]="parrafos.parrafo" 
+                                        name="parrafo{{parrafos.idParrafo}}" id="textarea"></textarea>
+                                    <!-- <input type="button" id="botones" class="botoncito" (click)="editarparrafos(parrafo)"
+                                        value="Editar" /> -->
                                 </div>
                             </div>
                         </div>
@@ -61,7 +65,7 @@
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
                 <a class="action-button" name="next" class="next action-button" target="_top"
-                    (click)="guardarNoticias()">Siguiente</a>
+                    >Siguiente</a>
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">Fotos Noticias</h2>
@@ -74,10 +78,17 @@
                         <input type="button" name="botoncito" class="botoncito" value="Añadir" id="btnfotos"
                             (click)="almacenarFotoNoticia()" />
                     </div>
+
+                    <div class="row align-items-center">
+                        <ng-container *ngFor="let imagen of listaImagenesNoticias">
+                            <img [src]="cuerpoUrlFoto + imagen.fotosNoticia" alt="Imagen {{imagen.fotosNoticia  }}">
+                        </ng-container>
+
+                    </div>
                 </form>
                 <!-- <div id="previsualizacion" class="img"></div> -->
                 <!-- <input type="button" name="previous" class="previous action-button" value="Previous" /> -->
-                <input type="button" name="previous" class="botoncito" value="Finalizar" />
+                <a href="/cbd/admin/noticias/listar" type="button" name="previous" class="botoncito" >Finalizar</a>
                 <!-- <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a> -->
                 <!-- </form> -->
             </fieldset>
