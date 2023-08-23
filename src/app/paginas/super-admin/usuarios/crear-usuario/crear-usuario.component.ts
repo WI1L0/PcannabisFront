@@ -184,32 +184,59 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   almacenarUsuario() {
-    this.almacenarFoto().then(
-      (url) => {
-        this.usuarioData.fotoUsuario = url;
-      }
-    )
-    this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
-      (data2) => {
-        if (data2 != null) {
-          Swal.fire({
-            position: 'top-right',
-            icon: 'success',
-            title: 'Usuario Creado Exitosamente',
-            showConfirmButton: false,
-            timer: 1500,
-            background: '#ffff',
-            iconColor: '#4CAF50',
-            padding: '1.25rem',
-            width: '20rem',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-          });
+    this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
+      (data) => {
+        if (data != null) {
+          let existNameUsuario = !!data;
 
-          this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+          if (existNameUsuario) {
+            Swal.fire({
+              position: 'top-right',
+              icon: 'error',
+              title: 'Correo ya registrado',
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffff',
+              iconColor: '#4CAF50',
+              padding: '1.25rem',
+              width: '20rem',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
+          } else {
+            this.almacenarFoto().then(
+              (url) => {
+                this.usuarioData.fotoUsuario = url;
+              }
+            )
+            this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
+              (data2) => {
+                if (data2 != null) {
+                  Swal.fire({
+                    position: 'top-right',
+                    icon: 'success',
+                    title: 'Usuario Creado Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    background: '#ffff',
+                    iconColor: '#4CAF50',
+                    padding: '1.25rem',
+                    width: '20rem',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                  });
+
+                  this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+                }
+              }
+            )
+          }
         }
       }
-    )
+    );
+
+
+
   }
 }
 

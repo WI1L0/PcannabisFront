@@ -33,6 +33,8 @@ export class FotosGaleriasComponent implements OnInit {
   // CUERPO DE LA URL IMAGENES
   cuerpoUrlFoto: string = baserUrlImagenes;
 
+  rolSuperAdmin: boolean = false;
+
   FotoEmpresasObject: FotosEmpresas = new FotosEmpresas();
 
   constructor(
@@ -48,8 +50,14 @@ export class FotosGaleriasComponent implements OnInit {
       this.router.navigate(['/cbd/login']);
     }
 
-    this.obtenerFotos('Equipo');
+    const rolSuperAdministrador = localStorage.getItem('rolAdministrador');
+    this.rolSuperAdmin = rolSuperAdministrador ? JSON.parse(rolSuperAdministrador) : false;
 
+    if(this.rolSuperAdmin){
+      this.obtenerFotos('Equipo');
+    } else {
+      this.router.navigate(['/cbd/panel']);
+    }
   }
 
   // MOSTRAR FOTOS

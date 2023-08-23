@@ -15,6 +15,9 @@ import Swal from 'sweetalert2';
 })
 export class ActualizarEmpresaComponent implements OnInit {
 
+  rolSuperAdmin: boolean = false;
+
+
   empresaData: Empresas = new Empresas();
   public submitted: boolean = false;
 
@@ -28,8 +31,15 @@ export class ActualizarEmpresaComponent implements OnInit {
       this.router.navigate(['/cbd/login']);
     }
 
-    this.ObtenerEmpresa();
+    
+    const rolSuperAdministrador = localStorage.getItem('rolAdministrador');
+    this.rolSuperAdmin = rolSuperAdministrador ? JSON.parse(rolSuperAdministrador) : false;
 
+    if(this.rolSuperAdmin){
+      this.ObtenerEmpresa();
+    } else {
+      this.router.navigate(['/cbd/panel']);
+    }
   }
 
   ObtenerEmpresa() {
