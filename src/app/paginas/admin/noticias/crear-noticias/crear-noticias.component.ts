@@ -28,6 +28,10 @@ export class CrearNoticiasComponent implements OnInit {
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
+  contadorFotos:number = 0;
+  contadorParrafos:number = 0;
+  limiteFotosAlcanzado = false;
+  accionCompletada=false;
   noticias: Noticias = new Noticias();
   fotosNoticias: FotosNoticias = new FotosNoticias();
   empresas: Empresas = new Empresas();
@@ -119,13 +123,13 @@ export class CrearNoticiasComponent implements OnInit {
         // Asignar la URL de la imagen
         console.log(respuesta.url)
         this.noticias.portadaNoticia = respuesta.url;
-        
+
         // guardar foto
         this.noticiasServices.postNoticias(this.noticias, this.nombreEmpresa).subscribe(
           (data) => {
             if (data != null) {
               this.noticias = data;
-
+              console.log(this.noticias)
               Swal.fire({
                 position: 'top-right',
                 icon: 'success',
@@ -140,20 +144,20 @@ export class CrearNoticiasComponent implements OnInit {
                 allowEscapeKey: false,
               });
 
-            this.registrarNoticia(Number(data.idNoticia));
+              this.registrarNoticia(Number(data.idNoticia));
 
             }
-        }, error => {
-          // Mostrar una notificación de error
-          Swal.fire({
-            title: 'No se pudo guardar',
-            icon: 'warning',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'OK'
-          })
-        });
+          }, error => {
+            // Mostrar una notificación de error
+            Swal.fire({
+              title: 'No se pudo guardar',
+              icon: 'warning',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'OK'
+            })
+          });
       }, error => {
         // Mostrar una notificación de error
         alert('No se pudo subir la imagen');
@@ -173,6 +177,21 @@ export class CrearNoticiasComponent implements OnInit {
   }
 
   almacenarFotoNoticia() {
+      // Verificar si se ha alcanzado el límite de 5 fotos
+  if (this.contadorFotos >= 5) {
+    // Mostrar una notificación de error
+    Swal.fire({
+      title: 'No se pueden añadir más fotos',
+      text: 'Ya se han agregado 5 fotos',
+      icon: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    });
+    this.limiteFotosAlcanzado = true;
+    return; // Salir del método si se alcanza el límite
+  }else{
     const formData = new FormData();
     formData.append('file', this.procesarFoto);
     this.fotoServices.postFotos(formData).subscribe(respuesta => {
@@ -181,18 +200,24 @@ export class CrearNoticiasComponent implements OnInit {
       this.fotosNoticias.fotosNoticia = respuesta.url;
       console.log(this.fotosNoticias);
       this.subirFotosNoticias();
+      // Incrementar el contador después de almacenar la foto
+      this.contadorFotos++;
     }, error => {
       // Mostrar una notificación de error
       alert('No se pudo subir la imagen');
     });
+
   }
-  
+
+    
+  }
+
   subirFotosNoticias() {
     console.log(this.idNoticia);
     console.log(this.fotosNoticias)
     this.fotosNoticiasServices.postFotosNoticias(this.fotosNoticias, Number(this.noticias.idNoticia)).subscribe(resultado => {
       console.log(this.idNoticia);
-  
+
       // Mostrar una notificación de éxito
       Swal.fire({
         position: 'top-right',
@@ -229,9 +254,11 @@ export class CrearNoticiasComponent implements OnInit {
   guardarParrafo(parrafo: string, idNoticia: number) {
     this.parrafoObject = {} as Parrafos;
     this.parrafoObject.parrafo = parrafo;
+   
     // const parrafosObj: Parrafos = {
     //   parrafo: parrafo
     // };
+
 
     this.parrafosServices.postParrafo(this.parrafoObject, idNoticia).subscribe(
       resultado => {
@@ -247,17 +274,56 @@ export class CrearNoticiasComponent implements OnInit {
     });
   }
 
-  agregarParrafo() {
-    if (this.parrafoInput && this.parrafoInput.trim() !== '') {
-      const nuevoParrafo = this.parrafoInput; // Almacenar el valor en una variable temporal
-      this.listaParrafos.push(nuevoParrafo);
-      this.parrafoInput = '';
-      console.log(this.listaParrafos);
-      const idNoticia = this.noticias.idNoticia || 0;
-      // Llamar a la función guardarParrafos() con la lista actualizada de párrafos
-      this.guardarParrafos(idNoticia);
-    }
+  // agregarParrafo() {
+  //   if(this.contadorParrafos>=10){
+  //     Swal.fire({
+  //       title: 'No se pueden añadir más de 10 parrafos',
+  //       text: 'Ya se han agregado 10 parrados',
+  //       icon: 'warning',
+  //       showCancelButton: false,
+  //       confirmButtonColor: '#3085d6',
+  //       cancelButtonColor: '#d33',
+  //       confirmButtonText: 'OK'
+  //     });
+  //   }else{
+  //     if (this.parrafoInput && this.parrafoInput.trim() !== '') {
+  //       const nuevoParrafo = this.parrafoInput; // Almacenar el valor en una variable temporal
+  //       this.listaParrafos.push(nuevoParrafo);
+  //       this.parrafoInput = '';
+  //       console.log(this.listaParrafos);
+  //       const idNoticia = this.noticias.idNoticia || 0;
+  //       // Llamar a la función guardarParrafos() con la lista actualizada de párrafos
+  //       this.guardarParrafos(idNoticia);
+  //       this.contadorParrafos++;
+  //       this.accionCompletada = true;
+  //     }
+  //   }
+    
 
+  // }
+  agregarParrafo() {
+    if (this.contadorParrafos >= 10) {
+      Swal.fire({
+        title: 'No se pueden añadir más de 10 párrafos',
+        text: 'Ya se han agregado 10 párrafos',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      });
+    } else {
+      if (this.parrafoInput && this.parrafoInput.trim() !== '') {
+        const nuevoParrafo: string = this.parrafoInput;
+        this.listaParrafos = [...this.listaParrafos, nuevoParrafo]; // Agregar el nuevo párrafo a la lista sin modificar los existentes
+        this.parrafoInput = '';
+        console.log(this.listaParrafos);
+        const idNoticia = this.noticias.idNoticia || 0;
+        this.guardarParrafos(idNoticia);
+        this.contadorParrafos++;
+        this.accionCompletada = true;
+      }
+    }
   }
 
 

@@ -34,9 +34,9 @@ export class SfotosNoticiasService {
     //     return this.http.put<FotosNoticias>(this.URL + `/${idFotosNoticias}`, FotosNoticias);
     // }
 
-    // deleteFotosNoticias(idFotosNoticias: number) {
-    //     return this.http.delete<boolean>(this.URL + `/${idFotosNoticias}`);
-    // }
+    public deleteFotosNoticias(idFotosNoticia: number) {
+        return this.http.delete<FotosNoticias>(`${baserUrl + this.URL}/definitivo/${idFotosNoticia}`)
+      }
 
     // getPorId(idFotosNoticias: any) {
     //     return this.http.get<FotosNoticias>(this.URL + idFotosNoticias);

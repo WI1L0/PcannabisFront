@@ -34,11 +34,13 @@ export class SParrafosService {
     return this.http.post<Parrafos>(`${baserUrl + this.URL}/save/${IDNoticia}`, parrafos)
   }
 
+  public putParrafo(parrafos: Parrafos, id: number) {
+    return this.http.put<Parrafos>(`${baserUrl + this.URL}/update/${id}`, parrafos)
+  }
 
-
-  // putEmpresas(Empresas: Empresas, idEmpresas: any) {
-  //   return this.http.put<Empresas>(this.URL + `/${idEmpresas}`, Empresas);
-  // }
+  public deleteParrafos(idParrafo: number) {
+    return this.http.delete<Parrafos>(`${baserUrl + this.URL}/definitivo/${idParrafo}`)
+  }
 
   // deleteEmpresas(idEmpresas: number) {
   //   return this.http.delete<boolean>(this.URL + `/${idEmpresas}`);

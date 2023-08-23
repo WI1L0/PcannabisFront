@@ -41,6 +41,7 @@ $(".next").click(function () {
 		animating = true;
 		current_fs = $(this).parent();
 		next_fs = $(this).parent().next();
+		
 
 		//activate next step on progressbar using the index of next_fs
 		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -127,90 +128,90 @@ $(document).ready(function () {
 
 
 
-//PARRAFOS
-// var parrafoInput = document.getElementById('parrafo-input');
-// var agregarBtn = document.getElementById('agregar-btn');
+// //PARRAFOS
+// // var parrafoInput = document.getElementById('parrafo-input');
+// // var agregarBtn = document.getElementById('agregar-btn');
 
-// agregarBtn.addEventListener('click', function() {
-//     // Aquí puedes hacer lo que necesites con el valor del textarea, como enviarlo a un servidor para guardarlo en una base de datos.
-//     console.log('Valor del textarea:', parrafoInput.value);
+// // agregarBtn.addEventListener('click', function() {
+// //     // Aquí puedes hacer lo que necesites con el valor del textarea, como enviarlo a un servidor para guardarlo en una base de datos.
+// //     console.log('Valor del textarea:', parrafoInput.value);
 
-//     parrafoInput.value = ''; // Limpiar el textarea
+// //     parrafoInput.value = ''; // Limpiar el textarea
+// //   });
+// document.addEventListener('DOMContentLoaded', function () {
+// 	var parrafoInput = document.getElementById('parrafo-input');
+// 	var agregarBtn = document.getElementById('agregar-btn');
+
+// 	agregarBtn.addEventListener('click', function () {
+// 		// Aquí puedes hacer lo que necesites con el valor del textarea, como enviarlo a un servidor para guardarlo en una base de datos.
+// 		console.log('Valor del textarea:', parrafoInput.value);
+
+// 		parrafoInput.value = ''; // Limpiar el textarea
+// 	});
+// });
+
+// // PREVISUALIZAR LA FOTO
+// const inputFoto = document.getElementById('foto');
+// const imagenPreview = document.getElementById('imagen-preview');
+
+// if (imagenPreview) {
+// 	inputFoto.addEventListener('change', () => {
+// 		const file = inputFoto.files[0];
+// 		const reader = new FileReader();
+
+// 		reader.addEventListener('load', () => {
+// 			if (imagenPreview) {
+// 				imagenPreview.setAttribute('src', reader.result);
+// 				imagenPreview.style.display = 'block';
+// 			}
+// 		});
+
+// 		reader.readAsDataURL(file);
+// 	});
+// }
+
+// //Agregar parrafos
+// const btnAgregar = document.getElementById('botones');
+// const derecha = document.getElementById('derecha');
+// btnAgregar.addEventListener('click', function () {
+// 	const txtarea = document.getElementById('txtarea');
+// 	const derecha = document.getElementById('derecha'); // Agrega esta línea para obtener el elemento "derecha"
+  
+// 	console.log(txtarea); // Verificar si el elemento se está encontrando correctamente
+// 	if (txtarea) {
+// 	  const contenido = txtarea.value;
+  
+// 	  // Crear una nueva tarjeta con el contenido del textarea
+// 	  const nuevaTarjeta = document.createElement('div');
+// 	  nuevaTarjeta.classList.add('card');
+// 	  nuevaTarjeta.innerHTML = `
+// 		<p class="nom">Parrafo</p>
+// 		<div class="contenido-card">
+// 		  <textarea rows="5" type="text" name="ubicacion" id="txtarea"  ></textarea>
+// 		</div>
+// 	  `;
+// 	  if (derecha) {
+// 		// Obtener la última tarjeta existente en "derecha"
+// 		const ultimaTarjeta = derecha.querySelector('.card:last-child');
+  
+// 		// Agregar la nueva tarjeta debajo de la última tarjeta
+// 		derecha.insertBefore(nuevaTarjeta, ultimaTarjeta ? ultimaTarjeta.nextElementSibling : null);
+  
+// 		// Agregar controlador de eventos para el botón "quitar"
+// 		const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
+// 		btnQuitar.addEventListener('click', function () {
+// 		  nuevaTarjeta.remove();
+// 		});
+  
+// 		// Limpiar el contenido del textarea
+// 		txtarea.value = '';
+// 	  } else {
+// 		console.error('No se encontró el elemento derecha.');
+// 	  }
+// 	} else {
+// 	  console.error('No se encontró el elemento txtarea.');
+// 	}
 //   });
-document.addEventListener('DOMContentLoaded', function () {
-	var parrafoInput = document.getElementById('parrafo-input');
-	var agregarBtn = document.getElementById('agregar-btn');
-
-	agregarBtn.addEventListener('click', function () {
-		// Aquí puedes hacer lo que necesites con el valor del textarea, como enviarlo a un servidor para guardarlo en una base de datos.
-		console.log('Valor del textarea:', parrafoInput.value);
-
-		parrafoInput.value = ''; // Limpiar el textarea
-	});
-});
-
-// PREVISUALIZAR LA FOTO
-const inputFoto = document.getElementById('foto');
-const imagenPreview = document.getElementById('imagen-preview');
-
-if (imagenPreview) {
-	inputFoto.addEventListener('change', () => {
-		const file = inputFoto.files[0];
-		const reader = new FileReader();
-
-		reader.addEventListener('load', () => {
-			if (imagenPreview) {
-				imagenPreview.setAttribute('src', reader.result);
-				imagenPreview.style.display = 'block';
-			}
-		});
-
-		reader.readAsDataURL(file);
-	});
-}
-
-//Agregar parrafos
-const btnAgregar = document.getElementById('botones');
-const derecha = document.getElementById('derecha');
-btnAgregar.addEventListener('click', function () {
-	const txtarea = document.getElementById('txtarea');
-	const derecha = document.getElementById('derecha'); // Agrega esta línea para obtener el elemento "derecha"
-  
-	console.log(txtarea); // Verificar si el elemento se está encontrando correctamente
-	if (txtarea) {
-	  const contenido = txtarea.value;
-  
-	  // Crear una nueva tarjeta con el contenido del textarea
-	  const nuevaTarjeta = document.createElement('div');
-	  nuevaTarjeta.classList.add('card');
-	  nuevaTarjeta.innerHTML = `
-		<p class="nom">Parrafo</p>
-		<div class="contenido-card">
-		  <textarea rows="5" type="text" name="ubicacion" id="txtarea"  ></textarea>
-		</div>
-	  `;
-	  if (derecha) {
-		// Obtener la última tarjeta existente en "derecha"
-		const ultimaTarjeta = derecha.querySelector('.card:last-child');
-  
-		// Agregar la nueva tarjeta debajo de la última tarjeta
-		derecha.insertBefore(nuevaTarjeta, ultimaTarjeta ? ultimaTarjeta.nextElementSibling : null);
-  
-		// Agregar controlador de eventos para el botón "quitar"
-		const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
-		btnQuitar.addEventListener('click', function () {
-		  nuevaTarjeta.remove();
-		});
-  
-		// Limpiar el contenido del textarea
-		txtarea.value = '';
-	  } else {
-		console.error('No se encontró el elemento derecha.');
-	  }
-	} else {
-	  console.error('No se encontró el elemento txtarea.');
-	}
-  });
 
 
   document.getElementById('btnfotos').addEventListener('click', function() {

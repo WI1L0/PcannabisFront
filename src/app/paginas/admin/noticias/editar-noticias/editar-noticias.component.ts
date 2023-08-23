@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Fotos } from 'src/app/modelos/Fotos';
 import { FotosNoticias } from 'src/app/modelos/FotosNoticias';
 import { Noticias } from 'src/app/modelos/Noticias';
 import { Parrafos } from 'src/app/modelos/Parrafos';
@@ -17,17 +18,20 @@ import Swal from 'sweetalert2';
   templateUrl: './editar-noticias.component.html',
   styleUrls: ['./editar-noticias.component.scss']
 })
-export class EditarNoticiasComponent  implements OnInit {
+export class EditarNoticiasComponent implements OnInit {
   noticia: Noticias = new Noticias();
+  parrafo: Parrafos = new Parrafos();
+  fotosNoticias: FotosNoticias = new FotosNoticias();
+  parrafoInput: string = '';
   listaParrafos: Parrafos[] = [];
-  listaParrafosSuperior: Parrafos[] = [];
-  listaParrafosInferior: Parrafos[] = [];
+  nuevoParrafo: string='';  
+  obtenerFoto: any;
+  procesarFoto: any;
+  imagenPreview: any;
+  editFoto: boolean = false;
+  cuerpoUrlFoto: string = baserUrlImagenes;
+
   listaImagenesNoticias: FotosNoticias[] = [];
-  imgprincipal1 = '';
-  imgprincipal2 = '';
-  imgprincipal3 = '';
-  imgprincipal4 = '';
-  imgprincipal5 = '';
   //implementar js en los componentes
   constructor(
     private AllScripts: AllScriptsService,
@@ -41,29 +45,11 @@ export class EditarNoticiasComponent  implements OnInit {
   }
   ngOnInit(): void {
     this.getNoticiaADetalle();
-    this.getImagenesNoticias() 
-  }
-  confirmEditar() {
-    Swal.fire({
-      title: '¿Estas seguro de editar la noticia?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Editar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Editada!',
-          'Noticia editada exitosamente.',
-          'success'
-        );
-      }
-    });
+    this.getImagenesNoticias()
   }
 
 
-  
+
   //editar
   getNoticiaADetalle() {
     const not = localStorage.getItem('noticiaAdm');
@@ -88,6 +74,8 @@ export class EditarNoticiasComponent  implements OnInit {
     );
   }
 
+
+
   getImagenesNoticias() {
     let activos: number = 0;
     let listaTrue: FotosNoticias[] = [];
@@ -95,24 +83,13 @@ export class EditarNoticiasComponent  implements OnInit {
     this.fotosNoticiasServices.getImagenes(this.noticia.idNoticia).subscribe(
       data => {
         this.listaImagenesNoticias = data;
+        console.log(this.listaImagenesNoticias)
 
         for (let lista of this.listaImagenesNoticias) {
           if (lista.estFotosNoticia == true) {
             listaTrue.push(lista);
             activos = activos + 1;
           }
-        }
-
-        if (activos != 0) {
-          if (activos < 5) {
-            this.imgprincipal5 = baserUrlImagenes + listaTrue[listaTrue.length -1].fotosNoticia;
-          } else {
-            this.imgprincipal5 = baserUrlImagenes + listaTrue[4].fotosNoticia;
-          }
-            this.imgprincipal1 = baserUrlImagenes + listaTrue[0].fotosNoticia;
-            this.imgprincipal2 = baserUrlImagenes + listaTrue[1].fotosNoticia;
-            this.imgprincipal3 = baserUrlImagenes + listaTrue[2].fotosNoticia;
-            this.imgprincipal4 = baserUrlImagenes + listaTrue[3].fotosNoticia;
         }
       },
       error => {
@@ -121,8 +98,286 @@ export class EditarNoticiasComponent  implements OnInit {
     );
   }
 
-}
+  editarnoticia() {
+    console.log(this.noticia.idNoticia)
+    console.log(this.listaParrafos)
+    this.almacenarFoto().then(
+      (url) => {
+        this.noticia.portadaNoticia = url;
+        console.log(this.noticia)
 
+        this.noticiasServices.putNoticias(this.noticia, Number(this.noticia.idNoticia)).subscribe(
+          (data) => {
+            if (data != null) {
+              Swal.fire({
+                position: 'top-right',
+                icon: 'success',
+                title: 'Noticia editada exitosamente',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#ffff',
+                iconColor: '#4CAF50',
+                padding: '1.25rem',
+                width: '20rem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+              });
+
+            }
+          }, error => {
+            // Mostrar una notificación de error
+            Swal.fire({
+              title: 'No se pudo guardar',
+              icon: 'warning',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'OK'
+            })
+          });
+      }
+
+    )
+    console.log(this.noticia)
+    console.log(this.noticia.portadaNoticia)
+
+  }
+
+  editarparrafos(parrafo: Parrafos) {
+    console.log(this.noticia.idNoticia)
+    console.log(this.noticia)
+    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+    console.log(parrafo)
+    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+
+    this.parrafosServices.putParrafo(parrafo, Number(parrafo.idParrafo)).subscribe(
+      (data) => {
+        if (data != null) {
+          this.parrafo = data
+          Swal.fire({
+            position: 'top-right',
+            icon: 'success',
+            title: 'Parrafos editados exitosamente',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
+        }
+      }, error => {
+        // Mostrar una notificación de error
+        Swal.fire({
+          title: 'No se pudo guardar',
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        })
+      });
+  }
+
+  eliminarParrafos(parrafo: Parrafos) {
+    this.parrafosServices.deleteParrafos(Number(parrafo.idParrafo)).subscribe(
+      (data) => {
+        // if (data != null) {
+        this.parrafo = data
+        Swal.fire({
+          position: 'top-right',
+          icon: 'success',
+          title: 'Parrafos eliminados exitosamente',
+          showConfirmButton: false,
+          timer: 1500,
+          background: '#ffff',
+          iconColor: '#4CAF50',
+          padding: '1.25rem',
+          width: '20rem',
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+        });
+
+      }, error => {
+        // Mostrar una notificación de error
+        Swal.fire({
+          title: 'No se pudo eliminar',
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        })
+      });
+  }
+
+  guardarparrafos() {
+    console.log(this.parrafo);
+    parrafo: this.nuevoParrafo
+    this.parrafosServices.postParrafo(this.parrafo, Number(this.noticia.idNoticia)).subscribe(
+      (data) => {
+        this.parrafo = data;
+        this.listaParrafos.push(this.parrafo); // Agrega el párrafo a la lista
+        console.log(this.parrafo);
+        this.getParrafos();
+        Swal.fire({
+          title: 'Parrafo agregado exitosamente párrafo',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+      },
+      (error) => {
+        // Mostrar una notificación de error
+        Swal.fire({
+          title: 'No se pudo agregar párrafo',
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+      }
+    );
+
+  }
+
+  //foto
+  seleccionarFoto(evento: Event) {
+    this.obtenerFoto = evento.target as HTMLInputElement;
+
+    if (this.obtenerFoto.files?.length) {
+      const reader = new FileReader();
+      this.procesarFoto = this.obtenerFoto.files[0];
+
+      reader.addEventListener('load', () => {
+        this.imagenPreview = reader.result as string;
+      });
+
+      reader.readAsDataURL(this.procesarFoto);
+    }
+  }
+
+  almacenarFoto(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      if (this.procesarFoto) {
+        const formData = new FormData();
+        formData.append('file', this.procesarFoto, this.procesarFoto.name);
+
+        let nameFoto = new Fotos();
+        this.fotoServices.postFotos(formData).subscribe((data) => {
+          if (data != null) {
+            nameFoto = data;
+            if (nameFoto.url) {
+              resolve(nameFoto.url); // Resuelve la promesa con el valor de nameFoto.url
+            } else {
+              resolve("");
+            }
+          }
+        }, (error) => {
+          reject(error);
+        });
+      }
+    });
+  }
+  almacenarFotoNoticia() {
+    const formData = new FormData();
+    formData.append('file', this.procesarFoto);
+    this.fotoServices.postFotos(formData).subscribe(respuesta => {
+      // Asignar la URL de la imagen
+      console.log(respuesta.url);
+      this.fotosNoticias.fotosNoticia = respuesta.url;
+      console.log(this.fotosNoticias);
+      this.subirFotosNoticias();
+    }, error => {
+      // Mostrar una notificación de error
+      alert('No se pudo subir la imagen');
+    });
+  }
+
+  borrarImagen() {
+    this.obtenerFoto.value = '';
+    this.procesarFoto = null;
+    this.imagenPreview = null;
+  }
+
+  editarFoto() {
+    this.editFoto = true;
+  }
+
+  eliminarfotosNoticias(fotoNoticia: FotosNoticias) {
+    console.log(fotoNoticia)
+    this.fotosNoticiasServices.deleteFotosNoticias(Number(fotoNoticia.idFotosNoticia)).subscribe(
+      (data) => {
+        // if (data != null) {
+
+        Swal.fire({
+          position: 'top-right',
+          icon: 'success',
+          title: 'Fotos noticias eliminadas exitosamente',
+          showConfirmButton: false,
+          timer: 1500,
+          background: '#ffff',
+          iconColor: '#4CAF50',
+          padding: '1.25rem',
+          width: '20rem',
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+        });
+
+      }, error => {
+        this.getImagenesNoticias();
+        // Mostrar una notificación de error
+        Swal.fire({
+          title: 'No se pudo eliminar',
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        })
+      });
+  }
+
+  subirFotosNoticias() {
+    this.fotosNoticiasServices.postFotosNoticias(this.fotosNoticias, Number(this.noticia.idNoticia)).subscribe(resultado => {
+      console.log(this.noticia.idNoticia);
+      this.getImagenesNoticias();
+
+      // Mostrar una notificación de éxito
+      Swal.fire({
+        position: 'top-right',
+        icon: 'success',
+        title: 'Fotos de Noticia subidas exitosamente',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
+    }, error => {
+      // Mostrar una notificación de error
+      Swal.fire({
+        title: 'No se pudo guardar',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      });
+    });
+  }
+
+
+
+}
 
 
 
