@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
 })
 export class ListarUsuariosComponent implements OnInit {
 
+  rolSuperAdmin: boolean = false;
+
   // PAGINACION
   pagActua: number = 0;
   pagExist: any = 0;
@@ -37,9 +39,17 @@ export class ListarUsuariosComponent implements OnInit {
     if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/cbd/login']);
     }
-    
+
+    const rolSuperAdministrador = localStorage.getItem('rolAdministrador');
+    this.rolSuperAdmin = rolSuperAdministrador ? JSON.parse(rolSuperAdministrador) : false;
+
     localStorage.removeItem('usuario');
-    this.almacenarEstado('desbloqueado');
+
+    if (this.rolSuperAdmin) {
+      this.almacenarEstado('desbloqueado');
+    } else {
+      this.router.navigate(['/cbd/panel']);
+    }
   }
 
   // ALMACENAR ESTADO DE VISUALIZACION
@@ -99,12 +109,12 @@ export class ListarUsuariosComponent implements OnInit {
   almacenarUsuario(usuarios: Usuarios, ir: string) {
     localStorage.removeItem('usuario');
     localStorage.setItem('usuario', JSON.stringify(usuarios));
-    if(ir == "editar"){
+    if (ir == "editar") {
       this.router.navigate(['/cbd/superAdmin/usuarios/editar']);
     } else {
-    this.router.navigate(['/cbd/superAdmin/usuarios/detalle']);
+      this.router.navigate(['/cbd/superAdmin/usuarios/detalle']);
+    }
   }
-}
   // PASAR A DETALLE USUARIOS
 
   // ELIMINAR USUARIOS

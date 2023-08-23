@@ -24,6 +24,8 @@ export class SloginService {
         localStorage.setItem('rolCliente', JSON.stringify(tokenResponse.roleCliente));
         localStorage.setItem('rolAdministrador', JSON.stringify(tokenResponse.roleAdministrador));
         localStorage.setItem('rolEmpleado', JSON.stringify(tokenResponse.roleEmpleado));
+        localStorage.setItem('estActivo', JSON.stringify(tokenResponse.estActivo));
+        localStorage.setItem('estBloqueado', JSON.stringify(tokenResponse.estBloqueado));
 
         return true;
     }
@@ -44,6 +46,8 @@ export class SloginService {
         localStorage.removeItem('rolCliente');
         localStorage.removeItem('rolAdministrador');
         localStorage.removeItem('rolEmpleado');
+        localStorage.removeItem('estActivo');
+        localStorage.removeItem('estBloqueado');
 
         return true;
     }

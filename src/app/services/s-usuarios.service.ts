@@ -51,6 +51,10 @@ export class SusuariosService {
       return this.http.get<Roles>(`${baserUrl + this.URL}/obtenerRolUsuario/${id}`);
     }
 
+    public existUserName(userName: string) {
+      return this.http.get<Boolean>(`${baserUrl + this.URL}/existUserName/${userName}`);
+    }
+
     // postNoticias(Noticias: Noticias) {
     //     return this.http.post<Noticias>(this.URL, Noticias);
     // }

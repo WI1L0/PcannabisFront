@@ -5,5 +5,7 @@ export class TokenResponse {
     roleCliente?: boolean;
     roleAdministrador?: boolean;
     roleEmpleado?: boolean;
+    estBloqueado?: boolean;
+    estActivo?: boolean;
 
 }
