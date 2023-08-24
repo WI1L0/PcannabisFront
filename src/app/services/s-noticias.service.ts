@@ -30,7 +30,7 @@ export class SnoticiasService {
 
   public getNoticias(pageAct: number, estado: string, empresaName: string, busqueda: string) {
     if(busqueda == null || busqueda == ''){
-      return this.http.get<NoticiasResponse>(`${baserUrl + this.URL}/all/paginacion/${empresaName}/?pageNo=${pageAct}&estado=${estado}`);
+      return this.http.get<NoticiasResponse>(`${baserUrl + this.URL}/all/paginacion/f/${empresaName}/?pageNo=${pageAct}&estado=${estado}`);
     } else {
       return this.http.get<NoticiasResponse>(`${baserUrl + this.URL}/all/paginacion/busqueda/${empresaName}/${busqueda}/?pageNo=${pageAct}&estado=${estado}`);
     }

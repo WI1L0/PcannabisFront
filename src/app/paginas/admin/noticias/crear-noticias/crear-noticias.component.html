@@ -29,32 +29,37 @@
                     <form>
                         <label for="foto">Seleccionar foto:</label>
                         <div class="row">
-                            <input type="file" name="foto" id="foto" accept="image/*" required
-                                (change)="seleccionarFoto($event)">
-                            <img [src]="imagenPreview" *ngIf="imagenPreview">
+                            <div class="row">
+                                <input type="file" name="foto" id="foto" accept="image/*" required
+                                    (change)="seleccionarFoto($event)">
+                            </div>
+                            <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px; width: 100%;">
+                        </div>
+                        <div>
+                            <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
+                                (click)="borrarImagen()" *ngIf="imagenPreview">Borrar Imagen</button>
                         </div>
                     </form>
                 </div>
-                <input type="button" name="next" class="next action-button" value="Siguiente" (click)="guardarNoticias()"/>
+                <input type="button" name="next" class="next action-button" value="Siguiente" />
             </fieldset>
             <fieldset>
                 <div>
                     <div class="container">
                         <div class="izquierda">
-                            <textarea [(ngModel)]="parrafos.parrafo" rows="5" type="text" name="txtarea"
+                            <textarea [(ngModel)]="parrafosObjects.parrafo" rows="5" type="text" name="txtarea"
                                 placeholder="Agrega un parrafo"></textarea>>
                             <!-- <input type="button" id="botones" class="botoncito" required value="Agregar"
                                 (click)="agregarParrafo()" /> -->
-                                <input type="button" id="botones" class="botoncito" required value="Agregar"
-                                (click)="guardarparrafos()" />
+                            <input type="button" id="botones" class="botoncito" required value="Agregar"
+                                (click)="almacenarListParrafos(parrafosObjects)" />
                         </div>
                         <div class="derecha" id="derecha">
                             <div class="card" id="card">
-                                <div *ngFor="let parrafos of listaParrafo; let i=index" class="derecha" id="derecha">
+                                <div *ngFor="let parralet of listaParrafo" class="derecha" id="derecha">
                                     <!-- <button class="botoncito" (click)="eliminarParrafos(parrafo)">Quitar</button> -->
-                                    <p class="nom" value="parrafo.idParrafo">Parrafo {{ i + 1 }}</p>
-                                    <textarea type="text" [(ngModel)]="parrafos.parrafo" 
-                                        name="parrafo{{parrafos.idParrafo}}" id="textarea"></textarea>
+                                    <p class="nom">{{ parralet.idParrafo }}</p>
+                                    <textarea type="text" value="{{parralet.parrafo}}" id="textarea"></textarea>
                                     <!-- <input type="button" id="botones" class="botoncito" (click)="editarparrafos(parrafo)"
                                         value="Editar" /> -->
                                 </div>
@@ -65,30 +70,43 @@
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
                 <a class="action-button" name="next" class="next action-button" target="_top"
-                    >Siguiente</a>
+                    (click)="almacenarNoticiaParrafos()">Siguiente</a>
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">Fotos Noticias</h2>
                 <h3 class="fs-subtitle">Suba las fotos de la Noticia</h3>
-                <form method="POST" action="" enctype="multipart/form-data">
-                    <label for="foto">Seleccionar foto:</label>
-                    <div class="row">
-                        <input type="file" name="fotos[]" id="fotos" accept="image/*"
-                            (change)="seleccionarFoto($event)">multiple>
+                <div class="row">
+                    <div class="col-12">
+                        <form>
+                            <label for="foto">Seleccionar foto:</label>
+                            <div class="row">
+                                <div class="row">
+                                    <input type="file" name="foto" id="foto" accept="image/*" required
+                                        (change)="seleccionarFoto($event)">
+                                </div>
+                                <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px; width: 100%;">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
+                            (click)="borrarImagen()" *ngIf="imagenPreview">Borrar Imagen</button>
+                    </div>
+                    <div class="col-6">
                         <input type="button" name="botoncito" class="botoncito" value="Añadir" id="btnfotos"
-                            (click)="almacenarFotoNoticia()" />
+                            (click)="almacenarNoticiaFotos()" [disabled]="limiteFotosAlcanzado"/>
                     </div>
+                </div>
+                <br>
+                <div class="row align-items-center">
+                    <ng-container *ngFor="let imagen of fotosNoticiasUrls">
+                        <img [src]="cuerpoUrlFoto + imagen" alt="Imagen {{imagen}}">
+                    </ng-container>
 
-                    <div class="row align-items-center">
-                        <ng-container *ngFor="let imagen of listaImagenesNoticias">
-                            <img [src]="cuerpoUrlFoto + imagen.fotosNoticia" alt="Imagen {{imagen.fotosNoticia  }}">
-                        </ng-container>
-
-                    </div>
-                </form>
+                </div>
                 <!-- <div id="previsualizacion" class="img"></div> -->
                 <!-- <input type="button" name="previous" class="previous action-button" value="Previous" /> -->
-                <a href="/cbd/admin/noticias/listar" type="button" name="previous" class="botoncito" >Finalizar</a>
+                <a href="/cbd/admin/noticias/listar" type="button" name="previous" class="botoncito" (click)="fin()">Finalizar</a>
                 <!-- <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a> -->
                 <!-- </form> -->
             </fieldset>

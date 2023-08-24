@@ -20,7 +20,7 @@ export class AllNoticiasComponent implements OnInit {
 
   pagActua: number = 0;
   pagExist: any = 0;
-  respuestaNoticias: NoticiasResponse = new NoticiasResponse;
+  respuestaNoticias: NoticiasResponse = new NoticiasResponse();
   listNoticias: any[] = [];
 
   cuerpoUrlFoto: string = baserUrlImagenes;
