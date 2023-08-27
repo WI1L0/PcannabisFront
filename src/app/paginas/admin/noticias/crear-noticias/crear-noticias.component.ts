@@ -33,7 +33,7 @@ export class CrearNoticiasComponent implements OnInit {
   procesarFoto: any;
   imagenPreview: any;
 
-  limiteFotosAlcanzado = false;
+  limiteFotosAlcanzado: boolean = false;
 
   parrafosObjects: Parrafos = new Parrafos();
   listaParrafo: Parrafos[] = [];
@@ -238,6 +238,7 @@ export class CrearNoticiasComponent implements OnInit {
   }
 
   fin() {
+    if (this.fotosNoticiasUrls.length != 0){
     this.borrarImagen();
     this.listaParrafo = [];
     this.fotosNoticiasUrls = [];
@@ -245,6 +246,16 @@ export class CrearNoticiasComponent implements OnInit {
     this.fotosNoticiasObjects = {} as FotosNoticias;
     this.limiteFotosAlcanzado = false;
     history.back();
+    } else {
+      Swal.fire({
+        title: 'No puede almacenarse la noticia sin fotos ',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      })
+    }
   }
 
 }

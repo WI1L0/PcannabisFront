@@ -48,7 +48,7 @@
                     <div class="container">
                         <div class="izquierda">
                             <textarea [(ngModel)]="parrafosObjects.parrafo" rows="5" type="text" name="txtarea"
-                                placeholder="Agrega un parrafo"></textarea>>
+                                placeholder="Agrega un parrafo"></textarea>
                             <!-- <input type="button" id="botones" class="botoncito" required value="Agregar"
                                 (click)="agregarParrafo()" /> -->
                             <input type="button" id="botones" class="botoncito" required value="Agregar"
@@ -92,7 +92,7 @@
                         <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
                             (click)="borrarImagen()" *ngIf="imagenPreview">Borrar Imagen</button>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6" *ngIf="!limiteFotosAlcanzado">
                         <input type="button" name="botoncito" class="botoncito" value="Añadir" id="btnfotos"
                             (click)="almacenarNoticiaFotos()" [disabled]="limiteFotosAlcanzado"/>
                     </div>
@@ -106,7 +106,7 @@
                 </div>
                 <!-- <div id="previsualizacion" class="img"></div> -->
                 <!-- <input type="button" name="previous" class="previous action-button" value="Previous" /> -->
-                <a href="/cbd/admin/noticias/listar" type="button" name="previous" class="botoncito" (click)="fin()">Finalizar</a>
+                <a type="button" name="previous" class="botoncito" (click)="fin()">Finalizar</a>
                 <!-- <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a> -->
                 <!-- </form> -->
             </fieldset>
