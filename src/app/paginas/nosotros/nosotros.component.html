@@ -226,14 +226,13 @@
             <div class="bodyformulario">
                 <form action="">
                     <section class="layout 2">
-                        <!-- <fieldset class="input-box">
+                        <fieldset class="input-box">
                             <input class="campos" placeholder="Name" type="Name" name="Name_contactanos" tabindex="1"
                                 required [(ngModel)]="contactanosObject.nombreContactanos">
                         </fieldset>
                         <fieldset class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.nombreContactanos">Observaciones is
-                                required.</small>
+                                *ngIf="submitted && !contactanosObject.nombreContactanos">Campo requerido.</small>
                         </fieldset>
                         <fieldset class="input-box">
                             <input class="campos" placeholder="Email" type="Email" name="Email_contactanos" tabindex="2"
@@ -241,8 +240,7 @@
                         </fieldset>
                         <fieldset class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.emailContactanos">Observaciones is
-                                required.</small>
+                                *ngIf="submitted && !contactanosObject.emailContactanos">Campo requerido.</small>
                         </fieldset>
                         <fieldset class="input-box">
                             <input class="campos" placeholder="Celular" type="Celular" name="Celular_contactanos"
@@ -250,8 +248,7 @@
                         </fieldset>
                         <fieldset class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.celularContactanos">Observaciones is
-                                required.</small>
+                                *ngIf="submitted && !contactanosObject.celularContactanos">Campo requerido.</small>
                         </fieldset>
                         <fieldset class="input-box">
                             <input class="campos" placeholder="Asunto" type="Asunto" name="Asunto_contactanos"
@@ -259,8 +256,7 @@
                         </fieldset>
                         <fieldset class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.asuntoContactanos">Observaciones is
-                                required.</small>
+                                *ngIf="submitted && !contactanosObject.asuntoContactanos">Campo requerido.</small>
                         </fieldset>
                         <fieldset class="input-box">
                             <textarea class="campos" placeholder="Descripcion" type="Descripcion"
@@ -269,11 +265,10 @@
                         </fieldset>
                         <fieldset class="input-box">
                             <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.detalleContactanos">Observaciones is
-                                required.</small>
-                        </fieldset> -->
+                            *ngIf="submitted && !contactanosObject.detalleContactanos && mensajeDescripcion != true">Campo requerido.</small>
+                        </fieldset>
 
-                        <div class="input-box">
+                        <!-- <div class="input-box">
                             <input type="text" placeholder="Name*" required class="campos" tabindex="1"
                                 [(ngModel)]="contactanosObject.nombreContactanos">
                         </div>
@@ -321,18 +316,20 @@
                             <small class="p-error"
                                 *ngIf="submitted && !contactanosObject.detalleContactanos && mensajeDescripcion != true">Observaciones
                                 is
-                                required.</small>
-                            <!-- </div>
+                                required.</small> -->
+                            <!-- </div> -->
 
-                        <body>
+                        <div>
+                            <body>
                             <div class="text sign-up-text" class="texto">¿Quieres ser nuestro distribuidor? <a
                                     class="link" onclick="mostrar()">clic</a></div>
                         </body>
-
+                    </div>
+<!-- 
                         <div class="button input-box">
                             <div class="text sign-up-text" >¿Quieres ser nuestro distribuidor? <label for="flip">clic</label> </div> -->
                             <input type="submit" value="Enviar" class="enviar" (click)="postContactanos()">
-                        </div>
+                        <!-- </div> -->
                     </section>
                 </form>
             </div>

@@ -96,35 +96,36 @@ export class NosotrosComponent implements OnInit {
 
   postContactanos() {
     if (this.validaciones()) {
-      // this.contactanosServices.postContactanos(this.contactanosObject, nameEmpresa).subscribe(
-      //   (data) => {
-      //     if (data != null) {
-      //       this.submitted == false;
-      //       this.contactanosObject = new Contactanos();
+      console.log(this.contactanosObject)
+      this.contactanosServices.postContactanos(this.contactanosObject, nameEmpresa).subscribe(
+        (data) => {
+          if (data != null) {
+            this.submitted == false;
+            this.contactanosObject = new Contactanos();
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'post exitoso',
+        title: 'Su formulario se envió con éxito',
         showConfirmButton: false,
         timer: 1500
       })
-      //     } else {
-      //       Swal.fire({
-      //         position: 'top-end',
-      //         icon: 'question',
-      //         title: 'nel',
-      //         showConfirmButton: false,
-      //         timer: 1500
-      //       })
-      //     }
-      //   }
-      // )
+          } else {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'question',
+              title: 'No se puedo enviar su formulario',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        }
+      )
     } else {
       this.submitted = true;
       Swal.fire({
         position: 'top-end',
         icon: 'error',
-        title: 'campos vacios',
+        title: 'Verifique que los campos esten correctos',
         showConfirmButton: false,
         timer: 1500
       })
@@ -136,8 +137,8 @@ export class NosotrosComponent implements OnInit {
   // VALIDACIONES
   validaciones() {
     this.mensajeUsername = this.validarString(String(this.contactanosObject.nombreContactanos));
-    this.mensajeEmail = this.validarString(String(this.contactanosObject.emailContactanos));
-    this.mensajeCelular = this.validarString(String(this.contactanosObject.celularContactanos));
+    this.mensajeEmail = this.validarCorreo(String(this.contactanosObject.emailContactanos));
+    this.mensajeCelular = this.validarNumeros(String(this.contactanosObject.celularContactanos));
     this.mensajeAsunto = this.validarString(String(this.contactanosObject.asuntoContactanos));
     this.mensajeDescripcion = this.validarString(String(this.contactanosObject.detalleContactanos));
     console.log(this.mensajeUsername + " sssssssssssssssss 3")
@@ -155,8 +156,8 @@ export class NosotrosComponent implements OnInit {
     }
   }
 
-  validarNumeros(value: string) {
 
+  validarNumeros(value: string) {
     if (!value) {
       return 'El campo esta vacio';
     } else {
@@ -194,6 +195,7 @@ export class NosotrosComponent implements OnInit {
 
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
       return 'correo erroneo';
+      // return true;
     }
 
     return true;

@@ -21,6 +21,7 @@ export class AllProductosComponent implements OnInit {
   listProductos: any[] = [];
 productoObject: Productos = new Productos();
 
+
 visibleDetalle: Boolean = false;
 
   cuerpoUrlFoto: string = baserUrlImagenes;

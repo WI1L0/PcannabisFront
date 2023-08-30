@@ -20,7 +20,7 @@
                                 </tr>
                                 <div class="search-container">
                                     <i class="fa fa-search"></i>
-                                    <input type="text" name="usuario" placeholder="Nombre, Fecha" id="busqueda">
+                                    <input type="text" name="usuario" placeholder="Nombre" id="busqueda">
                                     <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
                                     <td class="all"><a (click)="obtenerProductos()" class="a">Buscar</a></td>
                                 </div>
@@ -54,10 +54,10 @@
                         <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a"
                                 (click)="confirmEliminar(producto)">Eliminar</a> </td>
                         <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a"
-                                (click)="alertOcultarMostrar(producto, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Activar</a>
+                                (click)="alertOcultarMostrar(producto, 'mostrar', 'podrán', 'producto mostrado', 'mostrar')">Activar</a>
                         </td>
                         <td *ngIf="producto.estOcultoVisibleProducto == true"><a class="a"
-                                (click)="alertOcultarMostrar(producto, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desactivar</a>
+                                (click)="alertOcultarMostrar(producto, 'ocultar', 'no podrán', 'producto ocultado', 'ocultar')">Desactivar</a>
                         </td>
                         <td><a class="a" (click)="setProductosADetalle(producto)">Ver</a>
                         </td>

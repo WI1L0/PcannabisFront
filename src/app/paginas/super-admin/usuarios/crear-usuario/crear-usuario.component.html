@@ -16,22 +16,23 @@
                 <h2 class="fs-title">Crear Usuario</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de persona</h3>
                 <div class="row">
+                    <input type="text" name="cedula" placeholder="Cédula" class="half-width" required
+                        [(ngModel)]="personaObject.cedula" (input)="cargarCedula()" />
                     <input type="text" name="nombre1" placeholder="Nombre 1" class="half-width" required
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre1" />
                     <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
+                </div>
+                <div class="row">
+                    <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
                     <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" required
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre2" />
-                </div>
-                <div class="row">
                     <input type="text" name="apellido1" placeholder="Apellido 1" class="half-width" required
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido1" />
-                    <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" required
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2" />
                 </div>
                 <div class="row">
-                    <input type="text" name="cedula" placeholder="Cédula" class="half-width" required
-                        [(ngModel)]="personaObject.cedula" (input)="cargarCedula()" />
-                    <input type="text" name="celular" placeholder="Celular" class="half-width" required
+                    <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" required
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2" />
+                        <input type="text" name="celular" placeholder="Celular" class="half-width" required
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.celular" />
                 </div>
 
@@ -72,11 +73,12 @@
                 <input type="text" name="referencia" placeholder="Referencia" required [disabled]="cedulaRegistrada"
                     [(ngModel)]="personaObject.referencia" />
 
-                <input type="button" name="next" class="next action-button" id="next" value="Siguiente" [disabled]="existCorreov" />
+                <input type="button" name="next" class="next action-button" id="next" value="Siguiente"
+                    [disabled]="existCorreov" />
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">Datos de Usuario</h2>
-                <h3 class="fs-subtitle">ingrese los Datos de Usuario</h3>
+                <h3 class="fs-subtitle">Ingrese los Datos de Usuario</h3>
                 <input type="text" name="nombre_usuario" placeholder="Nombre de Usuario" class="half-width" required
                     [(ngModel)]="usuarioData.nombreUsuario" />
                 <!-- <input type="text" name="correo_usuario" placeholder="Correo de Usuario"  class="half-width" required /> -->
@@ -85,14 +87,14 @@
                     <option value="ROLE_ADMIN">Administrador</option>
                     <option value="ROLE_EMPLEADO">Empleado</option>
                 </select>
-                <input type="password" name="pass" placeholder="Contraseña" class="half-width" required (blur)="validarContra()"
-                    [(ngModel)]="usuarioData.passwordUsuario" />
+                <input type="password" name="pass" placeholder="Contraseña" class="half-width" required
+                    (blur)="validarContra()" [(ngModel)]="usuarioData.passwordUsuario" />
                 <input type="password" name="cpass" id="cpass" placeholder="Confirmar Contraseña" class="half-width"
                     required />
 
                 <div>
-                    <h2 class="fs-title">Portada de Noticia</h2>
-                    <h3 class="fs-subtitle">Seleccione una foto para la Noticia</h3>
+                    <h2 class="fs-title">Foto de usuario</h2>
+                    <h3 class="fs-subtitle">Seleccione una foto para el usuario</h3>
                     <form>
                         <label for="foto">Seleccionar foto:</label>
                         <div class="row">

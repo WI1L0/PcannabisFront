@@ -115,8 +115,8 @@ export class ListarProductosComponent implements OnInit {
   // ELIMINAR PRODUCTOS
   confirmEliminar(producto: Productos) {
     Swal.fire({
-      title: '¿Estás seguro de eliminar esta noticia?',
-      text: 'Se eliminarán todos los registros de esta noticia de manera permanente y no se podrán recuperar',
+      title: '¿Estás seguro de eliminar este producto?',
+      text: 'Se eliminarán todos los registros de este producto de manera permanente y no se podrán recuperar',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -148,13 +148,13 @@ export class ListarProductosComponent implements OnInit {
                   }
                 })
               if (re) {
-                Swal.fire('eliminada', 'noticia eliminada', 'success').then(
+                Swal.fire('Eliminado', 'Producto eliminado', 'success').then(
                   (res) => {
                     this.obtenerProductos();
                   }
                 );
               } else {
-                Swal.fire('no eliminada', 'noticia no eliminada', 'error');
+                Swal.fire('No eliminado', 'Producto no eliminado', 'error');
               }
             } else {
               Swal.showValidationMessage('El valor ingresado no es correcto');
@@ -175,11 +175,11 @@ export class ListarProductosComponent implements OnInit {
     mensajeFalse: string
   ) {
     Swal.fire({
-      title: '¿Estas seguro de ' + `${mensajeTitle}` + ' esta noticia?',
+      title: '¿Estas seguro de ' + `${mensajeTitle}` + ' este producto?',
       text:
-        'Las noticias ocultas ' +
+        'Los productos ocultos ' +
         `${mensajeText}` +
-        ' ser vistas por el publico en general',
+        ' ser vistos por el público en general',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -198,13 +198,13 @@ export class ListarProductosComponent implements OnInit {
           })
         if (re) {
           Swal.fire(
-            'Noticia ' + `${mensajeTrue}` + ' exitosamente',
+            'Producto ' + `${mensajeTrue}` + ' exitosamente',
             'success'
           ).then((res) => {
             this.obtenerProductos();
           });
         } else {
-          Swal.fire(' Error al ' + `${mensajeFalse}` + ' noticia', 'error');
+          Swal.fire(' Error al ' + `${mensajeFalse}` + ' producto', 'error');
         }
       }
     });

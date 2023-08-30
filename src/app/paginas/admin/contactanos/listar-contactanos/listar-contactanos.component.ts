@@ -64,7 +64,7 @@ export class ListarContactanosComponent implements OnInit {
           );
         },
         (error) => {
-          console.log('Error al obtener noticias:', error);
+          console.log('Error al obtener respuestas:', error);
         }
       );
   }
@@ -104,8 +104,8 @@ export class ListarContactanosComponent implements OnInit {
   // ELIMINAR CONTACTANOS
   confirmEliminar(contac: Contactanos) {
     Swal.fire({
-      title: '¿Estás seguro de eliminar esta noticia?',
-      text: 'Se eliminarán todos los registros de esta noticia de manera permanente y no se podrán recuperar',
+      title: '¿Estás seguro de eliminar esta respuesta?',
+      text: 'Se eliminarán todos los registros de esta respuesta de manera permanente y no se podrán recuperar',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -137,13 +137,13 @@ export class ListarContactanosComponent implements OnInit {
                 }
               })
               if (re) {
-                Swal.fire('eliminada', 'noticia eliminada', 'success').then(
+                Swal.fire('eliminada', 'Respuesta eliminada', 'success').then(
                   (res) => {
                     this.obtenerContactanos();
                   }
                 );
               } else {
-                Swal.fire('no eliminada', 'noticia no eliminada', 'error');
+                Swal.fire('no eliminada', 'Respuesta no eliminada', 'error');
               }
             } else {
               Swal.showValidationMessage('El valor ingresado no es correcto');
@@ -164,11 +164,11 @@ export class ListarContactanosComponent implements OnInit {
     mensajeFalse: string
   ) {
     Swal.fire({
-      title: '¿Estas seguro de ' + `${mensajeTitle}` + ' esta noticia?',
+      title: '¿Estas seguro de ' + `${mensajeTitle}` + ' esta respuesta?',
       text:
-        'las noticias ocultas ' +
+        'las respuestas ocultas ' +
         `${mensajeText}` +
-        ' ser vistas por el publico en general',
+        ' ser vistas por el público en general',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -187,13 +187,13 @@ export class ListarContactanosComponent implements OnInit {
             })
         if (re) {
           Swal.fire(
-            'Noticia ' + `${mensajeTrue}` + ' exitosamente',
+            'Respuesta ' + `${mensajeTrue}` + ' exitosamente',
             'success'
           ).then((res) => {
             this.obtenerContactanos();
           });
         } else {
-          Swal.fire(' Error al ' + `${mensajeFalse}` + ' noticia', 'error');
+          Swal.fire(' Error al ' + `${mensajeFalse}` + ' respuesta', 'error');
         }
       }
     });
