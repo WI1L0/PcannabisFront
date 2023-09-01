@@ -215,30 +215,29 @@ export class CrearUsuarioComponent implements OnInit {
             this.almacenarFoto().then(
               (url) => {
                 this.usuarioData.fotoUsuario = url;
-                this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
-                  (data2) => {
-                    if (data2 != null) {
-                      Swal.fire({
-                        position: 'top-right',
-                        icon: 'success',
-                        title: 'Usuario Creado Exitosamente',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        background: '#ffff',
-                        iconColor: '#4CAF50',
-                        padding: '1.25rem',
-                        width: '20rem',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                      });
-
-                      this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
-                    }
-                  }
-                )
               }
             )
+            this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
+              (data2) => {
+                if (data2 != null) {
+                  Swal.fire({
+                    position: 'top-right',
+                    icon: 'success',
+                    title: 'Usuario Creado Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    background: '#ffff',
+                    iconColor: '#4CAF50',
+                    padding: '1.25rem',
+                    width: '20rem',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                  });
 
+                  this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+                }
+              }
+            )
           }
         }
       }
@@ -340,7 +339,7 @@ export class CrearUsuarioComponent implements OnInit {
         timer: 1500
       })
       ban = false;
-
+      
     }
     //validar edad
 

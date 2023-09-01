@@ -152,44 +152,43 @@ export class EditarUsuarioComponent implements OnInit {
           this.almacenarFoto().then(
             (url) => {
               this.usuariosObject.fotoUsuario = url;
-              this.personaServices.putPersona(this.personasObject).subscribe(
-                (data) => {
-                  if (data != null) {
-                    this.usuarioServices.putUsuario(this.usuariosObject, (<HTMLSelectElement>document.getElementById('mySelectRol')).value).subscribe(
-                      (data) => {
-                        if (data != null) {
-                          Swal.fire(
-                            'Editada!',
-                            'El ususario fue editada exitosamente.',
-                            'success'
-                          ).then((result) => {
-                            if (result.isConfirmed) {
-                              this.personasObject = {} as Personas;
-                              this.usuariosObject = {} as Usuarios;
-                              this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
-                            }
-                          })
-                        } else {
-                          Swal.fire({
-                            title: 'No Editada!',
-                            text: 'La empresa no fue editada.',
-                            icon: 'error'
-                          });
-                        }
-                      }
-                    )
-                  } else {
-                    Swal.fire({
-                      title: 'No Editada!',
-                      text: 'La empresa no fue editada.',
-                      icon: 'error'
-                    });
-                  }
-                }
-              )
             }
           )
-
+          this.personaServices.putPersona(this.personasObject).subscribe(
+            (data) => {
+              if (data != null) {
+                this.usuarioServices.putUsuario(this.usuariosObject, (<HTMLSelectElement>document.getElementById('mySelectRol')).value).subscribe(
+                  (data) => {
+                    if (data != null) {
+                      Swal.fire(
+                        'Editada!',
+                        'El ususario fue editada exitosamente.',
+                        'success'
+                      ).then((result) => {
+                        if (result.isConfirmed) {
+                          this.personasObject = {} as Personas;
+                          this.usuariosObject = {} as Usuarios;
+                          this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+                        }
+                      })
+                    } else {
+                      Swal.fire({
+                        title: 'No Editada!',
+                        text: 'La empresa no fue editada.',
+                        icon: 'error'
+                      });
+                    }
+                  }
+                )
+              } else {
+                Swal.fire({
+                  title: 'No Editada!',
+                  text: 'La empresa no fue editada.',
+                  icon: 'error'
+                });
+              }
+            }
+          )
         }
       });
     } else {
