@@ -83,7 +83,8 @@ export class EditarProductosComponent implements OnInit {
                     allowEscapeKey: false,
                   });
 
-                  this.router.navigate(['/cbd/admin/productos/listar']);
+                  // this.router.navigate(['/cbd/admin/productos/listar']);
+                  history.back();
                 }
               }
             )
