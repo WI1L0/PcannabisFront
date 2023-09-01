@@ -64,8 +64,7 @@ export class CrearProductosComponent implements OnInit {
                     allowOutsideClick: false,
                     allowEscapeKey: false,
                   });
-
-                  this.router.navigate(['/cbd/admin/productos/listar']);
+                  history.back();
                 }
               }
             )
