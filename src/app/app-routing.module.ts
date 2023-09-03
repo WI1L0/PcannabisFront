@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/cbd/home', pathMatch: 'full' },
   { path: 'cbd', loadChildren: () => import('./paginas/paginas.module').then(m => m.PaginasModule) },
 ];
 

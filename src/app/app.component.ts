@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { nameEmpresa } from 'src/app/services/defauld/EmpresaName';
 import { Empresas } from './modelos/Empresas';
 import { SEmpresasService } from './services/s-empresas.service';
+import { SloginService } from './services/s-login.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,11 @@ import { SEmpresasService } from './services/s-empresas.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  mostrarHeader = true;
-  mostrarFooter = true;
-  mostrarFlotante = true;
-  mostrarHeader2 = false;
-  mostrarHeaderNunakay = false;
+  hederAll = true;
+  footer = true;
+  flotante = true;
+  hederAdministrativo = false;
+  headerNunakay = false;
 
   empresaData: Empresas = new Empresas();
 
@@ -23,70 +24,56 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private AllScripts: AllScriptsService,
-    private empresasServices: SEmpresasService
+    private empresasServices: SEmpresasService,
+    private loginServices: SloginService
   ) {
     AllScripts.Cargar(["default/home"]);
 
-    //quitar el header 
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Ocultar el encabezado en la página de inicio
-        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/admin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear' || event.url == '/cbd/all-productos') {
-          this.mostrarHeader = false;
+        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin' || event.url == '/cbd/admin' || event.url == '/cbd/login') {
+          this.hederAll = false;
+          this.flotante = false;
+          this.footer = false;
+          this.hederAdministrativo = true;
         } else {
-          this.mostrarHeader = true;
-        }
-      }
-    });
-    //mostrar el header admin
-    router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Ocultar el encabezado en la página de inicio
-        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/superAdmin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear') {
-          this.mostrarHeader2 = true;
-        } else {
-          this.mostrarHeader2 = false;
+          this.hederAll = true;
+          this.flotante = true;
+          this.footer = true;
+          this.hederAdministrativo = false;
+
+          this.loginServices.deleteTokenAndRoles();
         }
       }
     });
 
-    //quitar el Footer y Header de Nunakay
+
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Ocultar el encabezado en la página de inicio
         if (event.url === '/cbd/all-productos') {
-          this.mostrarHeaderNunakay = true;
+          this.hederAll = false;
+          this.flotante = false;
+          this.footer = false;
+          this.hederAdministrativo = false;
+          this.headerNunakay = true;
+          this.loginServices.deleteTokenAndRoles();
         } else {
-          this.mostrarHeaderNunakay = false;
+          this.headerNunakay = false;
         }
       }
     });
 
-    //quitar el footer
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Ocultar el encabezado en la página de inicio
-        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/superAdmin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear' || event.url == '/cbd/all-productos') {
-          this.mostrarFooter = false;
+        if (event.url === '/cbd/login') {
+          localStorage.setItem('cbdLogin','true');
+          this.loginServices.deleteTokenAndRoles();
         } else {
-          this.mostrarFooter = true;
+          localStorage.removeItem('cbdLogin');
         }
       }
     });
-
-        //quitar flotante
-        router.events.subscribe(event => {
-          if (event instanceof NavigationEnd) {
-            // Ocultar el boton de la página de inicio
-            if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/empresa' || event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/detalle' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/login' || event.url == '/cbd/admin/contactanos/detalle' || event.url == '/cbd/superAdmin/usuarios/detalle' || event.url == '/cbd/superAdmin/galeria' || event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/detalle' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/crear') {
-              this.mostrarFlotante = false;
-            } else {
-              this.mostrarFlotante = true;
-            }
-          }
-        });
   }
-
 
 
   ngOnInit(): void {

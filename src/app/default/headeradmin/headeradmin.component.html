@@ -1,8 +1,15 @@
 <header class="header" id="header">
 	<nav class="navbar container">
-		<a href="/cbd/panel" class="brand"><img class="img1" src="../../../assets/img/ARTE_LOGO_PHARMA_2023.png"
+
+		<div *ngIf="logueado == false">
+			<a href="/cbd/home" class="brand"><img class="img1" src="../../../assets/img/ARTE_LOGO_PHARMA_2023.png"
 				alt=""></a>
-		<div class="menu" id="menu">
+		</div>
+		<div *ngIf="logueado == true">
+			<a href="/cbd/panel" class="brand"><img class="img1" src="../../../assets/img/ARTE_LOGO_PHARMA_2023.png"
+				alt=""></a>
+		</div>
+		<div class="menu" id="menu" *ngIf="logueado == true">
 			<ul class="menu-inner">
 				<li class="menu-item"><a class="menu-link" (click)="cerrar()" >Cerrar Sesión</a></li>
 			</ul>

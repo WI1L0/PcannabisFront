@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AllScriptsService } from 'src/app/scripts/all-scripts.service';
 import { SloginService } from 'src/app/services/s-login.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 @Component({
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./headeradmin.component.scss']
 })
 export class HeaderadminComponent implements OnInit{
+
+  logueado: boolean = true;
 
   //implementar js en los componentes
   constructor(
@@ -20,7 +22,13 @@ export class HeaderadminComponent implements OnInit{
     AllScripts.Cargar(["default/headeradmin"]);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('cbdLogin') == 'true'){
+      this.logueado = false;
+    } else {
+      this.logueado = true;
+    }
+  }
 
   cerrar(){
     if (this.loginServices.deleteTokenAndRoles()){
