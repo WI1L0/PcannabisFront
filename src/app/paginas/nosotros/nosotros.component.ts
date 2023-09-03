@@ -102,13 +102,13 @@ export class NosotrosComponent implements OnInit {
           if (data != null) {
             this.submitted == false;
             this.contactanosObject = new Contactanos();
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Su formulario se envió con éxito',
-        showConfirmButton: false,
-        timer: 1500
-      })
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Su formulario se envió con éxito',
+              showConfirmButton: false,
+              timer: 1500
+            })
           } else {
             Swal.fire({
               position: 'top-end',
@@ -120,85 +120,57 @@ export class NosotrosComponent implements OnInit {
           }
         }
       )
-    } else {
-      this.submitted = true;
+    }
+  }
+
+
+
+
+  // VALIDACIONES
+
+  validaciones(): boolean {
+    let ban: boolean = true;
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (/^\d+$/.test(String(this.contactanosObject.nombreContactanos))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
-        title: 'Verifique que los campos esten correctos',
+        title: 'Verifique que el nombre este correcto',
         showConfirmButton: false,
         timer: 1500
       })
-    }
-  }
-
-
-
-  // VALIDACIONES
-  validaciones() {
-    this.mensajeUsername = this.validarString(String(this.contactanosObject.nombreContactanos));
-    this.mensajeEmail = this.validarCorreo(String(this.contactanosObject.emailContactanos));
-    this.mensajeCelular = this.validarNumeros(String(this.contactanosObject.celularContactanos));
-    this.mensajeAsunto = this.validarString(String(this.contactanosObject.asuntoContactanos));
-    this.mensajeDescripcion = this.validarString(String(this.contactanosObject.detalleContactanos));
-    console.log(this.mensajeUsername + " sssssssssssssssss 3")
-    console.log(this.mensajeEmail + " sssssssssssssssss 4")
-    console.log(this.mensajeCelular + " sssssssssssssssss 5")
-    console.log(this.mensajeAsunto + " sssssssssssssssss 6")
-    console.log(this.mensajeDescripcion + " sssssssssssssssss 7")
-
-    if (this.mensajeUsername == true && this.mensajeEmail == true && this.mensajeCelular == true && this.mensajeAsunto == true && this.mensajeDescripcion == true) {
-      console.log("sssssssssssssssss 1")
-      return true;
+      ban = false
     } else {
-      console.log("sssssssssssssssss 2")
-      return false;
+      ban = true
     }
-  }
 
-
-  validarNumeros(value: string) {
-    if (!value) {
-      return 'El campo esta vacio';
+    if (!/^\d+$/.test(String(this.contactanosObject.celularContactanos)) || (!/^\d{10}$/.test(String(this.contactanosObject.celularContactanos)))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'El célular es incorrecto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
     } else {
-      if (!/^\d+$/.test(value)) {
-        return 'No se permiten letras';
-      } else {
-        if (!/^\d{10}$/.test(value)) {
-          return 'No contiene 10 digitos';
-        } else {
-          return true;
-        }
-      }
+      ban = true
     }
+
+    if (!regexCorreo.test(String(this.contactanosObject.emailContactanos))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el correo este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+    return ban;
   }
-
-
-  validarString(value: string) {
-
-    if (!value) {
-      return 'El campo esta vacio';
-    }
-
-    if (/^\d+$/.test(value)) {
-      return 'No se permiten numeros';
-    }
-
-    return true;
-  }
-
-  validarCorreo(value: string) {
-
-    if (!value) {
-      return 'El campo esta vacio';
-    }
-
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
-      return 'correo erroneo';
-      // return true;
-    }
-
-    return true;
-  }
-  // VALIDACIONES
 }
+
+
+  // VALIDACIONES

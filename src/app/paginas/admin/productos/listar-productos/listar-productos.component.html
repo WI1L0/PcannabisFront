@@ -1,3 +1,5 @@
+
+
 <!-- ALL -->
 <div class="divPrimero">
     <div class="divSegundo">
@@ -6,10 +8,10 @@
             <h2>PRODUCTOS</h2>
             <tr>
                 <div class="row">
-                    <div class="">
-                        <table class="fl-table">
+=                        <table class="fl-table">
                             <thead>
                                 <tr>
+                                    <td class="contenedor"><a class="buscar"> </a>
                                     <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
                                         (change)="obtenerProductos()">
                                         <option disabled selected>Seleccione una opción</option>
@@ -17,7 +19,7 @@
                                         <option value="activo">Activos</option>
                                         <option value="desactivo">Desactivos</option>
                                     </select>
-                                </tr>
+                                    </td>
                                 <div class="search-container">
                                     <i class="fa fa-search"></i>
                                     <input type="text" name="usuario" placeholder="Nombre" id="busqueda">
@@ -27,9 +29,9 @@
                                 <td class="all"><a href="/cbd/admin/productos/crear" class="a">Agregar</a></td>
                                 <td class="contenedor">
                                 </td>
+                            </tr>
                             </thead>
                         </table>
-                    </div>
                 </div>
             </tr>
 

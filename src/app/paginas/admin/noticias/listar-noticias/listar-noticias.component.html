@@ -6,10 +6,10 @@
             <h2>NOTICIAS</h2>
             <tr>
                 <div class="row">
-                    <div class="">
-                        <table class="fl-table">
-                            <thead>
-                                <tr>
+                    <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <td class="contenedor"><a class="buscar"> </a>
                                     <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
                                         (change)="obtenerNoticias()">
                                         <option disabled selected>Seleccione una opción</option>
@@ -17,7 +17,8 @@
                                         <option value="activo">Activos</option>
                                         <option value="desactivo">Desactivos</option>
                                     </select>
-                                </tr>
+                                </td>
+
                                 <div class="search-container">
                                     <i class="fa fa-search"></i>
                                     <input type="text" name="usuario" placeholder="Nombre, Fecha" id="busqueda">
@@ -25,11 +26,10 @@
                                     <td class="all"><a (click)="obtenerNoticias()" class="a">Buscar</a></td>
                                 </div>
                                 <td class="all"><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
-                                <td class="contenedor">
-                                </td>
-                            </thead>
-                        </table>
-                    </div>
+                                <td class="contenedor"> </td>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </tr>
 
@@ -54,7 +54,8 @@
                         <td class="no">{{noti.ubicacionNoticia}}</td>
                         <td class="no">{{noti.fechaNoticia}}</td>
                         <td class="no">{{noti.preDescripcionNoticia}}</td>
-                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a (click)="setNoticiaAEditar(noti)"  class="a">Editar</a> </td>
+                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a (click)="setNoticiaAEditar(noti)"
+                                class="a">Editar</a> </td>
                         <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"
                                 (click)="confirmEliminar(noti)">Eliminar</a> </td>
                         <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"

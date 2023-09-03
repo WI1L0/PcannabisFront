@@ -74,7 +74,6 @@ $negrita: bold;
 
   #contact button[type="submit"] {
 	cursor: pointer;
-	width: 100%;
 	border: none;
 	background: $color-letra;
 	color: #FFF;
@@ -109,6 +108,43 @@ $negrita: bold;
   .container {
 	width: 100%;
 	margin: 0 auto;
+}
+.foto{
+  height: 250px;
+}
+
+@media (max-width: 1120px) {
+  .col-4 {
+    width: 100%;
+  }
+
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .img {
+    height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+
+  .row {
+    display: block;
+  }
+  .col-3{
+    width: 100%;
+  }
+  #contact {
+    background: #F9F9F9;
+    padding: 40px;
+    margin: 10px 0;
+     box-shadow: none;
+    }
+    .fotoempresa{
+      height: 100%
+    }
+    
 }
 
 

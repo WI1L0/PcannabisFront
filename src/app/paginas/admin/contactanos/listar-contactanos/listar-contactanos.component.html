@@ -47,12 +47,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <tr *ngFor="let contac of listContactanos">
                         <ng-container *ngIf="contac.estVisto == false">
-                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.nombreContactanos}}</td>
-                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.emailContactanos}}</td>
-                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.asuntoContactanos}}</td>
-                            <td [ngStyle]="{'font-weight': 'bold'}">{{contac.celularContactanos}}</td>
+                            <td class="no" [ngStyle]="{'font-weight': 'bold'}">{{contac.nombreContactanos}}</td>
+                            <td class="no" [ngStyle]="{'font-weight': 'bold'}">{{contac.emailContactanos}}</td>
+                            <td class="no" [ngStyle]="{'font-weight': 'bold'}">{{contac.asuntoContactanos}}</td>
+                            <td class="no" [ngStyle]="{'font-weight': 'bold'}">{{contac.celularContactanos}}</td>
                         </ng-container>
 
                         <ng-container *ngIf="contac.estVisto == true">

@@ -16,16 +16,18 @@
                     <option value="bloqueado">Bloqueados</option>
                   </select>
                 </td>
+
+                <div class="search-container">
+                  <i class="fa fa-search"></i>
+                  <input type="text" name="usuario" placeholder="Cédula, Apellido" id="busqueda">
+                  <td class="all"><a (click)="obtenerUsuarios()" class="a">Buscar</a></td>
+                </div>
+
+                <td class="all"><a href="/cbd/superAdmin/usuarios/crear" class="a">Agregar</a></td>
+                <td class="contenedor"></td>
               </tr>
-              <div class="search-container">
-                <i class="fa fa-search"></i>
-                <input type="text" name="usuario" placeholder="Cedula, Apellido" id="busqueda">
-                <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
-                <td class="all"><a (click)="obtenerUsuarios()" class="a">Buscar</a></td>
-              </div>
-              <td class="all"><a href="/cbd/superAdmin/usuarios/crear" class="a">Agregar</a></td>
-              <td class="contenedor"></td>
             </thead>
+
 
           </table>
         </div>
@@ -51,7 +53,6 @@
         <tbody>
           <tr *ngFor="let usulist of listUsu">
             <td class="no">{{usulist.personas?.cedula}}</td>
-            <td class="no">{{usulist.personas?.fNacimiento}}</td>
             <td class="no">{{usulist.personas?.nombre1}} {{usulist.personas?.nombre2}}</td>
             <td class="no">{{usulist.personas?.apellido1}} {{usulist.personas?.apellido2}}</td>
             <td class="no">{{usulist.personas?.correo}}</td>
@@ -59,7 +60,7 @@
             <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a"
                 (click)="confirmEliminar(usulist)">Eliminar</a> </td>
             <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a"
-              (click)="almacenarUsuario(usulist, 'editar')" >Editar</a> </td>
+                (click)="almacenarUsuario(usulist, 'editar')">Editar</a> </td>
             <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a"
                 (click)="alertBloquearOrDesbloquear(usulist, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Bloquear</a>
             </td>

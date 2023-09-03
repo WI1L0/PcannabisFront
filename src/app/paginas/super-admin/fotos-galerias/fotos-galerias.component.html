@@ -8,7 +8,7 @@
                 <div class="contentBlog">
                     <!-- PAGINACION CARDS NOTICIAS -->
                     <div class="row" style="padding: 50px;">
-                        <div class="col-12">
+                        <!-- <div class="col-12"> -->
                             <div class="row">
                                 <div class="col-4">
                                     <button name="submit" type="submit" id="contact-submit-equipo" [class]="btnEquipo ? 'pressed' : ''" 
@@ -22,7 +22,7 @@
                                     <button name="submit" type="submit" id="contact-submit-nunakay" [class]="btnNunakay ? 'pressed' : ''" 
                                     [disabled]="btnNunakay" data-submit="...Cargando" (click)="gtnBtn('N')">Nunakay</button>
                                 </div>
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
 
@@ -38,13 +38,12 @@
                                                         (change)="seleccionarFoto($event)">
                                                 </div>
                                                 <div *ngIf="guardarsi">
-                                                    <img [src]="imagenPreview" *ngIf="imagenPreview"
-                                                        style="padding: 20px; height: 250px;">
+                                                    <img [src]="imagenPreview" *ngIf="imagenPreview" class="foto">
                                                 </div>
                                             </div>
                                             <div class="row" *ngIf="!guardarsi && imagenPreview">
                                                 <img [src]="imagenPreview" *ngIf="imagenPreview"
-                                                    style="padding: 20px; height: 200px;">
+                                                class="foto">
                                                 <button name="submit" type="submit" id="contact-submit"
                                                     data-submit="...Guardando" [disabled]="!disableBtnGuardar"
                                                     (click)="preSaveFotosEmpresas()">Guardar</button>
@@ -64,7 +63,7 @@
                                             <div class="card">
                                                 <div class="card_image"><img
                                                         [src]=" cuerpoUrlFoto + Fempresas.fotoEmpresa "
-                                                        style="height: 200px;" (alt)="Fempresas.fotoEmpresa">
+                                                        class="foto" (alt)="Fempresas.fotoEmpresa">
                                                 </div>
                                                 <div class="card_content">
                                                     <button class="btn card_btn"
