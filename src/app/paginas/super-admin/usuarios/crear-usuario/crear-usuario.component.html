@@ -20,7 +20,11 @@
                         [(ngModel)]="personaObject.cedula" (input)="cargarCedula()" />
                     <input type="text" name="nombre1" placeholder="Nombre 1" class="half-width" required
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre1" />
-                    <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
+                    <!-- <div class="invalid-feedback">Por favor, complete est  e campo.</div> -->
+
+                    <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento" required
+                    [(ngModel)]="personaObject.fNacimiento">
+
                 </div>
                 <div class="row">
                     <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
@@ -32,12 +36,12 @@
                 <div class="row">
                     <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" required
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2" />
-                        <input type="text" name="celular" placeholder="Celular" class="half-width" required
+                    <input type="text" name="celular" placeholder="Celular" class="half-width" required
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.celular" />
                 </div>
 
                 <!-- <div class="row"> -->
-                <div *ngIf="!cedulaRegistrada">
+                <!-- <div *ngIf="!cedulaRegistrada">
                     <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento"
                         value="Fecha de nacimiento" required [(ngModel)]="personaObject.fNacimiento">
                 </div>
@@ -45,7 +49,8 @@
                     <input type="text" name="fechanacimiento" placeholder="Fecha de nacimiento"
                         value="Fecha de nacimiento" [(ngModel)]="personaObject.fNacimiento"
                         [disabled]="cedulaRegistrada">
-                </div>
+                </div> -->
+
 
                 <div *ngIf="!cedulaRegistrada">
                     <select id="mySelectGenero" required>

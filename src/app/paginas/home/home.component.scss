@@ -29,7 +29,7 @@ $negrita: bold;
   color: #ddd;
   background-color: $color-all-uno;
   text-align: center;
-  padding: 50px 80px;
+  padding: 50px 20px;
   text-align: justify;
 }
 
@@ -104,7 +104,6 @@ $negrita: bold;
   background-color: #031531;
   color: #fff;
   padding: 10px 50px;
-  // margin-top: 50vh;
   margin-left: 78%;
   width: max-content;
 }
@@ -184,6 +183,7 @@ nav+.carousel {
 
   }
 
+  
   .home-hero-header {
     background-color: $color-letra;
     color: #fff;
@@ -226,6 +226,38 @@ nav+.carousel {
     width: 5%;
   }
 }
+@media (max-width: 320px) {
+
+  .carousel-item {
+    background-size: cover;
+    height: 10vh;
+    z-index: -1;
+    position: relative;
+    width: 100%;
+  }
+  .carousel-inner {
+    height: 10vh;
+
+  }
+
+  .carousel-item.slide-one-image .carousel-item-bg,
+  .carousel-item.slide-two-image .carousel-item-bg,
+  .carousel-item.slide-three-image .carousel-item-bg {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .home-hero-header {
+    background-color: #031531;
+    color: #fff;
+    padding: 10px 50px;
+    // margin-top: 50vh;
+    margin-left: 78%;
+    width: fit-content;
+  }
+  
+}
+
 
 // CAROUSEL
 
@@ -333,6 +365,11 @@ nav+.carousel {
     line-height: 1.5;
     color: $color-fondo1;
     scroll-behavior: smooth;
+  }
+  @media (max-width: 320px) {
+    .h6Nunakay .secundary img {
+      display: none;
+    }
   }
 
   .h6Nunakay {

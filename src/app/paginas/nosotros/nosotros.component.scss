@@ -11,7 +11,6 @@ $negrita: bold;
 
 .divPrimero {
   position: relative;
-  // background-color: $color-all-uno;
 }
 
 .divSegundo {
@@ -19,7 +18,6 @@ $negrita: bold;
   background-color: $color-all-uno;
   text-align: center;
   text-align: justify;
-  padding: 50px 80px;
   padding-top: 80px;
 }
 
@@ -27,7 +25,7 @@ $negrita: bold;
   color: #ddd;
   background-color: $color-all-uno;
   text-align: center;
-  // padding: 50px 80px;
+  padding: 50px 80px;
   text-align: justify;
 }
 
@@ -36,7 +34,7 @@ $negrita: bold;
 .divPrimeroBlack {
   position: relative;
   background-color: $color-all-dos;
-  padding: 0px 80px;
+  padding: 0px 20px;
 }
 
 .divSegundoBlack {
@@ -50,16 +48,11 @@ $negrita: bold;
   color: #ddd;
   background-color: $color-all-dos;
   text-align: center;
-  padding: 50px 80px;
+  // padding: 50px 80px;
   text-align: justify;
 }
 
-.divTercero {
-  background-color: $color-all-dos;
-  font-size: 25px;
-  color: #f7f7f7;
-  // padding: 10px 10px;
-}
+
 
 
 
@@ -211,79 +204,6 @@ $negrita: bold;
     word-wrap: break-word;
 }
 
-// @media only screen and (max-width: 679px) and (min-width:700px) {
-
-//   .banner>h2,
-//   .banner .info {
-//     width: 70%
-//   }
-
-//   .banner>h2 {
-//     font-size: 1.8em;
-//   }
-// }
-
-// @media only screen and (max-width: 700px) and (min-width:700px) {
-//   .banner a {
-//     font-size: 1em;
-//   }
-
-//   .banner>h2,
-//   .banner .info {
-//     width: 80%
-//   }
-
-//   .banner>h2 {
-//     font-size: 1.2em;
-//   }
-// }
-
-// @media only screen and (max-width: 349px) {
-//   .banner .info {
-//     height: auto;
-//   }
-
-//   .banner a {
-//     font-size: 1em;
-//     width: 50%;
-//     display: block;
-//   }
-
-//   .banner a:first-child {
-//     margin: 0 auto;
-//   }
-
-//   .banner a:last-child {
-//     margin: 10px auto 0;
-//   }
-
-//   .banner>h2,
-//   .banner .info {
-//     width: 80%
-//   }
-
-//   .banner>h2 {
-//     font-size: 1em;
-//   }
-// }
-
-// @media only screen and (max-width: 735px) and (min-width:753px) {
-
-//   .process .row:first-child .col-xs-12,
-//   .clients .row:first-child .col-xs-12 {
-//     width: 100%;
-//   }
-
-//   .process .col-xs-12,
-//   .clients .col-xs-12 {
-//     width: 50%;
-//   }
-
-//   .clients .col-xs-12:nth-child(3),
-//   .clients .col-xs-12:nth-child(4) {
-//     margin-top: 15px;
-//   }
-// }
 
 
 
@@ -491,18 +411,6 @@ $negrita: bold;
     }
   }
 
-  // @media screen and (max-width: 430px) {
-  //   #miniaturas a {
-  //     margin: 5px;
-  //     width: 100%; /* Reducir el ancho de las miniaturas */
-  //     height: 100px; /* Reducir el alto de las miniaturas */
-  //   }
-
-  //   #ampliacao {
-  //     width: 100px; /* Duplicar el ancho de la imagen ampliada */
-  //     height: 100px; /* Duplicar el alto de la imagen ampliada */
-  //   }
-  // }
 }
 
 
@@ -528,8 +436,7 @@ $negrita: bold;
   }
 
   .valoresSection {
-    border: 10px double;
-    // box-shadow: 10px 15px 5px #3fa22d, 0 10px 10px rgba(169, 159, 159, 0.25);
+    border: 10px double
 
   }
 
@@ -865,13 +772,18 @@ $negrita: bold;
       display: block;
     }
 
-    // /* Media queries para pantallas pequeñas */
-    // @media (max-width: 576px) {
-    //   .tabs li {
-    //     margin-bottom: 10px;
-    //   }
-    // }
-
+  }
+  @media (max-width: 320px) and (min-height: 868px) {
+    .tabs li label img {
+      width: 40px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    }
+    
+    .tabs li label .title {
+      display: none;
+    }
+    li img {
+      margin: 0px;
+    }
   }
 
 }
@@ -963,7 +875,7 @@ $negrita: bold;
 }
 
 .imagen {
-  width: 70%;
+  width: 300px;
   height: 100%;
 }
 
@@ -993,6 +905,39 @@ $negrita: bold;
 
 .p-error{
 	color: red;
+}
+
+.buttonsecundary{
+  display: flex;
+  justify-content: center;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out 0s;
+  box-shadow: #048ABF 0px 0px 0px 0px;
+  animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
+  align-items: center;
+  background-color: #6654c9;
+  background-size: 100% auto;
+  margin: 1px;
+
+
+  width: 200px;
+  height: 80px;
+}
+.main{
+  position: sticky;
+  color: $color-letrav;
+  left: 90%;
+  transform: translateX(-100%);
+  width: fit-content;
+  margin-right: 15px;
+  border-radius: 10px;
+  color: $color-all-uno;
+  background-color: $color-letrav;
+  font-size: 20px;
+  padding: 5px 20px;
+  text-align: right;
+  margin-bottom: 10px;
 }
 
 

@@ -107,7 +107,8 @@
 
                         <div id="galeria">
                             <figure id="ampliacao" style="max-width: 1000px; max-height: 1000px;">
-                                <img [src]="cuerpoUrlFoto + fotoAdministrativoInicio " alt="" style="max-width: 1000px; max-height: 1000px;" />
+                                <img [src]="cuerpoUrlFoto + fotoAdministrativoInicio " alt=""
+                                    style="max-width: 1000px; max-height: 1000px;" />
                             </figure>
                             <nav id="miniaturas">
                                 <a *ngFor="let fotosAdm of fotosListAdministrativo" (click)="cargarfoto(fotosAdm)">
@@ -132,143 +133,152 @@
 
 
 
+
+
+<div class="divPrimeroBlack">
+    <h1 class="h1All">Valores</h1>
+</div>
 <div class="divPrimero">
+
     <div class="divSegundo_padingBlack">
-        <span class="divTercero">
-            <h1 class="h1All">Valores</h1>
-        </span>
         <!-- VALORES -->
-        <section class="valoresSection" id="valores">
-            <div class="bodyValores">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tabs">
-                            <input type="radio" id="tab1" name="tab-control" checked>
-                            <input type="radio" id="tab2" name="tab-control">
-                            <input type="radio" id="tab3" name="tab-control">
-                            <input type="radio" id="tab4" name="tab-control">
-                            <ul>
-                                <!-- <li title="Features"><label for="tab1" role="button"><img src="../../../assets/img/val1.png"
+        <div class="divPrimero">
+            <section class="valoresSection" id="valores">
+                <div class="bodyValores">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tabs">
+                                <input type="radio" id="tab1" name="tab-control" checked>
+                                <input type="radio" id="tab2" name="tab-control">
+                                <input type="radio" id="tab3" name="tab-control">
+                                <input type="radio" id="tab4" name="tab-control">
+                                <ul>
+                                    <!-- <li title="Features"><label for="tab1" role="button"><img src="../../../assets/img/val1.png"
                                     alt=""><br><span>{{empresaObject.valor1?.titulo}}</span></label></li> -->
 
-                                <li title="Features">
-                                    <label for="tab1" role="button">
-                                        <img src="../../../assets/img/val1.png" alt=""><br>
-                                        <div class="title">COMPROMISO</div>
-                                    </label>
-                                </li>
-                                <li title="Delivery Contents">
-                                    <label for="tab2" role="button">
-                                        <img src="../../../assets/img/val2.png" alt=""><br>
-                                        <div class="title">HONESTIDAD</div>
-                                    </label>
-                                </li>
-                                <li title="Shipping">
-                                    <label for="tab3" role="button">
-                                        <img src="../../../assets/img/val3.png" alt=""><br>
-                                        <div class="title">INNOVACIÓN</div>
-                                    </label>
-                                </li>
-                                <li title="Returns">
-                                    <label for="tab4" role="button">
-                                        <img src="../../../assets/img/val4.jpg" alt=""><br>
-                                        <div class="title">RESPONSABILIDAD</div>
-                                    </label>
-                                </li>
+                                    <li title="Features">
+                                        <label for="tab1" role="button">
+                                            <img src="../../../assets/img/val1.png" alt=""><br>
+                                            <div class="title">COMPROMISO</div>
+                                        </label>
+                                    </li>
+                                    <li title="Delivery Contents">
+                                        <label for="tab2" role="button">
+                                            <img src="../../../assets/img/val2.png" alt=""><br>
+                                            <div class="title">HONESTIDAD</div>
+                                        </label>
+                                    </li>
+                                    <li title="Shipping">
+                                        <label for="tab3" role="button">
+                                            <img src="../../../assets/img/val3.png" alt=""><br>
+                                            <div class="title">INNOVACIÓN</div>
+                                        </label>
+                                    </li>
+                                    <li title="Returns">
+                                        <label for="tab4" role="button">
+                                            <img src="../../../assets/img/val4.jpg" alt=""><br>
+                                            <div class="title">RESPONSABILIDAD</div>
+                                        </label>
+                                    </li>
 
-                            </ul>
-                            <div class="slider">
-                                <div class="indicator"></div>
-                            </div>
-                            <div class="content">
-                                <section>
-                                    <h2 class="valores">COMPROMISO</h2>
-                                    Nuestro compromiso es mantener altos estándares de calidad desde el inicio de
-                                    nuestra cadena productiva hasta su consumidor final.
-                                </section>
-                                <section>
-                                    <h2 class="valores">HONESTIDAD</h2>
-                                    La honestidad en todos nuestros procedimientos de gestión interna y externa es un
-                                    pilar fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
-                                </section>
-                                <section>
-                                    <h2 class="valores">INNOVACIÓN</h2>
-                                    Estamos preparándonos constantemente en las actualizaciones técnicas, formativas,
-                                    científicas y normativas, con el fin de aplicarlo en todos nuestros departamentos de
-                                    gestión, producción y comercialización.
-                                </section>
-                                <section>
-                                    <h2 class="valores">RESPONSABILIDAD</h2>
-                                    Nuestra empresa se caracteriza por un alto grado de responsabilidad social y
-                                    ambiental por cada una las actividades que sean realizadas.
-                                </section>
+                                </ul>
+                                <div class="slider">
+                                    <div class="indicator"></div>
+                                </div>
+                                <div class="content">
+                                    <section>
+                                        <h2 class="valores">COMPROMISO</h2>
+                                        Nuestro compromiso es mantener altos estándares de calidad desde el inicio de
+                                        nuestra cadena productiva hasta su consumidor final.
+                                    </section>
+                                    <section>
+                                        <h2 class="valores">HONESTIDAD</h2>
+                                        La honestidad en todos nuestros procedimientos de gestión interna y externa es
+                                        un
+                                        pilar fundamental para nuestro equipo humano en todas sus áreas de desarrollo.
+                                    </section>
+                                    <section>
+                                        <h2 class="valores">INNOVACIÓN</h2>
+                                        Estamos preparándonos constantemente en las actualizaciones técnicas,
+                                        formativas,
+                                        científicas y normativas, con el fin de aplicarlo en todos nuestros
+                                        departamentos de
+                                        gestión, producción y comercialización.
+                                    </section>
+                                    <section>
+                                        <h2 class="valores">RESPONSABILIDAD</h2>
+                                        Nuestra empresa se caracteriza por un alto grado de responsabilidad social y
+                                        ambiental por cada una las actividades que sean realizadas.
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+        </div>
     </div>
-</div>
 
-<!-- VALORES -->
-
+    <!-- VALORES -->
 
 
-<div class="divPrimero">
-    <div class="divSegundo_padingBlack">
-        <span class="divTercero">
-            <h1 class="titulos">Contacto</h1>
-        </span>
-        <!-- FORMULARIO -->
 
-        <section class="formularioSection">
-            <div class="bodyformulario">
-                <form action="">
-                    <section class="layout 2">
-                        <fieldset class="input-box">
-                            <input class="campos" placeholder="Name" type="Name" name="Name_contactanos" tabindex="1"
-                                required [(ngModel)]="contactanosObject.nombreContactanos">
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.nombreContactanos">Campo requerido.</small>
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <input class="campos" placeholder="Email" type="Email" name="Email_contactanos" tabindex="2"
-                                required [(ngModel)]="contactanosObject.emailContactanos">
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.emailContactanos">Campo requerido.</small>
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <input class="campos" placeholder="Celular" type="Celular" name="Celular_contactanos"
-                                tabindex="3" required [(ngModel)]="contactanosObject.celularContactanos">
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.celularContactanos">Campo requerido.</small>
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <input class="campos" placeholder="Asunto" type="Asunto" name="Asunto_contactanos"
-                                tabindex="4" required [(ngModel)]="contactanosObject.asuntoContactanos">
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <small class="p-error"
-                                *ngIf="submitted && !contactanosObject.asuntoContactanos">Campo requerido.</small>
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <textarea class="campos" placeholder="Descripcion" type="Descripcion"
-                                name="Descripcion_contactanos" rows="8" required tabindex="5"
-                                [(ngModel)]="contactanosObject.detalleContactanos"></textarea>
-                        </fieldset>
-                        <fieldset class="input-box">
-                            <small class="p-error"
-                            *ngIf="submitted && !contactanosObject.detalleContactanos && mensajeDescripcion != true">Campo requerido.</small>
-                        </fieldset>
+    <div class="divPrimero">
+        <div class="divSegundo_padingBlack">
+            <span class="divTercero">
+                <h1 class="titulos">Contacto</h1>
+            </span>
+            <!-- FORMULARIO -->
 
-                        <!-- <div class="input-box">
+            <section class="formularioSection">
+                <div class="bodyformulario">
+                    <form action="">
+                        <section class="layout 2">
+                            <fieldset class="input-box">
+                                <input class="campos" placeholder="Name" type="Name" name="Name_contactanos"
+                                    tabindex="1" required [(ngModel)]="contactanosObject.nombreContactanos">
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <small class="p-error" *ngIf="submitted && !contactanosObject.nombreContactanos">Campo
+                                    requerido.</small>
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <input class="campos" placeholder="Email" type="Email" name="Email_contactanos"
+                                    tabindex="2" required [(ngModel)]="contactanosObject.emailContactanos">
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <small class="p-error" *ngIf="submitted && !contactanosObject.emailContactanos">Campo
+                                    requerido.</small>
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <input class="campos" placeholder="Celular" type="Celular" name="Celular_contactanos"
+                                    tabindex="3" required [(ngModel)]="contactanosObject.celularContactanos">
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <small class="p-error" *ngIf="submitted && !contactanosObject.celularContactanos">Campo
+                                    requerido.</small>
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <input class="campos" placeholder="Asunto" type="Asunto" name="Asunto_contactanos"
+                                    tabindex="4" required [(ngModel)]="contactanosObject.asuntoContactanos">
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <small class="p-error" *ngIf="submitted && !contactanosObject.asuntoContactanos">Campo
+                                    requerido.</small>
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <textarea class="campos" placeholder="Descripcion" type="Descripcion"
+                                    name="Descripcion_contactanos" rows="8" required tabindex="5"
+                                    [(ngModel)]="contactanosObject.detalleContactanos"></textarea>
+                            </fieldset>
+                            <fieldset class="input-box">
+                                <small class="p-error"
+                                    *ngIf="submitted && !contactanosObject.detalleContactanos && mensajeDescripcion != true">Campo
+                                    requerido.</small>
+                            </fieldset>
+
+                            <!-- <div class="input-box">
                             <input type="text" placeholder="Name*" required class="campos" tabindex="1"
                                 [(ngModel)]="contactanosObject.nombreContactanos">
                         </div>
@@ -318,67 +328,73 @@
                                 is
                                 required.</small> -->
                             <!-- </div> -->
+                            <!-- <div class="main"> -->
 
-                        <div>
-                            <body>
-                            <div class="text sign-up-text" class="texto">¿Quieres ser nuestro distribuidor? <a
-                                    class="link" onclick="mostrar()">clic</a></div>
-                        </body>
-                    </div>
-<!-- 
+                            <!-- </div> -->
+
+                            <div>
+
+                                <body>
+                                    <div class="text sign-up-text" class="texto">¿Quieres ser nuestro distribuidor? <a
+                                            class="link" onclick="mostrar()">clic</a></div>
+                                    <input type="submit" value="Enviar" class="main" (click)="postContactanos()">
+                                </body>
+                            </div>
+                            <!-- 
                         <div class="button input-box">
-                            <div class="text sign-up-text" >¿Quieres ser nuestro distribuidor? <label for="flip">clic</label> </div> -->
+                            <div class="text sign-up-text" >¿Quieres ser nuestro distribuidor? <label for="flip">clic</label> </div>
                             <input type="submit" value="Enviar" class="enviar" (click)="postContactanos()">
-                        <!-- </div> -->
-                    </section>
-                </form>
-            </div>
-        </section>
-
-
-        <!-- DISTRIBUIDOR -->
-
-
-        <section class="layout3" id="layout3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 border p-3 " style="border-color: #3fa22d"> <!-- Sección derecha -->
-                        <!-- Contenido de la segunda sección -->
-                        <h1 class="titulodis">Contacto</h1>
-                        <p class="direccion">Dirección: Av. 10 de Agosto y Eduardo Malo. Cuenca-Ecuador</p>
-                        <p class="email"> Email: ventas@soinmed.com</p>
-                        <i class="celular">Celular</i><a class="telefono" href="https://wa.me/593985696078">(+593) 98
-                            5696078</a>
-
-                    </div>
-                    <div class="col-md-2 border p-1 border-color: #3fa22d;">
-                        <h1 class="titulodis">Horarios</h1>
-                        <p class="horarios">Lunes a Viernes: <br />
-                            08:30AM – 13:00PM / 14:30PM - 18:00PM
-                        </p>
-                    </div>
-                    <div class="col-md-5 ">
-                        <div class="col max-mb-30 aos-init aos-animate" data-aos="fade-up">
-                            <a class="icon-box text-center" style="background-color: #030303" data-abc="true">
-                                <div class="icon">
-                                    <img class="imagen" src="../../../assets/img/PC.jpeg" />
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
+                        </div> -->
+                        </section>
+                    </form>
                 </div>
-            </div>
-
-        </section>
-        <!-- DISTRIBUIDOR -->
-
-        <!-- FORMULARIO -->
-        <!-- </div> -->
-
-        <!-- </section> -->
+            </section>
 
 
-    </div>
-    <!-- ALL -->
+            <!-- DISTRIBUIDOR -->
+
+
+            <section class="layout3" id="layout3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 border p-3 " style="border-color: #3fa22d"> <!-- Sección derecha -->
+                            <!-- Contenido de la segunda sección -->
+                            <h1 class="titulodis">Contacto</h1>
+                            <p class="direccion">Dirección: Av. 10 de Agosto y Eduardo Malo. Cuenca-Ecuador</p>
+                            <p class="email"> Email: ventas@soinmed.com</p>
+                            <i class="celular">Celular</i><a class="telefono" href="https://wa.me/593985696078">(+593)
+                                98
+                                5696078</a>
+
+                        </div>
+                        <div class="col-md-2 border p-1 border-color: #3fa22d;">
+                            <h1 class="titulodis">Horarios</h1>
+                            <p class="horarios">Lunes a Viernes: <br />
+                                08:30AM – 13:00PM / 14:30PM - 18:00PM
+                            </p>
+                        </div>
+                        <div class="col-md-5 ">
+                            <div class="col max-mb-30 aos-init aos-animate" data-aos="fade-up">
+                                <a class="icon-box text-center" style="background-color: #030303" data-abc="true">
+                                    <div class="icon">
+                                        <img class="imagen" src="../../../assets/img/PC.jpeg" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </section>
+            <!-- DISTRIBUIDOR -->
+
+            <!-- FORMULARIO -->
+            <!-- </div> -->
+
+            <!-- </section> -->
+
+
+        </div>
+        <!-- ALL -->

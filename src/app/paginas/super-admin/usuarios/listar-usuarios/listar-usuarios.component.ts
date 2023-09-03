@@ -120,8 +120,8 @@ export class ListarUsuariosComponent implements OnInit {
   // ELIMINAR USUARIOS
   confirmEliminar(usua: Usuarios) {
     Swal.fire({
-      title: '¿Estás seguro de eliminar esta noticia?',
-      text: 'Se eliminarán todos los registros de esta noticia de manera permanente y no se podrán recuperar',
+      title: '¿Estás seguro de eliminar este usuario?',
+      text: 'Se eliminarán todos los registros de este usuario de manera permanente y no se podrán recuperar',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -153,13 +153,13 @@ export class ListarUsuariosComponent implements OnInit {
                   }
                 })
               if (re) {
-                Swal.fire('eliminada', 'noticia eliminada', 'success').then(
+                Swal.fire('eliminado', 'usuario eliminado', 'success').then(
                   (res) => {
                     this.obtenerUsuarios();
                   }
                 );
               } else {
-                Swal.fire('no eliminada', 'noticia no eliminada', 'error');
+                Swal.fire('no eliminado', 'usuario no eliminado', 'error');
               }
             } else {
               Swal.showValidationMessage('El valor ingresado no es correcto');
@@ -181,9 +181,9 @@ export class ListarUsuariosComponent implements OnInit {
     mensajeFalse: string
   ) {
     Swal.fire({
-      title: '¿Estas seguro de ' + `${mensajeTitle}` + ' esta noticia?',
+      title: '¿Estas seguro de ' + `${mensajeTitle}` + ' este usuario?',
       text:
-        'las noticias ocultas ' +
+        'los usuarios ocultos ' +
         `${mensajeText}` +
         ' ser vistas por el publico en general',
       icon: 'warning',
@@ -204,13 +204,13 @@ export class ListarUsuariosComponent implements OnInit {
           })
         if (re) {
           Swal.fire(
-            'Noticia ' + `${mensajeTrue}` + ' exitosamente',
+            'Usuario ' + `${mensajeTrue}` + ' exitosamente',
             'success'
           ).then((res) => {
             this.obtenerUsuarios();
           });
         } else {
-          Swal.fire(' Error al ' + `${mensajeFalse}` + ' noticia', 'error');
+          Swal.fire(' Error al ' + `${mensajeFalse}` + ' usuario', 'error');
         }
       }
     });
