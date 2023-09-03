@@ -12,10 +12,10 @@ import { SloginService } from './services/s-login.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  hederAll = true;
-  footer = true;
-  flotante = true;
-  hederAdministrativo = false;
+  hederAll = false;
+  footer = false;
+  flotante = false;
+  hederAdministrativo = true;
   headerNunakay = false;
 
   empresaData: Empresas = new Empresas();
@@ -31,16 +31,12 @@ export class AppComponent implements OnInit {
 
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (event.url === '/cbd/panel' || event.url == '/cbd/superAdmin' || event.url == '/cbd/admin' || event.url == '/cbd/login') {
-          this.hederAll = false;
-          this.flotante = false;
-          this.footer = false;
-          this.hederAdministrativo = true;
-        } else {
+        if (event.url === '/cbd/home' || event.url == '/cbd/nosotros' || event.url == '/cbd/cannabis' || event.url == '/cbd/all-noticias' || event.url == '/cbd/detalle-noticias') {
+          this.desactivar();
+
           this.hederAll = true;
           this.flotante = true;
           this.footer = true;
-          this.hederAdministrativo = false;
 
           this.loginServices.deleteTokenAndRoles();
         }
@@ -51,21 +47,22 @@ export class AppComponent implements OnInit {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/cbd/all-productos') {
-          this.hederAll = false;
-          this.flotante = false;
-          this.footer = false;
-          this.hederAdministrativo = false;
+          this.desactivar();
+
           this.headerNunakay = true;
+
           this.loginServices.deleteTokenAndRoles();
-        } else {
-          this.headerNunakay = false;
-        }
+        } 
       }
     });
 
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/cbd/login') {
+          this.desactivar();
+
+          this.hederAdministrativo = true;
+
           localStorage.setItem('cbdLogin','true');
           this.loginServices.deleteTokenAndRoles();
         } else {
@@ -90,5 +87,13 @@ export class AppComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  desactivar(){
+    this.hederAll = false;
+    this.flotante = false;
+    this.footer = false;
+    this.hederAdministrativo = false;
+    this.headerNunakay = false;
   }
 }
