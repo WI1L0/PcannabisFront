@@ -114,9 +114,6 @@ $negrita: bold;
 }
 
 @media (max-width: 1120px) {
-  .col-4 {
-    width: 100%;
-  }
 
   .row {
     margin-left: -10px;
@@ -144,6 +141,11 @@ $negrita: bold;
     }
     .fotoempresa{
       height: 100%
+    }
+    .row2{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
     
 }
@@ -221,12 +223,33 @@ img {
   .cards_item {
     width: 50%;
   }
+  .row2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 @media (min-width: 56rem) {
   .cards_item {
     width: 33.3333%;
   }
+  .row2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 580px) {
+  .row2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .col-4 {
+    width: 100%;
+  }
+
 }
 
 .card {

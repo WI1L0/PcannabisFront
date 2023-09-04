@@ -426,6 +426,18 @@ body {
   font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
 }
 
+input[name="Fnacimiento_user"] {
+  height: 30px;
+  background-color: #FFF;
+
+}
+
+#contact select {
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+  color: #7c7676;
+  height: 30px;
+}
+
 #contact {
   background: #F9F9F9;
   padding: 80px;
@@ -487,6 +499,7 @@ fieldset {
   resize: none;
 }
 
+
 #contact button[type="submit"] {
   cursor: pointer;
   width: 100%;
@@ -516,37 +529,37 @@ fieldset {
 
 #contact input:focus,
 #contact textarea:focus,
-  #contact select:focus {
-    outline: 0;
-    border: 1px solid #aaa;
-  }
+#contact select:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
 
-  ::-webkit-input-placeholder {
-    color: #888;
-  }
+::-webkit-input-placeholder {
+  color: #888;
+}
 
-  :-moz-placeholder {
-    color: #888;
-  }
+:-moz-placeholder {
+  color: #888;
+}
 
-  ::-moz-placeholder {
-    color: #888;
-  }
+::-moz-placeholder {
+  color: #888;
+}
 
-  :-ms-input-placeholder {
-    color: #888;
-  }
+:-ms-input-placeholder {
+  color: #888;
+}
 
-  .nom {
-    font-size: small;
-    font-family: $fuente-principal;
-  }
+.nom {
+  font-size: small;
+  font-family: $fuente-principal;
+}
 
-  .nombre {
-    font-family: $fuente-secundaria;
-  }
+.nombre {
+  font-family: $fuente-secundaria;
+}
 
-  .container {
-    width: 100%;
-    margin: 0 auto;
-  }
+.container {
+  width: 100%;
+  margin: 0 auto;
+}

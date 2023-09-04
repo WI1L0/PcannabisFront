@@ -54,9 +54,9 @@
                             <input type="button" id="botones" class="botoncito" required value="Agregar"
                                 (click)="almacenarListParrafos(parrafosObjects)" />
                         </div>
-                        <div class="derecha" id="derecha">
+                        <div class="derecha" id="derecha2">
                             <div class="card" id="card">
-                                <div *ngFor="let parralet of listaParrafo" class="derecha" id="derecha">
+                                <div *ngFor="let parralet of listaParrafo" class="derecha2" id="derecha">
                                     <!-- <button class="botoncito" (click)="eliminarParrafos(parrafo)">Quitar</button> -->
                                     <p class="nom">{{ parralet.idParrafo }}</p>
                                     <textarea type="text" value="{{parralet.parrafo}}" id="textarea"></textarea>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="col-6" *ngIf="!limiteFotosAlcanzado">
                         <input type="button" name="botoncito" class="botoncito" value="Añadir" id="btnfotos"
-                            (click)="almacenarNoticiaFotos()" [disabled]="limiteFotosAlcanzado"/>
+                            (click)="almacenarNoticiaFotos()" [disabled]="limiteFotosAlcanzado" />
                     </div>
                 </div>
                 <br>
@@ -106,9 +106,11 @@
                 </div>
                 <!-- <div id="previsualizacion" class="img"></div> -->
                 <!-- <input type="button" name="previous" class="previous action-button" value="Previous" /> -->
-                <a type="button" name="previous" class="botoncito" (click)="fin()">Finalizar</a>
-                <!-- <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a> -->
-                <!-- </form> -->
+                <div class="boton">
+                    <a type="button" name="previous" class="botoncito" (click)="fin()">Finalizar</a>
+                    <!-- <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a> -->
+                    <!-- </form> -->
+                </div>
             </fieldset>
         </form>
     </div>
