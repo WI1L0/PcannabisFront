@@ -46,6 +46,7 @@ export class ActualizarEmpresaComponent implements OnInit {
     this.empresaData = new Empresas();
     this.empresasServices.getEmpresa(nameEmpresa).subscribe(
       (data: any) => {
+        console.log(data)
         this.empresaData = data;
       }, (error) => {
         console.log(error);
