@@ -222,7 +222,7 @@ body {
 
 .card {
 	padding: 10px 10px;
-	margin: 10px;
+	margin: 5px;
 }
 
 .botoncito {
@@ -272,13 +272,14 @@ body {
 .container {
 	display: flex;
 }
+
 .fotos {
 	height: 300px;
 	width: 400px;
-	margin: 10px ;
+	margin: 10px;
 }
 
-@media (max-width: 574px) {
+@media (max-width: 606px) {
 	.divSegundo {
 		color: #ddd;
 		text-align: center;
@@ -287,6 +288,8 @@ body {
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+
+	¡
 
 	/*form styles*/
 	#msform {
@@ -303,23 +306,36 @@ body {
 
 }
 
+// @media (min-width: 610px) {
+// 	.card-container {
+// 		display: flex;
+// 		flex-wrap: wrap;
+// 	}
+
+// 	.card {
+// 		display: flex;
+// 		max-width: 50%;
+// 		box-sizing: border-box;
+// 	}
+
+// 	.col {
+// 		flex: 0 0 50%;
+// 		/* width: 83.33333333%; */
+// 		display: flex;
+// 		max-width: 100%;
+// 	}
+
+// }
 @media (min-width: 610px) {
 	.card-container {
 		display: flex;
 		flex-wrap: wrap;
 	}
-
+	
 	.card {
-		display: flex;
-		max-width: 50%;
+		flex: 0 0 20%; /* Un ancho del 50% para cada tarjeta */
+		max-width: 45%;
 		box-sizing: border-box;
+		display: inline-block;
 	}
-
-	.col {
-		flex: 0 0 auto;
-		/* width: 83.33333333%; */
-		display: flex;
-		max-width: 100%;
-	}
-
 }

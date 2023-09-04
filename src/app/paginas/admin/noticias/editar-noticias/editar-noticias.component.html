@@ -60,7 +60,7 @@
                 <h3 class="fs-subtitle">Edite los Parrafos</h3>
                 <!-- <div class="container"> -->
                 <div class="row">
-                    <div class="col-12">
+                    <!-- <div class="col-12"> -->
                         <!-- <div class="izquierda"> -->
                         <textarea type="text" [rows]="5" class="txtarea" id="txtareaprincipal"
                             [(ngModel)]="parrafo.parrafo" [ngModelOptions]="{standalone: true}" name="first"
@@ -68,8 +68,8 @@
                         <input type="button" id="botones" class="botoncito" (click)="guardarparrafos()" required
                             value="Agregar" />
                         <!-- </div> -->
-                    </div>
-                    <div class="col-12">
+                    <!-- </div> -->
+                    <!-- <div class="col-12"> -->
                         <div class="row">
                             <div class="col" >
                                 <!-- <div> -->
@@ -93,25 +93,8 @@
                                     <!-- </div> -->
                                 </div>
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </div>
-                    
-                    <!-- </div> -->
-
-                    <!-- <div class="derecha" id="derecha">
-                        <div class="card" id="card">
-                            <div *ngFor="let parrafod of listaParrafos" class="derecha" id="derecha">
-                                <button class="botoncito" (click)="eliminarParrafos(parrafod)">Quitar</button>
-                                <p class="nom" value="parrafod.idParrafo">Parrafo </p>
-                                <textarea type="text" [(ngModel)]="parrafod.parrafo"
-                                    name="parrafo{{parrafod.idParrafo}}"></textarea>
-                    <button (click)="parrafo.idParrafo !== undefined && editarparrafos(parrafod)">Editar</button>s
-                    <input type="button" id="botones" class="botoncito" (click)="editarparrafos(parrafod)"
-                                    value="Editar" />
-                            </div>
-                        </div>
-                    </div> -->
-
 
 
                 </div>
@@ -150,7 +133,7 @@
                     <div class="row">
                         <!-- <div class="col-sm-1 col-md-3"> -->
                             <ng-container *ngFor="let imagen of listaImagenesNoticias">
-                                <div class="col-12 col-sm-4 col-md-3 col-lg-3">
+                                <div class="col">
                                 <img  [src]="cuerpoUrlFoto + imagen.fotosNoticia" alt="Imagen {{imagen.fotosNoticia}}"  class="fotitos">
                                 <input type="button" name="botoncito" class="botoncito" value="borrar" id="btnfotos"
                                     (click)="DeleteNoticiaFotos(imagen)" />
@@ -161,7 +144,7 @@
                 </div>
                 <!-- <div id="previsualizacion" class="img"></div> -->
                 <!-- <input type="button" name="previous" class="previous action-button" value="Previous" /> -->
-                <a type="button" name="previous" class="botoncito" (click)="fin()">Finalizar</a>
+                <a type="button" name="previous" class="botoncito" (click)="fin()" href="/cbd/admin/noticias/listar">Finalizar </a>
                 <!-- <a class="action-button" id="boton-registro" target="_top" (click)="guardarNoticias()">Registrar</a> -->
                 <!-- </form> -->
             </fieldset>

@@ -293,6 +293,15 @@ export class EditarNoticiasComponent implements OnInit {
       )
     } else {
       this.limiteFotosAlcanzado = true;
+      Swal.fire({
+        title: 'Solo se pueden almacenar un máximo de 5 fotos ',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      })
+
     }
   }
 
@@ -358,6 +367,8 @@ export class EditarNoticiasComponent implements OnInit {
     this.listaParrafos = [];
     this.listaImagenesNoticias = [];
     history.back();
+    
+    this.router.navigate(['/cbd/admin/noticias/listar']);
     } else {
     Swal.fire({
       title: 'No puede almacenarse la noticia sin fotos ',
