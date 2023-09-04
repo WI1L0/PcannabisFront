@@ -33,7 +33,7 @@
                                 <input type="file" name="foto" id="foto" accept="image/*" required
                                     (change)="seleccionarFoto($event)">
                             </div>
-                            <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px; width: 100%;">
+                            <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px" class="fotos">
                         </div>
                         <div>
                             <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
@@ -84,7 +84,7 @@
                                     <input type="file" name="foto" id="foto" accept="image/*" required
                                         (change)="seleccionarFoto($event)">
                                 </div>
-                                <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px; width: 100%;">
+                                <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px; width: 100%;" class="fotos">
                             </div>
                         </form>
                     </div>
@@ -100,7 +100,7 @@
                 <br>
                 <div class="row align-items-center">
                     <ng-container *ngFor="let imagen of fotosNoticiasUrls">
-                        <img [src]="cuerpoUrlFoto + imagen" alt="Imagen {{imagen}}">
+                        <img [src]="cuerpoUrlFoto + imagen" alt="Imagen {{imagen}}" class="fotitos">
                     </ng-container>
 
                 </div>
