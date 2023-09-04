@@ -24,7 +24,7 @@
             </fieldset>
             <fieldset>
                 <p class="nom">Telefono</p>
-                <input placeholder="Telefono" type="tel" name="telefono_empresa" tabindex="5" required [(ngModel)]="empresaData.telefonoEmpresa">
+                <input placeholder="Telefono" type="tel" name="telefono_empresa" tabindex="5" required [(ngModel)]="empresaData.telefonoEmpresa"  (blur)="validartelefono()">
                 <small class="p-error" *ngIf="submitted && !empresaData.telefonoEmpresa">Observaciones is required.</small>
             </fieldset>
             <fieldset>

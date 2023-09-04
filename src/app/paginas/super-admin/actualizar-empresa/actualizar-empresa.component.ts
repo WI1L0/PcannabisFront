@@ -46,7 +46,6 @@ export class ActualizarEmpresaComponent implements OnInit {
     this.empresaData = new Empresas();
     this.empresasServices.getEmpresa(nameEmpresa).subscribe(
       (data: any) => {
-        console.log(data)
         this.empresaData = data;
       }, (error) => {
         console.log(error);
@@ -111,5 +110,19 @@ export class ActualizarEmpresaComponent implements OnInit {
     this.empresaData = {} as Empresas;
     this.router.navigate(['/cbd/panel']);
   }
+
+  validartelefono(){
+    if (!/^\d+$/.test(String(this.empresaData.telefonoEmpresa)) || (!/^\d{7}$/.test(String(this.empresaData.telefonoEmpresa)))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'El célular es incorrecto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+  }
+
+
 
 }

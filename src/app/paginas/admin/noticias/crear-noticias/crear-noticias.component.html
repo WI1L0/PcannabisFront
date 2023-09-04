@@ -33,7 +33,9 @@
                                 <input type="file" name="foto" id="foto" accept="image/*" required
                                     (change)="seleccionarFoto($event)">
                             </div>
+                            <div class="centrado">
                             <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px" class="fotos">
+                            </div>
                         </div>
                         <div>
                             <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
@@ -84,7 +86,9 @@
                                     <input type="file" name="foto" id="foto" accept="image/*" required
                                         (change)="seleccionarFoto($event)">
                                 </div>
+                                <div class="centrado"> 
                                 <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px; width: 100%;" class="fotos">
+                                </div>
                             </div>
                         </form>
                     </div>

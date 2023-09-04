@@ -1,4 +1,3 @@
-
 $color-all-uno: #ffffff;
 $color-all-dos: #ffffff;
 $color-fondo1: #1a1e1a;
@@ -27,21 +26,25 @@ $negrita: bold;
 }
 
 /*basic reset*/
-* {margin: 0; padding: 0;}
+* {
+	margin: 0;
+	padding: 0;
+}
 
 html {
 	height: 100%;
 	/*Image only BG fallback*/
-	
+
 	/*background = gradient + image pattern combo*/
-	background: 
+	background:
 		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
-		box-shadow: 0 10px 5px $color-letrav, 0 10px 10px rgba(169, 159, 159, 0.25);
+	box-shadow: 0 10px 5px $color-letrav, 0 10px 10px rgba(169, 159, 159, 0.25);
 }
 
 body {
 	font-family: $fuente-principal;
 }
+
 /*form styles*/
 #msform {
 	width: 1200px;
@@ -49,6 +52,7 @@ body {
 	text-align: center;
 	position: relative;
 }
+
 #msform fieldset {
 	background: white;
 	border: 0 none;
@@ -56,18 +60,21 @@ body {
 	box-shadow: 10px 10px 5px $color-letrav, 10px 10px 10px rgba(169, 159, 159, 0.25);
 	padding: 20px 30px;
 	box-sizing: border-box;
-	width:  0 10%;
+	width: 0 10%;
 	background-color: #27AE60;
-	
+
 	/*stacking fieldsets above each other*/
 	position: relative;
 }
+
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
 	display: none;
 }
+
 /*inputs*/
-#msform input, #msform textarea {
+#msform input,
+#msform textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -78,6 +85,7 @@ body {
 	color: #2C3E50;
 	font-size: 13px;
 }
+
 /*buttons*/
 #msform .action-button {
 	width: 100px;
@@ -89,12 +97,15 @@ body {
 	cursor: pointer;
 	padding: 10px;
 	margin: 10px 5px;
-  text-decoration: none;
-  font-size: 14px;
+	text-decoration: none;
+	font-size: 14px;
 }
-#msform .action-button:hover, #msform .action-button:focus {
+
+#msform .action-button:hover,
+#msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
+
 /*headings*/
 .fs-title {
 	font-size: 15px;
@@ -102,12 +113,14 @@ body {
 	color: #2C3E50;
 	margin-bottom: 10px;
 }
+
 .fs-subtitle {
 	font-weight: normal;
 	font-size: 13px;
 	color: #666;
 	margin-bottom: 20px;
 }
+
 /*progressbar*/
 #progressbar {
 	margin-bottom: 30px;
@@ -115,6 +128,7 @@ body {
 	/*CSS counters to number the steps*/
 	counter-reset: step;
 }
+
 #progressbar li {
 	list-style-type: none;
 	color: white;
@@ -124,6 +138,7 @@ body {
 	float: left;
 	position: relative;
 }
+
 #progressbar li:before {
 	content: counter(step);
 	counter-increment: step;
@@ -136,6 +151,7 @@ body {
 	border-radius: 3px;
 	margin: 0 auto 5px auto;
 }
+
 /*progressbar connectors*/
 #progressbar li:after {
 	content: '';
@@ -145,15 +161,19 @@ body {
 	position: absolute;
 	left: -50%;
 	top: 9px;
-	z-index: -1; /*put it behind the numbers*/
+	z-index: -1;
+	/*put it behind the numbers*/
 }
+
 #progressbar li:first-child:after {
 	/*connector not needed before the first step*/
-	content: none; 
+	content: none;
 }
+
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
-#progressbar li.active:before,  #progressbar li.active:after{
+#progressbar li.active:before,
+#progressbar li.active:after {
 	background: #27AE60;
 	color: white;
 }
@@ -161,67 +181,145 @@ body {
 
 //parrafos 
 .container {
-    display: flex;
-  }
+	display: flex;
+}
 
-  .izquierda {
-    width: 50%;
-    padding: 20px;
-  }
+.izquierda {
+	width: 50%;
+	padding: 20px;
+}
 
-  .derecha {
-    // display: flex;
-    // flex-wrap: wrap;
-    justify-content: space-between;
-  }
+.derecha {
+	// display: flex;
+	// flex-wrap: wrap;
+	justify-content: space-between;
+}
 
-  .card {
-    width: 150%;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin-bottom: 20px;
-  }
+.card {
+	width: 100%;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	padding: 10px;
+	margin-bottom: 20px;
+}
 
-  .txtarea {
-    width: 100%;
+.txtarea {
+	width: 100%;
 	height: 30%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    resize: none;
-	
-  }
-  .ocultar {
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	font-size: 16px;
+	margin-bottom: 10px;
+	resize: none;
+
+}
+
+.ocultar {
 	display: none;
-  }
-  .card{
+}
+
+.card {
 	padding: 10px 10px;
-    margin: 10px;
-  }
+	margin: 10px;
+}
 
-  .botoncito {
-    background-color: #428bca;
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-  }
+.botoncito {
+	background-color: #428bca;
+	border: none;
+	color: #fff;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 16px;
+}
 
-  .botoncito:hover {
-    background-color: #2d2f31;
-  }
+.botoncito:hover {
+	background-color: #2d2f31;
+}
 
-  .txtareaprincipal{
+.txtareaprincipal {
 	width: 50px;
 	height: 50px;
 
-  }
+}
+
+.centrado {
+	display: flex;
+	justify-content: center;
+}
+
+.row fotitos {
+	margin: 10px;
+	height: 200px;
+	width: 200px;
+}
+
+.fotitos {
+	height: 200px;
+	width: 200px;
+	margin: 10px;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -10px;
+	margin: 10px;
+}
+
+.container {
+	display: flex;
+}
+.fotos {
+	height: 300px;
+	width: 400px;
+	margin: 10px ;
+}
+
+@media (max-width: 574px) {
+	.divSegundo {
+		color: #ddd;
+		text-align: center;
+		text-align: justify;
+		padding-top: 100px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	/*form styles*/
+	#msform {
+		width: 400px;
+		margin: auto;
+		text-align: center;
+		position: relative;
+	}
+
+	.card {
+		width: 80%;
+	}
 
 
+}
 
+@media (min-width: 610px) {
+	.card-container {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.card {
+		display: flex;
+		max-width: 50%;
+		box-sizing: border-box;
+	}
+
+	.col {
+		flex: 0 0 auto;
+		/* width: 83.33333333%; */
+		display: flex;
+		max-width: 100%;
+	}
+
+}

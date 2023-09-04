@@ -286,7 +286,7 @@ fieldset {
 }
 
 @media (max-width: 600px) {
-	.divSegundo[_ngcontent-ng-c3964330478] {
+	.divSegundo{
 		color: #ddd;
 		text-align: center;
 		text-align: justify;
@@ -409,7 +409,7 @@ fieldset {
 
 .fotos {
 	height: 300px;
-	width: 500px;
+	width: 400px;
 	margin: 10px ;
 }
 .row fotitos{
@@ -424,4 +424,9 @@ fieldset {
 }
 .boton{
 	margin: 20px;
+}
+
+.centrado{
+	display: flex; 
+	justify-content: center;
 }
