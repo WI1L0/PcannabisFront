@@ -34,8 +34,10 @@
   }
 
   .tit img {
-    width: 500px; /* Ajusta el tamaño de la imagen según tus necesidades */
-    margin-right: 10px; /* Agrega un margen derecho para separar la imagen de "NUNAKAY" */
+    width: 500px;
+    /* Ajusta el tamaño de la imagen según tus necesidades */
+    margin-right: 10px;
+    /* Agrega un margen derecho para separar la imagen de "NUNAKAY" */
   }
 
   .tit {
@@ -67,12 +69,13 @@
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.5;
-    
+
   }
 
   .buttonsecundary {
     // background-image: url("../../../assets/img/ARTE_LOGO_PHARMA_2023.png");
-    padding: 5px 10px; /* Ajusta el espacio interno del botón según tus necesidades */
+    padding: 5px 10px;
+    /* Ajusta el espacio interno del botón según tus necesidades */
     display: flex;
     justify-content: center;
     border-radius: 50px;
@@ -87,9 +90,10 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    white-space: nowrap; /* Evita el salto de línea dentro del botón */
+    white-space: nowrap;
+    /* Evita el salto de línea dentro del botón */
 
-    }
+  }
 
   .buttonsecundary:is(:hover, :focus) {
     transform: scale(1.2);
@@ -97,11 +101,13 @@
 
   @keyframes pulse {
     0% {
-      box-shadow: 0px 0px 0px 0px rgb(63,162,45);
+      box-shadow: 0px 0px 0px 0px rgb(63, 162, 45);
     }
+
     70% {
       box-shadow: 0px 0px 0px 20px rgba(255, 237, 0, 0);
     }
+
     100% {
       box-shadow: 0px 0px 0px 0px rgba(255, 237, 0, 0);
     }
@@ -118,27 +124,38 @@
 
   .buttonsecundary a img {
     background-color: transparent;
-    width: 80px; 
-    height: 80px; 
+    width: 80px;
+    height: 80px;
     padding-top: 10px;
   }
 
   /* Estilos responsive */
-@media only screen and (max-width: 600px) {
-  .tit {
-    font-size: 40px;
-    padding-top: 40px;
-  }
+  @media only screen and (max-width: 600px) {
+    .tit {
+      font-size: 40px;
+      padding-top: 40px;
+    }
 
-  .Hola {
-    font-size: 20px;
-  }
+    .Hola {
+      font-size: 20px;
+    }
 
-  .buttonsecundary {
-    width: 200px;
+    .buttonsecundary {
+      width: 150px;
+    }
+
+    .tit img {
+      width: 200px;
+      /* Ajusta el tamaño de la imagen según tus necesidades */
+      margin-right: 10px;
+      /* Agrega un margen derecho para separar la imagen de "NUNAKAY" */
+    }
+
+    .secundary {
+      font-size: 1.0rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+
   }
-  .tit img {
-    width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
-    margin-right: 10px; /* Agrega un margen derecho para separar la imagen de "NUNAKAY" */
-  }
-}

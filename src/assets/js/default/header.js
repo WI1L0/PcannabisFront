@@ -20,7 +20,7 @@ document.querySelectorAll(".menu-link").forEach((link) => {
 
 // Fixed Navbar Menu on Window Resize
 window.addEventListener("resize", () => {
-   if (window.innerWidth > 890) {
+   if (window.innerWidth > 200) {
       if (navbarMenu.classList.contains("is-active")) {
          navbarMenu.classList.remove("is-active");
       }

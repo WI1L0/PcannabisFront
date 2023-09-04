@@ -1,7 +1,8 @@
-// FONDO
-// *{
-//   background-color: #FFED00;
-// }
+$color-all-empresas: #bbb9bc;
+$fuente-principal: "Monserrat", sans-serif;
+$fuente-secundaria: "Century Gothic", sans-serif;
+$negrita: bold;
+
 .bodyfondo {
   display: flex; 
   justify-content: center;
@@ -25,6 +26,10 @@
     outline: none;
   }
 
+  col-md-3 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
 
   :root {
     font-family: "Quicksand", sans-serif;
@@ -55,8 +60,8 @@
 
   .cardsBody,
   .cardsHtml {
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -71,6 +76,8 @@
 
   a {
     text-decoration: none;
+    height: 100%;
+    width: 100%;
   }
 
   button,
@@ -119,17 +126,19 @@
 
   .card-text {
     line-height: 24px;
+    font-family: $fuente-secundaria;
 
     &.big {
-      font-size: 16px;
+      font-size: 25px;
       font-weight: 600;
       color: var(--main-font-color);
     }
 
     &.small {
-      font-size: 12px;
+      font-size: 20px;
       color: var(--light-font-color);
       font-weight: 600;
+      font-weight: none;
 
       span {
         font-size: 12px;
@@ -155,7 +164,7 @@
     padding: 20px;
     display: flex;
     padding: 32px;
-    background-color: #ddd6f3;
+    background-color: #9B9B9B;
   }
 
   .btn-close {
@@ -174,6 +183,8 @@
     display: none;
     animation: hide 0.25s;
     transform: scale(0);
+    font-family: $fuente-secundaria;
+    color: #fff;
   }
 
   @keyframes hide {
@@ -245,6 +256,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    font-size: 25px;
   }
 
   .modal-info-header-a {
@@ -261,6 +273,7 @@
       font-size: 24px;
       line-height: 32px;
       color: var(--main-font-color);
+      font-weight: $negrita;
     }
 
     p {
@@ -323,6 +336,7 @@
       margin: 0;
       line-height: 32px;
       color: var(--main-font-color);
+      font-weight: $negrita;
     }
 
     p {
@@ -534,11 +548,11 @@
 
     h1,
     .modal-left h1 {
-      font-size: 16px;
+      font-size: 20px;
       line-height: 24px;
     }
     .info-wrapper span {
-      font-size: 12px;
+      font-size: 15px;
       white-space: nowrap;
       margin-bottom: 4px;
     }
@@ -547,7 +561,7 @@
       flex-direction: column;
       overflow-y: auto;
       height: 60%;
-      width: 100%;
+      width: 80%;
     }
 
     #modal-window {
@@ -565,6 +579,10 @@
     .btn-close {
       right: 0;
       top: 0;
+    }
+    .col-md-3 {
+      flex: 0 0 auto;
+      width: 50%;
     }
   }
 
@@ -644,6 +662,10 @@
   color: white;
   margin-left: 10px;
 }
+.a {
+  width: 100%;
+  height: 100%;
+}
 }
 
 .cardItemjs{
@@ -658,3 +680,55 @@
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(2px);
 }
+
+@media screen and (max-width: 624px) {
+  .col-sm-2,
+  .col-md-3 {
+    width: 0%;
+  }
+  .cardsView[_ngcontent-ng-c1034233258] .col-md-3[_ngcontent-ng-c1034233258] {
+    flex: 0 0 auto;
+    width: 100%;
+}
+}
+
+
+
+//iconos
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.iconwpp{
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  background-image: url(../../../assets/img/WPP.png);
+  background-size: cover;
+  vertical-align: middle;
+}
+.iconfacebook{
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  background-image: url(../../../assets/img/iconfacebook.png);
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.icon-list li {
+  display: inline-block;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.facebook {
+  background-color: blue; /* Coloca el color deseado aquí */
+  color: white;
+  padding: 5px;
+}
+

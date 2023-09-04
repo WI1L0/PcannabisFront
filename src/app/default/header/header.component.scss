@@ -165,7 +165,7 @@ button {
    transition: 0.35s ease;
 
    // Media Query Breakpoint
-   @media only screen and (min-width: 703px)  {
+   @media only screen and (min-width: 855px)  {
       display: none;
       visibility: hidden;
    }
@@ -212,6 +212,13 @@ button {
    .brand img {
       display: none;
     }
+    .menu {
+      display: none;
+    }
+  
+    .is-active .menu {
+      display: block;
+    }
     
 }
 
@@ -234,7 +241,6 @@ button {
   animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
   align-items: center;
   border: 0;
-
   width: 100px;
   height: 40px;
 }
@@ -248,8 +254,9 @@ button {
     box-shadow: 0 0 0 10px rgba(193,244,246,0);
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 360px) {
    .brand img {
      display: none;
    }
  }
+
