@@ -24,6 +24,10 @@ export class EditarProductosComponent implements OnInit {
   procesarFoto: any;
   imagenPreview: any;
   editFoto: boolean = false;
+  imagenSeleccionada:boolean = false;
+
+  estadoBotonCrearEditar: boolean = false;
+
 
   constructor(
     private router: Router,
@@ -57,41 +61,48 @@ export class EditarProductosComponent implements OnInit {
   }
 
   putProductos() {
+    this.estadoBotonCrearEditar = true;
     this.submitted = true;
     if (this.productosObject.nombreProducto &&
       this.productosObject.preDescripcionProducto &&
-      this.productosObject.descripcionProducto &&
-      this.imagenPreview) {
+      this.productosObject.descripcionProducto) {
+      if (this.imagenSeleccionada == false) {
+        this.finalAlmacenado();
+      } else {
       this.almacenarFoto().then(
         (url) => {
           this.productosObject.portadaProducto = url;
-          if (this.productosObject.portadaProducto != null) {
-            this.productosServices.putProductos(this.productosObject, Number(this.productosObject.idProducto)).subscribe(
-              (data) => {
-                if (data != null) {
-                  Swal.fire({
-                    position: 'top-right',
-                    icon: 'success',
-                    title: 'Producto Actualizado Exitosamente',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    background: '#ffff',
-                    iconColor: '#4CAF50',
-                    padding: '1.25rem',
-                    width: '20rem',
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                  });
-
-                  // this.router.navigate(['/cbd/admin/productos/listar']);
-                  history.back();
-                }
-              }
-            )
-          }
+          this.finalAlmacenado();
         }
       )
+      }
     }
+  }
+
+  finalAlmacenado() {
+    this.productosServices.putProductos(this.productosObject, Number(this.productosObject.idProducto)).subscribe(
+      (data) => {
+        if (data != null) {
+          this.estadoBotonCrearEditar = false;
+          Swal.fire({
+            position: 'top-right',
+            icon: 'success',
+            title: 'Producto Actualizado Exitosamente',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
+
+          // this.router.navigate(['/cbd/admin/productos/listar']);
+          history.back();
+        }
+      }
+    )
   }
 
   seleccionarFoto(evento: Event) {
@@ -106,6 +117,7 @@ export class EditarProductosComponent implements OnInit {
       });
 
       reader.readAsDataURL(this.procesarFoto);
+      this.imagenSeleccionada = true;
     }
   }
 
@@ -136,6 +148,7 @@ export class EditarProductosComponent implements OnInit {
     this.obtenerFoto.value = '';
     this.procesarFoto = null;
     this.imagenPreview = null;
+    this.imagenSeleccionada = false;
   }
 
   editarFoto() {

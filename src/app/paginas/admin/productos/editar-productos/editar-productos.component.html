@@ -20,7 +20,7 @@
                                 <div class="row" *ngIf="!editFoto">
                                     <img [src]=" cuerpoUrlFoto + productosObject.portadaProducto "
                                         (alt)="productosObject.nombreProducto" style="padding: 20px; width: 79%;" />
-                                    <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
+                                    <button class="abc" name="submit" type="submit" id="contact-submit" data-submit="...Editando"
                                         (click)="editarFoto()">Editar</button>
                                 </div>
                                 <div>
@@ -61,7 +61,7 @@
             </div>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando"
-                    (click)="putProductos()">Guardar</button>
+                    (click)="putProductos()" [disabled]="estadoBotonCrearEditar">Guardar</button>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo" (click)="salir()">Cancelar</button>
             </fieldset>
         </form>

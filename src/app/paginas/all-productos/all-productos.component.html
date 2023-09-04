@@ -14,10 +14,8 @@
                       <img [src]="cuerpoUrlFoto + produ.portadaProducto">
                     </div>
                     <div class="card-info">
-                      <div class="card-text big cardText-js">{{produ.nombreProducto}}</div>
+                      <div class="card-text big cardText-js"><b>{{produ.nombreProducto}}</b></div>
                       <div class="card-text small">{{produ.preDescripcionProducto}}</div>
-                      <div class="card-text small">
-                      </div>
                     </div>
                   </a>
                 </div>
@@ -41,7 +39,7 @@
 
                 <div class="desc-wrapper">
                   <div class="modal-info-header">
-                    <h1>Descripción</h1>
+                    <h1 style="padding-bottom: 20px;"><b>Descripción:</b></h1>
                     <p>
                       {{productoObject.descripcionProducto}}
                     </p>
