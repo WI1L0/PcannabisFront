@@ -31,7 +31,14 @@ export class AppComponent implements OnInit {
 
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (event.url === '/cbd/home' || event.url == '/cbd/nosotros' || event.url == '/cbd/cannabis' || event.url == '/cbd/all-noticias' || event.url == '/cbd/detalle-noticias') {
+        if (event.url === '/cbd/panel' || event.url == '/cbd/login' ||  event.url == '/cbd/superAdmin/empresa' ||event.url == '/cbd/superAdmin/galeria' || 
+        event.url == '/cbd/superAdmin/usuarios/listar' || event.url == '/cbd/superAdmin/usuarios/crear' || event.url == '/cbd/superAdmin/usuarios/editar' || event.url == '/cbd/superAdmin/usuarios/detalle' || 
+        event.url == '/cbd/admin/contactanos/listar' || event.url == '/cbd/admin/contactanos/detalle' || 
+        event.url == '/cbd/admin/noticias/listar' || event.url == '/cbd/admin/noticias/crear' || event.url == '/cbd/admin/noticias/editar' || event.url == '/cbd/admin/noticias/detalle' || 
+        event.url == '/cbd/admin/productos/listar' || event.url == '/cbd/admin/productos/crear' || event.url == '/cbd/admin/productos/editar' || event.url == '/cbd/admin/productos/detalle'){
+          this.desactivar();
+          this.hederAdministrativo = true;
+        } else {
           this.desactivar();
 
           this.hederAll = true;
@@ -55,23 +62,7 @@ export class AppComponent implements OnInit {
         } 
       }
     });
-
-    router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        if (event.url === '/cbd/login') {
-          this.desactivar();
-
-          this.hederAdministrativo = true;
-
-          localStorage.setItem('cbdLogin','true');
-          this.loginServices.deleteTokenAndRoles();
-        } else {
-          localStorage.removeItem('cbdLogin');
-        }
-      }
-    });
   }
-
 
   ngOnInit(): void {
     this.almacenarUrl();

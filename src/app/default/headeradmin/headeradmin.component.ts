@@ -20,14 +20,20 @@ export class HeaderadminComponent implements OnInit{
     private router: Router 
     ){
     AllScripts.Cargar(["default/headeradmin"]);
+
+    
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/cbd/login') {
+          this.logueado = false;
+        } else {
+          this.logueado = true;
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('cbdLogin') == 'true'){
-      this.logueado = false;
-    } else {
-      this.logueado = true;
-    }
   }
 
   cerrar(){
