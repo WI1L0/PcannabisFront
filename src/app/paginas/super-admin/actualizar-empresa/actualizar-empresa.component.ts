@@ -116,12 +116,42 @@ export class ActualizarEmpresaComponent implements OnInit {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
+        title: 'El teléfono  es incorrecto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+  }
+
+  validarcelular(){
+    if (!/^\d+$/.test(String(this.empresaData.celularEmpresa)) || (!/^\d{10}$/.test(String(this.empresaData.celularEmpresa)))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
         title: 'El célular es incorrecto',
         showConfirmButton: false,
         timer: 1500
       })
     }
   }
+
+  validarcorreo(){
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    
+    if (!regexCorreo.test(String(this.empresaData.emailEmpresa))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el email este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+
+  }
+
+
 
 
 

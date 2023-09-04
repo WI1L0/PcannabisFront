@@ -144,6 +144,9 @@ button {
       &-block {
          margin-left: 2rem;
       }
+      .brand img {
+         display: none;
+       }
    }
    
 }
@@ -220,6 +223,7 @@ button {
       display: block;
     }
     
+    
 }
 
 
@@ -254,7 +258,7 @@ button {
     box-shadow: 0 0 0 10px rgba(193,244,246,0);
   }
 }
-@media (max-width: 360px) {
+@media (max-width: 858px) {
    .brand img {
      display: none;
    }

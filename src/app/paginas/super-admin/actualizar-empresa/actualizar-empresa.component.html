@@ -9,17 +9,17 @@
             </fieldset>
             <fieldset>
                 <p class="nom">Email</p>
-                <input placeholder="Email" type="email" name="email_empresa" tabindex="2" required [(ngModel)]="empresaData.emailEmpresa">
+                <input placeholder="Email" type="email" name="email_empresa" tabindex="2" required [(ngModel)]="empresaData.emailEmpresa" (blur)="validarcorreo()">
                 <small class="p-error" *ngIf="submitted && !empresaData.emailEmpresa">Observaciones is required.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Celular</p>
-                <input placeholder="Celular" type="tel" name="celular_empresa" tabindex="3" required [(ngModel)]="empresaData.celularEmpresa">
+                <input placeholder="Celular" type="tel" name="celular_empresa" tabindex="3" required [(ngModel)]="empresaData.celularEmpresa"(blur)="validarcelular()">
                 <small class="p-error" *ngIf="submitted && !empresaData.celularEmpresa">Observaciones is required.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Link de whatsapp</p>
-                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required [(ngModel)]="empresaData.urlCelularEmpresa">
+                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required [(ngModel)]="empresaData.urlCelularEmpresa" >
                 <small class="p-error" *ngIf="submitted && !empresaData.urlCelularEmpresa">Observaciones is required.</small>
             </fieldset>
             <fieldset>

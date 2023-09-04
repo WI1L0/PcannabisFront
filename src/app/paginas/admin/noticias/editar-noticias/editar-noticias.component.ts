@@ -368,7 +368,7 @@ export class EditarNoticiasComponent implements OnInit {
     this.listaImagenesNoticias = [];
     history.back();
     
-    this.router.navigate(['/cbd/admin/noticias/listar']);
+    
     } else {
     Swal.fire({
       title: 'No puede almacenarse la noticia sin fotos ',
