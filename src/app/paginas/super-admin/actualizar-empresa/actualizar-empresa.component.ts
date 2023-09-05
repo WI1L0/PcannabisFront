@@ -20,9 +20,11 @@ export class ActualizarEmpresaComponent implements OnInit {
 
   empresaData: Empresas = new Empresas();
 
-  public submitted: boolean = false;
+  public submitted: boolean = true;
 
-  estadoSaveUpdate:boolean = false;
+  estadoSaveUpdate: boolean = false;
+
+  
 
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService, private empresasServices: SEmpresasService, private loginServices: SloginService, private router: Router) {
@@ -34,11 +36,11 @@ export class ActualizarEmpresaComponent implements OnInit {
       this.router.navigate(['/cbd/login']);
     }
 
-    
+
     const rolSuperAdministrador = localStorage.getItem('rolAdministrador');
     this.rolSuperAdmin = rolSuperAdministrador ? JSON.parse(rolSuperAdministrador) : false;
 
-    if(this.rolSuperAdmin){
+    if (this.rolSuperAdmin) {
       this.ObtenerEmpresa();
     } else {
       this.router.navigate(['/cbd/panel']);
@@ -76,30 +78,33 @@ export class ActualizarEmpresaComponent implements OnInit {
         confirmButtonText: 'Editar'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.empresasServices.putEmpresa(this.empresaData).subscribe(
-            (data) => {
-              if (data != null) {
-                this.estadoSaveUpdate = false;
-                Swal.fire(
-                  'Editada!',
-                  'La Empresa fue editada exitosamente.',
-                  'success'
-                ).then((result) => {
-                  if (result.isConfirmed) {
-                    this.empresaData = {} as Empresas;
-                    this.router.navigate(['/cbd/panel']);
-                  }
-                })
-              } else {
-                this.estadoSaveUpdate = false;
-                Swal.fire({
-                  title: 'No Editada!',
-                  text: 'La empresa no fue editada.',
-                  icon: 'error'
-                });
+          if (this.validartelefono() && this.validarcelular() && this.validarcorreo()) {
+            this.empresasServices.putEmpresa(this.empresaData).subscribe(
+              (data) => {
+                if (data != null) {
+                  this.submitted = false;
+                  this.estadoSaveUpdate = false;
+                  Swal.fire(
+                    'Editada!',
+                    'La Empresa fue editada exitosamente.',
+                    'success'
+                  ).then((result) => {
+                    if (result.isConfirmed) {
+                      this.empresaData = {} as Empresas;
+                      this.router.navigate(['/cbd/panel']);
+                    }
+                  })
+                } else {
+                  this.estadoSaveUpdate = false;
+                  Swal.fire({
+                    title: 'No Editada!',
+                    text: 'La empresa no fue editada.',
+                    icon: 'error'
+                  });
+                }
               }
-            }
-          )
+            )
+          }
         } else {
           this.estadoSaveUpdate = false;
         }
@@ -115,12 +120,13 @@ export class ActualizarEmpresaComponent implements OnInit {
     }
   }
 
-  salir(){
+  salir() {
     this.empresaData = {} as Empresas;
     this.router.navigate(['/cbd/panel']);
   }
 
-  validartelefono(){
+  validartelefono(): boolean {
+    let ban: boolean = true
     if (!/^\d+$/.test(String(this.empresaData.telefonoEmpresa)) || (!/^\d{7}$/.test(String(this.empresaData.telefonoEmpresa)))) {
       Swal.fire({
         position: 'top-end',
@@ -129,10 +135,13 @@ export class ActualizarEmpresaComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      ban = false;
     }
+    return ban
   }
 
-  validarcelular(){
+  validarcelular():boolean {
+    let ban: boolean = true
     if (!/^\d+$/.test(String(this.empresaData.celularEmpresa)) || (!/^\d{10}$/.test(String(this.empresaData.celularEmpresa)))) {
       Swal.fire({
         position: 'top-end',
@@ -141,13 +150,15 @@ export class ActualizarEmpresaComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      ban = false;
     }
+    return ban
   }
 
-  validarcorreo(){
+  validarcorreo():boolean {
+    let ban: boolean = true
     const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    
     if (!regexCorreo.test(String(this.empresaData.emailEmpresa))) {
       Swal.fire({
         position: 'top-end',
@@ -156,8 +167,9 @@ export class ActualizarEmpresaComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      ban = false;
     }
-
+    return ban
   }
 
 
