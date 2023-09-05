@@ -39,7 +39,7 @@ export class SParrafosService {
   }
 
   public deleteParrafos(idParrafo: number) {
-    return this.http.delete<Parrafos>(`${baserUrl + this.URL}/definitivo/${idParrafo}`)
+    return this.http.delete<Boolean>(`${baserUrl + this.URL}/definitivo/${idParrafo}`)
   }
 
   // deleteEmpresas(idEmpresas: number) {

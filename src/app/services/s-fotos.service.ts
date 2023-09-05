@@ -18,6 +18,10 @@ export class SfotosService {
         return this.http.post<Fotos>(`${baserUrl + this.URL}/save`, formData)
     }
 
+    public deleteFotos(nameFile: string) {
+        return this.http.delete<Boolean>(`${baserUrl + this.URL}/delete/${nameFile}`)
+    }
+
     //OBTENER LAS IMAGENES
     // public getOneImagen(name: string) {
     //     return this.http.get(`${baserUrl + this.URL}/findOne/${name}`);

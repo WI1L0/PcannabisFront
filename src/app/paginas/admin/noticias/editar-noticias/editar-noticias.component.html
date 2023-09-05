@@ -43,12 +43,14 @@
                             <img [src]=" cuerpoUrlFoto + noticia.portadaNoticia " (alt)="noticia.portadaNoticia"
                                 style="padding: 20px;" class="fotos" />
                             </div>
-                            <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
-                                (click)="editarFoto()">Editar</button>
+                            <div>
+                                <input type="button" name="botoncito" class="botoncito" value="Editar" id="btnfotos"
+                                    (click)="editarFoto()"/>
+                            </div>
                         </div>
-                        <div>
-                            <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
-                                (click)="borrarImagen()" *ngIf="imagenPreview">Borrar Imagen</button>
+                        <div *ngIf="imagenPreview">
+                            <input type="button" name="botoncito" class="botoncito" value="Borrar" id="btnfotos"
+                                (click)="borrarImagen()"/>
                         </div>
                     </form>
                 </div>
@@ -119,9 +121,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-6">
-                        <input type="button" name="botoncito" class="botoncito" value="Borrar Imagen" id="btnfotos"
-                        (click)="borrarImagen()"  *ngIf="imagenPreview" />
+                    <div class="col-6" *ngIf="imagenPreview">
+                        <input type="button" name="botoncito" class="botoncito" value="Borrar" id="btnfotos"
+                            (click)="borrarImagen()"/>
                     </div>
                     <div class="col-6" *ngIf="imagenPreview">
                         <input type="button" name="botoncito" class="botoncito" value="Añadir" id="btnfotos"

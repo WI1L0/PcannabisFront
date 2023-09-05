@@ -38,6 +38,7 @@ export class CrearUsuarioComponent implements OnInit {
   apellido2: any;
   celular: any;
 
+  estadoSaveUpdate: boolean = false;
 
 
   //implementar js en los componentes
@@ -117,7 +118,8 @@ export class CrearUsuarioComponent implements OnInit {
     this.imagenPreview = null;
   }
 
-  existCorreo() {
+  existCorreo(): boolean {
+    let as: boolean = false;
     if (!this.cedulaRegistrada) {
       this.personasServices.existCorreo(String(this.personaObject.correo)).subscribe(
         (data) => {
@@ -138,14 +140,18 @@ export class CrearUsuarioComponent implements OnInit {
                 allowOutsideClick: false,
                 allowEscapeKey: false,
               });
+            } else {
+              as = true;
             }
           }
         }
       );
     }
+    return as;
   }
 
-  validarContra() {
+  validarContra(): boolean {
+    let ff: boolean = false;
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
     this.valContra = regex.test(String(this.usuarioData.passwordUsuario));
     if (!this.valContra) {
@@ -162,46 +168,34 @@ export class CrearUsuarioComponent implements OnInit {
         allowOutsideClick: false,
         allowEscapeKey: false,
       });
+    } else {
+      ff = true;
     }
+
+    return ff;
   }
 
   almacenarNew() {
-
-    if (this.validaciones()) {
-      if (this.valContra) {
-        this.almacenarFoto();
-
-        if (this.cedulaRegistrada) {
-          this.almacenarUsuario();
-
-        } else {
-          if (this.existCorreov == false) {
-            this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
-            this.personasServices.postPersona(this.personaObject).subscribe(
-              (data) => {
-                if (data != null) {
-                  this.personaObject = data;
-                  this.almacenarUsuario();
-                }
-              }
-            )
-          }
-        }
-      }
+    this.estadoSaveUpdate = true;
+    if (this.cedulaRegistrada) {
+      this.almacenarUsuario();
+    } else {
+      this.estadoSaveUpdate = false;
     }
-  }
 
-  almacenarUsuario() {
-    this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
-      (data) => {
-        if (data != null) {
-          let existNameUsuario = !!data;
-
-          if (existNameUsuario) {
+    if (this.validaciones() && this.validarContra() && this.existCorreo()) {
+      this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
+      this.personasServices.postPersona(this.personaObject).subscribe(
+        (data) => {
+          if (data != null) {
+            this.personaObject = data;
+            this.almacenarUsuario();
+          } else {
+            this.estadoSaveUpdate = false;
             Swal.fire({
               position: 'top-right',
               icon: 'error',
-              title: 'Correo ya registrado',
+              title: 'No se pudo crear intentar nuevamente',
               showConfirmButton: false,
               timer: 1500,
               background: '#ffff',
@@ -211,13 +205,43 @@ export class CrearUsuarioComponent implements OnInit {
               allowOutsideClick: false,
               allowEscapeKey: false,
             });
-          } else {
+          }
+        }
+      )
+    } else {
+      this.estadoSaveUpdate = false;
+    }
+  }
+
+  almacenarUsuario() {
+    let existNameUsuario;
+    this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
+      (data) => {
+        existNameUsuario = !!data;
+        if (existNameUsuario) {
+          this.estadoSaveUpdate = false;
+          Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'nombre de usuario ya registrado',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
+        } else {
+          if (this.imagenPreview) {
             this.almacenarFoto().then(
               (url) => {
                 this.usuarioData.fotoUsuario = url;
                 this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
                   (data2) => {
                     if (data2 != null) {
+                      this.estadoSaveUpdate = false;
                       Swal.fire({
                         position: 'top-right',
                         icon: 'success',
@@ -232,145 +256,208 @@ export class CrearUsuarioComponent implements OnInit {
                         allowEscapeKey: false,
                       });
 
-                      this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+                      history.back();
+                    } else {
+                      this.estadoSaveUpdate = false;
+                      Swal.fire({
+                        position: 'top-right',
+                        icon: 'error',
+                        title: 'No se pudo crear intentar nuevamente',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        background: '#ffff',
+                        iconColor: '#4CAF50',
+                        padding: '1.25rem',
+                        width: '20rem',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                      });
                     }
                   }
                 )
+
               }
             )
-
+          } else {
+            this.estadoSaveUpdate = false;
+            Swal.fire({
+              position: 'top-right',
+              icon: 'warning',
+              title: 'no hay una foto',
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffff',
+              iconColor: '#4CAF50',
+              padding: '1.25rem',
+              width: '20rem',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
           }
         }
       }
-    );
+    )
+
   }
 
   //VALIDACIONES//
 
+  validarNameUsuario() {
+    let existNameUsuario;
+    this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
+      (data) => {
+        existNameUsuario = !!data;
+        if (existNameUsuario) {
+          Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'nombre de usuario ya registrado',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
+        }
+      }
+    )
+  }
+
   validaciones(): boolean {
-    let ban: boolean = true;
-    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!this.cedulaRegistrada) {
+      let ban: boolean = true;
+      const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (/^\d+$/.test(String(this.personaObject.nombre1 && this.personaObject.nombre2))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que los nombres esten correctos',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false
-    }
+      if (/^\d+$/.test(String(this.personaObject.nombre1 && this.personaObject.nombre2))) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Verifique que los nombres esten correctos',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false
+      }
 
-    if (/^\d+$/.test(String(this.personaObject.apellido1 && this.personaObject.apellido2))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que los apellidos esten correctos',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false
+      if (/^\d+$/.test(String(this.personaObject.apellido1 && this.personaObject.apellido2))) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Verifique que los apellidos esten correctos',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false
+      } else {
+        ban = true
+      }
+
+      if (!/^\d+$/.test(String(this.personaObject.celular)) || (!/^\d{10}$/.test(String(this.personaObject.celular)))) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'El célular es incorrecto',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false;
+      } else {
+        ban = true
+      }
+
+      if (!/^\d+$/.test(String(this.personaObject.cedula)) || (!/^\d{10}$/.test(String(this.personaObject.cedula)))) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'La cédula es incorrecta',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false;
+      } else {
+        ban = true;
+      }
+
+      if (!regexCorreo.test(String(this.personaObject.correo))) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Verifique que el correo este correcto',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false;
+      }
+
+
+
+      //VALIDAR USUARIO
+      if (String(this.usuarioData.nombreUsuario).length === 0) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Complete todos los campos ',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false;
+      }
+
+      //Validar edad
+      let fechaActual = new Date();
+      let edadMinima = 18;
+
+
+      if (this.calcularEdad() < edadMinima) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Debe ser mayor a 18 años',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false;
+
+      }
+      //validar edad
+
+      //VALIDACIONES
+      return ban;
     } else {
-      ban = true
+      return true;
     }
-
-    if (!/^\d+$/.test(String(this.personaObject.celular)) || (!/^\d{10}$/.test(String(this.personaObject.celular)))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'El célular es incorrecto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    } else {
-      ban = true
-    }
-
-    if (!/^\d+$/.test(String(this.personaObject.cedula)) || (!/^\d{10}$/.test(String(this.personaObject.cedula)))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'La cédula es incorrecta',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    } else {
-      ban = true;
-    }
-
-    if (!regexCorreo.test(String(this.personaObject.correo))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que el correo este correcto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-
-
-
-    //VALIDAR USUARIO
-    if (String(this.usuarioData.nombreUsuario).length === 0) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Complete todos los campos ',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-
-    //Validar edad
-    let fechaActual = new Date();
-    let edadMinima = 18;
-
-
-    if (this.calcularEdad() < edadMinima) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Debe ser mayor a 18 años',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-
-    }
-    //validar edad
-
-    //VALIDACIONES
-    return ban;
 
   }
 
   //edad
   calcularEdad(): number {
-    const fechaActual: Date = new Date();
-    const anioActual: number = fechaActual.getFullYear();
-    const mesActual: number = fechaActual.getMonth() + 1;
-    const diaActual: number = fechaActual.getDate();
+    if (!this.cedulaRegistrada) {
+      const fechaActual: Date = new Date();
+      const anioActual: number = fechaActual.getFullYear();
+      const mesActual: number = fechaActual.getMonth() + 1;
+      const diaActual: number = fechaActual.getDate();
 
-    const nacimiento: Date = new Date(String(this.personaObject.fNacimiento));
-    const anioNacimiento: number = nacimiento.getFullYear();
-    const mesNacimiento: number = nacimiento.getMonth() + 1;
-    const diaNacimiento: number = nacimiento.getDate() + 1;
-    // console.log("nacimiento" + nacimiento)
+      const nacimiento: Date = new Date(String(this.personaObject.fNacimiento));
+      const anioNacimiento: number = nacimiento.getFullYear();
+      const mesNacimiento: number = nacimiento.getMonth() + 1;
+      const diaNacimiento: number = nacimiento.getDate() + 1;
+      // console.log("nacimiento" + nacimiento)
 
-    let edad: number = anioActual - anioNacimiento;
+      let edad: number = anioActual - anioNacimiento;
 
-    // Verificar si aún no ha cumplido años en el presente año
-    if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
-      edad--;
+      // Verificar si aún no ha cumplido años en el presente año
+      if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+        edad--;
+      }
+      // console.log("EDAD" + edad)
+
+      return edad;
+
+    } else {
+      return 18;
     }
-    // console.log("EDAD" + edad)
-
-    return edad;
   }
 }
-

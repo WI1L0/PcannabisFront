@@ -39,11 +39,11 @@
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección de mapa</p>
-                <input placeholder="Dirección maps" type="url" name="sitio_web_empresa" tabindex="8" required [(ngModel)]="empresaData.urlDireccionEmpresa">
+                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required [(ngModel)]="empresaData.urlCelularEmpresa" >
                 <small class="p-error" *ngIf="submitted && !empresaData.urlDireccionEmpresa">Observaciones is required.</small>
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updateEmpresa()">Editar</button>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updateEmpresa()" [disabled]="estadoSaveUpdate">Editar</button>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo" (click)="salir()">Cancelar</button>
             </fieldset>
         </form>

@@ -42,6 +42,8 @@ export class CrearNoticiasComponent implements OnInit {
   fotosNoticiasObjects: FotosNoticias = new FotosNoticias();
   fotosNoticiasUrls: string[] = [];
 
+  estadoSaveUpdate: boolean = false;
+
   cuerpoUrlFoto: string = baserUrlImagenes;
 
   //implementar js en los componentes
@@ -164,52 +166,141 @@ export class CrearNoticiasComponent implements OnInit {
   // //FOTONOTICIAS
 
   almacenarNoticiaParrafos() {
-    this.almacenarFoto().then(
-      (url) => {
-        this.noticias.portadaNoticia = url;
-        if (this.noticias.portadaNoticia != null) {
-          this.noticiasServices.postNoticias(this.noticias, nameEmpresa).subscribe(
-            (data) => {
-              if (data != null) {
-                this.borrarImagen();
-                this.noticias = data;
-                for (let a = 0; a < this.listaParrafo.length; a++) {
-                  this.parrafosServices.postParrafo(this.listaParrafo[a], Number(data.idNoticia)).subscribe(
-                    (data) => {
-                      if (data != null) {
-                        this.contSaveParrafos++;
-                        if (a == this.listaParrafo.length) {
-                          if (this.contSaveParrafos != this.listaParrafo.length) {
-                            Swal.fire({
-                              title: 'error posiblemente no se guardo toda la informacion correctamente',
-                              icon: 'warning',
-                              showCancelButton: false,
-                              confirmButtonColor: '#3085d6',
-                              cancelButtonColor: '#d33',
-                              confirmButtonText: 'OK'
-                            })
+    this.estadoSaveUpdate = true;
+    if (this.listaParrafo.length != 0) {
+      this.almacenarFoto().then(
+        (url) => {
+          this.noticias.portadaNoticia = url;
+          if (this.noticias.portadaNoticia != null) {
+            if (this.noticias.fechaNoticia &&
+              this.noticias.preDescripcionNoticia &&
+              this.noticias.tituloNoticia &&
+              this.noticias.ubicacionNoticia) {
+              this.noticiasServices.postNoticias(this.noticias, nameEmpresa).subscribe(
+                (data) => {
+                  if (data != null) {
+                    this.borrarImagen();
+                    this.noticias = data;
+                    for (let a = 0; a < this.listaParrafo.length; a++) {
+                      this.parrafosServices.postParrafo(this.listaParrafo[a], Number(data.idNoticia)).subscribe(
+                        (data) => {
+                          if (data != null) {
+                            this.contSaveParrafos++;
+                            if (a == this.listaParrafo.length) {
+                              if (this.contSaveParrafos != this.listaParrafo.length) {
+                                this.estadoSaveUpdate = false;
+                                Swal.fire({
+                                  position: 'top-right',
+                                  icon: 'warning',
+                                  title: 'No se pudo crear todo intentar nuevamente',
+                                  showConfirmButton: false,
+                                  timer: 1500,
+                                  background: '#ffff',
+                                  iconColor: '#4CAF50',
+                                  padding: '1.25rem',
+                                  width: '20rem',
+                                  allowOutsideClick: false,
+                                  allowEscapeKey: false,
+                                });
+                              } else {
+                                this.estadoSaveUpdate = false;
+                                Swal.fire({
+                                  position: 'top-right',
+                                  icon: 'success',
+                                  title: 'se creo exitosamente',
+                                  showConfirmButton: false,
+                                  timer: 1500,
+                                  background: '#ffff',
+                                  iconColor: '#4CAF50',
+                                  padding: '1.25rem',
+                                  width: '20rem',
+                                  allowOutsideClick: false,
+                                  allowEscapeKey: false,
+                                });
+                              }
+                            }
                           }
                         }
-                      }
+                      )
                     }
-                  )
+                  } else {
+                    this.estadoSaveUpdate = false;
+                    Swal.fire({
+                      position: 'top-right',
+                      icon: 'error',
+                      title: 'No se pudo crear intentar nuevamente',
+                      showConfirmButton: false,
+                      timer: 1500,
+                      background: '#ffff',
+                      iconColor: '#4CAF50',
+                      padding: '1.25rem',
+                      width: '20rem',
+                      allowOutsideClick: false,
+                      allowEscapeKey: false,
+                    });
+                  }
+                }, error => {
+                  // Mostrar una notificación de error
+                  Swal.fire({
+                    title: 'No se pudo guardar',
+                    icon: 'warning',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                  })
                 }
-              }
-            }, error => {
-              // Mostrar una notificación de error
+              );
+            } else {
+              this.estadoSaveUpdate = false;
               Swal.fire({
-                title: 'No se pudo guardar',
+                position: 'top-right',
                 icon: 'warning',
-                showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'OK'
-              })
+                title: 'Verifique que todos los datos esten ingresados',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#ffff',
+                iconColor: '#4CAF50',
+                padding: '1.25rem',
+                width: '20rem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+              });
             }
-          );
+          } else {
+            this.estadoSaveUpdate = false;
+            Swal.fire({
+              position: 'top-right',
+              icon: 'error',
+              title: 'No se pudo crear intentar nuevamente',
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffff',
+              iconColor: '#4CAF50',
+              padding: '1.25rem',
+              width: '20rem',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
+          }
         }
-      }
-    )
+      )
+    } else {
+      this.estadoSaveUpdate = false;
+      Swal.fire({
+        position: 'top-right',
+        icon: 'warning',
+        title: 'No se pudo crear sin parrafos',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
+    }
   }
 
 
@@ -226,6 +317,33 @@ export class CrearNoticiasComponent implements OnInit {
                   this.limiteFotosAlcanzado = false;
                   this.borrarImagen();
                   this.fotosNoticiasUrls.push(String(data.fotosNoticia));
+                  Swal.fire({
+                    position: 'top-right',
+                    icon: 'success',
+                    title: 'creada exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    background: '#ffff',
+                    iconColor: '#4CAF50',
+                    padding: '1.25rem',
+                    width: '20rem',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                  });
+                } else {
+                  Swal.fire({
+                    position: 'top-right',
+                    icon: 'error',
+                    title: 'No se pudo crear intentar nuevamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    background: '#ffff',
+                    iconColor: '#4CAF50',
+                    padding: '1.25rem',
+                    width: '20rem',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                  });
                 }
               }
             )
@@ -233,19 +351,31 @@ export class CrearNoticiasComponent implements OnInit {
         }
       )
     } else {
-      this.limiteFotosAlcanzado = true;
+      Swal.fire({
+        position: 'top-right',
+        icon: 'warning',
+        title: 'no se puede almacenar mas fotos',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
     }
   }
 
   fin() {
-    if (this.fotosNoticiasUrls.length != 0){
-    this.borrarImagen();
-    this.listaParrafo = [];
-    this.fotosNoticiasUrls = [];
-    this.parrafosObjects = {} as Parrafos;
-    this.fotosNoticiasObjects = {} as FotosNoticias;
-    this.limiteFotosAlcanzado = false;
-    history.back();
+    if (this.fotosNoticiasUrls.length != 0) {
+      this.borrarImagen();
+      this.listaParrafo = [];
+      this.fotosNoticiasUrls = [];
+      this.parrafosObjects = {} as Parrafos;
+      this.fotosNoticiasObjects = {} as FotosNoticias;
+      this.limiteFotosAlcanzado = false;
+      history.back();
     } else {
       Swal.fire({
         title: 'No puede almacenarse la noticia sin fotos ',
