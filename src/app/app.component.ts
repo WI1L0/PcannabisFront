@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
           this.flotante = true;
           this.footer = true;
 
-          // this.loginServices.deleteTokenAndRoles();
+          this.loginServices.deleteTokenAndRoles();
         }
       }
     });
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
 
           this.headerNunakay = true;
 
-          // this.loginServices.deleteTokenAndRoles();
+          this.loginServices.deleteTokenAndRoles();
         } 
       }
     });
