@@ -54,7 +54,7 @@
                 </div>
             </div>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando"
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" [disabled]="estadoSaveUpdate"
                     (click)="saveProductos()">Guardar</button>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Saliendo" (click)="salir()">Cancelar</button>
             </fieldset>

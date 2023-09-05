@@ -19,7 +19,10 @@ export class ActualizarEmpresaComponent implements OnInit {
 
 
   empresaData: Empresas = new Empresas();
+
   public submitted: boolean = false;
+
+  estadoSaveUpdate:boolean = false;
 
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService, private empresasServices: SEmpresasService, private loginServices: SloginService, private router: Router) {
@@ -54,6 +57,7 @@ export class ActualizarEmpresaComponent implements OnInit {
   }
 
   updateEmpresa() {
+    this.estadoSaveUpdate = true;
     this.submitted = true;
     if (this.empresaData.celularEmpresa &&
       this.empresaData.direccionEmpresa &&
@@ -75,6 +79,7 @@ export class ActualizarEmpresaComponent implements OnInit {
           this.empresasServices.putEmpresa(this.empresaData).subscribe(
             (data) => {
               if (data != null) {
+                this.estadoSaveUpdate = false;
                 Swal.fire(
                   'Editada!',
                   'La Empresa fue editada exitosamente.',
@@ -86,6 +91,7 @@ export class ActualizarEmpresaComponent implements OnInit {
                   }
                 })
               } else {
+                this.estadoSaveUpdate = false;
                 Swal.fire({
                   title: 'No Editada!',
                   text: 'La empresa no fue editada.',
@@ -94,9 +100,12 @@ export class ActualizarEmpresaComponent implements OnInit {
               }
             }
           )
+        } else {
+          this.estadoSaveUpdate = false;
         }
       });
     } else {
+      this.estadoSaveUpdate = false;
       Swal.fire({
 
         title: 'No Editada!',
@@ -110,7 +119,6 @@ export class ActualizarEmpresaComponent implements OnInit {
     this.empresaData = {} as Empresas;
     this.router.navigate(['/cbd/panel']);
   }
-  
 
   validartelefono(){
     if (!/^\d+$/.test(String(this.empresaData.telefonoEmpresa)) || (!/^\d{7}$/.test(String(this.empresaData.telefonoEmpresa)))) {

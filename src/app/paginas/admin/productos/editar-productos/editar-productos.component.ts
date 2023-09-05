@@ -24,9 +24,9 @@ export class EditarProductosComponent implements OnInit {
   procesarFoto: any;
   imagenPreview: any;
   editFoto: boolean = false;
-  imagenSeleccionada:boolean = false;
 
-  estadoBotonCrearEditar: boolean = false;
+  imagenSeleccionada: boolean = false;
+  estadoSaveUpdate: boolean = false;
 
 
   constructor(
@@ -61,7 +61,7 @@ export class EditarProductosComponent implements OnInit {
   }
 
   putProductos() {
-    this.estadoBotonCrearEditar = true;
+    this.estadoSaveUpdate = true;
     this.submitted = true;
     if (this.productosObject.nombreProducto &&
       this.productosObject.preDescripcionProducto &&
@@ -69,13 +69,51 @@ export class EditarProductosComponent implements OnInit {
       if (this.imagenSeleccionada == false) {
         this.finalAlmacenado();
       } else {
-      this.almacenarFoto().then(
-        (url) => {
-          this.productosObject.portadaProducto = url;
-          this.finalAlmacenado();
-        }
-      )
+        let veri2;
+        this.fotoServices.deleteFotos(String(this.productosObject.portadaProducto)).subscribe(
+          (datafo) => {
+            veri2 = !!datafo;
+            if (veri2) {
+              this.almacenarFoto().then(
+                (url) => {
+                  this.productosObject.portadaProducto = url;
+                  this.finalAlmacenado();
+                }
+              )
+            } else {
+              this.estadoSaveUpdate = false;
+              Swal.fire({
+                position: 'top-right',
+                icon: 'error',
+                title: 'No se pudo editar intentar nuevamente',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#ffff',
+                iconColor: '#4CAF50',
+                padding: '1.25rem',
+                width: '20rem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+              });
+            }
+          }
+        );
       }
+    } else {
+      this.estadoSaveUpdate = false;
+      Swal.fire({
+        position: 'top-right',
+        icon: 'warning',
+        title: 'Verifique que todos los datos esten ingresados',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
     }
   }
 
@@ -83,7 +121,7 @@ export class EditarProductosComponent implements OnInit {
     this.productosServices.putProductos(this.productosObject, Number(this.productosObject.idProducto)).subscribe(
       (data) => {
         if (data != null) {
-          this.estadoBotonCrearEditar = false;
+          this.estadoSaveUpdate = false;
           Swal.fire({
             position: 'top-right',
             icon: 'success',
@@ -100,6 +138,20 @@ export class EditarProductosComponent implements OnInit {
 
           // this.router.navigate(['/cbd/admin/productos/listar']);
           history.back();
+        } else {
+          Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'No se pudo editar intentar nuevamente',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
         }
       }
     )

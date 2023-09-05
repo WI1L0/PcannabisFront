@@ -71,17 +71,43 @@ export class EditarNoticiasComponent implements OnInit {
   }
 
   editnoticia() {
-    if (this.cambioNoticia || this.editFoto) {
-      this.almacenarFoto().then(
-        (url) => {
-          this.noticia.portadaNoticia = url;
+    if (this.imagenPreview && this.editFoto) {
+      let veri2;
+      this.fotoServices.deleteFotos(String(this.noticia.portadaNoticia)).subscribe(
+        (datafo) => {
+          veri2 = !!datafo;
+          if (veri2) {
+            this.almacenarFoto().then(
+              (url) => {
+                this.noticia.portadaNoticia = url;
+                this.putNoticia();
+              }
+            );
+          } else {
+            Swal.fire({
+              position: 'top-right',
+              icon: 'error',
+              title: 'No se pudo editar intentar nuevamente',
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffff',
+              iconColor: '#4CAF50',
+              padding: '1.25rem',
+              width: '20rem',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
+          }
         }
-      );
-      this.savNoticia();
+      )
+    } else {
+      if (this.cambioNoticia) {
+        this.putNoticia();
+      }
     }
   }
 
-  savNoticia() {
+  putNoticia() {
     this.noticiasServices.putNoticias(this.noticia, Number(this.noticia.idNoticia)).subscribe(
       (data) => {
         if (data != null) {
@@ -92,6 +118,20 @@ export class EditarNoticiasComponent implements OnInit {
             position: 'top-right',
             icon: 'success',
             title: 'Noticia editada exitosamente',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
+        } else {
+          Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'No se pudo editar intentar nuevamente',
             showConfirmButton: false,
             timer: 1500,
             background: '#ffff',
@@ -152,6 +192,20 @@ export class EditarNoticiasComponent implements OnInit {
             allowOutsideClick: false,
             allowEscapeKey: false,
           });
+        } else {
+          Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'No se pudo editar intentar nuevamente',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
         }
       }, error => {
         // Mostrar una notificación de error
@@ -167,15 +221,47 @@ export class EditarNoticiasComponent implements OnInit {
   }
 
   eliminarParrafos(parrafo: Parrafos) {
+    let veri;
     this.parrafosServices.deleteParrafos(Number(parrafo.idParrafo)).subscribe(
       (data) => {
         if (data != null) {
-          this.getParrafos();
-          this.parrafo = {};
+          veri = !!data;
+          if (veri) {
+            this.getParrafos();
+            this.parrafo = {};
+            Swal.fire({
+              position: 'top-right',
+              icon: 'success',
+              title: 'Parrafos eliminados exitosamente',
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffff',
+              iconColor: '#4CAF50',
+              padding: '1.25rem',
+              width: '20rem',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
+          } else {
+            Swal.fire({
+              position: 'top-right',
+              icon: 'error',
+              title: 'No se pudo eliminar intentar nuevamente',
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffff',
+              iconColor: '#4CAF50',
+              padding: '1.25rem',
+              width: '20rem',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
+          }
+        } else {
           Swal.fire({
             position: 'top-right',
-            icon: 'success',
-            title: 'Parrafos eliminados exitosamente',
+            icon: 'error',
+            title: 'No se pudo eliminar intentar nuevamente',
             showConfirmButton: false,
             timer: 1500,
             background: '#ffff',
@@ -259,17 +345,66 @@ export class EditarNoticiasComponent implements OnInit {
   }
 
   DeleteNoticiaFotos(foto: FotosNoticias) {
-    let veri;
-    this.fotosNoticiasServices.deleteFotosNoticias(Number(foto.idFotosNoticia)).subscribe(
-      (data) => {
-        veri = !!data;
-        if (veri) {
-          this.getImagenesNoticias();
+    let veri1;
+    let veri2;
+    this.fotoServices.deleteFotos(String(foto.fotosNoticia)).subscribe(
+      (datafo) => {
+        veri1 = !!datafo;
+        if (veri1) {
+          this.fotosNoticiasServices.deleteFotosNoticias(Number(foto.idFotosNoticia)).subscribe(
+            (data) => {
+              veri2 = !!data;
+              if (veri2) {
+                this.limiteFotosAlcanzado = false;
+                Swal.fire({
+                  position: 'top-right',
+                  icon: 'success',
+                  title: 'foto eliminada correctamente',
+                  showConfirmButton: false,
+                  timer: 1500,
+                  background: '#ffff',
+                  iconColor: '#4CAF50',
+                  padding: '1.25rem',
+                  width: '20rem',
+                  allowOutsideClick: false,
+                  allowEscapeKey: false,
+                });
+                this.getImagenesNoticias();
+              } else {
+                Swal.fire({
+                  position: 'top-right',
+                  icon: 'error',
+                  title: 'No se pudo crear intentar nuevamente',
+                  showConfirmButton: false,
+                  timer: 1500,
+                  background: '#ffff',
+                  iconColor: '#4CAF50',
+                  padding: '1.25rem',
+                  width: '20rem',
+                  allowOutsideClick: false,
+                  allowEscapeKey: false,
+                });
+              }
+            }
+          )
         } else {
-          console.log("error almacenar fotos noticias...")
+          Swal.fire({
+            position: 'top-right',
+            icon: 'error',
+            title: 'No se pudo crear intentar nuevamente',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffff',
+            iconColor: '#4CAF50',
+            padding: '1.25rem',
+            width: '20rem',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
         }
       }
     )
+
   }
 
   SaveNoticiaFotos() {
@@ -285,6 +420,33 @@ export class EditarNoticiasComponent implements OnInit {
                   this.limiteFotosAlcanzado = false;
                   this.borrarImagen();
                   this.getImagenesNoticias();
+                  Swal.fire({
+                    position: 'top-right',
+                    icon: 'success',
+                    title: 'creada exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    background: '#ffff',
+                    iconColor: '#4CAF50',
+                    padding: '1.25rem',
+                    width: '20rem',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                  });
+                } else {
+                  Swal.fire({
+                    position: 'top-right',
+                    icon: 'error',
+                    title: 'No se pudo crear intentar nuevamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    background: '#ffff',
+                    iconColor: '#4CAF50',
+                    padding: '1.25rem',
+                    width: '20rem',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                  });
                 }
               }
             )
@@ -292,16 +454,19 @@ export class EditarNoticiasComponent implements OnInit {
         }
       )
     } else {
-      this.limiteFotosAlcanzado = true;
       Swal.fire({
-        title: 'Solo se pueden almacenar un máximo de 5 fotos ',
+        position: 'top-right',
         icon: 'warning',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      })
-
+        title: 'no se puede almacenar mas fotos',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
     }
   }
 
@@ -356,28 +521,28 @@ export class EditarNoticiasComponent implements OnInit {
 
 
   fin() {
-    if (this.listaImagenesNoticias.length != 0){
+    if (this.listaImagenesNoticias.length != 0) {
     localStorage.removeItem('noticiaAdm');
-    this.borrarImagen();
-    this.noticia = {} as Noticias;
-    this.parrafo = {} as Parrafos;
-    this.fotosNoticiasObject = {} as FotosNoticias;
-    this.cambioNoticia = false;
-    this.limiteFotosAlcanzado = false;
-    this.listaParrafos = [];
-    this.listaImagenesNoticias = [];
-    history.back();
-    
-    
+      this.noticia = {} as Noticias;
+      this.parrafo = {} as Parrafos;
+      this.fotosNoticiasObject = {} as FotosNoticias;
+      this.cambioNoticia = false;
+      this.limiteFotosAlcanzado = false;
+      this.listaParrafos = [];
+      this.listaImagenesNoticias = [];
+      history.back();
+      this.borrarImagen();
+
+
     } else {
-    Swal.fire({
-      title: 'No puede almacenarse la noticia sin fotos ',
-      icon: 'warning',
-      showCancelButton: false,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'OK'
-    })
+      Swal.fire({
+        title: 'No puede almacenarse la noticia sin fotos ',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      })
     }
   }
 

@@ -22,6 +22,8 @@ export class CrearProductosComponent implements OnInit {
   procesarFoto: any;
   imagenPreview: any;
 
+  estadoSaveUpdate:boolean = false;
+
   //implementar js en los componentes
   constructor(
     private productosServices: SproductosService,
@@ -40,6 +42,7 @@ export class CrearProductosComponent implements OnInit {
 
   saveProductos() {
     this.submitted = true;
+    this.estadoSaveUpdate = true;
     if (this.productosObject.nombreProducto &&
       this.productosObject.preDescripcionProducto &&
       this.productosObject.descripcionProducto &&
@@ -51,6 +54,7 @@ export class CrearProductosComponent implements OnInit {
             this.productosServices.postProductos(this.productosObject, nameEmpresaProductos).subscribe(
               (data) => {
                 if (data != null) {
+                  this.estadoSaveUpdate = false;
                   Swal.fire({
                     position: 'top-right',
                     icon: 'success',
@@ -65,12 +69,41 @@ export class CrearProductosComponent implements OnInit {
                     allowEscapeKey: false,
                   });
                   history.back();
+                } else {
+                  Swal.fire({
+                    position: 'top-right',
+                    icon: 'error',
+                    title: 'No se pudo crear intentar nuevamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    background: '#ffff',
+                    iconColor: '#4CAF50',
+                    padding: '1.25rem',
+                    width: '20rem',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                  });
                 }
               }
             )
           }
         }
       )
+    } else {
+      this.estadoSaveUpdate = false;
+      Swal.fire({
+        position: 'top-right',
+        icon: 'warning',
+        title: 'Verifique que todos los datos esten ingresados',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
     }
   }
 
