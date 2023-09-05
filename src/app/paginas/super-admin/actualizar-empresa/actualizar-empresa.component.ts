@@ -110,6 +110,7 @@ export class ActualizarEmpresaComponent implements OnInit {
     this.empresaData = {} as Empresas;
     this.router.navigate(['/cbd/panel']);
   }
+  
 
   validartelefono(){
     if (!/^\d+$/.test(String(this.empresaData.telefonoEmpresa)) || (!/^\d{7}$/.test(String(this.empresaData.telefonoEmpresa)))) {

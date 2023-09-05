@@ -62,10 +62,10 @@
             <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a"
                 (click)="almacenarUsuario(usulist, 'editar')">Editar</a> </td>
             <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a"
-                (click)="alertBloquearOrDesbloquear(usulist, 'mostrar', 'podran', 'noticia mostrada', 'mostrar')">Bloquear</a>
+                (click)="alertBloquearOrDesbloquear(usulist, 'ocultar', 'no podran', ' oculto', 'ocultar')">Bloquear</a>
             </td>
             <td *ngIf="usulist.bloqueadoUsuario == false  && usulist.estUsuario == true"><a class="a"
-                (click)="alertBloquearOrDesbloquear(usulist, 'ocultar', 'no podran', 'noticia ocultada', 'ocultar')">Desbloquear</a>
+                (click)="alertBloquearOrDesbloquear(usulist, 'mostrar', 'podran', ' mostrado', 'mostrar')">Desbloquear</a>
             </td>
             <td><a (click)="almacenarUsuario(usulist, 'detalle')" class="as">Ver</a></td>
           </tr>
