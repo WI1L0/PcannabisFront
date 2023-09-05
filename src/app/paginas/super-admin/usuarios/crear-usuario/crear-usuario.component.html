@@ -17,23 +17,23 @@
                 <h3 class="fs-subtitle">Ingrese los datos de persona</h3>
                 <div class="row">
                     <input type="text" name="cedula" placeholder="Cédula" class="half-width" required
-                        [(ngModel)]="personaObject.cedula" (input)="cargarCedula()" />
+                        [(ngModel)]="personaObject.cedula" (input)="cargarCedula()" (blur)="validarcedula()" />
                     <input type="text" name="celular" placeholder="Celular" class="half-width" required
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.celular" />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.celular"  (blur)="validarcelular()"/>
                     <!-- <div class="invalid-feedback">Por favor, complete est  e campo.</div> -->
                 </div>
                 <div class="row">
                     <input type="text" name="nombre1" placeholder="Nombre 1" class="half-width" required
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre1" />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre1" (blur)="validarnombre()"  />
                     <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
                     <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" required
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre2" />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre2" (blur)="validarnombre()"  />
                 </div>
                 <div class="row">
                     <input type="text" name="apellido1" placeholder="Apellido 1" class="half-width" required
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido1" />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido1" (blur)="validarapellido()" />
                     <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" required
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2" />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2"  (blur)="validarapellido()" />
                 </div>
                     <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento" required
                     [(ngModel)]="personaObject.fNacimiento">
@@ -62,15 +62,15 @@
                         [(ngModel)]="personaObject.genero" [disabled]="cedulaRegistrada">
                 </div>
                 <!-- </div> -->
-                <input type="email" name="correo" placeholder="Correo Electrónico" required (blur)="existCorreo()"
+                <input type="email" name="correo" placeholder="Correo Electrónico" required (blur)="existCorreo()" 
                     [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.correo" />
 
                 <div class="row">
 
                     <input type="text" name="ciudad" placeholder="Ciudad" class="half-width" required
-                        [(ngModel)]="personaObject.ciudad" [disabled]="cedulaRegistrada" />
+                        [(ngModel)]="personaObject.ciudad" [disabled]="cedulaRegistrada"   />
 
-                    <input type="text" name="bario" placeholder="Barrio" class="half-width" required
+                    <input type="text" name="barrio" placeholder="Barrio" class="half-width" required
                         [(ngModel)]="personaObject.barrio" [disabled]="cedulaRegistrada" />
                 </div>
                 <input type="text" name="referencia" placeholder="Referencia" required [disabled]="cedulaRegistrada"

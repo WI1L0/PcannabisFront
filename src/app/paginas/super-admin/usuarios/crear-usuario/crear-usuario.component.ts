@@ -326,6 +326,84 @@ export class CrearUsuarioComponent implements OnInit {
     )
   }
 
+  validarnombre(): boolean {
+    let ban: boolean = true
+    if (/^\d+$/.test(String(this.personaObject.nombre1 || this.personaObject.nombre2))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que los nombres esten correctos',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false
+    }
+    return ban
+  }
+
+  validarapellido(): boolean {
+    let ban: boolean = true
+    if (/^\d+$/.test(String(this.personaObject.apellido1 || this.personaObject.apellido2))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que los apellidos esten correctos',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+    return ban;
+  }
+
+  validarcedula(): boolean {
+    let ban: boolean = true
+    if (!/^\d+$/.test(String(this.personaObject.cedula)) || (!/^\d{10}$/.test(String(this.personaObject.cedula)))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'La cédula es incorrecta',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+    return ban
+  }
+
+  validarcelular(): boolean {
+    let ban: boolean = true
+    if (!/^\d+$/.test(String(this.personaObject.celular)) || (!/^\d{10}$/.test(String(this.personaObject.celular)))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'El célular es incorrecto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+    return ban
+  }
+
+  validarcorreo(): boolean {
+    let ban: boolean = true
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!regexCorreo.test(String(this.personaObject.correo))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el email este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+    return ban
+  }
+
+
   validaciones(): boolean {
     if (!this.cedulaRegistrada) {
       let ban: boolean = true;
