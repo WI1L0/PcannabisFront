@@ -300,24 +300,24 @@ $negrita: bold;
     }
   }
 
-  @media screen and (max-width: 767px) {
-    .cardBox {
-      margin-left: 2.8%;
-      margin-top: 3%;
-      width: 46%;
-      clear: both;
-    }
+  // @media screen and (max-width: 767px) {
+  //   .cardBox {
+  //     margin-left: 2.8%;
+  //     margin-top: 3%;
+  //     width: 46%;
+  //     clear: both;
+  //   }
 
-    .card {
-      height: 285px;
-    }
+  //   .card {
+  //     height: 285px;
+  //   }
 
-    .cardBox:last-child {
-      margin-bottom: 3%;
-    }
-  }
+  //   .cardBox:last-child {
+  //     margin-bottom: 3%;
+  //   }
+  // }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 760px) {
     .cardBox {
       width: 94.5%;
     }
