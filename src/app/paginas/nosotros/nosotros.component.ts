@@ -18,7 +18,7 @@ export class NosotrosComponent implements OnInit {
 
   cuerpoUrlFoto: string = baserUrlImagenes;
 
-  public submitted: boolean = false;
+  public submitted: boolean = true;
 
   contactanosObject: Contactanos = new Contactanos();
 
@@ -95,31 +95,45 @@ export class NosotrosComponent implements OnInit {
   }
 
   postContactanos() {
-    if (this.validaciones()) {
-      console.log(this.contactanosObject)
-      this.contactanosServices.postContactanos(this.contactanosObject, nameEmpresa).subscribe(
-        (data) => {
-          if (data != null) {
-            this.submitted == false;
-            this.contactanosObject = new Contactanos();
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Su formulario se envió con éxito',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          } else {
-            Swal.fire({
-              position: 'top-end',
-              icon: 'question',
-              title: 'No se puedo enviar su formulario',
-              showConfirmButton: false,
-              timer: 1500
-            })
+    console.log(this.contactanosObject)
+    if ( !this.contactanosObject.asuntoContactanos ||
+      !this.contactanosObject.detalleContactanos ||
+      this.contactanosObject.asuntoContactanos.trim().length === 0 ||
+      this.contactanosObject.detalleContactanos.trim().length === 0) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Debe ingresar un asunto y un detalle',
+          showConfirmButton: false,
+          timer: 1500
+        });
+    }else{
+      if (this.validaciones()) {
+        console.log(this.contactanosObject)
+        this.contactanosServices.postContactanos(this.contactanosObject, nameEmpresa).subscribe(
+          (data) => {
+            if (data != null) {
+              this.submitted == false;
+              this.contactanosObject = new Contactanos();
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Su formulario se envió con éxito',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            } else {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'question',
+                title: 'No se puedo enviar su formulario',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
           }
-        }
-      )
+        )
+      }
     }
   }
 
@@ -170,7 +184,9 @@ export class NosotrosComponent implements OnInit {
     }
     return ban;
   }
+  
 }
+
 
 
   // VALIDACIONES
