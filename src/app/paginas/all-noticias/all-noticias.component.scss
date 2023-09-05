@@ -43,7 +43,7 @@ $negrita: bold;
   .texto-interior {
     color: $color-all-uno;
     font-size: 2rem;
-    font-weight:$negrita;
+    font-weight: $negrita;
     left: 10%;
     position: absolute;
     text-align: center;
@@ -60,11 +60,12 @@ $negrita: bold;
     width: 90%;
     font-family: $fuente-secundaria;
   }
-  .titulo{
+
+  .titulo {
     font-weight: 600;
     font-size: 50px;
   }
-  
+
 }
 
 .contentBlog {
@@ -152,7 +153,7 @@ $negrita: bold;
       }
 
       .author:before {
-        font-family:$fuente-principal;
+        font-family: $fuente-principal;
         margin-right: 10px;
         content: "\f007";
       }
@@ -256,19 +257,24 @@ $negrita: bold;
         left: 0%;
       }
     }
+
     .description {
-      height: 250px; /* Altura máxima de la descripción */
-      overflow: auto; /* Habilitar scroll si el contenido excede la altura */
+      height: 250px;
+      /* Altura máxima de la descripción */
+      overflow: auto;
+      /* Habilitar scroll si el contenido excede la altura */
     }
-    
+
     .col-sm-2,
     .col-md-6 {
-      flex: 0 0 100%; /* Forzar que todas las columnas tengan el mismo ancho */
-      max-width: 100%; /* Forzar que todas las columnas tengan el mismo ancho */
+      flex: 0 0 100%;
+      /* Forzar que todas las columnas tengan el mismo ancho */
+      max-width: 100%;
+      /* Forzar que todas las columnas tengan el mismo ancho */
     }
 
 
-    @media (min-width: 575px) {
+    @media (min-width: 600px) {
       flex-direction: row;
       max-width: 700px;
 
@@ -309,6 +315,15 @@ $negrita: bold;
         }
       }
     }
+
+    @media (min-width: 750px) {
+      .col-sm {
+        flex: 0 0 auto;
+        width: 100%;
+      }
+
+    }
+
   }
 
   // PAGINACION CARDS NOTICIAS
@@ -318,24 +333,25 @@ $negrita: bold;
   display: flex;
   justify-content: center;
 
-.button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .button1 {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .button2 {
+    background-color: #008CBA;
+    color: white;
+    margin-left: 10px;
+  }
 }
 
-.button1 {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.button2 {
-  background-color: #008CBA;
-  color: white;
-  margin-left: 10px;
-}
-}
 // ALL
