@@ -141,7 +141,7 @@ export class EditarUsuarioComponent implements OnInit {
       (<HTMLSelectElement>document.getElementById('mySelectRol')).value != "Seleccione una opción" &&
       this.usuariosObject.passwordUsuario) {
       Swal.fire({
-        title: '¿Estas seguro de editar la noticia?',
+        title: '¿Estas seguro de editar el usuario?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -160,7 +160,7 @@ export class EditarUsuarioComponent implements OnInit {
                         if (data != null) {
                           Swal.fire(
                             'Editada!',
-                            'El ususario fue editada exitosamente.',
+                            'El usuario fue editado exitosamente.',
                             'success'
                           ).then((result) => {
                             if (result.isConfirmed) {
@@ -172,7 +172,7 @@ export class EditarUsuarioComponent implements OnInit {
                         } else {
                           Swal.fire({
                             title: 'No Editada!',
-                            text: 'La empresa no fue editada.',
+                            text: 'El usuario no fue editado.',
                             icon: 'error'
                           });
                         }
@@ -181,7 +181,7 @@ export class EditarUsuarioComponent implements OnInit {
                   } else {
                     Swal.fire({
                       title: 'No Editada!',
-                      text: 'La empresa no fue editada.',
+                      text: 'El usuario no fue editado.',
                       icon: 'error'
                     });
                   }
@@ -195,7 +195,7 @@ export class EditarUsuarioComponent implements OnInit {
     } else {
       Swal.fire({
 
-        title: 'No Editada!',
+        title: 'No Editado!',
         text: 'Los campos estan vacios o erroneos',
         icon: 'error'
       })

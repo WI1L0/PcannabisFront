@@ -76,7 +76,7 @@ export class ListarUsuariosComponent implements OnInit {
           }
         },
         (error) => {
-          console.log('Error al obtener noticias:', error);
+          console.log('Error al obtener usuarios', error);
         }
       );
   }

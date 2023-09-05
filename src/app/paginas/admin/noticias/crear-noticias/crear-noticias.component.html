@@ -37,9 +37,9 @@
                                 <img [src]="imagenPreview" *ngIf="imagenPreview" style="padding: 20px" class="fotos">
                             </div>
                         </div>
-                        <div class="col-6" *ngIf="imagenPreview">
-                            <input type="button" name="botoncito" class="botoncito" value="Borrar" id="btnfotos"
-                                (click)="borrarImagen()"/>
+                        <div class="col" *ngIf="imagenPreview">
+                            <input type="button" name="botoncito" class="botoncito" value="Borrar" id="btnfotos" style="color: white;background-color: black;" 
+                            (click)="borrarImagen()" />
                         </div>
                     </form>
                 </div>
@@ -53,8 +53,7 @@
                     <!-- <div class="col-12"> -->
                     <!-- <div class="izquierda"> -->
                     <textarea type="text" [rows]="5" class="txtarea" id="txtareaprincipal"
-                        [(ngModel)]="parrafosObjects.parrafo"  name="first"
-                        placeholder="Agregar un Parrafo"></textarea>
+                        [(ngModel)]="parrafosObjects.parrafo" name="first" placeholder="Agregar un Parrafo"></textarea>
                     <input type="button" id="botones" class="botoncito" (click)="almacenarListParrafos(parrafosObjects)"
                         required value="Agregar" />
                     <!-- </div> -->
@@ -79,8 +78,8 @@
 
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Anterior" />
-                <button class="action-button" name="next" class="next action-button" target="_top" [disabled]="estadoSaveUpdate"
-                    (click)="almacenarNoticiaParrafos()">Siguiente</button>
+                <button class="action-button" name="next" class="next action-button" target="_top"
+                    [disabled]="estadoSaveUpdate" (click)="almacenarNoticiaParrafos()">Siguiente</button>
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">Fotos Noticias</h2>
@@ -103,7 +102,7 @@
                     </div>
                     <div class="col-6" *ngIf="imagenPreview">
                         <input type="button" name="botoncito" class="botoncito" value="Borrar" id="btnfotos"
-                            (click)="borrarImagen()"/>
+                            (click)="borrarImagen()" />
                     </div>
                     <div class="col-6" *ngIf="imagenPreview">
                         <input type="button" name="botoncito" class="botoncito" value="Añadir" id="btnfotos"

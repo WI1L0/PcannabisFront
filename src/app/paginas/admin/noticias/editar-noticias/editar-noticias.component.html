@@ -44,7 +44,9 @@
                                 style="padding: 20px;" class="fotos" />
                             </div>
                             <div>
-                                <input type="button" name="botoncito" class="botoncito" value="Editar" id="btnfotos"
+                                <input type="button" name="botoncito" class="botoncito" value="Editar" style="    width: 30%;
+                                color: white;
+                                background-color: black;" id="btnfotos"
                                     (click)="editarFoto()"/>
                             </div>
                         </div>
@@ -67,7 +69,7 @@
                         <textarea type="text" [rows]="5" class="txtarea" id="txtareaprincipal"
                             [(ngModel)]="parrafo.parrafo" [ngModelOptions]="{standalone: true}" name="first"
                             placeholder="Agregar un Parrafo" required></textarea>
-                        <input type="button" id="botones" class="botoncito" (click)="guardarparrafos()" required
+                        <input type="button" id="botones" class="botoncito" (click)="guardarparrafos()" style="width: 30%; color: white;background-color: black;" required
                             value="Agregar" />
                         <!-- </div> -->
                     <!-- </div> -->
