@@ -91,7 +91,7 @@ export class ActualizarEmpresaComponent implements OnInit {
                   ).then((result) => {
                     if (result.isConfirmed) {
                       this.empresaData = {} as Empresas;
-                      this.router.navigate(['/cbd/panel']);
+                      history.back();
                     }
                   })
                 } else {
@@ -122,7 +122,7 @@ export class ActualizarEmpresaComponent implements OnInit {
 
   salir() {
     this.empresaData = {} as Empresas;
-    this.router.navigate(['/cbd/panel']);
+    history.back();
   }
 
   validartelefono(): boolean {

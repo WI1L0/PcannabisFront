@@ -72,14 +72,14 @@
                             <div class="col-md-6">
                                 <fieldset>
                                     <p class="nom">Nombre 1</p>
-                                    <input placeholder="Nombre 1" type="text" name="nombre1_user" tabindex="2" required
+                                    <input placeholder="Nombre 1" type="text" name="nombre1_user" tabindex="2" required maxlength="10" minlength="2"
                                         [(ngModel)]="personasObject.nombre1" autofocus>
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
                                     <p class="nom">Nombre 2</p>
-                                    <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required
+                                    <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required maxlength="10" minlength="2"
                                         [(ngModel)]="personasObject.nombre2" autofocus>
                                 </fieldset>
                             </div>
@@ -88,14 +88,14 @@
                             <div class="col-md-6">
                                 <fieldset>
                                     <p class="nom">Apellido 1</p>
-                                    <input placeholder="Apellido 1" type="text" name="apellido1_user" tabindex="2"
+                                    <input placeholder="Apellido 1" type="text" name="apellido1_user" tabindex="2" maxlength="10" minlength="2"
                                         required [(ngModel)]="personasObject.apellido1" autofocus>
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
                                     <p class="nom">Apellido 2</p>
-                                    <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="2"
+                                    <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="2" maxlength="10" minlength="2"
                                         required [(ngModel)]="personasObject.apellido2" autofocus>
                                 </fieldset>
                             </div>
@@ -106,21 +106,21 @@
                         <div class="col-md-3">
                             <fieldset>
                                 <p class="nom">Celular</p>
-                                <input placeholder="Celular" type="text" name="celular_user" tabindex="2" required
+                                <input placeholder="Celular" type="text" name="celular_user" tabindex="2" required maxlength="10" minlength="10"
                                     [(ngModel)]="personasObject.celular" autofocus>
                             </fieldset>
                         </div>
                         <div class="col-md-3">
                             <fieldset>
                                 <p class="nom">Correo</p>
-                                <input placeholder="Correo" type="text" name="correo_user" tabindex="2" required
+                                <input placeholder="Correo" type="text" name="correo_user" tabindex="2" required maxlength="100" minlength="10"
                                     [(ngModel)]="personasObject.correo" autofocus>
                             </fieldset>
                         </div>
                         <div class="col-md-3">
                             <fieldset>
                                 <p class="nom">Password</p>
-                                <input placeholder="password" type="password" name="password_user" tabindex="2" required
+                                <input placeholder="password" type="password" name="password_user" tabindex="2" required maxlength="20" minlength="8"
                                     [(ngModel)]="usuariosObject.passwordUsuario" autofocus>
                             </fieldset>
                         </div>
@@ -139,19 +139,19 @@
                         <div class="col-md-4">
                             <fieldset>
                                 <p class="nom">Ciudad</p>
-                                <input placeholder="ciudad" type="text" name="ciudad_user" tabindex="2" required
+                                <input placeholder="ciudad" type="text" name="ciudad_user" tabindex="2" required maxlength="50" minlength="5"
                                     [(ngModel)]="personasObject.ciudad" autofocus>
                             </fieldset>
                             <fieldset>
                                 <p class="nom">Barrio</p>
-                                <input placeholder="barrio" type="text" name="barrio_user" tabindex="2" required
+                                <input placeholder="barrio" type="text" name="barrio_user" tabindex="2" required maxlength="50" minlength="5"
                                     [(ngModel)]="personasObject.barrio" autofocus>
                             </fieldset>
                         </div>
                         <div class="col-md-8">
                             <fieldset>
                                 <p class="nom">Referencia</p>
-                                <textarea placeholder="referencia" type="text" name="referencia_user" tabindex="2"
+                                <textarea placeholder="referencia" type="text" name="referencia_user" tabindex="2" maxlength="200" minlength="10"
                                     required [(ngModel)]="personasObject.referencia" autofocus></textarea>
                             </fieldset>
                         </div>

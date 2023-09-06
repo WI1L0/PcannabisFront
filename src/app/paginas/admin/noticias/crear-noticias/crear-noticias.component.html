@@ -16,12 +16,12 @@
             <fieldset>
                 <h2 class="fs-title">Crear Noticia</h2>
                 <h3 class="fs-subtitle">Ingrese los datos de Noticias</h3>
-                <input type="text" name="titulo" placeholder="Titulo" required [(ngModel)]="noticias.tituloNoticia" />
+                <input type="text" name="titulo" placeholder="Titulo" required [(ngModel)]="noticias.tituloNoticia" maxlength="200" minlength="10" />
                 <input type="date" name="fechanoticia" placeholder="Fecha de noticia" required
                     [(ngModel)]="noticias.fechaNoticia" />
-                <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required
+                <input type="text" name="ubicacion" placeholder="Ubicación de la noticia" required maxlength="100" minlength="5"
                     [(ngModel)]="noticias.ubicacionNoticia" />
-                <textarea rows="5" type="text" name="ubicacion" placeholder="Predescripción de la noticia" required
+                <textarea rows="5" type="text" name="ubicacion" placeholder="Predescripción de la noticia" required maxlength="500" minlength="10"
                     [(ngModel)]="noticias.preDescripcionNoticia"></textarea>
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
@@ -52,7 +52,7 @@
                 <div class="row">
                     <!-- <div class="col-12"> -->
                     <!-- <div class="izquierda"> -->
-                    <textarea type="text" [rows]="5" class="txtarea" id="txtareaprincipal"
+                    <textarea type="text" [rows]="5" class="txtarea" id="txtareaprincipal" maxlength="3000" minlength="10"
                         [(ngModel)]="parrafosObjects.parrafo" name="first" placeholder="Agregar un Parrafo"></textarea>
                     <input type="button" id="botones" class="botoncito" (click)="almacenarListParrafos(parrafosObjects)"
                         required value="Agregar" />

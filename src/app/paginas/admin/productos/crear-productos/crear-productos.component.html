@@ -26,14 +26,14 @@
                         <div class="col-7">
                             <fieldset>
                                 <p class="nom">Nombre</p>
-                                <input placeholder="Nombre" type="text" name="nombre_empresa" tabindex="1" required
+                                <input placeholder="Nombre" type="text" name="nombre_empresa" tabindex="1" required maxlength="50" minlength="5"
                                     [(ngModel)]="productosObject.nombreProducto">
                                 <small class="p-error"
                                     *ngIf="submitted == true && !productosObject.nombreProducto">Nombre del producto es requerido.</small>
                             </fieldset>
                             <fieldset>
                                 <p class="nom">Pre Descripcion</p>
-                                <textarea rows="3" placeholder="Pre Descripcion" type="text" name="email_empresa"
+                                <textarea rows="3" placeholder="Pre Descripcion" type="text" name="email_empresa" maxlength="200" minlength="10"
                                     tabindex="2" required
                                     [(ngModel)]="productosObject.preDescripcionProducto"></textarea>
                                 <small class="p-error"
@@ -41,7 +41,7 @@
                             </fieldset>
                             <fieldset>
                                 <p class="nom">Descripcion</p>
-                                <textarea rows="6" placeholder="Descripcion" type="text" name="celular_empresa"
+                                <textarea rows="6" placeholder="Descripcion" type="text" name="celular_empresa" maxlength="2000" minlength="10"
                                     tabindex="3" required [(ngModel)]="productosObject.descripcionProducto"></textarea>
                                 <small class="p-error"
                                     *ngIf="submitted && !productosObject.descripcionProducto">Descripción es requerido</small>

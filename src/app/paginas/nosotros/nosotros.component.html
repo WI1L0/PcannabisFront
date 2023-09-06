@@ -235,7 +235,7 @@
                     <form action="">
                         <section class="layout 2">
                             <fieldset class="input-box">
-                                <input class="campos" placeholder="Name" type="Name" name="Name_contactanos"
+                                <input class="campos" placeholder="Name" type="Name" name="Name_contactanos" maxlength="100" minlength="2"
                                     tabindex="1" required [(ngModel)]="contactanosObject.nombreContactanos">
                             </fieldset>
                             <fieldset class="input-box">
@@ -243,7 +243,7 @@
                                     requerido.</small>
                             </fieldset>
                             <fieldset class="input-box">
-                                <input class="campos" placeholder="Email" type="Email" name="Email_contactanos"
+                                <input class="campos" placeholder="Email" type="Email" name="Email_contactanos" maxlength="100" minlength="10" 
                                     tabindex="2" required [(ngModel)]="contactanosObject.emailContactanos">
                             </fieldset>
                             <fieldset class="input-box">
@@ -251,7 +251,7 @@
                                     requerido.</small>
                             </fieldset>
                             <fieldset class="input-box">
-                                <input class="campos" placeholder="Celular" type="Celular" name="Celular_contactanos"
+                                <input class="campos" placeholder="Celular" type="Celular" name="Celular_contactanos" maxlength="10" minlength="10"
                                     tabindex="3" required [(ngModel)]="contactanosObject.celularContactanos">
                             </fieldset>
                             <fieldset class="input-box">
@@ -259,7 +259,7 @@
                                     requerido.</small>
                             </fieldset>
                             <fieldset class="input-box">
-                                <input class="campos" placeholder="Asunto" type="Asunto" name="Asunto_contactanos"
+                                <input class="campos" placeholder="Asunto" type="Asunto" name="Asunto_contactanos" maxlength="500" minlength="5"
                                     tabindex="4" required [(ngModel)]="contactanosObject.asuntoContactanos">
                             </fieldset>
                             <fieldset class="input-box">
@@ -267,7 +267,7 @@
                                     requerido.</small>
                             </fieldset>
                             <fieldset class="input-box">
-                                <textarea class="campos" placeholder="Descripcion" type="Descripcion"
+                                <textarea class="campos" placeholder="Descripcion" type="Descripcion" maxlength="2000" minlength="5"
                                     name="Descripcion_contactanos" rows="8" required tabindex="5"
                                     [(ngModel)]="contactanosObject.detalleContactanos"></textarea>
                             </fieldset>

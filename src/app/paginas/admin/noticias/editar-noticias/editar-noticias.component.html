@@ -18,13 +18,13 @@
             <fieldset>
 
                 <h2 class="fs-title">Datos de Noticia</h2>
-                <input type="text" name="Titulo" [(ngModel)]="noticia.tituloNoticia" placeholder="Título" required
+                <input type="text" name="Titulo" [(ngModel)]="noticia.tituloNoticia" placeholder="Título" required maxlength="200" minlength="10"
                     (ngModelChange)="cambio()" />
                 <input type="date" name="Fecha" [(ngModel)]="noticia.fechaNoticia" placeholder="Fecha" required
                     (ngModelChange)="cambio()" />
-                <input type="text" name="Ubicación" [(ngModel)]="noticia.ubicacionNoticia" placeholder="Ubicación"
+                <input type="text" name="Ubicación" [(ngModel)]="noticia.ubicacionNoticia" placeholder="Ubicación" maxlength="100" minlength="5"
                     required (ngModelChange)="cambio()" />
-                <input type="text" name="PreDescripción" [(ngModel)]="noticia.preDescripcionNoticia"
+                <input type="text" name="PreDescripción" [(ngModel)]="noticia.preDescripcionNoticia" maxlength="500" minlength="10"
                     placeholder="PreDescripción" required (ngModelChange)="cambio()" />
                 <div>
                     <h2 class="fs-title">Portada de Noticia</h2>
@@ -66,7 +66,7 @@
                 <div class="row">
                     <!-- <div class="col-12"> -->
                         <!-- <div class="izquierda"> -->
-                        <textarea type="text" [rows]="5" class="txtarea" id="txtareaprincipal"
+                        <textarea type="text" [rows]="5" class="txtarea" id="txtareaprincipal" maxlength="3000" minlength="10"
                             [(ngModel)]="parrafo.parrafo" [ngModelOptions]="{standalone: true}" name="first"
                             placeholder="Agregar un Parrafo" required></textarea>
                         <input type="button" id="botones" class="botoncito" (click)="guardarparrafos()" style="width: 30%; color: white;background-color: black;" required

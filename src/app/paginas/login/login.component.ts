@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   estLogiBloqueado: boolean = false;
   estLogiActivo: boolean = false;
   estLogi: boolean = false;
+  estCredenciales: boolean = false;
   mensaje: string = '';
 
   //implementar js en los componentes
@@ -69,7 +70,6 @@ export class LoginComponent implements OnInit {
             this.estLogiBloqueado = true;
             this.estLogiActivo = false;
             this.estLogi = false;
-
           }
           if (this.token.estActivo == false) {
             this.estLogiActivo = true;
@@ -82,10 +82,12 @@ export class LoginComponent implements OnInit {
           }
         }
       }, (error) => {
-        console.log(error);
+        this.estCredenciales = true;
+        this.estLogiBloqueado = false;
+        this.estLogiActivo = false;
+        this.estLogiBloqueado = false;
+        this.estLogi = false;  
       }
     )
-
   }
-
 }

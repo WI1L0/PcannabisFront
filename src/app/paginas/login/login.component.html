@@ -4,12 +4,13 @@
             <div class="main">
                 <h1>Login</h1>
                 <form>
-                    <input type="email" name="mail" placeholder="Type your email" [(ngModel)]="lgmodel.usernameOrEmail">
+                    <input type="email" name="mail" placeholder="Type your username" [(ngModel)]="lgmodel.usernameOrEmail">
                     <input type="password" name="password" placeholder="Type your password" [(ngModel)]="lgmodel.password">
                     <div class="forgotPass">
                         <p style="color: brown;" *ngIf="estLogiBloqueado" >este usuario se encuentra con acceso restringido...</p>
                         <p style="color: brown;" *ngIf="estLogiActivo">este usuario se encuentra con acceso negado...</p>
                         <p style="color: brown;" *ngIf="estLogi">usuario no registrado...</p>
+                        <p style="color: brown;" *ngIf="estCredenciales">password erroneo...</p>
                     </div>
                     <div class="login-now">
                         <a (click)="postLogin()" >Login Now</a>
