@@ -78,6 +78,8 @@ $negrita: bold;
     text-decoration: none;
     height: 100%;
     width: 100%;
+    max-height: 310px; /* Altura máxima de la descripción */
+    overflow-y: auto; 
   }
 
   button,
@@ -121,6 +123,7 @@ $negrita: bold;
     min-height: 150px;
     background-color: var(--cards-bg);
     padding: 8px 16px;
+
   }
 
   .card-text {
@@ -139,6 +142,8 @@ $negrita: bold;
       color: #006400;
       font-weight: 600;
       font-weight: none;
+      text-align: justify;
+
 
       span {
         font-size: 12px;
@@ -758,3 +763,15 @@ $negrita: bold;
   padding: 5px;
 }
 
+
+.card-description {
+  max-height: 100px; /* Altura máxima de la descripción */
+  overflow-y: auto; /* Habilitar el desplazamiento vertical */
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Opcional: establece una altura máxima para las tarjetas */
+}
