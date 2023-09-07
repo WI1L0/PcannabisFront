@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class EditarProductosComponent implements OnInit {
 
-  public submitted: boolean = false;
+  public submitted: boolean = true;
 
   productosObject: Productos = new Productos();
   cuerpoUrlFoto: string = baserUrlImagenes;
