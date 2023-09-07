@@ -183,7 +183,7 @@ export class CrearUsuarioComponent implements OnInit {
       this.estadoSaveUpdate = false;
     }
 
-    if (this.validaciones() && this.validarContra() && this.existCorreo()) {
+    if (this.validarDatos() && this.validarContra() && this.existCorreo()) {
       this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
       this.personasServices.postPersona(this.personaObject).subscribe(
         (data) => {
@@ -325,6 +325,24 @@ export class CrearUsuarioComponent implements OnInit {
       }
     )
   }
+  validarusuario():boolean{
+    let ban: boolean = true
+
+    if(this.usuarioData.nombreUsuario?.length === 0 ){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'El nombre de usuario es requerido',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false
+    }
+    return ban
+
+  }
+
+
 
   validarnombre(): boolean {
     let ban: boolean = true
@@ -402,113 +420,19 @@ export class CrearUsuarioComponent implements OnInit {
     }
     return ban
   }
-
-
-  validaciones(): boolean {
-    if (!this.cedulaRegistrada) {
-      let ban: boolean = true;
-      const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-      if (/^\d+$/.test(String(this.personaObject.nombre1 && this.personaObject.nombre2))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Verifique que los nombres esten correctos',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false
-      }
-
-      if (/^\d+$/.test(String(this.personaObject.apellido1 && this.personaObject.apellido2))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Verifique que los apellidos esten correctos',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false
-      } else {
-        ban = true
-      }
-
-      if (!/^\d+$/.test(String(this.personaObject.celular)) || (!/^\d{10}$/.test(String(this.personaObject.celular)))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'El célular es incorrecto',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      } else {
-        ban = true
-      }
-
-      if (!/^\d+$/.test(String(this.personaObject.cedula)) || (!/^\d{10}$/.test(String(this.personaObject.cedula)))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'La cédula es incorrecta',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      } else {
-        ban = true;
-      }
-
-      if (!regexCorreo.test(String(this.personaObject.correo))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Verifique que el correo este correcto',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      }
-
-
-
-      //VALIDAR USUARIO
-      if (String(this.usuarioData.nombreUsuario).length === 0) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Complete todos los campos ',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      }
-
-      //Validar edad
-      let fechaActual = new Date();
-      let edadMinima = 18;
-
-
-      if (this.calcularEdad() < edadMinima) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Debe ser mayor a 18 años',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-
-      }
-      //validar edad
-
-      //VALIDACIONES
-      return ban;
-    } else {
-      return true;
-    }
-
+  
+  validarDatos(): boolean {
+    const celularValido = this.validarcelular();
+    const correoValido = this.validarcorreo();
+    const nombreValido = this.validarnombre();
+    const apellidoValido  = this.validarapellido();
+    const cedulaValido = this.validarcedula();
+    const edadValida = this.validaredad();
+    const usuarioValido = this.validarusuario();
+  
+    return celularValido && correoValido && nombreValido && apellidoValido && cedulaValido  && edadValida && usuarioValido;
   }
+
   validaredad():boolean{
     let ban: boolean = true;
     let fechaActual = new Date();

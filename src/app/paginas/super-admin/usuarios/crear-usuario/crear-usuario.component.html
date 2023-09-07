@@ -63,7 +63,7 @@
                 </div>
                 <!-- </div> -->
                 <input type="email" name="correo" placeholder="Correo Electrónico" required (blur)="existCorreo()" maxlength="100" minlength="10"
-                    [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.correo" />
+                    [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.correo"  (blur)="validarcorreo()"/>
 
                 <div class="row">
 
@@ -83,7 +83,7 @@
                 <h2 class="fs-title">Datos de Usuario</h2>
                 <h3 class="fs-subtitle">Ingrese los Datos de Usuario</h3>
                 <input type="text" name="nombre_usuario" placeholder="Nombre de Usuario" class="half-width" required
-                    [(ngModel)]="usuarioData.nombreUsuario" (blur)="validarNameUsuario()" maxlength="20" minlength="5" />
+                    [(ngModel)]="usuarioData.nombreUsuario" (blur)="validarNameUsuario()" (blur)="validarusuario()" maxlength="20" minlength="5" />
                 <!-- <input type="text" name="correo_usuario" placeholder="Correo de Usuario"  class="half-width" required /> -->
                 <select id="mySelectRol" class="select half-width" required>
                     <option disabled selected>Seleccione una opción</option>
