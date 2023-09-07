@@ -10,37 +10,37 @@
             <fieldset>
                 <p class="nom">Email</p>
                 <input placeholder="Email" type="email" name="email_empresa" tabindex="2" required [(ngModel)]="empresaData.emailEmpresa" (blur)="validarcorreo()" maxlength="100" minlength="10">
-                <small class="p-error" *ngIf="submitted && !empresaData.emailEmpresa">Observaciones is required.</small>
+                <small class="p-error" *ngIf="submitted && !empresaData.emailEmpresa">Email es requerido.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Celular</p>
                 <input placeholder="Celular" type="tel" name="celular_empresa" tabindex="3" required [(ngModel)]="empresaData.celularEmpresa"(blur)="validarcelular()" maxlength="10" minlength="10">
-                <small class="p-error" *ngIf="submitted && !empresaData.celularEmpresa">Observaciones is required.</small>
+                <small class="p-error" *ngIf="submitted && !empresaData.celularEmpresa">Celular es requerido.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Link de whatsapp</p>
                 <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required [(ngModel)]="empresaData.urlCelularEmpresa" maxlength="1000" minlength="50" >
-                <small class="p-error" *ngIf="submitted && !empresaData.urlCelularEmpresa">Observaciones is required.</small>
+                <small class="p-error" *ngIf="submitted && !empresaData.urlCelularEmpresa">Link de Whatsapp es requerido.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Telefono</p>
                 <input placeholder="Telefono" type="tel" name="telefono_empresa" tabindex="5" required [(ngModel)]="empresaData.telefonoEmpresa"  (blur)="validartelefono()">
-                <small class="p-error" *ngIf="submitted && !empresaData.telefonoEmpresa">Observaciones is required.</small>
+                <small class="p-error" *ngIf="submitted && !empresaData.telefonoEmpresa">Teléfono es requerido</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección</p>
                 <input placeholder="Dirección" type="text" name="direccion_empresa" tabindex="6" required [(ngModel)]="empresaData.direccionEmpresa" maxlength="100" minlength="5">
-                <small class="p-error" *ngIf="submitted && !empresaData.direccionEmpresa">Observaciones is required.</small>
+                <small class="p-error" *ngIf="submitted && !empresaData.direccionEmpresa">Dirección es requerido.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección en html de google maps</p>
                 <input placeholder="Dirección google en html " type="url" name="sitio_web_empresa_GOOGLE" tabindex="7" required [(ngModel)]="empresaData.urlDireccionEmpresaGoogle" maxlength="1000" minlength="50">
-                <small class="p-error" *ngIf="submitted && !empresaData.urlDireccionEmpresaGoogle">Observaciones is required.</small>
+                <small class="p-error" *ngIf="submitted && !empresaData.urlDireccionEmpresaGoogle">Dirección en html es requerida.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección de mapa</p>
-                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required [(ngModel)]="empresaData.urlCelularEmpresa" maxlength="1000" minlength="50" >
-                <small class="p-error" *ngIf="submitted && !empresaData.urlDireccionEmpresa">Observaciones is required.</small>
+                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="8" required [(ngModel)]="empresaData.urlCelularEmpresa" maxlength="1000" minlength="50" >
+                <small class="p-error" *ngIf="submitted && !empresaData.urlDireccionEmpresa">Dirección de mapa es requerida.</small>
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando" (click)="updateEmpresa()" [disabled]="estadoSaveUpdate">Editar</button>
