@@ -18,7 +18,7 @@ export class NosotrosComponent implements OnInit {
 
   cuerpoUrlFoto: string = baserUrlImagenes;
 
-  public submitted: boolean = true;
+  public submitted: boolean = false;
 
   contactanosObject: Contactanos = new Contactanos();
 
@@ -95,6 +95,7 @@ export class NosotrosComponent implements OnInit {
   }
 
   postContactanos() {
+    this.submitted = true;
     console.log(this.contactanosObject)
     if ( !this.contactanosObject.asuntoContactanos ||
       !this.contactanosObject.detalleContactanos ||
@@ -108,12 +109,12 @@ export class NosotrosComponent implements OnInit {
           timer: 1500
         });
     }else{
-      if (this.validaciones()) {
+      if (this.validarDatos()) {
         console.log(this.contactanosObject)
         this.contactanosServices.postContactanos(this.contactanosObject, nameEmpresa).subscribe(
           (data) => {
             if (data != null) {
-              this.submitted == false;
+              this.submitted = false;
               this.contactanosObject = new Contactanos();
               Swal.fire({
                 position: 'top-end',
@@ -135,6 +136,63 @@ export class NosotrosComponent implements OnInit {
         )
       }
     }
+  }
+
+  validarnombre(): boolean {
+    let ban: boolean = true
+    if (/^\d+$/.test(String(this.contactanosObject.nombreContactanos))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el nombre este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false
+    }
+    return ban
+  }
+
+
+
+  validarcelular(): boolean {
+    let ban: boolean = true
+    if (!/^\d+$/.test(String(this.contactanosObject.celularContactanos)) || (!/^\d{10}$/.test(String(this.contactanosObject.celularContactanos)))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'El célular es incorrecto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+    return ban
+  }
+
+  validarcorreo(): boolean {
+    let ban: boolean = true
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!regexCorreo.test(String(this.contactanosObject.emailContactanos))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el email este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+    return ban
+  }
+  
+  validarDatos(): boolean {
+    const celularValido = this.validarcelular();
+    const correoValido = this.validarcorreo();
+    const nombreValido = this.validarnombre();
+  
+    return celularValido && correoValido && nombreValido;
   }
 
 
@@ -184,8 +242,12 @@ export class NosotrosComponent implements OnInit {
     }
     return ban;
   }
+
+  
   
 }
+
+
 
 
 

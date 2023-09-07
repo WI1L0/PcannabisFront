@@ -236,7 +236,7 @@
                         <section class="layout 2">
                             <fieldset class="input-box">
                                 <input class="campos" placeholder="Name" type="Name" name="Name_contactanos" maxlength="100" minlength="2"
-                                    tabindex="1" required [(ngModel)]="contactanosObject.nombreContactanos">
+                                    tabindex="1" required [(ngModel)]="contactanosObject.nombreContactanos" (blur)="validarnombre()">
                             </fieldset>
                             <fieldset class="input-box">
                                 <small class="p-error" *ngIf="submitted && !contactanosObject.nombreContactanos">Campo
@@ -244,7 +244,7 @@
                             </fieldset>
                             <fieldset class="input-box">
                                 <input class="campos" placeholder="Email" type="Email" name="Email_contactanos" maxlength="100" minlength="10" 
-                                    tabindex="2" required [(ngModel)]="contactanosObject.emailContactanos">
+                                    tabindex="2" required [(ngModel)]="contactanosObject.emailContactanos" (blur)="validarcorreo()">
                             </fieldset>
                             <fieldset class="input-box">
                                 <small class="p-error" *ngIf="submitted && !contactanosObject.emailContactanos">Campo
@@ -252,7 +252,7 @@
                             </fieldset>
                             <fieldset class="input-box">
                                 <input class="campos" placeholder="Celular" type="Celular" name="Celular_contactanos" maxlength="10" minlength="10"
-                                    tabindex="3" required [(ngModel)]="contactanosObject.celularContactanos">
+                                    tabindex="3" required [(ngModel)]="contactanosObject.celularContactanos" (blur)="validarcelular()">
                             </fieldset>
                             <fieldset class="input-box">
                                 <small class="p-error" *ngIf="submitted && !contactanosObject.celularContactanos">Campo
@@ -260,7 +260,7 @@
                             </fieldset>
                             <fieldset class="input-box">
                                 <input class="campos" placeholder="Asunto" type="Asunto" name="Asunto_contactanos" maxlength="500" minlength="5"
-                                    tabindex="4" required [(ngModel)]="contactanosObject.asuntoContactanos">
+                                    tabindex="4" required [(ngModel)]="contactanosObject.asuntoContactanos" >
                             </fieldset>
                             <fieldset class="input-box">
                                 <small class="p-error" *ngIf="submitted && !contactanosObject.asuntoContactanos">Campo
