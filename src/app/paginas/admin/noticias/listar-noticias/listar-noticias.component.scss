@@ -122,6 +122,28 @@ h2 {
     margin-right: 5px;
 }
 
+.desactivar{
+  background-color: #e66158;
+  border-color: #b3b3b3;
+}
+.activar{
+  background-color: #5a96d2;
+  border-color: #b3b3b3;
+}
+.ver{
+  background-color: #6ed0d9;
+  border-color: #b3b3b3;
+}
+.editar{
+  background-color: #e2c153;
+  border-color: #b3b3b3;
+}
+.eliminar{
+  background-color: #e66158;
+  border-color: #b3b3b3;
+  color: #ffffff;
+}
+
 /* Responsive */
 @media (max-width: 767px) {
     .fl-table {
@@ -280,12 +302,18 @@ h2 {
 
 
 .a {
-    background-color: $color-letrav;
-    border-color: #b3b3b3;
     float: center;
-    width: 100px;
+    width: 100%;
     margin-top: 10px;
     margin: auto
+}
+.as{
+  background-color: $color-letrav;
+  border-color: #b3b3b3;
+  float: center;
+  width: 100px;
+  margin-top: 10px;
+  margin: auto
 }
 
 body {

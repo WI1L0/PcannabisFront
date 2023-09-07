@@ -183,14 +183,14 @@ export class ListarUsuariosComponent implements OnInit {
     Swal.fire({
       title: '¿Estas seguro de ' + `${mensajeTitle}` + ' este usuario?',
       text:
-        'los usuarios ocultos ' +
+        'los usuarios ' +
         `${mensajeText}` +
-        ' ser vistas por el publico en general',
+        ' acceder al sistema',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText:  mensajeTitle === 'mostrar' ? 'Mostrar' : 'Ocultar',
+      confirmButtonText:  mensajeTitle === 'desbloquear' ? 'Desbloquear' : 'Bloquear',
     }).then((result) => {
       if (result.isConfirmed) {
         let re = this.usuarioServices

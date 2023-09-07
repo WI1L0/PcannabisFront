@@ -57,17 +57,17 @@
             <td class="no">{{usulist.personas?.apellido1}} {{usulist.personas?.apellido2}}</td>
             <td class="no">{{usulist.personas?.correo}}</td>
             <td class="no">{{usulist.nombreUsuario}}</td>
-            <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a"
+            <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a eliminar"
                 (click)="confirmEliminar(usulist)">Eliminar</a> </td>
-            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a"
+            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a editar"
                 (click)="almacenarUsuario(usulist, 'editar')">Editar</a> </td>
-            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a"
-                (click)="alertBloquearOrDesbloquear(usulist, 'ocultar', 'no podran', ' oculto', 'ocultar')">Bloquear</a>
+            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a bloquear"
+                (click)="alertBloquearOrDesbloquear(usulist, 'bloquear', 'no podran', ' oculto', 'ocultar')">Bloquear</a>
             </td>
-            <td *ngIf="usulist.bloqueadoUsuario == false  && usulist.estUsuario == true"><a class="a"
-                (click)="alertBloquearOrDesbloquear(usulist, 'mostrar', 'podran', ' mostrado', 'mostrar')">Desbloquear</a>
+            <td *ngIf="usulist.bloqueadoUsuario == false  && usulist.estUsuario == true"><a class="a desbloquear"
+                (click)="alertBloquearOrDesbloquear(usulist, 'desbloquear', 'podran', ' mostrado', 'mostrar')">Desbloquear</a>
             </td>
-            <td><a (click)="almacenarUsuario(usulist, 'detalle')" class="as">Ver</a></td>
+            <td><a (click)="almacenarUsuario(usulist, 'detalle')" class="a ver">Ver</a></td>
           </tr>
         </tbody>
 

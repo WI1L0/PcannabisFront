@@ -58,28 +58,7 @@ h2 {
   margin-top: 60px;
 }
 
-.as {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #333;
-  text-decoration: none;
-}
 
-.as {
-  background-color: $color-letrav;
-  border-color: #b3b3b3;
-}
 
 /* Table Styles */
 
@@ -278,8 +257,6 @@ h2 {
 
 
 .a {
-  background-color: $color-letrav;
-  border-color: #b3b3b3;
   float: center;
   width: 100%;
   margin-top: 10px;
@@ -392,6 +369,27 @@ td:first-child {
   width: 100%;
   margin-top: 10px;
   margin: auto
+}
+.bloquear{
+  background-color: #e66158;
+  border-color: #b3b3b3;
+}
+.desbloquear{
+  background-color: #5a96d2;
+  border-color: #b3b3b3;
+}
+.ver{
+  background-color: #6ed0d9;
+  border-color: #b3b3b3;
+}
+.editar{
+  background-color: #e2c153;
+  border-color: #b3b3b3;
+}
+.eliminar{
+  background-color: #e66158;
+  border-color: #b3b3b3;
+  color: #ffffff;
 }
 
 

@@ -70,7 +70,7 @@ export class ActualizarEmpresaComponent implements OnInit {
       this.empresaData.urlDireccionEmpresa &&
       this.empresaData.urlDireccionEmpresaGoogle) {
       Swal.fire({
-        title: '¿Estas seguro de editar la noticia?',
+        title: '¿Estas seguro de editar la empresa?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

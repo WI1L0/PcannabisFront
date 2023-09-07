@@ -14,7 +14,6 @@
                                     <td class="contenedor"><a class="buscar"> </a>
                                     <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
                                         (change)="obtenerProductos()">
-                                        <option disabled selected>Seleccione una opción</option>
                                         <option value="all">Todo</option>
                                         <option value="activo">Activos</option>
                                         <option value="desactivo">Desactivos</option>
@@ -52,16 +51,16 @@
                     <tr *ngFor="let producto of listProductos">
                         <td class="no">{{producto.nombreProducto}}</td>
                         <td class="no">{{producto.preDescripcionProducto}}</td>
-                        <td *ngIf="producto.estOcultoVisibleProducto == true"><a (click)="setProductosAEditar(producto)"  class="a">Editar</a> </td>
-                        <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a"
+                        <td *ngIf="producto.estOcultoVisibleProducto == true"><a (click)="setProductosAEditar(producto)"  class="a editar">Editar</a> </td>
+                        <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a eliminar"
                                 (click)="confirmEliminar(producto)">Eliminar</a> </td>
-                        <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a"
+                        <td *ngIf="producto.estOcultoVisibleProducto == false"><a class="a activar"
                                 (click)="alertOcultarMostrar(producto, 'mostrar', 'podrán', 'producto mostrado', 'mostrar')">Activar</a>
                         </td>
-                        <td *ngIf="producto.estOcultoVisibleProducto == true"><a class="a"
+                        <td *ngIf="producto.estOcultoVisibleProducto == true"><a class="a desactivar"
                                 (click)="alertOcultarMostrar(producto, 'ocultar', 'no podrán', 'producto ocultado', 'ocultar')">Desactivar</a>
                         </td>
-                        <td><a class="a" (click)="setProductosADetalle(producto)">Ver</a>
+                        <td><a class="a ver" (click)="setProductosADetalle(producto)">Ver</a>
                         </td>
                     </tr>
                 <tbody>

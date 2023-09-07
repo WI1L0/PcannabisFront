@@ -12,7 +12,6 @@
                                 <td class="contenedor"><a class="buscar"> </a>
                                     <select id="mySelect" class="combo" [(ngModel)]="datoEstado"
                                         (change)="obtenerNoticias()">
-                                        <option disabled selected>Seleccione una opción</option>
                                         <option value="all">Todo</option>
                                         <option value="activo">Activos</option>
                                         <option value="desactivo">Desactivos</option>
@@ -23,9 +22,9 @@
                                     <i class="fa fa-search"></i>
                                     <input type="text" name="usuario" placeholder="Título, Fecha" id="busqueda">
                                     <!-- <input placeholder="Nombre" name="titulo_noti" id="busqueda"> -->
-                                    <td class="all"><a (click)="obtenerNoticias()" class="a">Buscar</a></td>
+                                    <td class="all"><a (click)="obtenerNoticias()" class="a as">Buscar</a></td>
                                 </div>
-                                <td class="all"><a href="/cbd/admin/noticias/crear" class="a">Agregar</a></td>
+                                <td class="all"><a href="/cbd/admin/noticias/crear" class="a as">Agregar</a></td>
                                 <td class="contenedor"> </td>
                             </tr>
                         </thead>
@@ -55,16 +54,16 @@
                         <td class="no">{{noti.fechaNoticia}}</td>
                         <td class="no">{{noti.preDescripcionNoticia}}</td>
                         <td *ngIf="noti.estOcultoVisibleNoticia == true"><a (click)="setNoticiaAEditar(noti)"
-                                class="a">Editar</a> </td>
-                        <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"
+                                class="a editar">Editar</a> </td>
+                        <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a eliminar"
                                 (click)="confirmEliminar(noti)">Eliminar</a> </td>
-                        <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a"
+                        <td *ngIf="noti.estOcultoVisibleNoticia == false"><a class="a activar"
                                 (click)="alertOcultarMostrar(noti, 'mostrar', 'podran', 'mostrada', 'mostrar')">Activar</a>
                         </td>
-                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a class="a"
+                        <td *ngIf="noti.estOcultoVisibleNoticia == true"><a class="a desactivar"
                                 (click)="alertOcultarMostrar(noti, 'ocultar', 'no podran', 'ocultada', 'ocultar')">Desactivar</a>
                         </td>
-                        <td><a class="a" (click)="setNoticiaADetalle(noti)">Ver</a>
+                        <td><a class="a ver" (click)="setNoticiaADetalle(noti)">Ver</a>
                         </td>
                     </tr>
                 <tbody>
