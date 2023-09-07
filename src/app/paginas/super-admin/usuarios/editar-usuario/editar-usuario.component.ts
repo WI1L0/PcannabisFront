@@ -23,6 +23,9 @@ export class EditarUsuarioComponent implements OnInit {
   usuariosObject: Usuarios = new Usuarios();
   personasObject: Personas = new Personas();
 
+  changePersona: boolean = false;
+  changeUsuario: boolean = false;
+
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
@@ -60,16 +63,20 @@ export class EditarUsuarioComponent implements OnInit {
         (data) => {
           if (data != null) {
             const selectElement = document.getElementById("mySelectRol") as HTMLSelectElement;
-            const desiredOption = Array.from(selectElement.options).find((option) => option.value === data.nombreRol);
+            const desiredOptionrol = Array.from(selectElement.options).find((option) => option.value === data.nombreRol);
+
+            if (desiredOptionrol) {
+              desiredOptionrol.selected = true;
+            }
           }
         }
       )
 
       const selectElement = document.getElementById("mySelectGenero") as HTMLSelectElement;
-      const desiredOption = Array.from(selectElement.options).find((option) => option.value === this.personasObject.genero);
+      const desiredOptiongenero = Array.from(selectElement.options).find((option) => option.value === this.personasObject.genero);
 
-      if (desiredOption) {
-        desiredOption.selected = true;
+      if(desiredOptiongenero){
+        desiredOptiongenero.selected = true;
       }
     } else {
       // history.back();
@@ -140,63 +147,33 @@ export class EditarUsuarioComponent implements OnInit {
       this.personasObject.genero != "Seleccione una opción" &&
       (<HTMLSelectElement>document.getElementById('mySelectRol')).value != "Seleccione una opción" &&
       this.usuariosObject.passwordUsuario) {
-      if (this.validarDatos()) {
-        Swal.fire({
-          title: '¿Estas seguro de editar el usuario?',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Editar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.almacenarFoto().then(
-              (url) => {
-                this.usuariosObject.fotoUsuario = url;
-                this.personaServices.putPersona(this.personasObject).subscribe(
-                  (data) => {
-                    if (data != null) {
-                      this.usuarioServices.putUsuario(this.usuariosObject, (<HTMLSelectElement>document.getElementById('mySelectRol')).value).subscribe(
-                        (data) => {
-                          if (data != null) {
-                            Swal.fire(
-                              'Editada!',
-                              'El usuario fue editado exitosamente.',
-                              'success'
-                            ).then((result) => {
-                              if (result.isConfirmed) {
-                                this.personasObject = {} as Personas;
-                                this.usuariosObject = {} as Usuarios;
-                                this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
-                              }
-                            })
-                          } else {
-                            Swal.fire({
-                              title: 'No Editada!',
-                              text: 'El usuario no fue editado.',
-                              icon: 'error'
-                            });
-                          }
-                        }
-                      )
-                    } else {
-                      Swal.fire({
-                        title: 'No Editada!',
-                        text: 'El usuario no fue editado.',
-                        icon: 'error'
-                      });
-                    }
-                  }
-                )
-              }
-            )
-
+      Swal.fire({
+        title: '¿Estas seguro de editar el usuario?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Editar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.changePersona) {
+            this.almacenarper();
+          } else if (this.changeUsuario || this.imagenPreview) {
+            if (this.imagenPreview) {
+              this.almacenarFoto().then(
+                (url) => {
+                  this.usuariosObject.fotoUsuario = url;
+                  this.almacenarusu();
+                }
+              )
+            } else {
+              this.almacenarusu();
+            }
           }
-        });
-      }
+        }
+      });
     } else {
       Swal.fire({
-
         title: 'No Editado!',
         text: 'Los campos estan vacios o erroneos',
         icon: 'error'
@@ -205,78 +182,68 @@ export class EditarUsuarioComponent implements OnInit {
 
   }
 
-  validarnombre(): boolean {
-    let ban: boolean = true
-    if (/^\d+$/.test(String(this.personasObject.nombre1 || this.personasObject.nombre2))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que los nombres esten correctos',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false
-    }
-    return ban
+  cambioUsuario() {
+    this.changeUsuario = true;
   }
 
-  validarapellido(): boolean {
-    let ban: boolean = true
-    if (/^\d+$/.test(String(this.personasObject.apellido1 || this.personasObject.apellido2))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que los apellidos esten correctos',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-    return ban;
+  cambioPersona() {
+    this.changePersona = true;
   }
 
-
-  validarcelular(): boolean {
-    let ban: boolean = true
-    if (!/^\d+$/.test(String(this.personasObject.celular)) || (!/^\d{10}$/.test(String(this.personasObject.celular)))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'El célular es incorrecto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-    return ban
+  almacenarusu() {
+    this.usuarioServices.putUsuario(this.usuariosObject, (<HTMLSelectElement>document.getElementById('mySelectRol')).value).subscribe(
+      (data) => {
+        if (data != null) {
+          Swal.fire(
+            'Editada!',
+            'El usuario fue editado exitosamente.',
+            'success'
+          ).then((result) => {
+            if (result.isConfirmed) {
+              this.usuariosObject = {} as Usuarios;
+              history.back();
+            }
+          })
+        } else {
+          Swal.fire({
+            title: 'No Editada!',
+            text: 'El usuario no fue editado.',
+            icon: 'error'
+          });
+        }
+      }
+    )
   }
 
-  validarcorreo(): boolean {
-    let ban: boolean = true
-    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!regexCorreo.test(String(this.personasObject.correo))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que el email este correcto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-    return ban
+  almacenarper() {
+    this.personaServices.putPersona(this.personasObject).subscribe(
+      (data) => {
+        if (data != null) {
+          if (this.changeUsuario || this.imagenPreview) {
+            this.personasObject = {} as Personas;
+            this.almacenarusu();
+          } else {
+            Swal.fire(
+              'Editada!',
+              'El usuario fue editado exitosamente.',
+              'success'
+            ).then((result) => {
+              if (result.isConfirmed) {
+                this.personasObject = {} as Personas;
+                history.back();
+              }
+            })
+          }
+        } else {
+          Swal.fire({
+            title: 'No Editada!',
+            text: 'El usuario no fue editado.',
+            icon: 'error'
+          });
+        }
+      }
+    )
   }
-
-  validarDatos(): boolean {
-    const celularValido = this.validarcelular();
-    const correoValido = this.validarcorreo();
-    const nombreValido = this.validarnombre();
-    const apellidoValido = this.validarapellido();
-
-    return celularValido && correoValido && nombreValido && apellidoValido;
-  }
-
 
   salir() {
     localStorage.removeItem('usuario');
