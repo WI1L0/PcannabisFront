@@ -509,6 +509,25 @@ export class CrearUsuarioComponent implements OnInit {
     }
 
   }
+  validaredad():boolean{
+    let ban: boolean = true;
+    let fechaActual = new Date();
+      let edadMinima = 18;
+
+
+      if (this.calcularEdad() < edadMinima) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Debe ser mayor a 18 años',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        ban = false;
+
+      }
+      return ban
+  }
 
   //edad
   calcularEdad(): number {
