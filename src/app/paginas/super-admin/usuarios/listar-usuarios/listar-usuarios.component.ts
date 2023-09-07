@@ -190,7 +190,7 @@ export class ListarUsuariosComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ocultar',
+      confirmButtonText:  mensajeTitle === 'mostrar' ? 'Mostrar' : 'Ocultar',
     }).then((result) => {
       if (result.isConfirmed) {
         let re = this.usuarioServices
@@ -204,8 +204,7 @@ export class ListarUsuariosComponent implements OnInit {
           })
         if (re) {
           Swal.fire(
-            'Usuario ' + `${mensajeTrue}` + ' exitosamente',
-            'success'
+            'Usuario ' + `${mensajeTrue}` + ' exitosamente' , 'Usuario' +  `${mensajeTrue}`, 'success'
           ).then((res) => {
             this.obtenerUsuarios();
           });

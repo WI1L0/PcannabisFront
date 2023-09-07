@@ -67,7 +67,7 @@ export class ListarProductosComponent implements OnInit {
           );
         },
         (error) => {
-          console.log('Error al obtener noticias:', error);
+          console.log('Error al obtener productos:', error);
         }
       );
   }
@@ -184,7 +184,7 @@ export class ListarProductosComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ocultar',
+      confirmButtonText: mensajeTitle === 'mostrar' ? 'Mostrar' : 'Ocultar',
     }).then((result) => {
       if (result.isConfirmed) {
         let re = this.productosServices
@@ -198,8 +198,7 @@ export class ListarProductosComponent implements OnInit {
           })
         if (re) {
           Swal.fire(
-            'Producto ' + `${mensajeTrue}` + ' exitosamente',
-            'success'
+            'Producto ' + `${mensajeTrue}` + ' exitosamente', 'Producto' +  `${mensajeTrue}`, 'success'
           ).then((res) => {
             this.obtenerProductos();
           });

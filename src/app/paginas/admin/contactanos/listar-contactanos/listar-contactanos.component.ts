@@ -173,7 +173,7 @@ export class ListarContactanosComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ocultar',
+      confirmButtonText: mensajeTitle === 'mostrar' ? 'Mostrar' : 'Ocultar',
     }).then((result) => {
       if (result.isConfirmed) {
         let re = this.contactanosServices
@@ -187,8 +187,7 @@ export class ListarContactanosComponent implements OnInit {
             })
         if (re) {
           Swal.fire(
-            'Respuesta ' + `${mensajeTrue}` + ' exitosamente',
-            'success'
+            'Respuesta ' + `${mensajeTrue}` + ' exitosamente'
           ).then((res) => {
             this.obtenerContactanos();
           });

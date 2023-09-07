@@ -149,13 +149,13 @@ export class ListarNoticiasComponent implements OnInit {
                   }
                 })
               if (re) {
-                Swal.fire('eliminada', 'noticia eliminada', 'success').then(
+                Swal.fire('Eliminada', 'Noticia eliminada', 'success').then(
                   (res) => {
                     this.obtenerNoticias();
                   }
                 );
               } else {
-                Swal.fire('no eliminada', 'noticia no eliminada', 'error');
+                Swal.fire('No eliminada', 'Noticia no eliminada', 'error');
               }
             } else {
               Swal.showValidationMessage('El valor ingresado no es correcto');
@@ -185,7 +185,7 @@ export class ListarNoticiasComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ocultar',
+      confirmButtonText: mensajeTitle === 'mostrar' ? 'Mostrar' : 'Ocultar',
     }).then((result) => {
       if (result.isConfirmed) {
         let re = this.noticiasServices
@@ -198,10 +198,7 @@ export class ListarNoticiasComponent implements OnInit {
             }
           })
         if (re) {
-          Swal.fire(
-            'Noticia ' + `${mensajeTrue}` + ' exitosamente',
-            'success'
-          ).then((res) => {
+          Swal.fire('Noticia ' + `${mensajeTrue}` + ' exitosamente', 'Noticia ' +`${mensajeTrue}` , 'success').then((res) => {
             this.obtenerNoticias();
           });
         } else {
