@@ -24,19 +24,19 @@
                 </div>
                 <div class="row">
                     <input type="text" name="nombre1" placeholder="Nombre 1" class="half-width" required maxlength="10" minlength="2"
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre1" (blur)="validarnombre()"  />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre1" (blur)="validarString('nombre 1', personaObject.nombre1)"/>
                     <!-- <div class="invalid-feedback">Por favor, complete este campo.</div> -->
                     <input type="text" name="nombre2" placeholder="Nombre 2" class="half-width" required maxlength="10" minlength="2"
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre2" (blur)="validarnombre()"  />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.nombre2" (blur)="validarString('nombre 2', personaObject.nombre2)"  />
                 </div>
                 <div class="row">
                     <input type="text" name="apellido1" placeholder="Apellido 1" class="half-width" required maxlength="10" minlength="2"
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido1" (blur)="validarapellido()" />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido1" (blur)="validarString('apellido 1', personaObject.apellido1)" />
                     <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" required maxlength="10" minlength="2"
-                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2"  (blur)="validarapellido()" />
+                        [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2"  (blur)="validarString('apellido 1', personaObject.apellido2)"/>
                 </div>
-                    <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento" required
-                    [(ngModel)]="personaObject.fNacimiento">
+                    <input type="date" name="fNacimiento" placeholder="Fecha de nacimiento" required (change)="validationEdad()"
+                    [(ngModel)]="personaObject.fNacimiento"/>
 
                 <!-- <div class="row"> -->
                 <!-- <div *ngIf="!cedulaRegistrada">
@@ -76,7 +76,7 @@
                 <input type="text" name="referencia" placeholder="Referencia" required [disabled]="cedulaRegistrada" maxlength="200" minlength="5"
                     [(ngModel)]="personaObject.referencia" />
 
-                <input type="button" name="next" class="next action-button" id="next" value="Siguiente"
+                <input type="button" name="next" class="next action-button" id="next" value="Siguiente" (click)="seleccionadoGenero()"
                     [disabled]="existCorreov" />
             </fieldset>
             <fieldset>

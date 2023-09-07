@@ -23,6 +23,9 @@ export class EditarUsuarioComponent implements OnInit {
   usuariosObject: Usuarios = new Usuarios();
   personasObject: Personas = new Personas();
 
+  changePersona: boolean = false;
+  changeUsuario: boolean = false;
+
   obtenerFoto: any;
   procesarFoto: any;
   imagenPreview: any;
@@ -60,16 +63,20 @@ export class EditarUsuarioComponent implements OnInit {
         (data) => {
           if (data != null) {
             const selectElement = document.getElementById("mySelectRol") as HTMLSelectElement;
-            const desiredOption = Array.from(selectElement.options).find((option) => option.value === data.nombreRol);
+            const desiredOptionrol = Array.from(selectElement.options).find((option) => option.value === data.nombreRol);
+
+            if (desiredOptionrol) {
+              desiredOptionrol.selected = true;
+            }
           }
         }
       )
 
       const selectElement = document.getElementById("mySelectGenero") as HTMLSelectElement;
-      const desiredOption = Array.from(selectElement.options).find((option) => option.value === this.personasObject.genero);
+      const desiredOptiongenero = Array.from(selectElement.options).find((option) => option.value === this.personasObject.genero);
 
-      if (desiredOption) {
-        desiredOption.selected = true;
+      if(desiredOptiongenero){
+        desiredOptiongenero.selected = true;
       }
     } else {
       // history.back();
@@ -149,58 +156,93 @@ export class EditarUsuarioComponent implements OnInit {
         confirmButtonText: 'Editar'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.almacenarFoto().then(
-            (url) => {
-              this.usuariosObject.fotoUsuario = url;
-              this.personaServices.putPersona(this.personasObject).subscribe(
-                (data) => {
-                  if (data != null) {
-                    this.usuarioServices.putUsuario(this.usuariosObject, (<HTMLSelectElement>document.getElementById('mySelectRol')).value).subscribe(
-                      (data) => {
-                        if (data != null) {
-                          Swal.fire(
-                            'Editada!',
-                            'El usuario fue editado exitosamente.',
-                            'success'
-                          ).then((result) => {
-                            if (result.isConfirmed) {
-                              this.personasObject = {} as Personas;
-                              this.usuariosObject = {} as Usuarios;
-                              this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
-                            }
-                          })
-                        } else {
-                          Swal.fire({
-                            title: 'No Editada!',
-                            text: 'El usuario no fue editado.',
-                            icon: 'error'
-                          });
-                        }
-                      }
-                    )
-                  } else {
-                    Swal.fire({
-                      title: 'No Editada!',
-                      text: 'El usuario no fue editado.',
-                      icon: 'error'
-                    });
-                  }
+          if (this.changePersona) {
+            this.almacenarper();
+          } else if (this.changeUsuario || this.imagenPreview) {
+            if (this.imagenPreview) {
+              this.almacenarFoto().then(
+                (url) => {
+                  this.usuariosObject.fotoUsuario = url;
+                  this.almacenarusu();
                 }
               )
+            } else {
+              this.almacenarusu();
             }
-          )
-
+          }
         }
       });
     } else {
       Swal.fire({
-
         title: 'No Editado!',
         text: 'Los campos estan vacios o erroneos',
         icon: 'error'
       })
     }
 
+  }
+
+  cambioUsuario() {
+    this.changeUsuario = true;
+  }
+
+  cambioPersona() {
+    this.changePersona = true;
+  }
+
+  almacenarusu() {
+    this.usuarioServices.putUsuario(this.usuariosObject, (<HTMLSelectElement>document.getElementById('mySelectRol')).value).subscribe(
+      (data) => {
+        if (data != null) {
+          Swal.fire(
+            'Editada!',
+            'El usuario fue editado exitosamente.',
+            'success'
+          ).then((result) => {
+            if (result.isConfirmed) {
+              this.usuariosObject = {} as Usuarios;
+              history.back();
+            }
+          })
+        } else {
+          Swal.fire({
+            title: 'No Editada!',
+            text: 'El usuario no fue editado.',
+            icon: 'error'
+          });
+        }
+      }
+    )
+  }
+
+  almacenarper() {
+    this.personaServices.putPersona(this.personasObject).subscribe(
+      (data) => {
+        if (data != null) {
+          if (this.changeUsuario || this.imagenPreview) {
+            this.personasObject = {} as Personas;
+            this.almacenarusu();
+          } else {
+            Swal.fire(
+              'Editada!',
+              'El usuario fue editado exitosamente.',
+              'success'
+            ).then((result) => {
+              if (result.isConfirmed) {
+                this.personasObject = {} as Personas;
+                history.back();
+              }
+            })
+          }
+        } else {
+          Swal.fire({
+            title: 'No Editada!',
+            text: 'El usuario no fue editado.',
+            icon: 'error'
+          });
+        }
+      }
+    )
   }
 
   salir() {

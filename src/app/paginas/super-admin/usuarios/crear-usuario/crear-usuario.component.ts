@@ -118,63 +118,6 @@ export class CrearUsuarioComponent implements OnInit {
     this.imagenPreview = null;
   }
 
-  existCorreo(): boolean {
-    let as: boolean = false;
-    if (!this.cedulaRegistrada) {
-      this.personasServices.existCorreo(String(this.personaObject.correo)).subscribe(
-        (data) => {
-          if (data != null) {
-            this.existCorreov = !!data;
-
-            if (this.existCorreov) {
-              Swal.fire({
-                position: 'top-right',
-                icon: 'error',
-                title: 'Correo ya registrado',
-                showConfirmButton: false,
-                timer: 1500,
-                background: '#ffff',
-                iconColor: '#4CAF50',
-                padding: '1.25rem',
-                width: '20rem',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-              });
-            } else {
-              as = true;
-            }
-          }
-        }
-      );
-    }
-    return as;
-  }
-
-  validarContra(): boolean {
-    let ff: boolean = false;
-    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
-    this.valContra = regex.test(String(this.usuarioData.passwordUsuario));
-    if (!this.valContra) {
-      Swal.fire({
-        position: 'top-right',
-        icon: 'error',
-        title: 'La contraseña debe tener mínimo una mayúscula, minúscula, un número, un caracter y 8 dígitos',
-        showConfirmButton: false,
-        timer: 1500,
-        background: '#ffff',
-        iconColor: '#4CAF50',
-        padding: '1.25rem',
-        width: '20rem',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-      });
-    } else {
-      ff = true;
-    }
-
-    return ff;
-  }
-
   almacenarNew() {
     this.estadoSaveUpdate = true;
     if (this.cedulaRegistrada) {
@@ -183,7 +126,9 @@ export class CrearUsuarioComponent implements OnInit {
       this.estadoSaveUpdate = false;
     }
 
-    if (this.validaciones() && this.validarContra() && this.existCorreo()) {
+    if (this.validarString("nombre 1", this.personaObject.nombre1) && this.validarString("nombre 2", this.personaObject.nombre2) &&
+    this.validarString("apellido 1", this.personaObject.apellido1) && this.validarString("apellido 2", this.personaObject.apellido2) &&
+    this.validarcedula() && this.validarcedula() && this.validationEdad() && this.seleccionadoGenero() &&this.validationCorreo()) {
       this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
       this.personasServices.postPersona(this.personaObject).subscribe(
         (data) => {
@@ -214,76 +159,17 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   almacenarUsuario() {
-    let existNameUsuario;
-    this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
-      (data) => {
-        existNameUsuario = !!data;
-        if (existNameUsuario) {
-          this.estadoSaveUpdate = false;
-          Swal.fire({
-            position: 'top-right',
-            icon: 'error',
-            title: 'nombre de usuario ya registrado',
-            showConfirmButton: false,
-            timer: 1500,
-            background: '#ffff',
-            iconColor: '#4CAF50',
-            padding: '1.25rem',
-            width: '20rem',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-          });
-        } else {
-          if (this.imagenPreview) {
-            this.almacenarFoto().then(
-              (url) => {
-                this.usuarioData.fotoUsuario = url;
-                this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
-                  (data2) => {
-                    if (data2 != null) {
-                      this.estadoSaveUpdate = false;
-                      Swal.fire({
-                        position: 'top-right',
-                        icon: 'success',
-                        title: 'Usuario Creado Exitosamente',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        background: '#ffff',
-                        iconColor: '#4CAF50',
-                        padding: '1.25rem',
-                        width: '20rem',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                      });
-
-                      history.back();
-                    } else {
-                      this.estadoSaveUpdate = false;
-                      Swal.fire({
-                        position: 'top-right',
-                        icon: 'error',
-                        title: 'No se pudo crear intentar nuevamente',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        background: '#ffff',
-                        iconColor: '#4CAF50',
-                        padding: '1.25rem',
-                        width: '20rem',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                      });
-                    }
-                  }
-                )
-
-              }
-            )
-          } else {
+    if (this.validarString("nombre de usuario", this.usuarioData.nombreUsuario) && this.validarContra() && this.seleccionadorol() && this.validarContra()) {
+      let existNameUsuario;
+      this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
+        (data) => {
+          existNameUsuario = !!data;
+          if (existNameUsuario) {
             this.estadoSaveUpdate = false;
             Swal.fire({
               position: 'top-right',
-              icon: 'warning',
-              title: 'no hay una foto',
+              icon: 'error',
+              title: 'nombre de usuario ya registrado',
               showConfirmButton: false,
               timer: 1500,
               background: '#ffff',
@@ -293,14 +179,139 @@ export class CrearUsuarioComponent implements OnInit {
               allowOutsideClick: false,
               allowEscapeKey: false,
             });
+          } else {
+            if (this.imagenPreview) {
+              this.almacenarFoto().then(
+                (url) => {
+                  this.usuarioData.fotoUsuario = url;
+                  this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
+                    (data2) => {
+                      if (data2 != null) {
+                        this.estadoSaveUpdate = false;
+                        Swal.fire({
+                          position: 'top-right',
+                          icon: 'success',
+                          title: 'Usuario Creado Exitosamente',
+                          showConfirmButton: false,
+                          timer: 1500,
+                          background: '#ffff',
+                          iconColor: '#4CAF50',
+                          padding: '1.25rem',
+                          width: '20rem',
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
+                        });
+
+                        history.back();
+                      } else {
+                        this.estadoSaveUpdate = false;
+                        Swal.fire({
+                          position: 'top-right',
+                          icon: 'error',
+                          title: 'No se pudo crear intentar nuevamente',
+                          showConfirmButton: false,
+                          timer: 1500,
+                          background: '#ffff',
+                          iconColor: '#4CAF50',
+                          padding: '1.25rem',
+                          width: '20rem',
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
+                        });
+                      }
+                    }
+                  )
+
+                }
+              )
+            } else {
+              this.estadoSaveUpdate = false;
+              Swal.fire({
+                position: 'top-right',
+                icon: 'warning',
+                title: 'no hay una foto',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#ffff',
+                iconColor: '#4CAF50',
+                padding: '1.25rem',
+                width: '20rem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+              });
+            }
           }
         }
-      }
-    )
+      )
+    } else {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que los campos esten correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+
 
   }
 
-  //VALIDACIONES//
+  existCorreo() {
+    let val: boolean = true;
+    if (!this.cedulaRegistrada) {
+      this.personasServices.existCorreo(String(this.personaObject.correo)).subscribe(
+        (data) => {
+          if (data != null) {
+            this.existCorreov = !!data;
+
+            if (this.existCorreov) {
+              Swal.fire({
+                position: 'top-right',
+                icon: 'error',
+                title: 'Correo ya registrado',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#ffff',
+                iconColor: '#4CAF50',
+                padding: '1.25rem',
+                width: '20rem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+              });
+              val = false;
+            } else {
+              val = this.validationCorreo();
+            }
+          }
+        }
+      );
+    }
+    return val;
+  }
+
+  validarContra() {
+    let ff: boolean = true;
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
+    this.valContra = regex.test(String(this.usuarioData.passwordUsuario));
+    if (!this.valContra) {
+      Swal.fire({
+        position: 'top-right',
+        icon: 'error',
+        title: 'La contraseña debe tener mínimo una mayúscula, minúscula, un número, un caracter y 8 dígitos',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#ffff',
+        iconColor: '#4CAF50',
+        padding: '1.25rem',
+        width: '20rem',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      });
+      ff = false;
+    }
+
+    return ff;
+  }
 
   validarNameUsuario() {
     let existNameUsuario;
@@ -321,33 +332,20 @@ export class CrearUsuarioComponent implements OnInit {
             allowOutsideClick: false,
             allowEscapeKey: false,
           });
+        } else {
+          existNameUsuario = this.validarString("solo tenga letras", this.usuarioData.nombreUsuario);
         }
       }
     )
   }
 
-  validarnombre(): boolean {
+  validarString(mensaje: string, valor: any) {
     let ban: boolean = true
-    if (/^\d+$/.test(String(this.personaObject.nombre1 || this.personaObject.nombre2))) {
+    if (/^\d+$/.test(String(valor))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
-        title: 'Verifique que los nombres esten correctos',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false
-    }
-    return ban
-  }
-
-  validarapellido(): boolean {
-    let ban: boolean = true
-    if (/^\d+$/.test(String(this.personaObject.apellido1 || this.personaObject.apellido2))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que los apellidos esten correctos',
+        title: 'Verifique que el ' + mensaje + ' este correcto',
         showConfirmButton: false,
         timer: 1500
       })
@@ -356,8 +354,8 @@ export class CrearUsuarioComponent implements OnInit {
     return ban;
   }
 
-  validarcedula(): boolean {
-    let ban: boolean = true
+  validarcedula() {
+    let ban: boolean = true;
     if (!/^\d+$/.test(String(this.personaObject.cedula)) || (!/^\d{10}$/.test(String(this.personaObject.cedula)))) {
       Swal.fire({
         position: 'top-end',
@@ -371,7 +369,7 @@ export class CrearUsuarioComponent implements OnInit {
     return ban
   }
 
-  validarcelular(): boolean {
+  validarcelular() {
     let ban: boolean = true
     if (!/^\d+$/.test(String(this.personaObject.celular)) || (!/^\d{10}$/.test(String(this.personaObject.celular)))) {
       Swal.fire({
@@ -384,130 +382,6 @@ export class CrearUsuarioComponent implements OnInit {
       ban = false;
     }
     return ban
-  }
-
-  validarcorreo(): boolean {
-    let ban: boolean = true
-    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!regexCorreo.test(String(this.personaObject.correo))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que el email este correcto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-    return ban
-  }
-
-
-  validaciones(): boolean {
-    if (!this.cedulaRegistrada) {
-      let ban: boolean = true;
-      const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-      if (/^\d+$/.test(String(this.personaObject.nombre1 && this.personaObject.nombre2))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Verifique que los nombres esten correctos',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false
-      }
-
-      if (/^\d+$/.test(String(this.personaObject.apellido1 && this.personaObject.apellido2))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Verifique que los apellidos esten correctos',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false
-      } else {
-        ban = true
-      }
-
-      if (!/^\d+$/.test(String(this.personaObject.celular)) || (!/^\d{10}$/.test(String(this.personaObject.celular)))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'El célular es incorrecto',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      } else {
-        ban = true
-      }
-
-      if (!/^\d+$/.test(String(this.personaObject.cedula)) || (!/^\d{10}$/.test(String(this.personaObject.cedula)))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'La cédula es incorrecta',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      } else {
-        ban = true;
-      }
-
-      if (!regexCorreo.test(String(this.personaObject.correo))) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Verifique que el correo este correcto',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      }
-
-
-
-      //VALIDAR USUARIO
-      if (String(this.usuarioData.nombreUsuario).length === 0) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Complete todos los campos ',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-      }
-
-      //Validar edad
-      let fechaActual = new Date();
-      let edadMinima = 18;
-
-
-      if (this.calcularEdad() < edadMinima) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Debe ser mayor a 18 años',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
-
-      }
-      //validar edad
-
-      //VALIDACIONES
-      return ban;
-    } else {
-      return true;
-    }
-
   }
 
   //edad
@@ -536,6 +410,68 @@ export class CrearUsuarioComponent implements OnInit {
 
     } else {
       return 18;
+    }
+  }
+
+  validationEdad() {
+    if (this.calcularEdad() < 18) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Debe ser mayor a 18 años',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validationCorreo() {
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!regexCorreo.test(String(this.personaObject.correo))) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el email este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  seleccionadoGenero() {
+    if ((<HTMLSelectElement>document.getElementById('mySelectGenero')).value == "Seleccione una opción") {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el genero este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  seleccionadorol() {
+    if ((<HTMLSelectElement>document.getElementById('mySelectRol')).value == "Seleccione una opción") {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que el rol este correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      return false;
+    } else {
+      return true;
     }
   }
 }
