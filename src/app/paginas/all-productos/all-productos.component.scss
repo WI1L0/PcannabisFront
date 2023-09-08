@@ -76,12 +76,16 @@ $negrita: bold;
 
   a {
     text-decoration: none;
-    height: 100%;
-    width: 100%;
-    max-height: 310px; /* Altura máxima de la descripción */
+    height: 400px;
+    width: 350px;
+    max-height: 400px; /* Altura máxima de la descripción */
     overflow-y: auto; 
   }
-
+  
+  /* Estilos de la barra de desplazamiento */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
   button,
   a {
     cursor: pointer;
@@ -143,6 +147,7 @@ $negrita: bold;
       font-weight: 600;
       font-weight: none;
       text-align: justify;
+      height: 200px;
 
 
       span {
@@ -773,5 +778,4 @@ $negrita: bold;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; /* Opcional: establece una altura máxima para las tarjetas */
 }
