@@ -15,14 +15,12 @@ $negrita: bold;
 
 .divPrimero {
 	position: relative;
-	/* background-color: $color-all-uno; */
 	padding: 80px;
 	
 }
 
 .divSegundo {
 	color: #ddd;
-	/* background-color: $color-all-uno; */
 	text-align: center;
 	text-align: justify;
 }
@@ -160,7 +158,6 @@ $negrita: bold;
 
 
 /* Font */
-@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 
 /* Design */
 *,
@@ -227,27 +224,6 @@ img {
   display: flex;
 }
 
-// @media (max-width: 40rem) {
-//   .cards_item {
-//     width: 50%;
-//   }
-//   .row2{
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//   }
-// }
-
-// @media (max-width: 56rem) {
-//   .cards_item {
-//     width: 33.3333%;
-//   }
-//   .row2{
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//   }
-// }
 @media (max-width: 1120px) {
   .row2{
     display: flex;
@@ -308,5 +284,9 @@ img {
   font-weight: 400;
   font-size: 13px;
   margin-top: 35px;
+  text-align: center;
+}
+
+.fotoselec{
   text-align: center;
 }

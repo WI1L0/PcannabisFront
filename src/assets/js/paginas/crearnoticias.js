@@ -11,7 +11,7 @@ $(".next").click(function () {
 
 	// todo este lleno
 	var formCompleted = true;
-	$(this).parent().find('input[required], textarea[required]','file[required]').each(function () {
+	$(this).parent().find('input[required], textarea[required]', 'file[required]').each(function () {
 		if ($.trim($(this).val()) == '') {
 			formCompleted = false;
 			Swal.fire({
@@ -22,7 +22,7 @@ $(".next").click(function () {
 				background: '#fffff',
 				padding: '1.20rem',
 				width: '20rem',
-				FontFace:'14px',
+				FontFace: '14px',
 				allowOutsideClick: false,
 				allowEscapeKey: false,
 				fontFamily: 'Monserrat'
@@ -37,7 +37,7 @@ $(".next").click(function () {
 		animating = true;
 		current_fs = $(this).parent();
 		next_fs = $(this).parent().next();
-		
+
 
 		//activate next step on progressbar using the index of next_fs
 		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -111,16 +111,18 @@ $(".previous").click(function () {
 });
 
 //validar
-$(document).ready(function () {
-	$(".submit").click(function () {
-		var pass = $("input[name=pass]").val();
-		var cpass = $("#cpass").val();
-		if (pass != cpass) {
-			alert("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
-			return false;
-		}
-	});
-});
+// $(document).ready(function () {
+// 	$(".submit").click(function () {
+// 		var pass = $("input[name=pass]").val();
+// 		var cpass = $("#cpass").val();
+// 		if (pass != cpass) {
+// 			alert("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+// 			return false;
+// 		}
+// 	});
+// });
+
+
 
 //PARRAFOS
 
@@ -174,11 +176,11 @@ $(document).ready(function () {
 // btnAgregar.addEventListener('click', function () {
 // 	const txtarea = document.getElementById('txtarea');
 // 	const derecha = document.getElementById('derecha'); // Agrega esta línea para obtener el elemento "derecha"
-  
+
 // 	console.log(txtarea); // Verificar si el elemento se está encontrando correctamente
 // 	if (txtarea) {
 // 	  const contenido = txtarea.value;
-  
+
 // 	  // Crear una nueva tarjeta con el contenido del textarea
 // 	  const nuevaTarjeta = document.createElement('div');
 // 	  nuevaTarjeta.classList.add('card');
@@ -191,16 +193,16 @@ $(document).ready(function () {
 // 	  if (derecha) {
 // 		// Obtener la última tarjeta existente en "derecha"
 // 		const ultimaTarjeta = derecha.querySelector('.card:last-child');
-  
+
 // 		// Agregar la nueva tarjeta debajo de la última tarjeta
 // 		derecha.insertBefore(nuevaTarjeta, ultimaTarjeta ? ultimaTarjeta.nextElementSibling : null);
-  
+
 // 		// Agregar controlador de eventos para el botón "quitar"
 // 		const btnQuitar = nuevaTarjeta.querySelector('.botoncito');
 // 		btnQuitar.addEventListener('click', function () {
 // 		  nuevaTarjeta.remove();
 // 		});
-  
+
 // 		// Limpiar el contenido del textarea
 // 		txtarea.value = '';
 // 	  } else {
@@ -212,30 +214,30 @@ $(document).ready(function () {
 //   });
 
 
-  document.getElementById('btnfotos').addEventListener('click', function() {
+document.getElementById('btnfotos').addEventListener('click', function () {
 	var inputFotos = document.getElementById('fotos');
 	var files = inputFotos.files; // Obtener los archivos seleccionados
-  
+
 	for (var i = 0; i < files.length; i++) {
-	  var file = files[i];
-	  var reader = new FileReader();
-  
-	  reader.onload = function(e) {
-		var previewCard = document.createElement('div');
-		previewCard.classList.add('preview-card');
-		previewCard.style.display = 'inline-block'; // Establecer el estilo de visualización en línea
-		
-		var img = document.createElement('img');
-		img.src = e.target.result;
-		img.alt = 'Previsualización de la foto';
-		img.classList.add('preview-image');
-		img.style.width = '400px'; // Establecer el ancho de la imagen
-		img.style.height = '400px'; 
-		previewCard.appendChild(img);
-		
-		document.getElementById('previsualizacion').appendChild(previewCard);
-	  };
-  
-	  reader.readAsDataURL(file);
+		var file = files[i];
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			var previewCard = document.createElement('div');
+			previewCard.classList.add('preview-card');
+			previewCard.style.display = 'inline-block'; // Establecer el estilo de visualización en línea
+
+			var img = document.createElement('img');
+			img.src = e.target.result;
+			img.alt = 'Previsualización de la foto';
+			img.classList.add('preview-image');
+			img.style.width = '400px'; // Establecer el ancho de la imagen
+			img.style.height = '400px';
+			previewCard.appendChild(img);
+
+			document.getElementById('previsualizacion').appendChild(previewCard);
+		};
+
+		reader.readAsDataURL(file);
 	}
-  });
+});

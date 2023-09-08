@@ -30,10 +30,10 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-4">
-                                    <div>
+                                    <div class="fotoselec">
                                         <form>
                                             <div class="row">
-                                                <div *ngIf="!imagenPreview">
+                                                <div *ngIf="!imagenPreview" >
                                                     <input type="file" name="foto" id="foto" accept="image/*" required
                                                         (change)="seleccionarFoto($event)">
                                                 </div>
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                                 <div class="col-8">
-                                    <div class="row">
+                                    <div class="row" >
                                         <div class="col-3" *ngFor="let Fempresas of FotosEmpresasList"
                                             style="padding: 10px;">
                                             <div class="card">

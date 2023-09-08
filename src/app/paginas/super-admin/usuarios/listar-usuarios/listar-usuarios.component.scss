@@ -4,10 +4,6 @@ $color-all-dos: #ffffff;
 $color-fondo1: #1a1e1a;
 $color-letra: #000000;
 $color-letrav: #3fa22d;
-// $color-all-uno: #4d4d4b;
-// $color-all-dos: #4d4d4b;
-// $color-all-uno: #1a1e1a;
-// $color-all-dos: #1a1e1a;
 $color-all-empresas: #bbb9bc;
 $fuente-principal: "Monserrat", sans-serif;
 $fuente-secundaria: "Century Gothic", sans-serif;
@@ -31,8 +27,6 @@ $negrita: bold;
   background-color: $color-all-uno;
   text-align: center;
   text-align: justify;
-  // padding:50px;
-  // width: 100%;
 }
 
 * {
@@ -64,7 +58,6 @@ h2 {
 
 .table-wrapper {
   margin: 10px 70px 70px;
-  // box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
   box-shadow: 0 10px 5px $color-letrav, 1px 10px 10px rgba(169, 159, 159, 0.25);
 
 }

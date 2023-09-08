@@ -103,7 +103,7 @@
                         <div class="row">
                             <input type="file" name="foto" id="foto" accept="image/*" required
                                 (change)="seleccionarFoto($event)">
-                            <img [src]="imagenPreview" *ngIf="imagenPreview">
+                            <img [src]="imagenPreview" *ngIf="imagenPreview" style="height: 300px;">
                         </div>
                         <div>
                             <button ame="botoncito" class="botoncito" (click)="borrarImagen()"

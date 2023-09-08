@@ -178,7 +178,7 @@ export class ListarNoticiasComponent implements OnInit {
     Swal.fire({
       title: '¿Estas seguro de ' + `${mensajeTitle}` + ' esta noticia?',
       text:
-        'Las noticias ocultas ' +
+        'Las noticias' +
         `${mensajeText}` +
         ' ser vistas por el publico en general',
       icon: 'warning',

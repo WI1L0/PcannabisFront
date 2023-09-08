@@ -14,13 +14,11 @@ $negrita: bold;
 
 .divPrimero {
 	position: relative;
-	/* background-color: $color-all-uno; */
 	padding-top: 60px;
 }
 
 .divSegundo {
 	color: #ddd;
-	/* background-color: $color-all-uno; */
 	text-align: center;
 	text-align: justify;
 	padding: 10px;
@@ -36,9 +34,6 @@ $negrita: bold;
 
 html {
 	height: 100%;
-	/*Image only BG fallback*/
-
-	/*background = gradient + image pattern combo*/
 	background:
 		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
 	box-shadow: 0 10px 5px $color-letrav, 0 10px 10px rgba(169, 159, 159, 0.25);
@@ -61,7 +56,6 @@ body {
 	border: 0 none;
 	border-radius: 3px;
 	box-shadow: 10px 10px 5px $color-letrav, 10px 10px 10px rgba(169, 159, 159, 0.25);
-	// box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 	padding: 20px 30px;
 	box-sizing: border-box;
 	width: 80%;
@@ -131,7 +125,6 @@ body {
 #progressbar {
 	margin-bottom: 30px;
 	overflow: hidden;
-	/*CSS counters to number the steps*/
 	counter-reset: step;
 	margin-top: 10px;
 }
@@ -233,9 +226,6 @@ fieldset {
 		color: #ddd;
 		text-align: center;
 		text-align: justify;
-		// padding-top: 100px;
-		// padding-left: 10px;
-		// padding-right: 10px;
 	}
 
 	/*form styles*/
@@ -251,6 +241,9 @@ fieldset {
 		margin: 0px;
 	}
 
+}
+.img{
+	height: 200px;
 }
 
 //

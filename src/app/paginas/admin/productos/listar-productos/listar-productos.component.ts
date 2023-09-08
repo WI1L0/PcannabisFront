@@ -177,7 +177,7 @@ export class ListarProductosComponent implements OnInit {
     Swal.fire({
       title: '¿Estas seguro de ' + `${mensajeTitle}` + ' este producto?',
       text:
-        'Los productos ocultos ' +
+        'Los productos' +
         `${mensajeText}` +
         ' ser vistos por el público en general',
       icon: 'warning',
