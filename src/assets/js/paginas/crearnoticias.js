@@ -5,6 +5,7 @@ var animating; //flag to prevent quick multi-click glitches
 
 
 var errorMessage = "Por favor complete todos los campos obligatorios";
+var errorMessageParr = "No se puede agregar noticias sin parrafos"
 $(".next").click(function () {
 	if (animating) return false;
 
@@ -120,6 +121,8 @@ $(document).ready(function () {
 		}
 	});
 });
+
+//PARRAFOS
 
 
 

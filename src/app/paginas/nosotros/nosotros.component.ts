@@ -98,13 +98,13 @@ export class NosotrosComponent implements OnInit {
     this.submitted = true;
     console.log(this.contactanosObject)
     if ( !this.contactanosObject.asuntoContactanos ||
-      !this.contactanosObject.detalleContactanos ||
+      !this.contactanosObject.detalleContactanos || !this.contactanosObject.nombreContactanos ||
       this.contactanosObject.asuntoContactanos.trim().length === 0 ||
-      this.contactanosObject.detalleContactanos.trim().length === 0) {
+      this.contactanosObject.detalleContactanos.trim().length === 0 || this.contactanosObject.nombreContactanos?.trim().length === 0) {
         Swal.fire({
           position: 'top-end',
           icon: 'error',
-          title: 'Debe ingresar un asunto y un detalle',
+          title: 'Debe completar los campos',
           showConfirmButton: false,
           timer: 1500
         });
