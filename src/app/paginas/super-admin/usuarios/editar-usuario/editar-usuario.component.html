@@ -12,12 +12,12 @@
                                         <input type="file" name="foto" id="foto" accept="image/*" required
                                             (change)="seleccionarFoto($event)">
                                     </div>
-                                    <img [src]="imagenPreview" *ngIf="imagenPreview"
-                                        style="padding: 20px; width: 100%;">
+                                    <img [src]="imagenPreview" *ngIf="imagenPreview" class="hola"
+                                        >
                                 </div>
                                 <div class="row" *ngIf="!editFoto">
                                     <img [src]=" cuerpoUrlFoto + usuariosObject.fotoUsuario "
-                                        (alt)="usuariosObject.fotoUsuario" style="padding: 20px; width: 79%;" />
+                                        (alt)="usuariosObject.fotoUsuario"  class="hola" />
                                     <button name="submit" type="submit" id="contact-submit" data-submit="...Editando"
                                         (click)="editarFoto()">Editar</button>
                                 </div>
