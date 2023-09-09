@@ -37,6 +37,7 @@ export class CrearUsuarioComponent implements OnInit {
   nombre2: any;
   apellido2: any;
   celular: any;
+  confirmarPass = "";
 
   estadoSaveUpdate: boolean = false;
 
@@ -169,6 +170,8 @@ export class CrearUsuarioComponent implements OnInit {
         allowEscapeKey: false,
       });
     } else {
+
+
       ff = true;
     }
 
@@ -182,34 +185,39 @@ export class CrearUsuarioComponent implements OnInit {
     } else {
       this.estadoSaveUpdate = false;
     }
-
-    if (this.validarDatos() && this.validarContra() && this.existCorreo()) {
-      this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
-      this.personasServices.postPersona(this.personaObject).subscribe(
-        (data) => {
-          if (data != null) {
-            this.personaObject = data;
-            this.almacenarUsuario();
-          } else {
-            this.estadoSaveUpdate = false;
-            Swal.fire({
-              position: 'top-right',
-              icon: 'error',
-              title: 'No se pudo crear intentar nuevamente',
-              showConfirmButton: false,
-              timer: 1500,
-              background: '#ffff',
-              iconColor: '#4CAF50',
-              padding: '1.25rem',
-              width: '20rem',
-              allowOutsideClick: false,
-              allowEscapeKey: false,
-            });
+    if (this.validarConfirmar() && this.existCorreo()) {
+      if (this.validarDatos()) {
+        this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
+        this.personasServices.postPersona(this.personaObject).subscribe(
+          (data) => {
+            if (data != null) {
+              this.personaObject = data;
+              this.almacenarUsuario();
+            } else {
+              this.estadoSaveUpdate = false;
+              Swal.fire({
+                position: 'top-right',
+                icon: 'error',
+                title: 'No se pudo crear intentar nuevamente',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#ffff',
+                iconColor: '#4CAF50',
+                padding: '1.25rem',
+                width: '20rem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+              });
+            }
           }
-        }
-      )
+        )
+      } else {
+        this.estadoSaveUpdate = false;
+      }
     } else {
+
       this.estadoSaveUpdate = false;
+
     }
   }
 
@@ -238,43 +246,45 @@ export class CrearUsuarioComponent implements OnInit {
             this.almacenarFoto().then(
               (url) => {
                 this.usuarioData.fotoUsuario = url;
-                this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
-                  (data2) => {
-                    if (data2 != null) {
-                      this.estadoSaveUpdate = false;
-                      Swal.fire({
-                        position: 'top-right',
-                        icon: 'success',
-                        title: 'Usuario Creado Exitosamente',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        background: '#ffff',
-                        iconColor: '#4CAF50',
-                        padding: '1.25rem',
-                        width: '20rem',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                      });
+                  this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
+                    (data2) => {
+                      if (data2 != null) {
+                        this.estadoSaveUpdate = false;
+                        Swal.fire({
+                          position: 'top-right',
+                          icon: 'success',
+                          title: 'Usuario Creado Exitosamente',
+                          showConfirmButton: false,
+                          timer: 1500,
+                          background: '#ffff',
+                          iconColor: '#4CAF50',
+                          padding: '1.25rem',
+                          width: '20rem',
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
+                        });
 
-                      history.back();
-                    } else {
-                      this.estadoSaveUpdate = false;
-                      Swal.fire({
-                        position: 'top-right',
-                        icon: 'error',
-                        title: 'No se pudo crear intentar nuevamente',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        background: '#ffff',
-                        iconColor: '#4CAF50',
-                        padding: '1.25rem',
-                        width: '20rem',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                      });
+                        history.back();
+                      } else {
+                        this.estadoSaveUpdate = false;
+                        Swal.fire({
+                          position: 'top-right',
+                          icon: 'error',
+                          title: 'No se pudo crear intentar nuevamente',
+                          showConfirmButton: false,
+                          timer: 1500,
+                          background: '#ffff',
+                          iconColor: '#4CAF50',
+                          padding: '1.25rem',
+                          width: '20rem',
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
+                        });
+                      }
                     }
-                  }
-                )
+
+                  )
+                
 
               }
             )
@@ -296,6 +306,7 @@ export class CrearUsuarioComponent implements OnInit {
           }
         }
       }
+
     )
 
   }
@@ -325,10 +336,10 @@ export class CrearUsuarioComponent implements OnInit {
       }
     )
   }
-  validarusuario():boolean{
+  validarusuario(): boolean {
     let ban: boolean = true
 
-    if(this.usuarioData.nombreUsuario?.length === 0 ){
+    if (this.usuarioData.nombreUsuario?.length === 0) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -420,37 +431,56 @@ export class CrearUsuarioComponent implements OnInit {
     }
     return ban
   }
-  
+
   validarDatos(): boolean {
     const celularValido = this.validarcelular();
     const correoValido = this.validarcorreo();
     const nombreValido = this.validarnombre();
-    const apellidoValido  = this.validarapellido();
+    const apellidoValido = this.validarapellido();
     const cedulaValido = this.validarcedula();
     const edadValida = this.validaredad();
     const usuarioValido = this.validarusuario();
-  
-    return celularValido && correoValido && nombreValido && apellidoValido && cedulaValido  && edadValida && usuarioValido;
+
+
+
+    return celularValido && correoValido && nombreValido && apellidoValido && cedulaValido && edadValida && usuarioValido;
+
   }
 
-  validaredad():boolean{
+  validarConfirmar(): boolean {
+    let ban: boolean = true;
+    ban = false;
+    if (this.confirmarPass !== this.usuarioData.passwordUsuario) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Deben coincidir las contraseñas',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
+    }
+
+    return ban
+  }
+  validaredad(): boolean {
     let ban: boolean = true;
     let fechaActual = new Date();
-      let edadMinima = 18;
+    let edadMinima = 18;
 
 
-      if (this.calcularEdad() < edadMinima) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Debe ser mayor a 18 años',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        ban = false;
+    if (this.calcularEdad() < edadMinima) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Debe ser mayor a 18 años',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ban = false;
 
-      }
-      return ban
+    }
+    return ban
   }
 
   //edad

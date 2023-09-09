@@ -6,6 +6,7 @@ var animating; //flag to prevent quick multi-click glitches
 
 
 var errorMessage = "Por favor complete todos los campos obligatorios";
+var errorMessage2 = "Las contraseñas no coinciden"
 $(".next").click(function () {
 	if (animating) return false;
 
@@ -109,16 +110,29 @@ $(".previous").click(function(){
 });
 
 //validar
-$(document).ready(function() {
-	$(".submit").click(function() {
-	  var pass = $("input[name=pass]").val();
-	  var cpass = $("#cpass").val();
-	  if (pass != cpass) {
-		alert("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
-		return false;
-	  }
-	});
-  });
+// $(document).ready(function() {
+// 	$(".submit").click(function() {
+// 	  var pass = $("input[name=pass]").val();
+// 	  var cpass = $("#cpass").val();
+// 	  if (pass != cpass) {
+// 		Event.preventDefault(); 
+// 		Swal.fire({
+// 			position: 'top-right',
+// 			title: errorMessage2,
+// 			showConfirmButton: false,
+// 			timer: 1900,
+// 			background: '#fffff',
+// 			padding: '1.20rem',
+// 			width: '20rem',
+// 			FontFace:'14px',
+// 			allowOutsideClick: false,
+// 			allowEscapeKey: false,
+// 			fontFamily: 'Monserrat'
+// 		});
+// 		return false;
+// 	  }
+// 	});
+//   });
 
 
 

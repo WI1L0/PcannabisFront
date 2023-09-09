@@ -92,7 +92,7 @@
                 </select>
                 <input type="password" name="pass" placeholder="Contraseña" class="half-width" required maxlength="20" minlength="8"
                     (blur)="validarContra()" [(ngModel)]="usuarioData.passwordUsuario" />
-                <input type="password" name="cpass" id="cpass" placeholder="Confirmar Contraseña" class="half-width" (blur)="validarContra()" maxlength="20" minlength="8"
+                <input type="password" name="cpass" id="confirmarPass" placeholder="Confirmar Contraseña" [(ngModel)]="confirmarPass"class="half-width" (blur)="validarConfirmar()" maxlength="20" minlength="8"
                     required />
 
                 <div>
