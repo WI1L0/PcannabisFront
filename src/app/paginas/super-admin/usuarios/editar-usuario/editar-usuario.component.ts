@@ -127,6 +127,7 @@ export class EditarUsuarioComponent implements OnInit {
     this.procesarFoto = null;
     this.imagenPreview = null;
   }
+  
 
   editarFoto() {
     this.editFoto = true;
