@@ -24,7 +24,7 @@ export class ActualizarEmpresaComponent implements OnInit {
 
   estadoSaveUpdate: boolean = false;
 
-  
+
 
   //implementar js en los componentes
   constructor(private AllScripts: AllScriptsService, private empresasServices: SEmpresasService, private loginServices: SloginService, private router: Router) {
@@ -78,99 +78,116 @@ export class ActualizarEmpresaComponent implements OnInit {
         confirmButtonText: 'Editar'
       }).then((result) => {
         if (result.isConfirmed) {
-          if (this.validartelefono() && this.validarcelular() && this.validarcorreo()) {
-            this.empresasServices.putEmpresa(this.empresaData).subscribe(
-              (data) => {
-                if (data != null) {
-                  this.submitted = false;
-                  this.estadoSaveUpdate = false;
-                  Swal.fire(
-                    'Editada!',
-                    'La Empresa fue editada exitosamente.',
-                    'success'
-                  ).then((result) => {
-                    if (result.isConfirmed) {
-                      this.empresaData = {} as Empresas;
-                      history.back();
-                    }
-                  })
-                } else {
-                  this.estadoSaveUpdate = false;
-                  Swal.fire({
-                    title: 'No Editada!',
-                    text: 'La empresa no fue editada.',
-                    icon: 'error'
-                  });
-                }
-              }
-            )
+
+          const iframeCode = String(this.empresaData.urlDireccionEmpresaGoogle);
+          const regex = /src="([^"]+)"/;
+          const match = iframeCode.match(regex);
+          let embeddedUrl = '';
+          if (match) {
+            embeddedUrl = match[1];
+            this.empresaData.urlDireccionEmpresaGoogle = embeddedUrl;
           }
-        } else {
-          this.estadoSaveUpdate = false;
+
+          const numeroInternacional = "593" + String(this.empresaData.urlCelularEmpresa).slice("0".length);
+          const patron = /^\d{12}$/;
+          if (patron.test(numeroInternacional)) {
+            this.empresaData.urlCelularEmpresa = `https://api.whatsapp.com/send/?phone=${numeroInternacional}`;
+          }
+
+          this.empresaData.urlCelularEmpresa = "https://api.whatsapp.com/send/?phone=" + this.empresaData.urlCelularEmpresa;
+        if (this.validartelefono() && this.validarcelular() && this.validarcorreo()) {
+          this.empresasServices.putEmpresa(this.empresaData).subscribe(
+            (data) => {
+              if (data != null) {
+                this.submitted = false;
+                this.estadoSaveUpdate = false;
+                Swal.fire(
+                  'Editada!',
+                  'La Empresa fue editada exitosamente.',
+                  'success'
+                ).then((result) => {
+                  if (result.isConfirmed) {
+                    this.empresaData = {} as Empresas;
+                    history.back();
+                  }
+                })
+              } else {
+                this.estadoSaveUpdate = false;
+                Swal.fire({
+                  title: 'No Editada!',
+                  text: 'La empresa no fue editada.',
+                  icon: 'error'
+                });
+              }
+            }
+          )
         }
+      } else {
+        this.estadoSaveUpdate = false;
+      }
       });
-    } else {
-      this.estadoSaveUpdate = false;
-      Swal.fire({
+  } else {
+  this.estadoSaveUpdate = false;
+  Swal.fire({
 
-        title: 'No Editada!',
-        text: 'Los campos estan vacios o erroneos',
-        icon: 'error'
-      })
-    }
+    title: 'No Editada!',
+    text: 'Los campos estan vacios o erroneos',
+    icon: 'error'
+  })
+}
   }
 
-  salir() {
-    this.empresaData = {} as Empresas;
-    history.back();
-  }
+salir() {
+  this.empresaData = {} as Empresas;
+  history.back();
+}
 
-  validartelefono(): boolean {
-    let ban: boolean = true
-    if (!/^\d+$/.test(String(this.empresaData.telefonoEmpresa)) || (!/^\d{7}$/.test(String(this.empresaData.telefonoEmpresa)))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'El teléfono  es incorrecto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-    return ban
+validartelefono(): boolean {
+  let ban: boolean = true
+  if (!/^\d+$/.test(String(this.empresaData.telefonoEmpresa)) || (!/^\d{7}$/.test(String(this.empresaData.telefonoEmpresa)))) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'El teléfono  es incorrecto',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    ban = false;
   }
+  return ban
+}
 
-  validarcelular():boolean {
-    let ban: boolean = true
-    if (!/^\d+$/.test(String(this.empresaData.celularEmpresa)) || (!/^\d{10}$/.test(String(this.empresaData.celularEmpresa)))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'El célular es incorrecto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-    return ban
+validarcelular(): boolean {
+  let ban: boolean = true
+  if (!/^\d+$/.test(String(this.empresaData.celularEmpresa)) || (!/^\d{10}$/.test(String(this.empresaData.celularEmpresa)))) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'El célular es incorrecto',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    ban = false;
   }
+  return ban
+}
 
-  validarcorreo():boolean {
-    let ban: boolean = true
-    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+validarcorreo(): boolean {
+  let ban: boolean = true
+  const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (!regexCorreo.test(String(this.empresaData.emailEmpresa))) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Verifique que el email este correcto',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false;
-    }
-    return ban
+  if (!regexCorreo.test(String(this.empresaData.emailEmpresa))) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Verifique que el email este correcto',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    ban = false;
   }
+  return ban
+}
 
 
 

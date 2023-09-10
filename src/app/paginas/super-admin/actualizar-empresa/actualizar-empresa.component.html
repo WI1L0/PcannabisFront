@@ -19,8 +19,8 @@
             </fieldset>
             <fieldset>
                 <p class="nom">Link de whatsapp</p>
-                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="4" required [(ngModel)]="empresaData.urlCelularEmpresa" maxlength="1000" minlength="50" >
-                <small class="p-error" *ngIf="submitted && !empresaData.urlCelularEmpresa">Link de Whatsapp es requerido.</small>
+                <input placeholder="whatsapp eje: 0967283737" type="url" name="WT_web_empresa" tabindex="4" required [(ngModel)]="empresaData.urlCelularEmpresa" maxlength="1000" minlength="50" >
+                <small class="p-error" *ngIf="submitted && !empresaData.urlCelularEmpresa">Whatsapp es requerido.</small>
             </fieldset>
             <fieldset>
                 <p class="nom">Telefono</p>
@@ -39,7 +39,7 @@
             </fieldset>
             <fieldset>
                 <p class="nom">Dirección de mapa</p>
-                <input placeholder="Link de whatsapp " type="url" name="sitio_web_empresa" tabindex="8" required [(ngModel)]="empresaData.urlCelularEmpresa" maxlength="1000" minlength="50" >
+                <input placeholder="Link de direccion " type="url" name="sitio_web_empresa" tabindex="8" required [(ngModel)]="empresaData.urlDireccionEmpresa" maxlength="1000" minlength="50" >
                 <small class="p-error" *ngIf="submitted && !empresaData.urlDireccionEmpresa">Dirección de mapa es requerida.</small>
             </fieldset>
             <fieldset>

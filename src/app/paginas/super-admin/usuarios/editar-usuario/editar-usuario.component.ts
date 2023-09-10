@@ -75,12 +75,12 @@ export class EditarUsuarioComponent implements OnInit {
       const selectElement = document.getElementById("mySelectGenero") as HTMLSelectElement;
       const desiredOptiongenero = Array.from(selectElement.options).find((option) => option.value === this.personasObject.genero);
 
-      if(desiredOptiongenero){
+      if (desiredOptiongenero) {
         desiredOptiongenero.selected = true;
       }
     } else {
-      // history.back();
-      this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
+      history.back();
+      // this.router.navigate(['/cbd/superAdmin/usuarios/listar']);
     }
   }
 
@@ -160,10 +160,24 @@ export class EditarUsuarioComponent implements OnInit {
             this.almacenarper();
           } else if (this.changeUsuario || this.imagenPreview) {
             if (this.imagenPreview) {
-              this.almacenarFoto().then(
-                (url) => {
-                  this.usuariosObject.fotoUsuario = url;
-                  this.almacenarusu();
+              let veri1;
+              this.fotoServices.deleteFotos(String(this.usuariosObject.fotoUsuario)).subscribe(
+                (datafo) => {
+                  veri1 = !!datafo;
+                  if (veri1) {
+                    this.almacenarFoto().then(
+                      (url) => {
+                        this.usuariosObject.fotoUsuario = url;
+                        this.almacenarusu();
+                      }
+                    )
+                  } else {
+                    Swal.fire({
+                      title: 'No Editado!',
+                      text: 'IIntentar nuevamente',
+                      icon: 'error'
+                    })
+                  }
                 }
               )
             } else {
