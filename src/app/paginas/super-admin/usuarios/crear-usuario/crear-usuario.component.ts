@@ -161,13 +161,7 @@ export class CrearUsuarioComponent implements OnInit {
         icon: 'error',
         title: 'La contraseña debe tener mínimo una mayúscula, minúscula, un número, un caracter y 8 dígitos',
         showConfirmButton: false,
-        timer: 1500,
-        background: '#ffff',
-        iconColor: '#4CAF50',
-        padding: '1.25rem',
-        width: '20rem',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
+        timer: 1500
       });
     } else {
 
@@ -201,12 +195,6 @@ export class CrearUsuarioComponent implements OnInit {
                 title: 'No se pudo crear intentar nuevamente',
                 showConfirmButton: false,
                 timer: 1500,
-                background: '#ffff',
-                iconColor: '#4CAF50',
-                padding: '1.25rem',
-                width: '20rem',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
               });
             }
           }
@@ -234,12 +222,6 @@ export class CrearUsuarioComponent implements OnInit {
             title: 'nombre de usuario ya registrado',
             showConfirmButton: false,
             timer: 1500,
-            background: '#ffff',
-            iconColor: '#4CAF50',
-            padding: '1.25rem',
-            width: '20rem',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
           });
         } else {
           if (this.imagenPreview) {
@@ -273,12 +255,6 @@ export class CrearUsuarioComponent implements OnInit {
                           title: 'No se pudo crear intentar nuevamente',
                           showConfirmButton: false,
                           timer: 1500,
-                          background: '#ffff',
-                          iconColor: '#4CAF50',
-                          padding: '1.25rem',
-                          width: '20rem',
-                          allowOutsideClick: false,
-                          allowEscapeKey: false,
                         });
                       }
                     }
@@ -296,12 +272,6 @@ export class CrearUsuarioComponent implements OnInit {
               title: 'no hay una foto',
               showConfirmButton: false,
               timer: 1500,
-              background: '#ffff',
-              iconColor: '#4CAF50',
-              padding: '1.25rem',
-              width: '20rem',
-              allowOutsideClick: false,
-              allowEscapeKey: false,
             });
           }
         }
@@ -325,12 +295,6 @@ export class CrearUsuarioComponent implements OnInit {
             title: 'nombre de usuario ya registrado',
             showConfirmButton: false,
             timer: 1500,
-            background: '#ffff',
-            iconColor: '#4CAF50',
-            padding: '1.25rem',
-            width: '20rem',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
           });
         }
       }

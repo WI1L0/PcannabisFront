@@ -78,7 +78,7 @@
                                 <fieldset>
                                     <p class="nom">Nombre 1</p>
                                     <input placeholder="Nombre 1" type="text" name="nombre1_user" tabindex="2" required
-                                        maxlength="10" minlength="2" (ngModelChange)="cambioPersona()"
+                                        maxlength="10" minlength="2" (ngModelChange)="cambioPersona()" (blur)="validarnombre()"
                                         [(ngModel)]="personasObject.nombre1" autofocus>
                                 </fieldset>
                             </div>
@@ -86,7 +86,7 @@
                                 <fieldset>
                                     <p class="nom">Nombre 2</p>
                                     <input placeholder="Nombre 2" type="text" name="nombre2_user" tabindex="2" required
-                                        maxlength="10" minlength="2" (ngModelChange)="cambioPersona()"
+                                        maxlength="10" minlength="2" (ngModelChange)="cambioPersona()" (blur)="validarnombre()"
                                         [(ngModel)]="personasObject.nombre2" autofocus>
                                 </fieldset>
                             </div>
@@ -95,15 +95,15 @@
                             <div class="col-md-6">
                                 <fieldset>
                                     <p class="nom">Apellido 1</p>
-                                    <input placeholder="Apellido 1" type="text" name="apellido1_user" tabindex="2"
-                                        maxlength="10" minlength="2" (ngModelChange)="cambioPersona()" required
-                                        [(ngModel)]="personasObject.apellido1" autofocus>
+                                    <input placeholder="Apellido 1" type="text" name="apellido1_user" tabindex="2" (blur)="validarapellido()"
+                                        maxlength="10" minlength="2" (ngModelChange)="cambioPersona()" required 
+                                        [(ngModel)]="personasObject.apellido1" autofocus >
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
                                     <p class="nom">Apellido 2</p>
-                                    <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="2"
+                                    <input placeholder="Apellido 2" type="text" name="apellido2_user" tabindex="2"  (blur)="validarapellido()"
                                         maxlength="10" minlength="2" (ngModelChange)="cambioPersona()" required
                                         [(ngModel)]="personasObject.apellido2" autofocus>
                                 </fieldset>
@@ -116,7 +116,7 @@
                             <fieldset>
                                 <p class="nom">Celular</p>
                                 <input placeholder="Celular" type="text" name="celular_user" tabindex="2" required
-                                    maxlength="10" minlength="10" (ngModelChange)="cambioPersona()"
+                                    maxlength="10" minlength="10" (ngModelChange)="cambioPersona()" (blur)="validarcelular()"
                                     [(ngModel)]="personasObject.celular" autofocus>
                             </fieldset>
                         </div>
@@ -124,7 +124,7 @@
                             <fieldset>
                                 <p class="nom">Correo</p>
                                 <input placeholder="Correo" type="text" name="correo_user" tabindex="2" required
-                                    maxlength="100" minlength="10" (ngModelChange)="cambioPersona()"
+                                    maxlength="100" minlength="10" (ngModelChange)="cambioPersona()" (blur)="validarcorreo()"
                                     [(ngModel)]="personasObject.correo" autofocus>
                             </fieldset>
                         </div>
