@@ -129,6 +129,8 @@ body {
 
 .sliderDetalleNoticia {
   padding-bottom: 20px;
+  width: 100%;
+  height: 100%;
 
   .htmlDetalle * {
     box-sizing: border-box;
@@ -136,6 +138,7 @@ body {
     padding: 0;
     width: 100%;
     font-family: sans-serif;
+    height: 900px;
   }
   i {
     position: relative;
@@ -254,4 +257,10 @@ body {
   // display:block;
   // padding-bottom: 57.14285%; 
 }
+}
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
 }

@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 export class CrearProductosComponent implements OnInit {
 
   productosObject: Productos = new Productos();
-  public submitted: boolean = true;
+  public submitted: boolean = false;
 
   obtenerFoto: any;
   procesarFoto: any;

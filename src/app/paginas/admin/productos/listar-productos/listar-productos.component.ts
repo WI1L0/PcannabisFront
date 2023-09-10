@@ -177,7 +177,7 @@ export class ListarProductosComponent implements OnInit {
     Swal.fire({
       title: '¿Estas seguro de ' + `${mensajeTitle}` + ' este producto?',
       text:
-        'Los productos' +
+        'Los productos ' +
         `${mensajeText}` +
         ' ser vistos por el público en general',
       icon: 'warning',
@@ -198,7 +198,7 @@ export class ListarProductosComponent implements OnInit {
           })
         if (re) {
           Swal.fire(
-            'Producto ' + `${mensajeTrue}` + ' exitosamente', 'Producto' +  `${mensajeTrue}`, 'success'
+            'Producto ' + `${mensajeTrue}` + ' exitosamente', 'Producto ' +  `${mensajeTrue}`, 'success'
           ).then((res) => {
             this.obtenerProductos();
           });
