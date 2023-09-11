@@ -321,7 +321,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   validarnombre(): boolean {
     let ban: boolean = true
-    if (/^\d+$/.test(String(this.personaObject.nombre1 || this.personaObject.nombre2))) {
+    if (/^\d+$/.test(String(this.personaObject.nombre1 ))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -330,13 +330,22 @@ export class CrearUsuarioComponent implements OnInit {
         timer: 1500
       })
       ban = false
+    }else    if(/^\d+$/.test(String(this.personaObject.nombre2))){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que los nombres esten correctos',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      ban = false
     }
     return ban
   }
 
   validarapellido(): boolean {
     let ban: boolean = true
-    if (/^\d+$/.test(String(this.personaObject.apellido1 || this.personaObject.apellido2))) {
+    if (/^\d+$/.test(String(this.personaObject.apellido1 ))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -345,6 +354,15 @@ export class CrearUsuarioComponent implements OnInit {
         timer: 1500
       })
       ban = false;
+    }else     if(/^\d+$/.test(String(this.personaObject.apellido2))){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Verifique que los apellidos esten correctos',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      ban = false
     }
     return ban;
   }

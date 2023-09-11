@@ -232,7 +232,7 @@ fieldset {
 
 #msform .botoncito {
 	box-shadow: 0 0 0 2px rgb(14, 3, 1), 0 0 0 3px #27AE60;
-	width: 30%;
+	width: 100%;
 	cursor: pointer;
 	border: none;
 	background: #595050;
@@ -246,7 +246,6 @@ fieldset {
 
 @media (max-width: 358px) {
 	.row {
-		flex-direction: column;
 		margin: 0;
 	}
 
@@ -260,7 +259,7 @@ fieldset {
 @media (max-width: 700px) {
 	.container {
 		display: flex;
-		flex-direction: column;
+
 
 		.izquierda {
 			width: 100%;
@@ -284,7 +283,7 @@ fieldset {
 		}
 	}
 	.row {
-		flex-direction: column;
+		
 		margin: 0;
 	}
 }
