@@ -38,6 +38,9 @@ export class CrearNoticiasComponent implements OnInit {
   parrafosObjects: Parrafos = new Parrafos();
   listaParrafo: Parrafos[] = [];
   contSaveParrafos: number = 0;
+  public parrafosCompletos: boolean = false;
+
+  public mensajeParrafos: string = "Necesita agregar al menos un párrafo";
 
   fotosNoticiasObjects: FotosNoticias = new FotosNoticias();
   fotosNoticiasUrls: string[] = [];
@@ -64,6 +67,15 @@ export class CrearNoticiasComponent implements OnInit {
   ngOnInit(): void {
     if (!this.loginServices.estaLogin()) {
       this.router.navigate(['/cbd/login']);
+    }
+  }
+  verificarParrafosCompletos() {
+    this.parrafosCompletos = this.listaParrafo.length > 0 && this.listaParrafo.every(parrafo => parrafo.parrafo && parrafo.parrafo.trim() !== '');
+  
+    if (!this.parrafosCompletos) {
+      this.mensajeParrafos = "Necesita agregar al menos un párrafo";
+    } else {
+      this.mensajeParrafos = "";
     }
   }
 
@@ -118,6 +130,7 @@ export class CrearNoticiasComponent implements OnInit {
       this.parrafosObjects = {} as Parrafos;
       parra.idParrafo = this.listaParrafo.length + 1;
       this.listaParrafo.push(parra);
+      this.parrafosCompletos = this.listaParrafo.length > 0;
     }
   }
 
@@ -346,6 +359,10 @@ export class CrearNoticiasComponent implements OnInit {
     }
   }
 
+
 }
+
+
+
 
 
