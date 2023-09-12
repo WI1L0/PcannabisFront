@@ -48,7 +48,6 @@
             <th>Apellidos</th>
             <th>Email</th>
             <th>Usuario</th>
-            <th>nn</th>
           </tr>
         </thead>
         <tbody>
@@ -59,7 +58,6 @@
               <td class="no">{{usulist.personas?.apellido1}} {{usulist.personas?.apellido2}}</td>
               <td class="no">{{usulist.personas?.correo}}</td>
               <td class="no">{{usulist.nombreUsuario}}</td>
-              <td class="no">{{usulist.personas?.fnacimiento | date: 'yyyy/MM/dd' }}</td>
               <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a eliminar"
                   (click)="confirmEliminar(usulist)">Eliminar</a> </td>
               <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a editar"
