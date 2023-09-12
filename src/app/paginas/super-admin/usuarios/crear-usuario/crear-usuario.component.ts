@@ -151,6 +151,23 @@ export class CrearUsuarioComponent implements OnInit {
     return as;
   }
 
+  validarRol(): boolean {
+    let ban: boolean = true;
+    const selectRol = (<HTMLSelectElement>document.getElementById('mySelectRol'));
+    if (selectRol.value === 'Seleccione una opción') {
+      Swal.fire({
+        position: 'top-right',
+        icon: 'warning',
+        title: 'Seleccione una opción de rol',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      ban = false
+    }
+    return ban
+
+  }
+
   validarContra(): boolean {
     let ff: boolean = true;
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
@@ -173,36 +190,38 @@ export class CrearUsuarioComponent implements OnInit {
   almacenarNew() {
     this.estadoSaveUpdate = true;
     if (this.cedulaRegistrada) {
-      this.almacenarUsuario();
+      if (this.validarNameUsuario()) {
+        this.almacenarUsuario();
+      } else {
+        this.estadoSaveUpdate = false;
+      }
     } else {
       this.estadoSaveUpdate = false;
     }
     this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
     if (this.validarDatos()) {
-      if (this.validarConfirmar()) {
-        this.personasServices.postPersona(this.personaObject).subscribe(
-          (data) => {
-            if (data != null) {
-              this.estadoSaveUpdate = false;
-              this.personaObject = data;
-              if (this.validarNameUsuario()) {
-                this.almacenarUsuario();
-              }
+      this.personasServices.postPersona(this.personaObject).subscribe(
+        (data) => {
+          if (data != null) {
+            this.estadoSaveUpdate = false;
+            this.personaObject = data;
+            if (this.validarNameUsuario()) {
+              this.almacenarUsuario();
             } else {
-              this.estadoSaveUpdate = false;
-              Swal.fire({
-                position: 'top-right',
-                icon: 'error',
-                title: 'No se pudo crear intentar nuevamente',
-                showConfirmButton: false,
-                timer: 1500,
-              });
+              this.estadoSaveUpdate = false
             }
+          } else {
+            this.estadoSaveUpdate = false;
+            Swal.fire({
+              position: 'top-right',
+              icon: 'error',
+              title: 'No se pudo crear intentar nuevamente',
+              showConfirmButton: false,
+              timer: 1500,
+            });
           }
-        )
-      } else {
-        this.estadoSaveUpdate = false
-      }
+        }
+      )
     } else {
       this.estadoSaveUpdate = false
     }
@@ -211,82 +230,97 @@ export class CrearUsuarioComponent implements OnInit {
 
 
   almacenarUsuario() {
-    let existNameUsuario;
-    this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
-      (data) => {
-        existNameUsuario = !!data;
-        if (existNameUsuario) {
-          this.estadoSaveUpdate = false;
-          Swal.fire({
-            position: 'top-right',
-            icon: 'error',
-            title: 'nombre de usuario ya registrado',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        } else {
-          if (this.imagenPreview) {
-            this.estadoSaveUpdate = true;
-            this.almacenarFoto().then(
-              (url) => {
-                this.usuarioData.fotoUsuario = url;
-                if (this.validarContra()) {
-                  this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
-                    (data2) => {
-                      if (data2 != null) {
-                        this.estadoSaveUpdate = true;
-                        Swal.fire({
-                          position: 'top-right',
-                          icon: 'success',
-                          title: 'Usuario Creado Exitosamente',
-                          showConfirmButton: false,
-                          timer: 1500,
-                          background: '#ffff',
-                          iconColor: '#4CAF50',
-                          padding: '1.25rem',
-                          width: '20rem',
-                          allowOutsideClick: false,
-                          allowEscapeKey: false,
-                        });
+    if (this.validarCamposVacios()) {
+      if (this.imagenPreview) {
+        this.estadoSaveUpdate = true;
+        this.almacenarFoto().then(
+          (url) => {
+            this.usuarioData.fotoUsuario = url;
+            if (this.validarContra() && this.validarConfirmar()) {
+              if (this.validarRol()) {
+                this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
+                  (data2) => {
+                    if (data2 != null) {
+                      this.estadoSaveUpdate = true;
+                      Swal.fire({
+                        position: 'top-right',
+                        icon: 'success',
+                        title: 'Usuario Creado Exitosamente',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        background: '#ffff',
+                        iconColor: '#4CAF50',
+                        padding: '1.25rem',
+                        width: '20rem',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                      });
 
-                        history.back();
-                      } else {
-                        this.estadoSaveUpdate = false;
-                        Swal.fire({
-                          position: 'top-right',
-                          icon: 'error',
-                          title: 'No se pudo crear intentar nuevamente',
-                          showConfirmButton: false,
-                          timer: 1500,
-                        });
-                      }
+                      history.back();
+                    } else {
+                      this.estadoSaveUpdate = false;
+                      Swal.fire({
+                        position: 'top-right',
+                        icon: 'error',
+                        title: 'No se pudo crear intentar nuevamente',
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
                     }
+                  }
 
-                  )
-                }else{
-                  this.estadoSaveUpdate = false
+                )
+              } else {
+                this.estadoSaveUpdate = false;
 
-                }
               }
-            )
-          } else {
-            this.estadoSaveUpdate = false;
-            Swal.fire({
-              position: 'top-right',
-              icon: 'warning',
-              title: 'no hay una foto',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        }
-      }
+            } else {
+              this.estadoSaveUpdate = false
 
-    )
+            }
+          }
+        )
+      } else {
+        this.estadoSaveUpdate = false;
+        Swal.fire({
+          position: 'top-right',
+          icon: 'warning',
+          title: 'no hay una foto',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } else {
+      this.estadoSaveUpdate = false
+
+    }
+    //     }
+    //   }
+
+    // )
 
   }
 
   //VALIDACIONES//
+  validarCamposVacios(): boolean {
+    const nombreUsuario = (<HTMLInputElement>document.getElementsByName('nombre_usuario')[0]).value;
+    const selectRol = (<HTMLSelectElement>document.getElementById('mySelectRol')).value;
+    const passwordUsuario = (<HTMLInputElement>document.getElementsByName('pass')[0]).value;
+    const confirmarPass = (<HTMLInputElement>document.getElementById('confirmarPass')).value;
+
+    if (nombreUsuario.trim() === '' || selectRol === 'Seleccione una opción' || passwordUsuario.trim() === '' || confirmarPass.trim() === '') {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Verifique que los campos esten llenos',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      return false; // Hay campos vacíos
+    }
+
+    return true; // No hay campos vacíos
+  }
 
   validarNameUsuario(): boolean {
     let existNameUsuario;
@@ -309,31 +343,13 @@ export class CrearUsuarioComponent implements OnInit {
     return ban
   }
 
-  validarusuario(): boolean {
-    let ban: boolean = true
-
-    if (this.usuarioData.nombreUsuario?.length === 0) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'El nombre de usuario es requerido',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      ban = false
-    }
-    return ban
-
-  }
-
-
 
   validarnombre(): boolean {
     let ban: boolean = true
     if (/^\d+$/.test(String(this.personaObject.nombre1))) {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'Verifique que los nombres esten correctos',
         showConfirmButton: false,
         timer: 1500
@@ -342,7 +358,7 @@ export class CrearUsuarioComponent implements OnInit {
     } else if (/^\d+$/.test(String(this.personaObject.nombre2))) {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'Verifique que los nombres esten correctos',
         showConfirmButton: false,
         timer: 1500
@@ -357,7 +373,7 @@ export class CrearUsuarioComponent implements OnInit {
     if (/^\d+$/.test(String(this.personaObject.apellido1))) {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'Verifique que los apellidos esten correctos',
         showConfirmButton: false,
         timer: 1500
@@ -366,7 +382,7 @@ export class CrearUsuarioComponent implements OnInit {
     } else if (/^\d+$/.test(String(this.personaObject.apellido2))) {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'Verifique que los apellidos esten correctos',
         showConfirmButton: false,
         timer: 1500
@@ -381,7 +397,7 @@ export class CrearUsuarioComponent implements OnInit {
     if (!/^\d+$/.test(String(this.personaObject.cedula)) || (!/^\d{10}$/.test(String(this.personaObject.cedula)))) {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'La cédula es incorrecta',
         showConfirmButton: false,
         timer: 1500
@@ -396,7 +412,7 @@ export class CrearUsuarioComponent implements OnInit {
     if (!/^\d+$/.test(String(this.personaObject.celular)) || (!/^\d{10}$/.test(String(this.personaObject.celular)))) {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'El célular es incorrecto',
         showConfirmButton: false,
         timer: 1500
@@ -413,7 +429,7 @@ export class CrearUsuarioComponent implements OnInit {
     if (!regexCorreo.test(String(this.personaObject.correo))) {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'Verifique que el email este correcto',
         showConfirmButton: false,
         timer: 1500
@@ -430,9 +446,8 @@ export class CrearUsuarioComponent implements OnInit {
     const apellidoValido = this.validarapellido();
     const cedulaValido = this.validarcedula();
     const edadValida = this.validaredad();
-    const usuarioValido = this.validarusuario();
 
-    return celularValido && correoValido && nombreValido && apellidoValido && cedulaValido && edadValida && usuarioValido;
+    return celularValido && correoValido && nombreValido && apellidoValido && cedulaValido && edadValida;
 
   }
 

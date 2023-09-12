@@ -73,7 +73,6 @@ export class ListarUsuariosComponent implements OnInit {
           this.pagExist = response.totalPagina;
           if (this.respuestaUsuarios.contenidoUsuarios != null) {
             this.listUsu = this.respuestaUsuarios.contenidoUsuarios;
-            console.log(this.listUsu);
 
           }
         },
