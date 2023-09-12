@@ -264,3 +264,22 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+
+.centrado{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media (max-width: 700px){
+  .sliderDetalleNoticia .htmlDetalle {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 950px;
+    font-family: sans-serif;
+    height: 900px;
+    text-align: center;
+  }
+}

@@ -163,7 +163,7 @@ $negrita: bold;
   .main-modal {
     width: 30%;
     max-width: 1200px;
-    height: 60%;
+    height: 70%;
     background: var(--app-bg);
     border-radius: 20px;
     position: relative;
@@ -195,6 +195,7 @@ $negrita: bold;
     transform: scale(0);
     font-family: $fuente-secundaria;
     color: #fff;
+    height: 100px;
   }
 
   @keyframes hide {
@@ -244,10 +245,9 @@ $negrita: bold;
   .modal-image-wrapper {
     border-radius: 20px;
     overflow: hidden;
-    max-height: 50%;
 
     img {
-      width: 40%;
+      width: 50%;
       height: auto;
       object-fit: cover;
     }
@@ -267,6 +267,7 @@ $negrita: bold;
     justify-content: space-between;
     align-items: flex-start;
     font-size: 25px;
+    text-align: justify;
   }
 
   .modal-info-header-a {

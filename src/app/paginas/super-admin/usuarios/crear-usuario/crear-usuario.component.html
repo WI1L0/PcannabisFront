@@ -35,8 +35,8 @@
                     <input type="text" name="apellido2" placeholder="Apellido 2" class="half-width" required maxlength="10" minlength="2"
                         [disabled]="cedulaRegistrada" [(ngModel)]="personaObject.apellido2"  (blur)="validarapellido()" />
                 </div>
-                    <input type="date" name="fechanacimiento" placeholder="Fecha de nacimiento" required
-                    [(ngModel)]="personaObject.fNacimiento" (blur)="validaredad()">
+                    <input type="date" name="fNacimiento" placeholder="Fecha de nacimiento" required
+                    [(ngModel)]="personaObject.fnacimiento" (blur)="validaredad()">
 
                 <!-- <div class="row"> -->
                 <!-- <div *ngIf="!cedulaRegistrada">

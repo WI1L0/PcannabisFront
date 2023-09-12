@@ -48,27 +48,31 @@
             <th>Apellidos</th>
             <th>Email</th>
             <th>Usuario</th>
+            <th>nn</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usulist of listUsu">
-            <td class="no">{{usulist.personas?.cedula}}</td>
-            <td class="no">{{usulist.personas?.nombre1}} {{usulist.personas?.nombre2}}</td>
-            <td class="no">{{usulist.personas?.apellido1}} {{usulist.personas?.apellido2}}</td>
-            <td class="no">{{usulist.personas?.correo}}</td>
-            <td class="no">{{usulist.nombreUsuario}}</td>
-            <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a eliminar"
-                (click)="confirmEliminar(usulist)">Eliminar</a> </td>
-            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a editar"
-                (click)="almacenarUsuario(usulist, 'editar')">Editar</a> </td>
-            <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a bloquear"
-                (click)="alertBloquearOrDesbloquear(usulist, 'bloquear', 'no podrán', ' oculto', 'ocultar')">Bloquear</a>
-            </td>
-            <td *ngIf="usulist.bloqueadoUsuario == false  && usulist.estUsuario == true"><a class="a desbloquear"
-                (click)="alertBloquearOrDesbloquear(usulist, 'desbloquear', 'podrán', ' mostrado', 'mostrar')">Desbloquear</a>
-            </td>
-            <td><a (click)="almacenarUsuario(usulist, 'detalle')" class="a ver">Ver</a></td>
-          </tr>
+          <ng-container *ngFor="let usulist of listUsu">
+            <tr>
+              <td class="no">{{usulist.personas?.cedula}}</td>
+              <td class="no">{{usulist.personas?.nombre1}} {{usulist.personas?.nombre2}}</td>
+              <td class="no">{{usulist.personas?.apellido1}} {{usulist.personas?.apellido2}}</td>
+              <td class="no">{{usulist.personas?.correo}}</td>
+              <td class="no">{{usulist.nombreUsuario}}</td>
+              <td class="no">{{usulist.personas?.fnacimiento | date: 'yyyy/MM/dd' }}</td>
+              <td *ngIf="usulist.bloqueadoUsuario == false && usulist.estUsuario == true"><a class="a eliminar"
+                  (click)="confirmEliminar(usulist)">Eliminar</a> </td>
+              <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a editar"
+                  (click)="almacenarUsuario(usulist, 'editar')">Editar</a> </td>
+              <td *ngIf="usulist.bloqueadoUsuario == true && usulist.estUsuario == true"><a class="a bloquear"
+                  (click)="alertBloquearOrDesbloquear(usulist, 'bloquear', 'no podrán', ' oculto', 'ocultar')">Bloquear</a>
+              </td>
+              <td *ngIf="usulist.bloqueadoUsuario == false  && usulist.estUsuario == true"><a class="a desbloquear"
+                  (click)="alertBloquearOrDesbloquear(usulist, 'desbloquear', 'podrán', ' mostrado', 'mostrar')">Desbloquear</a>
+              </td>
+              <td><a (click)="almacenarUsuario(usulist, 'detalle')" class="a ver">Ver</a></td>
+            </tr>
+          </ng-container>
         </tbody>
 
       </table>

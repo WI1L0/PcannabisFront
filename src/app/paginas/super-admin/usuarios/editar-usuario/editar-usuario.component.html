@@ -46,7 +46,7 @@
                                 <fieldset>
                                     <p class="nom==">Fecha de Nacimiento</p>
                                     <input placeholder="Fnacimiento" type="date" class="fecha" name="Fnacimiento_user"
-                                        tabindex="2" disabled="true" value="{{personasObject.fNacimiento}}" autofocus>
+                                        tabindex="2" disabled="true" value="{{personasObject.fnacimiento | date: 'dd/MM/yyyy'}}" autofocus>
                                 </fieldset>
                             </div>
                         </div>

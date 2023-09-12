@@ -152,7 +152,7 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   validarContra(): boolean {
-    let ff: boolean = false;
+    let ff: boolean = true;
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
     this.valContra = regex.test(String(this.usuarioData.passwordUsuario));
     if (!this.valContra) {
@@ -163,12 +163,10 @@ export class CrearUsuarioComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      ff = false
     } else {
-
-
       ff = true;
     }
-
     return ff;
   }
 
@@ -179,14 +177,17 @@ export class CrearUsuarioComponent implements OnInit {
     } else {
       this.estadoSaveUpdate = false;
     }
-    if (this.validarConfirmar() && this.existCorreo()) {
-      if (this.validarDatos()) {
-        this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
+    this.personaObject.genero = (<HTMLSelectElement>document.getElementById('mySelectGenero')).value;
+    if (this.validarDatos()) {
+      if (this.validarConfirmar()) {
         this.personasServices.postPersona(this.personaObject).subscribe(
           (data) => {
             if (data != null) {
+              this.estadoSaveUpdate = false;
               this.personaObject = data;
-              this.almacenarUsuario();
+              if (this.validarNameUsuario()) {
+                this.almacenarUsuario();
+              }
             } else {
               this.estadoSaveUpdate = false;
               Swal.fire({
@@ -200,14 +201,14 @@ export class CrearUsuarioComponent implements OnInit {
           }
         )
       } else {
-        this.estadoSaveUpdate = false;
+        this.estadoSaveUpdate = false
       }
     } else {
-
-      this.estadoSaveUpdate = false;
-
+      this.estadoSaveUpdate = false
     }
   }
+
+
 
   almacenarUsuario() {
     let existNameUsuario;
@@ -225,13 +226,15 @@ export class CrearUsuarioComponent implements OnInit {
           });
         } else {
           if (this.imagenPreview) {
+            this.estadoSaveUpdate = true;
             this.almacenarFoto().then(
               (url) => {
                 this.usuarioData.fotoUsuario = url;
+                if (this.validarContra()) {
                   this.usuarioService.guardarUsuarios(Number(this.personaObject.idPersona), (<HTMLSelectElement>document.getElementById('mySelectRol')).value, nameEmpresa, this.usuarioData).subscribe(
                     (data2) => {
                       if (data2 != null) {
-                        this.estadoSaveUpdate = false;
+                        this.estadoSaveUpdate = true;
                         Swal.fire({
                           position: 'top-right',
                           icon: 'success',
@@ -260,8 +263,10 @@ export class CrearUsuarioComponent implements OnInit {
                     }
 
                   )
-                
+                }else{
+                  this.estadoSaveUpdate = false
 
+                }
               }
             )
           } else {
@@ -283,8 +288,9 @@ export class CrearUsuarioComponent implements OnInit {
 
   //VALIDACIONES//
 
-  validarNameUsuario() {
+  validarNameUsuario(): boolean {
     let existNameUsuario;
+    let ban: boolean = true
     this.usuarioService.existUserName(String(this.usuarioData.nombreUsuario)).subscribe(
       (data) => {
         existNameUsuario = !!data;
@@ -296,10 +302,13 @@ export class CrearUsuarioComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
+          ban = false
         }
       }
     )
+    return ban
   }
+
   validarusuario(): boolean {
     let ban: boolean = true
 
@@ -321,7 +330,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   validarnombre(): boolean {
     let ban: boolean = true
-    if (/^\d+$/.test(String(this.personaObject.nombre1 ))) {
+    if (/^\d+$/.test(String(this.personaObject.nombre1))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -330,7 +339,7 @@ export class CrearUsuarioComponent implements OnInit {
         timer: 1500
       })
       ban = false
-    }else    if(/^\d+$/.test(String(this.personaObject.nombre2))){
+    } else if (/^\d+$/.test(String(this.personaObject.nombre2))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -345,7 +354,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   validarapellido(): boolean {
     let ban: boolean = true
-    if (/^\d+$/.test(String(this.personaObject.apellido1 ))) {
+    if (/^\d+$/.test(String(this.personaObject.apellido1))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -354,7 +363,7 @@ export class CrearUsuarioComponent implements OnInit {
         timer: 1500
       })
       ban = false;
-    }else     if(/^\d+$/.test(String(this.personaObject.apellido2))){
+    } else if (/^\d+$/.test(String(this.personaObject.apellido2))) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -423,15 +432,12 @@ export class CrearUsuarioComponent implements OnInit {
     const edadValida = this.validaredad();
     const usuarioValido = this.validarusuario();
 
-
-
     return celularValido && correoValido && nombreValido && apellidoValido && cedulaValido && edadValida && usuarioValido;
 
   }
 
   validarConfirmar(): boolean {
     let ban: boolean = true;
-    ban = false;
     if (this.confirmarPass !== this.usuarioData.passwordUsuario) {
       Swal.fire({
         position: 'top-end',
@@ -473,7 +479,7 @@ export class CrearUsuarioComponent implements OnInit {
       const mesActual: number = fechaActual.getMonth() + 1;
       const diaActual: number = fechaActual.getDate();
 
-      const nacimiento: Date = new Date(String(this.personaObject.fNacimiento));
+      const nacimiento: Date = new Date(String(this.personaObject.fnacimiento));
       const anioNacimiento: number = nacimiento.getFullYear();
       const mesNacimiento: number = nacimiento.getMonth() + 1;
       const diaNacimiento: number = nacimiento.getDate() + 1;

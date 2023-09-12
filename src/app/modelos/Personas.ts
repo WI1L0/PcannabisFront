@@ -9,7 +9,7 @@ export class Personas {
     ciudad?: string;
     referencia?: string;
     celular?: string;
-    fNacimiento?: string;
+    fnacimiento?: string;
     genero?: string;
     correo?: string;
     barrio?: string;
