@@ -7,6 +7,8 @@ $negrita: bold;
   display: flex; 
   justify-content: center;
   background-color: #0A344C;
+  height: 100%;
+  width: 100%;
 
   .offset {
     margin-top: 0;
@@ -101,6 +103,7 @@ $negrita: bold;
     padding: 24px 40px;
     display: flex;
     justify-content: space-between;
+    background-color: #0A344C;
   }
 
   .card-image-wrapper {
@@ -597,6 +600,43 @@ $negrita: bold;
 @media screen and (max-width: 405px) {
   .card-wrapper {
     max-width: 500px; /* Tamaño máximo de las tarjetas en pantallas aún más pequeñas */
+  }
+}
+@media (max-width: 375px) {
+  .bodyfondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  .cardsView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .app-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+      justify-content: center;
+      align-items: center;
+      background-color: #0A344C;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    
+  }
+  
+  .col-sm-12.col-md-6.col-lg-4 {
+    flex: 0 0 calc(33.33% - 20px);
+    margin-bottom: 20px;
+    max-width: 400px;
+
   }
 }
 
